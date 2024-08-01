@@ -1,0 +1,63 @@
+# There seems to be a recursive limit of around 30 steps in a scripted_loc call, meaning that arrays larger than 56 will be rejected and printed with [?______] at the end
+# If needed, code in higher limit by adding temp_index_c and d to double limit
+defined_text = {
+    name = test_stack
+    text = {
+        localization_key = "[debug_print_array]"
+    }
+}
+defined_text = {
+    name = debug_print_array
+    text = {
+        trigger = {
+            check_variable = { to_print_array^num = 0 }
+        }
+        localization_key = ""
+    }
+    text = {
+        trigger = {
+            set_temp_variable = { temp_index = 0 }
+        }
+        localization_key = "[debug_print_array_step][clear_to_print_array]"
+    }
+}
+defined_text = {
+    name = debug_print_array_step
+    text = {
+        trigger = {
+            add_to_temp_variable = { temp_index = 2 }
+
+            set_temp_variable = { temp_index_a = temp_index }
+            subtract_from_temp_variable = { temp_index_a = 2 }
+            set_temp_variable = { temp_index_b = temp_index }
+            subtract_from_temp_variable = { temp_index_b = 1 }
+
+            always = no
+        }
+        localization_key = ""
+    }
+    text = {
+        trigger = {
+            check_variable = { temp_index > to_print_array^num }
+        }
+        localization_key = "[?to_print_array^temp_index_a]"
+    }
+    text = {
+        trigger = {
+            check_variable = { temp_index = to_print_array^num }
+        }
+        localization_key = "[?to_print_array^temp_index_a] [?to_print_array^temp_index_b]"
+    }
+    text = {
+        localization_key = "[?to_print_array^temp_index_a] [?to_print_array^temp_index_b] [debug_print_array_step]"
+    }
+}
+defined_text = {
+    name = clear_to_print_array
+    text = {
+        trigger = {
+            clear_temp_array = to_print_array
+        }
+        localization_key = ""
+    }
+}

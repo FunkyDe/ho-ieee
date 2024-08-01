@@ -1,0 +1,41 @@
+test_bitwise = {
+    resize_temp_array = { bitwise_a = 32 }
+    resize_temp_array = { bitwise_b = 32 }
+    print_bitwise = yes
+}
+print_bitwise = {
+    set_temp_variable = { bitwise_a^1 = 1 }
+    set_temp_variable = { bitwise_a^6 = 1 }
+    set_temp_variable = { bitwise_a^8 = 1 }
+    set_temp_variable = { bitwise_a^10 = 1 }
+    set_temp_variable = { bitwise_a^11 = 1 }
+    set_temp_variable = { bitwise_a^15 = 1 }
+    set_temp_variable = { bitwise_a^19 = 1 }
+    set_temp_variable = { bitwise_a^21 = 1 }
+    set_temp_variable = { bitwise_a^22 = 1 }
+    set_temp_variable = { bitwise_a^23 = 1 }
+    set_temp_variable = { bitwise_a^31 = 1 }
+
+    log = "A:"
+    for_each_loop = {
+        array = bitwise_a
+        value = v
+        index = i
+
+        add_to_temp_array = { to_print_array = v }
+    }
+    log = "[debug_print_array]"
+
+    log = "B:"
+    for_each_loop = {
+        array = bitwise_b
+        value = v
+        index = i
+
+        add_to_temp_array = { to_print_array = v }
+    }
+    log = "[debug_print_array]"
+}
+test = {
+    log = "[?bitwise_a] [?bitwise_b]"
+}

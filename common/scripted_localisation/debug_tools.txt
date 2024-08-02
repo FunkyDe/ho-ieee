@@ -1,5 +1,5 @@
-# There seems to be a recursive limit of around 30 steps in a scripted_loc call, meaning that arrays larger than 56 will be rejected and printed with [?______] at the end
-# If needed, code in higher limit by adding temp_index_c and d to double limit
+# There seems to be a recursive limit of around 30 steps (probably 32 but uncertain) in a scripted_loc call, meaning that arrays larger than 56 will be rejected and printed with [?______] at the end
+# If needed, code in higher limit by adding temp_index_c and d to double limit to 112
 defined_text = {
     name = test_stack
     text = {

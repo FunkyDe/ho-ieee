@@ -11,7 +11,7 @@ In the base modding script, variables can only be fixed-point, ranging from -2,1
 From [Wikipedia](https://en.wikipedia.org/wiki/IEEE_754):
 > The IEEE Standard for Floating-Point Arithmetic (IEEE 754) is a technical standard for floating-point arithmetic established in 1985 by the Institute of Electrical and Electronics Engineers (IEEE).
 
-This standard allows for the storage of both extremely large and extremely small numbers with relatively good precision(proportionally, around 10<sup>-7</sup> in the case of single-precision). The plan is to use Hearts of Iron IV's built-in modding script to provide a partial-to-complete implementation of the IEEE 754 standard using the bit-wise interpretation of the 32-bit *fixed-point* variables as the foundation for a *floating-point* variable system using a combination of scripted effects, scripted localization, and scoping.
+This standard allows for the storage of both extremely large and extremely small numbers with relatively good precision(proportionally, around 10<sup>-7</sup> in the case of single-precision). The plan is to use Hearts of Iron IV's built-in modding script to provide a partial-to-complete implementation of the IEEE 754 standard using the bit-wise interpretation of the 32-bit *fixed-point* variables as the foundation for a *floating-point* variable system using a combination of scripted effects, scripted localization, and duct tape.
 
 You can read the entire standard in this repo at `extras/IEEE_754.pdf`.
 
@@ -40,8 +40,6 @@ This mod is a pipe dream at the moment, but for now the tentative task map is:
 8. Additional basic functions
 9. Exceptions and special cases (subnormals, infinities)
 10. Recommended operations (consult Clause 9 of IEEE 754)
-
-- Important but not on the list: Memory/variable management system (Not IEEE 754, useful for at-scale applications)
 
 # Who?
 

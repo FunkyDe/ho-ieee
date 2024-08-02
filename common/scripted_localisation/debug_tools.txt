@@ -1,11 +1,24 @@
-# There seems to be a recursive limit of around 30 steps (probably 32 but uncertain) in a scripted_loc call, meaning that arrays larger than 56 will be rejected and printed with [?______] at the end
-# If needed, code in higher limit by adding temp_index_c and d to double limit to 112
+# Prints the array temp_array_[?temp_array_id]
 defined_text = {
-    name = test_stack
+    name = debug_print_array_id
     text = {
+        trigger = {
+            meta_trigger = {
+                text = {
+                    all_of = {
+                        array = [ARRAY_NAME]
+                        value = v
+
+                        add_to_temp_array = { to_print_array = v }
+                    }
+                }
+                ARRAY_NAME = "temp_array_[?temp_array_id]"
+            }
+        }
         localization_key = "[debug_print_array]"
     }
 }
+# The next three scripted locs print the content of temp array to_print_array using a recursive step, limited to a max length of about 128. You should not execute the _step or the clear_ by themselves
 defined_text = {
     name = debug_print_array
     text = {

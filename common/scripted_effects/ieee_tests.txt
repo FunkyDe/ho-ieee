@@ -1,0 +1,233 @@
+######### TESTS #########
+# Test output to game.log should be three lines per test in the format:
+# Test [?test_id] - WHAT IS BEING TESTED - PASS/FAIL
+# Actual: RECEIVED RESULT
+# Expect: CORRECT RESULT
+
+# Furthermore, in the fail block add the line `add_to_temp_array = { test_fail_array = test_id }` to add the failure to a list printed at the end
+
+# Hard code the number of tests, each test block is separated by 1000, so it goes 0### block, 1### block, etc, with tests filling in the 000-999 range
+ieee_get_test_count = {
+    add_to_temp_array = { temp_test_count_array = 5 } # to_bitwise tests
+    add_to_temp_array = { temp_test_count_array = 2 }
+    add_to_temp_array = { temp_test_count_array = 2 }
+    add_to_temp_array = { temp_test_count_array = 2 }
+}
+## test to_bitwise function
+ieee_test_0 = {
+    set_temp_variable = { temp_bitwise_input = 0 }
+    set_temp_variable = { temp_array_id = 0 }
+    to_bitwise = yes
+
+    # correct array should be all zeroes
+    clear_temp_array = temp_array_1
+    resize_temp_array = { temp_array_1 = 32 }
+
+    set_temp_variable = { invalid = 0 }
+    for_loop_effect = {
+        start = 0
+        end = 32
+        compare = less_than
+        value = idx
+        break = invalid
+
+        if = {
+            limit = {
+                NOT = { check_variable = { temp_array_0^idx = temp_array_1^idx } }
+            }
+            set_temp_variable = { invalid = 1 }
+        }
+    }
+
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - zero to_bitwise - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - zero to_bitwise - PASS"
+    }
+    set_temp_variable = { temp_array_id = 0 }
+    log = "Actual: [debug_print_array_id]"
+    set_temp_variable = { temp_array_id = 1 }
+    log = "Expect: [debug_print_array_id]"
+}
+ieee_test_1 = {
+    set_temp_variable = { temp_bitwise_input = -2147483.648 }
+    set_temp_variable = { temp_array_id = 0 }
+    to_bitwise = yes
+
+    # correct array should be a 1 in the first bit then all zeroes
+    clear_temp_array = temp_array_1
+    resize_temp_array = { temp_array_1 = 32 }
+    set_temp_variable = { temp_array_1^0 = 1 }
+
+    set_temp_variable = { invalid = 0 }
+    for_loop_effect = {
+        start = 0
+        end = 32
+        compare = less_than
+        value = idx
+        break = invalid
+
+        if = {
+            limit = {
+                NOT = { check_variable = { temp_array_0^idx = temp_array_1^idx } }
+            }
+            set_temp_variable = { invalid = 1 }
+        }
+    }
+
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - min_num to_bitwise - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - min_num to_bitwise - PASS"
+    }
+    set_temp_variable = { temp_array_id = 0 }
+    log = "Actual: [debug_print_array_id]"
+    set_temp_variable = { temp_array_id = 1 }
+    log = "Expect: [debug_print_array_id]"
+}
+ieee_test_2 = {
+    set_temp_variable = { temp_bitwise_input = 2147483.647 }
+    set_temp_variable = { temp_array_id = 0 }
+    to_bitwise = yes
+
+    # correct array should be all 1s except for first bit
+    clear_temp_array = temp_array_1
+    resize_temp_array = {
+        array = temp_array_1
+        value = 1
+        size = 32
+    }
+    set_temp_variable = { temp_array_1^0 = 0 }
+
+    set_temp_variable = { invalid = 0 }
+    for_loop_effect = {
+        start = 0
+        end = 32
+        compare = less_than
+        value = idx
+        break = invalid
+
+        if = {
+            limit = {
+                NOT = { check_variable = { temp_array_0^idx = temp_array_1^idx } }
+            }
+            set_temp_variable = { invalid = 1 }
+        }
+    }
+
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - max_num to_bitwise - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - max_num to_bitwise - PASS"
+    }
+    set_temp_variable = { temp_array_id = 0 }
+    log = "Actual: [debug_print_array_id]"
+    set_temp_variable = { temp_array_id = 1 }
+    log = "Expect: [debug_print_array_id]"
+}
+ieee_test_3 = {
+    set_temp_variable = { temp_bitwise_input = 0.105 }
+    set_temp_variable = { temp_array_id = 0 }
+    to_bitwise = yes
+
+    # correct array should be the result of converting 105 to binary as usual
+    clear_temp_array = temp_array_1
+    resize_temp_array = { temp_array_1 = 32 }
+    set_temp_variable = { temp_array_1^25 = 1 }
+    set_temp_variable = { temp_array_1^26 = 1 }
+    set_temp_variable = { temp_array_1^28 = 1 }
+    set_temp_variable = { temp_array_1^31 = 1 }
+
+    set_temp_variable = { invalid = 0 }
+    for_loop_effect = {
+        start = 0
+        end = 32
+        compare = less_than
+        value = idx
+        break = invalid
+
+        if = {
+            limit = {
+                NOT = { check_variable = { temp_array_0^idx = temp_array_1^idx } }
+            }
+            set_temp_variable = { invalid = 1 }
+        }
+    }
+
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - positive to_bitwise - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - positive to_bitwise - PASS"
+    }
+    set_temp_variable = { temp_array_id = 0 }
+    log = "Actual: [debug_print_array_id]"
+    set_temp_variable = { temp_array_id = 1 }
+    log = "Expect: [debug_print_array_id]"
+}
+ieee_test_4 = {
+    set_temp_variable = { temp_bitwise_input = -0.105 }
+    set_temp_variable = { temp_array_id = 0 }
+    to_bitwise = yes
+
+    # correct array should be the result of converting -105 to binary in 32-bit two's complement
+    clear_temp_array = temp_array_1
+    resize_temp_array = { 
+        array = temp_array_1 
+        value = 1
+        size = 32 
+    }
+    set_temp_variable = { temp_array_1^25 = 0 }
+    set_temp_variable = { temp_array_1^26 = 0 }
+    set_temp_variable = { temp_array_1^28 = 0 }
+
+    set_temp_variable = { invalid = 0 }
+    for_loop_effect = {
+        start = 0
+        end = 32
+        compare = less_than
+        value = idx
+        break = invalid
+
+        if = {
+            limit = {
+                NOT = { check_variable = { temp_array_0^idx = temp_array_1^idx } }
+            }
+            set_temp_variable = { invalid = 1 }
+        }
+    }
+
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - negative to_bitwise - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - negative to_bitwise - PASS"
+    }
+    set_temp_variable = { temp_array_id = 0 }
+    log = "Actual: [debug_print_array_id]"
+    set_temp_variable = { temp_array_id = 1 }
+    log = "Expect: [debug_print_array_id]"
+}

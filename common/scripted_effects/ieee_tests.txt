@@ -8,9 +8,9 @@
 
 # Hard code the number of tests, each test block is separated by 1000, so it goes 0### block, 1### block, etc, with tests filling in the 000-999 range
 ieee_get_test_count = {
-    add_to_temp_array = { temp_test_count_array = 6 } # to_bitwise tests
+    add_to_temp_array = { temp_test_count_array = 6 } # to_bitwise and store_bitwise tests
 }
-## test to_bitwise function
+## test to_bitwise and store_bitwise function
 ieee_test_0 = {
     set_temp_variable = { temp_bitwise_input = 0 }
     set_temp_variable = { temp_array_id = 0 }
@@ -313,6 +313,9 @@ ieee_test_5 = {
         }
         set_temp_variable = { invalid = 1 }
     }
+    else = {
+        set_temp_variable = { bitwise_error_flag = 0 }
+    }
     if = {
         limit = {
             check_variable = { invalid = 1 }
@@ -324,4 +327,8 @@ ieee_test_5 = {
     else = {
         log = "Test [?test_id] - array_id error to_bitwise - PASS"
     }
+}
+## test bitwise functions
+ieee_test_1000 = {
+
 }

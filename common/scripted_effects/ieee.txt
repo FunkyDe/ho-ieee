@@ -7,7 +7,7 @@
 # the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
 # If no array_id is assigned, the function will use temp_array_0 in place
 # If the array_id is not an integer, then the function will display an error
-## Errors consist of an error var (bitwise_error_flag) and a message in log corresponding to the error
+## Errors consist of a temp error var (bitwise_error_flag) and a message in log corresponding to the error
 to_bitwise = {
     set_temp_variable = { whole_check = temp_array_id }
     round_temp_variable = whole_check
@@ -17,47 +17,42 @@ to_bitwise = {
         }
 
         set_temp_variable = { bitwise_error_flag = 1 }
-        log="to_bitwise error, temp_array_id = [?temp_array_id]"
+        log="to_bitwise array_id error, temp_array_id = [?temp_array_id]"
     }
     set_temp_variable = { bitwise_to_process = temp_bitwise_input }
-    meta_effect = {
-        text = {
-            clear_temp_array = [ARRAY_NAME]
-            resize_temp_array = { [ARRAY_NAME] = 32 }
-            
-            # Checks if temp bitwise is negative, if so, flip sign bit and prepare for remaining conversion
-            if = {
-                limit = {
-                    check_variable = { bitwise_to_process < 0 }
-                }
-                set_temp_variable = { [ARRAY_NAME]^0 = 1 }
-                add_to_temp_variable = { bitwise_to_process = 2147483.648 }
-            }
-
-            # convert bitwise_to_process to remaining 31 bits
-            set_temp_variable = { bit_compare = 1073741.824 }
-            for_loop_effect = {
-                start = 1
-                end = 32
-                compare = less_than
-                value = idx
-                
-                if = {
-                    limit = {
-                        check_variable = {
-                            var = bitwise_to_process
-                            value = bit_compare
-                            compare = greater_than_or_equals
-                        }
-                    }
-
-                    set_temp_variable = { [ARRAY_NAME]^idx = 1 }
-                    subtract_from_temp_variable = { bitwise_to_process = bit_compare }
-                }
-                divide_temp_variable = { bit_compare = 2 }
-            }
+    clear_temp_array = temp_array_@var:temp_array_id
+    resize_temp_array = { temp_array_@var:temp_array_id = 32 }
+    
+    # Checks if temp bitwise is negative, if so, flip sign bit and prepare for remaining conversion
+    if = {
+        limit = {
+            check_variable = { bitwise_to_process < 0 }
         }
-        ARRAY_NAME = "temp_array_[?temp_array_id]"
+        set_temp_variable = { temp_array_@var:temp_array_id^0 = 1 }
+        add_to_temp_variable = { bitwise_to_process = 2147483.648 }
+    }
+
+    # convert bitwise_to_process to remaining 31 bits
+    set_temp_variable = { bit_compare = 1073741.824 }
+    for_loop_effect = {
+        start = 1
+        end = 32
+        compare = less_than
+        value = idx
+        
+        if = {
+            limit = {
+                check_variable = {
+                    var = bitwise_to_process
+                    value = bit_compare
+                    compare = greater_than_or_equals
+                }
+            }
+
+            set_temp_variable = { temp_array_@var:temp_array_id^idx = 1 }
+            subtract_from_temp_variable = { bitwise_to_process = bit_compare }
+        }
+        divide_temp_variable = { bit_compare = 2 }
     }
 }
 
@@ -77,11 +72,239 @@ to_bitwise = {
 ## OUTPUT_ID
 # Finally, the output_id identifies the array that the function will push the result to
 # If the temp_array_id is not an integer, then the function will display an error
-# If the output_id is equal to either temp_array_id, then the function will display an error
-## Errors consist of an error var (bitwise_error_flag) and a message in log corresponding to the error
+# If the output_id is equal to either temp_array_id, then the function will display an error because an array will be overriden
+## Errors consist of a temp error var (bitwise_error_flag) and a message in log corresponding to the error
+and_bitwise = {
+    set_temp_variable = { whole_check_a = temp_array_a_id }
+    round_temp_variable = whole_check_a
+    set_temp_variable = { whole_check_b = temp_array_b_id }
+    round_temp_variable = whole_check_b
+    set_temp_variable = { whole_check_o = temp_array_output_id }
+    round_temp_variable = whole_check_o
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { whole_check_a = temp_array_a_id } }
+                NOT = { check_variable = { whole_check_b = temp_array_b_id } }
+                NOT = { check_variable = { whole_check_o = temp_array_output_id } }
+            }
+        }
+        set_temp_variable = { bitwise_error_flag = 1 }
+        log = "and_bitwise array_id error, array_a_id = [?temp_array_a_id], array_b_id = [?temp_array_b_id], array_output_id = [?temp_array_output_id]"
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { temp_array_a_offset < temp_array_@var:temp_array_a_id^num } }
+                NOT = { check_variable = { temp_array_b_offset < temp_array_@var:temp_array_b_id^num } }
+
+                check_variable = { temp_array_a_offset < 0 }
+                check_variable = { temp_array_b_offset < 0 }
+            }
+        }
+        set_temp_variable = { bitwise_error_flag = 1 }
+        log = "and_bitwise offset error, array_a len = [?temp_array_@var:temp_array_a_id^num], offset_a = [?temp_array_a_offset], array_b len = [?temp_array_@var:temp_array_b_id^num], offset_b = [?temp_array_b_offset]"
+    }
+    set_temp_variable = { calc_len_check_a = temp_array_@var:temp_array_a_id^num }
+    subtract_from_temp_variable = { calc_len_check_a = temp_array_a_offset }
+    set_temp_variable = { calc_len_check_b = temp_array_@var:temp_array_b_id^num }
+    subtract_from_temp_variable = { calc_len_check_b = temp_array_b_offset }
+    if = {
+        limit = {
+            NOT = { check_variable = { calc_len_check_a = calc_len_check_b } }
+        }
+        set_temp_variable = { bitwise_error_flag = 1 }
+        log = "and_bitwise calc length error, array_a len = [?temp_array_@var:temp_array_a_id^num], offset_a = [?temp_array_a_offset], array_b len = [?temp_array_@var:temp_array_b_id^num], offset_b = [?temp_array_b_offset]"
+    }
+    if = {
+        limit = {
+            OR = {
+                check_variable = { temp_array_a_id = temp_array_output_id }
+                check_variable = { temp_array_b_id = temp_array_output_id }
+            }
+        }
+        set_temp_variable = { bitwise_error_flag = 1 }
+        log = "and_bitwise output_id error, array_a_id = [?temp_array_a_id], array_b_id = [?temp_array_b_id], array_output_id = [?temp_array_output_id]"
+    }
+
+    set_temp_variable = { a_idx = temp_array_a_offset }
+    set_temp_variable = { b_idx = temp_array_b_offset }
+    clear_temp_array = temp_array_@var:temp_array_output_id
+    for_loop_effect = {
+        start = 0
+        end = calc_len_check_a
+        compare = less_than
+
+        set_temp_variable = { temp_bit_sum = temp_array_@var:temp_array_a_id^a_idx }
+        add_to_temp_variable = { temp_bit_sum = temp_array_@var:temp_array_b_id^b_idx }
+        if = {
+            limit = {
+                check_variable = { temp_bit_sum = 2 }
+            }
+            add_to_temp_array = { temp_array_@var:temp_array_output_id = 1 }
+        }
+        else = {
+            add_to_temp_array = { temp_array_@var:temp_array_output_id = 0 }
+        }
+        add_to_temp_variable = { a_idx = 1 }
+        add_to_temp_variable = { b_idx = 1 }
+    }
+}
+or_bitwise = {
+    set_temp_variable = { whole_check_a = temp_array_a_id }
+    round_temp_variable = whole_check_a
+    set_temp_variable = { whole_check_b = temp_array_b_id }
+    round_temp_variable = whole_check_b
+    set_temp_variable = { whole_check_o = temp_array_output_id }
+    round_temp_variable = whole_check_o
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { whole_check_a = temp_array_a_id } }
+                NOT = { check_variable = { whole_check_b = temp_array_b_id } }
+                NOT = { check_variable = { whole_check_o = temp_array_output_id } }
+            }
+        }
+        set_temp_variable = { bitwise_error_flag = 1 }
+        log = "and_bitwise array_id error, array_a_id = [?temp_array_a_id], array_b_id = [?temp_array_b_id], array_output_id = [?temp_array_output_id]"
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { temp_array_a_offset < temp_array_@var:temp_array_a_id^num } }
+                NOT = { check_variable = { temp_array_b_offset < temp_array_@var:temp_array_b_id^num } }
+
+                check_variable = { temp_array_a_offset < 0 }
+                check_variable = { temp_array_b_offset < 0 }
+            }
+        }
+        set_temp_variable = { bitwise_error_flag = 1 }
+        log = "or_bitwise offset error, array_a len = [?temp_array_@var:temp_array_a_id^num], offset_a = [?temp_array_a_offset], array_b len = [?temp_array_@var:temp_array_b_id^num], offset_b = [?temp_array_b_offset]"
+    }
+    set_temp_variable = { calc_len_check_a = temp_array_@var:temp_array_a_id^num }
+    subtract_from_temp_variable = { calc_len_check_a = temp_array_a_offset }
+    set_temp_variable = { calc_len_check_b = temp_array_@var:temp_array_b_id^num }
+    subtract_from_temp_variable = { calc_len_check_b = temp_array_b_offset }
+    if = {
+        limit = {
+            NOT = { check_variable = { calc_len_check_a = calc_len_check_b } }
+        }
+        set_temp_variable = { bitwise_error_flag = 1 }
+        log = "or_bitwise calc length error, array_a len = [?temp_array_@var:temp_array_a_id^num], offset_a = [?temp_array_a_offset], array_b len = [?temp_array_@var:temp_array_b_id^num], offset_b = [?temp_array_b_offset]"
+    }
+    if = {
+        limit = {
+            OR = {
+                check_variable = { temp_array_a_id = temp_array_output_id }
+                check_variable = { temp_array_b_id = temp_array_output_id }
+            }
+        }
+        set_temp_variable = { bitwise_error_flag = 1 }
+        log = "or_bitwise output_id error, array_a_id = [?temp_array_a_id], array_b_id = [?temp_array_b_id], array_output_id = [?temp_array_output_id]"
+    }
+
+    set_temp_variable = { a_idx = temp_array_a_offset }
+    set_temp_variable = { b_idx = temp_array_b_offset }
+    clear_temp_array = temp_array_@var:temp_array_output_id
+    for_loop_effect = {
+        start = 0
+        end = calc_len_check_a
+        compare = less_than
+
+        set_temp_variable = { temp_bit_sum = temp_array_@var:temp_array_a_id^a_idx }
+        add_to_temp_variable = { temp_bit_sum = temp_array_@var:temp_array_b_id^b_idx }
+        if = {
+            limit = {
+                check_variable = { temp_bit_sum > 0 }
+            }
+            add_to_temp_array = { temp_array_@var:temp_array_output_id = 1 }
+        }
+        else = {
+            add_to_temp_array = { temp_array_@var:temp_array_output_id = 0 }
+        }
+        add_to_temp_variable = { a_idx = 1 }
+        add_to_temp_variable = { b_idx = 1 }
+    }
+}
+xor_bitwise = {
+    set_temp_variable = { whole_check_a = temp_array_a_id }
+    round_temp_variable = whole_check_a
+    set_temp_variable = { whole_check_b = temp_array_b_id }
+    round_temp_variable = whole_check_b
+    set_temp_variable = { whole_check_o = temp_array_output_id }
+    round_temp_variable = whole_check_o
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { whole_check_a = temp_array_a_id } }
+                NOT = { check_variable = { whole_check_b = temp_array_b_id } }
+                NOT = { check_variable = { whole_check_o = temp_array_output_id } }
+            }
+        }
+        set_temp_variable = { bitwise_error_flag = 1 }
+        log = "and_bitwise array_id error, array_a_id = [?temp_array_a_id], array_b_id = [?temp_array_b_id], array_output_id = [?temp_array_output_id]"
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { temp_array_a_offset < temp_array_@var:temp_array_a_id^num } }
+                NOT = { check_variable = { temp_array_b_offset < temp_array_@var:temp_array_b_id^num } }
+
+                check_variable = { temp_array_a_offset < 0 }
+                check_variable = { temp_array_b_offset < 0 }
+            }
+        }
+        set_temp_variable = { bitwise_error_flag = 1 }
+        log = "xor_bitwise offset error, array_a len = [?temp_array_@var:temp_array_a_id^num], offset_a = [?temp_array_a_offset], array_b len = [?temp_array_@var:temp_array_b_id^num], offset_b = [?temp_array_b_offset]"
+    }
+    set_temp_variable = { calc_len_check_a = temp_array_@var:temp_array_a_id^num }
+    subtract_from_temp_variable = { calc_len_check_a = temp_array_a_offset }
+    set_temp_variable = { calc_len_check_b = temp_array_@var:temp_array_b_id^num }
+    subtract_from_temp_variable = { calc_len_check_b = temp_array_b_offset }
+    if = {
+        limit = {
+            NOT = { check_variable = { calc_len_check_a = calc_len_check_b } }
+        }
+        set_temp_variable = { bitwise_error_flag = 1 }
+        log = "xor_bitwise calc length error, array_a len = [?temp_array_@var:temp_array_a_id^num], offset_a = [?temp_array_a_offset], array_b len = [?temp_array_@var:temp_array_b_id^num], offset_b = [?temp_array_b_offset]"
+    }
+    if = {
+        limit = {
+            OR = {
+                check_variable = { temp_array_a_id = temp_array_output_id }
+                check_variable = { temp_array_b_id = temp_array_output_id }
+            }
+        }
+        set_temp_variable = { bitwise_error_flag = 1 }
+        log = "xor_bitwise output_id error, array_a_id = [?temp_array_a_id], array_b_id = [?temp_array_b_id], array_output_id = [?temp_array_output_id]"
+    }
+
+    set_temp_variable = { a_idx = temp_array_a_offset }
+    set_temp_variable = { b_idx = temp_array_b_offset }
+    clear_temp_array = temp_array_@var:temp_array_output_id
+    for_loop_effect = {
+        start = 0
+        end = calc_len_check_a
+        compare = less_than
+
+        set_temp_variable = { temp_bit_sum = temp_array_@var:temp_array_a_id^a_idx }
+        add_to_temp_variable = { temp_bit_sum = temp_array_@var:temp_array_b_id^b_idx }
+        if = {
+            limit = {
+                check_variable = { temp_bit_sum = 1 }
+            }
+            add_to_temp_array = { temp_array_@var:temp_array_output_id = 1 }
+        }
+        else = {
+            add_to_temp_array = { temp_array_@var:temp_array_output_id = 0 }
+        }
+        add_to_temp_variable = { a_idx = 1 }
+        add_to_temp_variable = { b_idx = 1 }
+    }
+}
 
 ### UNARY BITWISE OPERATION(NOT)
-## These effects perform a bitwise operation(NOT) between two arrays (or portions of them), marked a and b, and push the output to a new array
+## This effect perform a bitwise operation(NOT) on the array, and push the output to a new array
 ## The below functions have 2 parameters, some optional: temp_array_id, temp_array_output_id
 ## ARRAY_ID
 # the temp_array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
@@ -90,8 +313,49 @@ to_bitwise = {
 ## OUTPUT_ID
 # Finally, the output_id identifies the array that the function will push the result to
 # If the temp_array_id is not an integer, then the function will display an error
-# If the output_id is equal to either temp_array_id, then the function will display an error
-## Errors consist of an error flag (global.bitwise_error_flag) and a message in log corresponding to the error
+# If the output_id is equal to temp_array_id, then the function will display an error because an array will be overriden
+## Errors consist of an temp error var (bitwise_error_flag) and a message in log corresponding to the error
+not_bitwise = {
+    set_temp_variable = { whole_check_a = temp_array_id }
+    round_temp_variable = whole_check_a
+    set_temp_variable = { whole_check_o = temp_array_output_id }
+    round_temp_variable = whole_check_o
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { whole_check_a = temp_array_id } }
+                NOT = { check_variable = { whole_check_o = temp_array_output_id } }
+            }
+        }
+        set_temp_variable = { bitwise_error_flag = 1 }
+        log = "not_bitwise array_id error, array_a_id = [?temp_array_a_id], array_output_id = [?temp_array_output_id]"
+    }
+    if = {
+        limit = {
+            check_variable = { temp_array_id = temp_array_output_id }
+        }
+        set_temp_variable = { bitwise_error_flag = 1 }
+        log = "not_bitwise output_id error, array_a_id = [?temp_array_id], array_output_id = [?temp_array_output_id]"
+    }
+
+    clear_temp_array = temp_array_@var:temp_array_output_id
+    for_loop_effect = {
+        start = 0
+        end = temp_array_@var:temp_array_id^num
+        compare = less_than
+        value = idx
+
+        if = {
+            limit = {
+                check_variable = { temp_array_@var:temp_array_id^idx = 0 }
+            }
+            add_to_temp_array = { temp_array_@var:temp_array_output_id = 1 }
+        }
+        else = {
+            add_to_temp_array = { temp_array_@var:temp_array_output_id = 0 }
+        }
+    }
+}
 
 # Run all tests defined in common/scripted_effects/ieee_tests.txt
 ieee_run_tests = {
@@ -128,4 +392,5 @@ ieee_run_tests = {
     }
     log = "------------------------"
     log = "Failed Tests: [debug_print_array]"
+    log = "------------------------"
 }

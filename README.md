@@ -28,8 +28,7 @@ This mod is a pipe dream at the moment, but for now the tentative task map is:
 1. Read through IEEE 754
 2. Experiment with bit-wise operators
 3. Creation and Destruction of floating-point variables (FPVs)
-    1. Figure out scope declare/assign/reassign/undeclare scheme
-    2. Implement system of input to transform regular variables to FPVs
+    1. Implement system of input to transform regular variables to FPVs
 4. FPV Output
     1. Implement localization of FPVs
     2. Implement transformation back to regular variables

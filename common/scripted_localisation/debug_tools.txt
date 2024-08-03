@@ -3,16 +3,11 @@ defined_text = {
     name = debug_print_array_id
     text = {
         trigger = {
-            meta_trigger = {
-                text = {
-                    all_of = {
-                        array = [ARRAY_NAME]
-                        value = v
+            all_of = {
+                array = temp_array_@var:temp_array_id
+                value = v
 
-                        add_to_temp_array = { to_print_array = v }
-                    }
-                }
-                ARRAY_NAME = "temp_array_[?temp_array_id]"
+                add_to_temp_array = { to_print_array = v }
             }
         }
         localization_key = "[debug_print_array]"

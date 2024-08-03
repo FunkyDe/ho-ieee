@@ -1,6 +1,24 @@
-# meta effects used to push the results of converting the pdxvar "temp_bitwise_input" (when multiplied by 1000) to its bitwise format to an array specified by "temp_array_[?temp_array_id]"
-# Note that this overrides any values currently in the array and that temp_array_id *must* be a whole number and a regular paradox variable
+### TO_BITWISE
+## Converts the pdxvar "temp_bitwise_input" (when multiplied by 1000) a 32-bit signed integer bit array and pushes the result to a specified array
+## The below function has 2 parameters: temp_bitwise_input and temp_array_id
+## BITWISE_INPUT
+# The variable to be converted into bitwise format
+## ARRAY_ID
+# the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
+# If no array_id is assigned, the function will use temp_array_0 in place
+# If the array_id is not an integer, then the function will display an error
+## Errors consist of an error var (bitwise_error_flag) and a message in log corresponding to the error
 to_bitwise = {
+    set_temp_variable = { whole_check = temp_array_id }
+    round_temp_variable = whole_check
+    if = {
+        limit = {
+            NOT = { check_variable = { whole_check = temp_array_id } }
+        }
+
+        set_temp_variable = { bitwise_error_flag = 1 }
+        log="to_bitwise error, temp_array_id = [?temp_array_id]"
+    }
     set_temp_variable = { bitwise_to_process = temp_bitwise_input }
     meta_effect = {
         text = {
@@ -42,6 +60,39 @@ to_bitwise = {
         ARRAY_NAME = "temp_array_[?temp_array_id]"
     }
 }
+
+### BINARY BITWISE OPERATIONS(AND, OR, XOR)
+## These effects perform a bitwise operation(AND, OR, XOR) between two arrays (or portions of them), marked a and b, and push the output to a new array
+## The below functions have 5 parameters, some optional: temp_array_a_id, temp_array_b_id, temp_array_a_offset, temp_array_b_offset, temp_array_output_id
+## ARRAY_ID
+# the temp_array_ids identify which temp array is to be used, in the format "temp_array_[?id]"
+# If no temp_array_id is assigned, the function will use temp_array_0 in place
+# There is no restriction to applying a function with both a and b id's being the same
+# If the temp_array_id is not an integer, then the function will display an error
+## OFFSET
+# The offsets identify the starting point of the OPERATION(AND, OR, XOR) for both arrays
+# If no offset is assigned, the function will start the operation from the beginning of the array
+# If offset >= array^num or offset < 0, then the function will display an error
+# If array_a^num - a_offset =/= array_b^num - b_offset (essentially the compared bit array lengths are unequal), then the function will display an error
+## OUTPUT_ID
+# Finally, the output_id identifies the array that the function will push the result to
+# If the temp_array_id is not an integer, then the function will display an error
+# If the output_id is equal to either temp_array_id, then the function will display an error
+## Errors consist of an error var (bitwise_error_flag) and a message in log corresponding to the error
+
+### UNARY BITWISE OPERATION(NOT)
+## These effects perform a bitwise operation(NOT) between two arrays (or portions of them), marked a and b, and push the output to a new array
+## The below functions have 2 parameters, some optional: temp_array_id, temp_array_output_id
+## ARRAY_ID
+# the temp_array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
+# If no temp_array_id is assigned, the function will use temp_array_0 in place
+# If the temp_array_id is not an integer, then the function will display an error
+## OUTPUT_ID
+# Finally, the output_id identifies the array that the function will push the result to
+# If the temp_array_id is not an integer, then the function will display an error
+# If the output_id is equal to either temp_array_id, then the function will display an error
+## Errors consist of an error flag (global.bitwise_error_flag) and a message in log corresponding to the error
+
 # Run all tests defined in common/scripted_effects/ieee_tests.txt
 ieee_run_tests = {
     ieee_get_test_count = yes
@@ -75,5 +126,6 @@ ieee_run_tests = {
 
         add_to_temp_array = { to_print_array = v }
     }
+    log = "------------------------"
     log = "Failed Tests: [debug_print_array]"
 }

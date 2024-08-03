@@ -1,17 +1,14 @@
 ######### TESTS #########
-# Test output to game.log should be three lines per test in the format:
+# Test output to game.log should be in the format:
 # Test [?test_id] - WHAT IS BEING TESTED - PASS/FAIL
-# Actual: RECEIVED RESULT
-# Expect: CORRECT RESULT
+# Any additional test information below
 
 # Furthermore, in the fail block add the line `add_to_temp_array = { test_fail_array = test_id }` to add the failure to a list printed at the end
+# Error flags (e.g. bitwise_error_flag) are temp variables that mark errors. Currently I don't think it would be feasible to implement a complete fail-fast system (too many if statements), but 
 
 # Hard code the number of tests, each test block is separated by 1000, so it goes 0### block, 1### block, etc, with tests filling in the 000-999 range
 ieee_get_test_count = {
-    add_to_temp_array = { temp_test_count_array = 5 } # to_bitwise tests
-    add_to_temp_array = { temp_test_count_array = 2 }
-    add_to_temp_array = { temp_test_count_array = 2 }
-    add_to_temp_array = { temp_test_count_array = 2 }
+    add_to_temp_array = { temp_test_count_array = 6 } # to_bitwise tests
 }
 ## test to_bitwise function
 ieee_test_0 = {
@@ -24,12 +21,26 @@ ieee_test_0 = {
     resize_temp_array = { temp_array_1 = 32 }
 
     set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { bitwise_error_flag = 1 }
+        }
+        set_temp_variable = { invalid = 1 }
+        set_temp_variable = { bitwise_error_flag = 0 }
+    }
+    if = {
+        limit = {
+            NOT = {
+                check_variable = { temp_array_0^num = temp_array_1^num }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
     for_loop_effect = {
         start = 0
         end = 32
         compare = less_than
         value = idx
-        break = invalid
 
         if = {
             limit = {
@@ -65,12 +76,26 @@ ieee_test_1 = {
     set_temp_variable = { temp_array_1^0 = 1 }
 
     set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { bitwise_error_flag = 1 }
+        }
+        set_temp_variable = { invalid = 1 }
+        set_temp_variable = { bitwise_error_flag = 0 }
+    }
+    if = {
+        limit = {
+            NOT = {
+                check_variable = { temp_array_0^num = temp_array_1^num }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
     for_loop_effect = {
         start = 0
         end = 32
         compare = less_than
         value = idx
-        break = invalid
 
         if = {
             limit = {
@@ -110,12 +135,26 @@ ieee_test_2 = {
     set_temp_variable = { temp_array_1^0 = 0 }
 
     set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { bitwise_error_flag = 1 }
+        }
+        set_temp_variable = { invalid = 1 }
+        set_temp_variable = { bitwise_error_flag = 0 }
+    }
+    if = {
+        limit = {
+            NOT = {
+                check_variable = { temp_array_0^num = temp_array_1^num }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
     for_loop_effect = {
         start = 0
         end = 32
         compare = less_than
         value = idx
-        break = invalid
 
         if = {
             limit = {
@@ -154,12 +193,26 @@ ieee_test_3 = {
     set_temp_variable = { temp_array_1^31 = 1 }
 
     set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { bitwise_error_flag = 1 }
+        }
+        set_temp_variable = { invalid = 1 }
+        set_temp_variable = { bitwise_error_flag = 0 }
+    }
+    if = {
+        limit = {
+            NOT = {
+                check_variable = { temp_array_0^num = temp_array_1^num }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
     for_loop_effect = {
         start = 0
         end = 32
         compare = less_than
         value = idx
-        break = invalid
 
         if = {
             limit = {
@@ -201,12 +254,26 @@ ieee_test_4 = {
     set_temp_variable = { temp_array_1^28 = 0 }
 
     set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { bitwise_error_flag = 1 }
+        }
+        set_temp_variable = { invalid = 1 }
+        set_temp_variable = { bitwise_error_flag = 0 }
+    }
+    if = {
+        limit = {
+            NOT = {
+                check_variable = { temp_array_0^num = temp_array_1^num }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
     for_loop_effect = {
         start = 0
         end = 32
         compare = less_than
         value = idx
-        break = invalid
 
         if = {
             limit = {
@@ -230,4 +297,31 @@ ieee_test_4 = {
     log = "Actual: [debug_print_array_id]"
     set_temp_variable = { temp_array_id = 1 }
     log = "Expect: [debug_print_array_id]"
+}
+ieee_test_5 = {
+    set_temp_variable = { temp_bitwise_input = 12.312 }
+    set_temp_variable = { temp_array_id = 0.002 }
+    to_bitwise = yes
+
+    # correct result be an error message from non-integer array_id
+    clear_temp_array = temp_array_1
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            NOT = { check_variable = { bitwise_error_flag = 1 } }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - array_id error to_bitwise - FAIL"
+        log = "Expected array_id error"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - array_id error to_bitwise - PASS"
+    }
 }

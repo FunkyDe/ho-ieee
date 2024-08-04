@@ -9,9 +9,14 @@
 # Hard code the number of tests, each test block is separated by 1000, so it goes 0### block, 1### block, etc, with tests filling in the 000-999 range
 ieee_get_test_count = {
     add_to_temp_array = { temp_test_count_array = 6 } # to_bitwise and store_bitwise tests
+    add_to_temp_array = { temp_test_count_array = 11 } # bitwise 
 }
-## test to_bitwise and store_bitwise function
+## test to_bitwise and store_bitwise functions
 ieee_test_0 = {
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+    
     set_temp_variable = { temp_bitwise_input = 0 }
     set_temp_variable = { temp_array_id = 0 }
     to_bitwise = yes
@@ -23,10 +28,9 @@ ieee_test_0 = {
     set_temp_variable = { invalid = 0 }
     if = {
         limit = {
-            check_variable = { bitwise_error_flag = 1 }
+            check_variable = { bitwise_error_flag > 0 }
         }
         set_temp_variable = { invalid = 1 }
-        set_temp_variable = { bitwise_error_flag = 0 }
     }
     if = {
         limit = {
@@ -64,6 +68,10 @@ ieee_test_0 = {
     log = "Actual: [debug_print_array_id]"
     set_temp_variable = { temp_array_id = 1 }
     log = "Expect: [debug_print_array_id]"
+    
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
 }
 ieee_test_1 = {
     set_temp_variable = { temp_bitwise_input = -2147483.648 }
@@ -78,10 +86,9 @@ ieee_test_1 = {
     set_temp_variable = { invalid = 0 }
     if = {
         limit = {
-            check_variable = { bitwise_error_flag = 1 }
+            check_variable = { bitwise_error_flag > 0 }
         }
         set_temp_variable = { invalid = 1 }
-        set_temp_variable = { bitwise_error_flag = 0 }
     }
     if = {
         limit = {
@@ -119,8 +126,16 @@ ieee_test_1 = {
     log = "Actual: [debug_print_array_id]"
     set_temp_variable = { temp_array_id = 1 }
     log = "Expect: [debug_print_array_id]"
+    
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
 }
 ieee_test_2 = {
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+    
     set_temp_variable = { temp_bitwise_input = 2147483.647 }
     set_temp_variable = { temp_array_id = 0 }
     to_bitwise = yes
@@ -137,10 +152,9 @@ ieee_test_2 = {
     set_temp_variable = { invalid = 0 }
     if = {
         limit = {
-            check_variable = { bitwise_error_flag = 1 }
+            check_variable = { bitwise_error_flag > 0 }
         }
         set_temp_variable = { invalid = 1 }
-        set_temp_variable = { bitwise_error_flag = 0 }
     }
     if = {
         limit = {
@@ -178,8 +192,16 @@ ieee_test_2 = {
     log = "Actual: [debug_print_array_id]"
     set_temp_variable = { temp_array_id = 1 }
     log = "Expect: [debug_print_array_id]"
+    
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
 }
 ieee_test_3 = {
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+    
     set_temp_variable = { temp_bitwise_input = 0.105 }
     set_temp_variable = { temp_array_id = 0 }
     to_bitwise = yes
@@ -195,10 +217,9 @@ ieee_test_3 = {
     set_temp_variable = { invalid = 0 }
     if = {
         limit = {
-            check_variable = { bitwise_error_flag = 1 }
+            check_variable = { bitwise_error_flag > 0 }
         }
         set_temp_variable = { invalid = 1 }
-        set_temp_variable = { bitwise_error_flag = 0 }
     }
     if = {
         limit = {
@@ -236,8 +257,16 @@ ieee_test_3 = {
     log = "Actual: [debug_print_array_id]"
     set_temp_variable = { temp_array_id = 1 }
     log = "Expect: [debug_print_array_id]"
+    
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
 }
 ieee_test_4 = {
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+    
     set_temp_variable = { temp_bitwise_input = -0.105 }
     set_temp_variable = { temp_array_id = 0 }
     to_bitwise = yes
@@ -256,10 +285,9 @@ ieee_test_4 = {
     set_temp_variable = { invalid = 0 }
     if = {
         limit = {
-            check_variable = { bitwise_error_flag = 1 }
+            check_variable = { bitwise_error_flag > 0 }
         }
         set_temp_variable = { invalid = 1 }
-        set_temp_variable = { bitwise_error_flag = 0 }
     }
     if = {
         limit = {
@@ -297,8 +325,16 @@ ieee_test_4 = {
     log = "Actual: [debug_print_array_id]"
     set_temp_variable = { temp_array_id = 1 }
     log = "Expect: [debug_print_array_id]"
+    
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
 }
 ieee_test_5 = {
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+    
     set_temp_variable = { temp_bitwise_input = 12.312 }
     set_temp_variable = { temp_array_id = 0.002 }
     to_bitwise = yes
@@ -311,24 +347,739 @@ ieee_test_5 = {
         limit = {
             NOT = { check_variable = { bitwise_error_flag = 1 } }
         }
-        set_temp_variable = { invalid = 1 }
-    }
-    else = {
-        set_temp_variable = { bitwise_error_flag = 0 }
-    }
-    if = {
-        limit = {
-            check_variable = { invalid = 1 }
-        }
         log = "Test [?test_id] - array_id error to_bitwise - FAIL"
-        log = "Expected array_id error"
+        log = "Expected 1 array_id error, got [?bitwise_error_flag]"
         add_to_temp_array = { test_fail_array = test_id }
     }
     else = {
         log = "Test [?test_id] - array_id error to_bitwise - PASS"
     }
+
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
 }
 ## test bitwise functions
 ieee_test_1000 = {
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+    clear_temp_array = temp_array_2
+    clear_temp_array = temp_array_3
+    
+    # Run function
+    resize_temp_array = { temp_array_0 = 4 }
+    set_temp_variable = { temp_array_0^0 = 1 }
+    set_temp_variable = { temp_array_0^1 = 1 }
+    resize_temp_array = { temp_array_1 = 4 }
+    set_temp_variable = { temp_array_1^0 = 1 }
+    set_temp_variable = { temp_array_1^2 = 1 }
 
+    set_temp_variable = { temp_array_a_id = 0 }
+    set_temp_variable = { temp_array_b_id = 1 }
+    set_temp_variable = { temp_array_output_id = 2 }
+    and_bitwise = yes
+
+    # Create expected array
+    resize_temp_array = { temp_array_3 = 4 }
+    set_temp_variable = { temp_array_3^0 = 1 }
+
+    # Run checks
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { bitwise_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = {
+                check_variable = { temp_array_2^num = 4 }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    for_loop_effect = {
+        start = 0
+        end = 32
+        compare = less_than
+        value = idx
+
+        if = {
+            limit = {
+                NOT = { check_variable = { temp_array_2^idx = temp_array_3^idx } }
+            }
+            set_temp_variable = { invalid = 1 }
+        }
+    }
+
+    # Log result
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - basic and_bitwise - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - basic and_bitwise - PASS"
+    }
+    set_temp_variable = { temp_array_id = 2 }
+    log = "Actual: [debug_print_array_id]"
+    set_temp_variable = { temp_array_id = 3 }
+    log = "Expect: [debug_print_array_id]"
+    
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+    clear_temp_array = temp_array_2
+    clear_temp_array = temp_array_3
+}
+ieee_test_1001 = {
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+    clear_temp_array = temp_array_2
+    clear_temp_array = temp_array_3
+    
+    # Run function
+    resize_temp_array = { temp_array_0 = 3 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    resize_temp_array = { temp_array_1 = 1 }
+    add_to_temp_array = { temp_array_1 = 1 }
+    add_to_temp_array = { temp_array_1 = 1 }
+    add_to_temp_array = { temp_array_1 = 0 }
+    add_to_temp_array = { temp_array_1 = 0 }
+
+    set_temp_variable = { temp_array_a_id = 0 }
+    set_temp_variable = { temp_array_b_id = 1 }
+    set_temp_variable = { temp_array_a_offset = 3 }
+    set_temp_variable = { temp_array_b_offset = 1 }
+    set_temp_variable = { temp_array_output_id = 2 }
+    and_bitwise = yes
+
+    # Create expected array
+    resize_temp_array = { temp_array_3 = 4 }
+    set_temp_variable = { temp_array_3^0 = 1 }
+
+    # Run checks
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { bitwise_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = {
+                check_variable = { temp_array_2^num = 4 }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    for_loop_effect = {
+        start = 0
+        end = 32
+        compare = less_than
+        value = idx
+
+        if = {
+            limit = {
+                NOT = { check_variable = { temp_array_2^idx = temp_array_3^idx } }
+            }
+            set_temp_variable = { invalid = 1 }
+        }
+    }
+
+    # Log result
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - offset and_bitwise - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - offset and_bitwise - PASS"
+    }
+    set_temp_variable = { temp_array_id = 2 }
+    log = "Actual: [debug_print_array_id]"
+    set_temp_variable = { temp_array_id = 3 }
+    log = "Expect: [debug_print_array_id]"
+    
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+    clear_temp_array = temp_array_2
+    clear_temp_array = temp_array_3
+}
+ieee_test_1002 = {
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+    clear_temp_array = temp_array_2
+    
+    # Run function
+    resize_temp_array = { temp_array_0 = 7 }
+    resize_temp_array = { temp_array_1 = 2 }
+
+    set_temp_variable = { temp_array_a_id = 2 }
+    set_temp_variable = { temp_array_b_id = 1.001 }
+    set_temp_variable = { temp_array_a_offset = 2 }
+    set_temp_variable = { temp_array_b_offset = 3 }
+    set_temp_variable = { temp_array_output_id = 2 }
+    and_bitwise = yes
+
+    # Run checks
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            NOT = { check_variable = { bitwise_error_flag = 4 } }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+
+    # Log result
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - errors and_bitwise - FAIL"
+        log = "Expected 4 array_id errors, got [?bitwise_error_flag]"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - errors and_bitwise - PASS"
+    }
+
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+    clear_temp_array = temp_array_2
+}
+ieee_test_1003 = {
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+    clear_temp_array = temp_array_2
+    clear_temp_array = temp_array_3
+    
+    # Run function
+    resize_temp_array = { temp_array_0 = 4 }
+    set_temp_variable = { temp_array_0^0 = 1 }
+    set_temp_variable = { temp_array_0^1 = 1 }
+    resize_temp_array = { temp_array_1 = 4 }
+    set_temp_variable = { temp_array_1^0 = 1 }
+    set_temp_variable = { temp_array_1^2 = 1 }
+
+    set_temp_variable = { temp_array_a_id = 0 }
+    set_temp_variable = { temp_array_b_id = 1 }
+    set_temp_variable = { temp_array_output_id = 2 }
+    or_bitwise = yes
+
+    # Create expected array
+    resize_temp_array = { temp_array_3 = 4 }
+    set_temp_variable = { temp_array_3^0 = 1 }
+    set_temp_variable = { temp_array_3^1 = 1 }
+    set_temp_variable = { temp_array_3^2 = 1 }
+
+    # Run checks
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { bitwise_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = {
+                check_variable = { temp_array_2^num = 4 }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    for_loop_effect = {
+        start = 0
+        end = 32
+        compare = less_than
+        value = idx
+
+        if = {
+            limit = {
+                NOT = { check_variable = { temp_array_2^idx = temp_array_3^idx } }
+            }
+            set_temp_variable = { invalid = 1 }
+        }
+    }
+
+    # Log result
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - basic or_bitwise - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - basic or_bitwise - PASS"
+    }
+    set_temp_variable = { temp_array_id = 2 }
+    log = "Actual: [debug_print_array_id]"
+    set_temp_variable = { temp_array_id = 3 }
+    log = "Expect: [debug_print_array_id]"
+    
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+    clear_temp_array = temp_array_2
+    clear_temp_array = temp_array_3
+}
+ieee_test_1004 = {
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+    clear_temp_array = temp_array_2
+    clear_temp_array = temp_array_3
+    
+    # Run function
+    resize_temp_array = { temp_array_0 = 3 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    resize_temp_array = { temp_array_1 = 1 }
+    add_to_temp_array = { temp_array_1 = 1 }
+    add_to_temp_array = { temp_array_1 = 1 }
+    add_to_temp_array = { temp_array_1 = 0 }
+    add_to_temp_array = { temp_array_1 = 0 }
+
+    set_temp_variable = { temp_array_a_id = 0 }
+    set_temp_variable = { temp_array_b_id = 1 }
+    set_temp_variable = { temp_array_a_offset = 3 }
+    set_temp_variable = { temp_array_b_offset = 1 }
+    set_temp_variable = { temp_array_output_id = 2 }
+    or_bitwise = yes
+
+    # Create expected array
+    resize_temp_array = { temp_array_3 = 4 }
+    set_temp_variable = { temp_array_3^0 = 1 }
+    set_temp_variable = { temp_array_3^1 = 1 }
+    set_temp_variable = { temp_array_3^2 = 1 }
+
+    # Run checks
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { bitwise_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = {
+                check_variable = { temp_array_2^num = 4 }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    for_loop_effect = {
+        start = 0
+        end = 32
+        compare = less_than
+        value = idx
+
+        if = {
+            limit = {
+                NOT = { check_variable = { temp_array_2^idx = temp_array_3^idx } }
+            }
+            set_temp_variable = { invalid = 1 }
+        }
+    }
+
+    # Log result
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - offset or_bitwise - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - offset or_bitwise - PASS"
+    }
+    set_temp_variable = { temp_array_id = 2 }
+    log = "Actual: [debug_print_array_id]"
+    set_temp_variable = { temp_array_id = 3 }
+    log = "Expect: [debug_print_array_id]"
+    
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+    clear_temp_array = temp_array_2
+    clear_temp_array = temp_array_3
+}
+ieee_test_1005 = {
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+    clear_temp_array = temp_array_2
+    
+    # Run function
+    resize_temp_array = { temp_array_0 = 7 }
+    resize_temp_array = { temp_array_1 = 2 }
+
+    set_temp_variable = { temp_array_a_id = 2 }
+    set_temp_variable = { temp_array_b_id = 1.001 }
+    set_temp_variable = { temp_array_a_offset = 2 }
+    set_temp_variable = { temp_array_b_offset = 3 }
+    set_temp_variable = { temp_array_output_id = 2 }
+    or_bitwise = yes
+
+    # Run checks
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            NOT = { check_variable = { bitwise_error_flag = 4 } }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+
+    # Log result
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - errors or_bitwise - FAIL"
+        log = "Expected 4 array_id errors, got [?bitwise_error_flag]"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - errors or_bitwise - PASS"
+    }
+
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+    clear_temp_array = temp_array_2
+}
+ieee_test_1006 = {
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+    clear_temp_array = temp_array_2
+    clear_temp_array = temp_array_3
+    
+    # Run function
+    resize_temp_array = { temp_array_0 = 4 }
+    set_temp_variable = { temp_array_0^0 = 1 }
+    set_temp_variable = { temp_array_0^1 = 1 }
+    resize_temp_array = { temp_array_1 = 4 }
+    set_temp_variable = { temp_array_1^0 = 1 }
+    set_temp_variable = { temp_array_1^2 = 1 }
+
+    set_temp_variable = { temp_array_a_id = 0 }
+    set_temp_variable = { temp_array_b_id = 1 }
+    set_temp_variable = { temp_array_output_id = 2 }
+    xor_bitwise = yes
+
+    # Create expected array
+    resize_temp_array = { temp_array_3 = 4 }
+    set_temp_variable = { temp_array_3^1 = 1 }
+    set_temp_variable = { temp_array_3^2 = 1 }
+
+    # Run checks
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { bitwise_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = {
+                check_variable = { temp_array_2^num = 4 }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    for_loop_effect = {
+        start = 0
+        end = 32
+        compare = less_than
+        value = idx
+
+        if = {
+            limit = {
+                NOT = { check_variable = { temp_array_2^idx = temp_array_3^idx } }
+            }
+            set_temp_variable = { invalid = 1 }
+        }
+    }
+
+    # Log result
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - basic xor_bitwise - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - basic xor_bitwise - PASS"
+    }
+    set_temp_variable = { temp_array_id = 2 }
+    log = "Actual: [debug_print_array_id]"
+    set_temp_variable = { temp_array_id = 3 }
+    log = "Expect: [debug_print_array_id]"
+    
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+    clear_temp_array = temp_array_2
+    clear_temp_array = temp_array_3
+}
+ieee_test_1007 = {
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+    clear_temp_array = temp_array_2
+    clear_temp_array = temp_array_3
+    
+    # Run function
+    resize_temp_array = { temp_array_0 = 3 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    resize_temp_array = { temp_array_1 = 1 }
+    add_to_temp_array = { temp_array_1 = 1 }
+    add_to_temp_array = { temp_array_1 = 1 }
+    add_to_temp_array = { temp_array_1 = 0 }
+    add_to_temp_array = { temp_array_1 = 0 }
+
+    set_temp_variable = { temp_array_a_id = 0 }
+    set_temp_variable = { temp_array_b_id = 1 }
+    set_temp_variable = { temp_array_a_offset = 3 }
+    set_temp_variable = { temp_array_b_offset = 1 }
+    set_temp_variable = { temp_array_output_id = 2 }
+    xor_bitwise = yes
+
+    # Create expected array
+    resize_temp_array = { temp_array_3 = 4 }
+    set_temp_variable = { temp_array_3^1 = 1 }
+    set_temp_variable = { temp_array_3^2 = 1 }
+
+    # Run checks
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { bitwise_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = {
+                check_variable = { temp_array_2^num = 4 }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    for_loop_effect = {
+        start = 0
+        end = 32
+        compare = less_than
+        value = idx
+
+        if = {
+            limit = {
+                NOT = { check_variable = { temp_array_2^idx = temp_array_3^idx } }
+            }
+            set_temp_variable = { invalid = 1 }
+        }
+    }
+
+    # Log result
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - offset xor_bitwise - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - offset xor_bitwise - PASS"
+    }
+    set_temp_variable = { temp_array_id = 2 }
+    log = "Actual: [debug_print_array_id]"
+    set_temp_variable = { temp_array_id = 3 }
+    log = "Expect: [debug_print_array_id]"
+    
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+    clear_temp_array = temp_array_2
+    clear_temp_array = temp_array_3
+}
+ieee_test_1008 = {
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+    clear_temp_array = temp_array_2
+    
+    # Run function
+    resize_temp_array = { temp_array_0 = 7 }
+    resize_temp_array = { temp_array_1 = 2 }
+
+    set_temp_variable = { temp_array_a_id = 2 }
+    set_temp_variable = { temp_array_b_id = 1.001 }
+    set_temp_variable = { temp_array_a_offset = 2 }
+    set_temp_variable = { temp_array_b_offset = 3 }
+    set_temp_variable = { temp_array_output_id = 2 }
+    xor_bitwise = yes
+
+    # Run checks
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            NOT = { check_variable = { bitwise_error_flag = 4 } }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+
+    # Log result
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - errors xor_bitwise - FAIL"
+        log = "Expected 4 array_id errors, got [?bitwise_error_flag]"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - errors xor_bitwise - PASS"
+    }
+
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+    clear_temp_array = temp_array_2
+}
+ieee_test_1009 = {
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+    clear_temp_array = temp_array_2
+    
+    # Run function
+    resize_temp_array = { temp_array_0 = 4 }
+    set_temp_variable = { temp_array_0^0 = 1 }
+    set_temp_variable = { temp_array_0^1 = 1 }
+
+    set_temp_variable = { temp_array_id = 0 }
+    set_temp_variable = { temp_array_output_id = 1 }
+    not_bitwise = yes
+
+    # Create expected array
+    resize_temp_array = { temp_array_2 = 4 }
+    set_temp_variable = { temp_array_2^2 = 1 }
+    set_temp_variable = { temp_array_2^3 = 1 }
+
+    # Run checks
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { bitwise_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = {
+                check_variable = { temp_array_2^num = 4 }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    for_loop_effect = {
+        start = 0
+        end = 32
+        compare = less_than
+        value = idx
+
+        if = {
+            limit = {
+                NOT = { check_variable = { temp_array_1^idx = temp_array_2^idx } }
+            }
+            set_temp_variable = { invalid = 1 }
+        }
+    }
+
+    # Log result
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - basic not_bitwise - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - basic not_bitwise - PASS"
+    }
+    set_temp_variable = { temp_array_id = 1 }
+    log = "Actual: [debug_print_array_id]"
+    set_temp_variable = { temp_array_id = 2 }
+    log = "Expect: [debug_print_array_id]"
+    
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+    clear_temp_array = temp_array_2
+}
+ieee_test_1010 = {
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+    
+    # Run function
+    resize_temp_array = { temp_array_0 = 4 }
+    set_temp_variable = { temp_array_0^0 = 1 }
+    set_temp_variable = { temp_array_0^1 = 1 }
+
+    set_temp_variable = { temp_array_id = 1.001 }
+    set_temp_variable = { temp_array_output_id = 1.001 }
+    not_bitwise = yes
+
+    # Run checks
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            NOT = { check_variable = { bitwise_error_flag = 2 } }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+
+    # Log result
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - errors not_bitwise - FAIL"
+        log = "Expected 2 array_id errors, got [?bitwise_error_flag]"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - errors not_bitwise - PASS"
+    }
+
+    set_temp_variable = { bitwise_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
 }

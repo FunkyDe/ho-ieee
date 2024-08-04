@@ -1,8 +1,10 @@
 ### TO_BITWISE
 ## Converts the pdxvar "temp_bitwise_input" (when multiplied by 1000) a 32-bit signed integer bit array and pushes the result to a specified array
 ## The below function has 2 parameters: temp_bitwise_input and temp_array_id
+## These parameters will be cleared(by resetting to 0) after the function execution
 ## BITWISE_INPUT
 # The variable to be converted into bitwise format
+# If no input is given, the function will use 0 in place **and return no error**
 ## ARRAY_ID
 # the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
 # If no array_id is assigned, the function will use temp_array_0 in place
@@ -16,7 +18,7 @@ to_bitwise = {
             NOT = { check_variable = { whole_check = temp_array_id } }
         }
 
-        set_temp_variable = { bitwise_error_flag = 1 }
+        add_to_temp_variable = { bitwise_error_flag = 1 }
         log="to_bitwise array_id error, temp_array_id = [?temp_array_id]"
     }
     set_temp_variable = { bitwise_to_process = temp_bitwise_input }
@@ -54,11 +56,14 @@ to_bitwise = {
         }
         divide_temp_variable = { bit_compare = 2 }
     }
+    set_temp_variable = { temp_bitwise_input = 0 }
+    set_temp_variable = { temp_array_id = 0 }
 }
 
 ### BINARY BITWISE OPERATIONS(AND, OR, XOR)
-## These effects perform a bitwise operation(AND, OR, XOR) between two arrays (or portions of them), marked a and b, and push the output to a new array
+## These effects perform a bitwise operation(AND, OR, XOR) between two bit arrays (or portions of them), marked a and b, and push the output to a new array
 ## The below functions have 5 parameters, some optional: temp_array_a_id, temp_array_b_id, temp_array_a_offset, temp_array_b_offset, temp_array_output_id
+## These parameters will be cleared(by resetting to 0) after the function execution
 ## ARRAY_ID
 # the temp_array_ids identify which temp array is to be used, in the format "temp_array_[?id]"
 # If no temp_array_id is assigned, the function will use temp_array_0 in place
@@ -89,7 +94,7 @@ and_bitwise = {
                 NOT = { check_variable = { whole_check_o = temp_array_output_id } }
             }
         }
-        set_temp_variable = { bitwise_error_flag = 1 }
+        add_to_temp_variable = { bitwise_error_flag = 1 }
         log = "and_bitwise array_id error, array_a_id = [?temp_array_a_id], array_b_id = [?temp_array_b_id], array_output_id = [?temp_array_output_id]"
     }
     if = {
@@ -102,7 +107,7 @@ and_bitwise = {
                 check_variable = { temp_array_b_offset < 0 }
             }
         }
-        set_temp_variable = { bitwise_error_flag = 1 }
+        add_to_temp_variable = { bitwise_error_flag = 1 }
         log = "and_bitwise offset error, array_a len = [?temp_array_@var:temp_array_a_id^num], offset_a = [?temp_array_a_offset], array_b len = [?temp_array_@var:temp_array_b_id^num], offset_b = [?temp_array_b_offset]"
     }
     set_temp_variable = { calc_len_check_a = temp_array_@var:temp_array_a_id^num }
@@ -113,7 +118,7 @@ and_bitwise = {
         limit = {
             NOT = { check_variable = { calc_len_check_a = calc_len_check_b } }
         }
-        set_temp_variable = { bitwise_error_flag = 1 }
+        add_to_temp_variable = { bitwise_error_flag = 1 }
         log = "and_bitwise calc length error, array_a len = [?temp_array_@var:temp_array_a_id^num], offset_a = [?temp_array_a_offset], array_b len = [?temp_array_@var:temp_array_b_id^num], offset_b = [?temp_array_b_offset]"
     }
     if = {
@@ -123,7 +128,7 @@ and_bitwise = {
                 check_variable = { temp_array_b_id = temp_array_output_id }
             }
         }
-        set_temp_variable = { bitwise_error_flag = 1 }
+        add_to_temp_variable = { bitwise_error_flag = 1 }
         log = "and_bitwise output_id error, array_a_id = [?temp_array_a_id], array_b_id = [?temp_array_b_id], array_output_id = [?temp_array_output_id]"
     }
 
@@ -149,6 +154,12 @@ and_bitwise = {
         add_to_temp_variable = { a_idx = 1 }
         add_to_temp_variable = { b_idx = 1 }
     }
+
+    set_temp_variable = { temp_array_a_id = 0 }
+    set_temp_variable = { temp_array_a_offset = 0 }
+    set_temp_variable = { temp_array_b_id = 0 }
+    set_temp_variable = { temp_array_b_offset = 0 }
+    set_temp_variable = { temp_array_output_id = 0 }
 }
 or_bitwise = {
     set_temp_variable = { whole_check_a = temp_array_a_id }
@@ -165,7 +176,7 @@ or_bitwise = {
                 NOT = { check_variable = { whole_check_o = temp_array_output_id } }
             }
         }
-        set_temp_variable = { bitwise_error_flag = 1 }
+        add_to_temp_variable = { bitwise_error_flag = 1 }
         log = "and_bitwise array_id error, array_a_id = [?temp_array_a_id], array_b_id = [?temp_array_b_id], array_output_id = [?temp_array_output_id]"
     }
     if = {
@@ -178,7 +189,7 @@ or_bitwise = {
                 check_variable = { temp_array_b_offset < 0 }
             }
         }
-        set_temp_variable = { bitwise_error_flag = 1 }
+        add_to_temp_variable = { bitwise_error_flag = 1 }
         log = "or_bitwise offset error, array_a len = [?temp_array_@var:temp_array_a_id^num], offset_a = [?temp_array_a_offset], array_b len = [?temp_array_@var:temp_array_b_id^num], offset_b = [?temp_array_b_offset]"
     }
     set_temp_variable = { calc_len_check_a = temp_array_@var:temp_array_a_id^num }
@@ -189,7 +200,7 @@ or_bitwise = {
         limit = {
             NOT = { check_variable = { calc_len_check_a = calc_len_check_b } }
         }
-        set_temp_variable = { bitwise_error_flag = 1 }
+        add_to_temp_variable = { bitwise_error_flag = 1 }
         log = "or_bitwise calc length error, array_a len = [?temp_array_@var:temp_array_a_id^num], offset_a = [?temp_array_a_offset], array_b len = [?temp_array_@var:temp_array_b_id^num], offset_b = [?temp_array_b_offset]"
     }
     if = {
@@ -199,7 +210,7 @@ or_bitwise = {
                 check_variable = { temp_array_b_id = temp_array_output_id }
             }
         }
-        set_temp_variable = { bitwise_error_flag = 1 }
+        add_to_temp_variable = { bitwise_error_flag = 1 }
         log = "or_bitwise output_id error, array_a_id = [?temp_array_a_id], array_b_id = [?temp_array_b_id], array_output_id = [?temp_array_output_id]"
     }
 
@@ -225,6 +236,12 @@ or_bitwise = {
         add_to_temp_variable = { a_idx = 1 }
         add_to_temp_variable = { b_idx = 1 }
     }
+
+    set_temp_variable = { temp_array_a_id = 0 }
+    set_temp_variable = { temp_array_a_offset = 0 }
+    set_temp_variable = { temp_array_b_id = 0 }
+    set_temp_variable = { temp_array_b_offset = 0 }
+    set_temp_variable = { temp_array_output_id = 0 }
 }
 xor_bitwise = {
     set_temp_variable = { whole_check_a = temp_array_a_id }
@@ -241,7 +258,7 @@ xor_bitwise = {
                 NOT = { check_variable = { whole_check_o = temp_array_output_id } }
             }
         }
-        set_temp_variable = { bitwise_error_flag = 1 }
+        add_to_temp_variable = { bitwise_error_flag = 1 }
         log = "and_bitwise array_id error, array_a_id = [?temp_array_a_id], array_b_id = [?temp_array_b_id], array_output_id = [?temp_array_output_id]"
     }
     if = {
@@ -254,7 +271,7 @@ xor_bitwise = {
                 check_variable = { temp_array_b_offset < 0 }
             }
         }
-        set_temp_variable = { bitwise_error_flag = 1 }
+        add_to_temp_variable = { bitwise_error_flag = 1 }
         log = "xor_bitwise offset error, array_a len = [?temp_array_@var:temp_array_a_id^num], offset_a = [?temp_array_a_offset], array_b len = [?temp_array_@var:temp_array_b_id^num], offset_b = [?temp_array_b_offset]"
     }
     set_temp_variable = { calc_len_check_a = temp_array_@var:temp_array_a_id^num }
@@ -265,7 +282,7 @@ xor_bitwise = {
         limit = {
             NOT = { check_variable = { calc_len_check_a = calc_len_check_b } }
         }
-        set_temp_variable = { bitwise_error_flag = 1 }
+        add_to_temp_variable = { bitwise_error_flag = 1 }
         log = "xor_bitwise calc length error, array_a len = [?temp_array_@var:temp_array_a_id^num], offset_a = [?temp_array_a_offset], array_b len = [?temp_array_@var:temp_array_b_id^num], offset_b = [?temp_array_b_offset]"
     }
     if = {
@@ -275,7 +292,7 @@ xor_bitwise = {
                 check_variable = { temp_array_b_id = temp_array_output_id }
             }
         }
-        set_temp_variable = { bitwise_error_flag = 1 }
+        add_to_temp_variable = { bitwise_error_flag = 1 }
         log = "xor_bitwise output_id error, array_a_id = [?temp_array_a_id], array_b_id = [?temp_array_b_id], array_output_id = [?temp_array_output_id]"
     }
 
@@ -301,11 +318,18 @@ xor_bitwise = {
         add_to_temp_variable = { a_idx = 1 }
         add_to_temp_variable = { b_idx = 1 }
     }
+
+    set_temp_variable = { temp_array_a_id = 0 }
+    set_temp_variable = { temp_array_a_offset = 0 }
+    set_temp_variable = { temp_array_b_id = 0 }
+    set_temp_variable = { temp_array_b_offset = 0 }
+    set_temp_variable = { temp_array_output_id = 0 }
 }
 
 ### UNARY BITWISE OPERATION(NOT)
-## This effect perform a bitwise operation(NOT) on the array, and push the output to a new array
+## This effect perform a bitwise operation(NOT) on the bit array, and push the output to a new array
 ## The below functions have 2 parameters, some optional: temp_array_id, temp_array_output_id
+## These parameters will be cleared(by resetting to 0) after the function execution
 ## ARRAY_ID
 # the temp_array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
 # If no temp_array_id is assigned, the function will use temp_array_0 in place
@@ -327,14 +351,14 @@ not_bitwise = {
                 NOT = { check_variable = { whole_check_o = temp_array_output_id } }
             }
         }
-        set_temp_variable = { bitwise_error_flag = 1 }
+        add_to_temp_variable = { bitwise_error_flag = 1 }
         log = "not_bitwise array_id error, array_a_id = [?temp_array_a_id], array_output_id = [?temp_array_output_id]"
     }
     if = {
         limit = {
             check_variable = { temp_array_id = temp_array_output_id }
         }
-        set_temp_variable = { bitwise_error_flag = 1 }
+        add_to_temp_variable = { bitwise_error_flag = 1 }
         log = "not_bitwise output_id error, array_a_id = [?temp_array_id], array_output_id = [?temp_array_output_id]"
     }
 
@@ -355,6 +379,9 @@ not_bitwise = {
             add_to_temp_array = { temp_array_@var:temp_array_output_id = 0 }
         }
     }
+
+    set_temp_variable = { temp_array_id = 0 }
+    set_temp_variable = { temp_array_output_id = 0 }
 }
 
 # Run all tests defined in common/scripted_effects/ieee_tests.txt

@@ -64,6 +64,7 @@ to_bitwise = {
 ## These effects perform a bitwise operation(AND, OR, XOR) between two bit arrays (or portions of them), marked a and b, and push the output to a new array
 ## The below functions have 5 parameters, some optional: temp_array_a_id, temp_array_b_id, temp_array_a_offset, temp_array_b_offset, temp_array_output_id
 ## These parameters will be cleared(by resetting to 0) after the function execution
+## If any element in the array is not zero, then the function will display an error
 ## ARRAY_ID
 # the temp_array_ids identify which temp array is to be used, in the format "temp_array_[?id]"
 # If no temp_array_id is assigned, the function will use temp_array_0 in place
@@ -140,6 +141,22 @@ and_bitwise = {
         end = calc_len_check_a
         compare = less_than
 
+        if = {
+            limit = {
+                OR = {
+                    AND = {
+                        NOT = { check_variable = { temp_array_@var:temp_array_a_id^a_idx = 0 } }
+                        NOT = { check_variable = { temp_array_@var:temp_array_a_id^a_idx = 1 } }
+                    }
+                    AND = {
+                        NOT = { check_variable = { temp_array_@var:temp_array_b_id^b_idx = 0 } }
+                        NOT = { check_variable = { temp_array_@var:temp_array_b_id^b_idx = 1 } }
+                    }
+                }
+            }
+            add_to_temp_variable = { bitwise_error_flag = 1 }
+            log = "and_bitwise array_value error, array_a_id = [?temp_array_a_id], array_a_idx = [?a_idx], array_a_val = [?temp_array_@var:temp_array_a_id^a_idx], array_b_id = [?temp_array_b_id], array_b_idx = [?b_idx], array_b_val = [?temp_array_@var:temp_array_b_id^b_idx]"
+        }
         set_temp_variable = { temp_bit_sum = temp_array_@var:temp_array_a_id^a_idx }
         add_to_temp_variable = { temp_bit_sum = temp_array_@var:temp_array_b_id^b_idx }
         if = {
@@ -222,6 +239,22 @@ or_bitwise = {
         end = calc_len_check_a
         compare = less_than
 
+        if = {
+            limit = {
+                OR = {
+                    AND = {
+                        NOT = { check_variable = { temp_array_@var:temp_array_a_id^a_idx = 0 } }
+                        NOT = { check_variable = { temp_array_@var:temp_array_a_id^a_idx = 1 } }
+                    }
+                    AND = {
+                        NOT = { check_variable = { temp_array_@var:temp_array_b_id^b_idx = 0 } }
+                        NOT = { check_variable = { temp_array_@var:temp_array_b_id^b_idx = 1 } }
+                    }
+                }
+            }
+            add_to_temp_variable = { bitwise_error_flag = 1 }
+            log = "or_bitwise array_value error, array_a_id = [?temp_array_a_id], array_a_idx = [?a_idx], array_a_val = [?temp_array_@var:temp_array_a_id^a_idx], array_b_id = [?temp_array_b_id], array_b_idx = [?b_idx], array_b_val = [?temp_array_@var:temp_array_b_id^b_idx]"
+        }
         set_temp_variable = { temp_bit_sum = temp_array_@var:temp_array_a_id^a_idx }
         add_to_temp_variable = { temp_bit_sum = temp_array_@var:temp_array_b_id^b_idx }
         if = {
@@ -304,6 +337,22 @@ xor_bitwise = {
         end = calc_len_check_a
         compare = less_than
 
+        if = {
+            limit = {
+                OR = {
+                    AND = {
+                        NOT = { check_variable = { temp_array_@var:temp_array_a_id^a_idx = 0 } }
+                        NOT = { check_variable = { temp_array_@var:temp_array_a_id^a_idx = 1 } }
+                    }
+                    AND = {
+                        NOT = { check_variable = { temp_array_@var:temp_array_b_id^b_idx = 0 } }
+                        NOT = { check_variable = { temp_array_@var:temp_array_b_id^b_idx = 1 } }
+                    }
+                }
+            }
+            add_to_temp_variable = { bitwise_error_flag = 1 }
+            log = "xor_bitwise array_value error, array_a_id = [?temp_array_a_id], array_a_idx = [?a_idx], array_a_val = [?temp_array_@var:temp_array_a_id^a_idx], array_b_id = [?temp_array_b_id], array_b_idx = [?b_idx], array_b_val = [?temp_array_@var:temp_array_b_id^b_idx]"
+        }
         set_temp_variable = { temp_bit_sum = temp_array_@var:temp_array_a_id^a_idx }
         add_to_temp_variable = { temp_bit_sum = temp_array_@var:temp_array_b_id^b_idx }
         if = {
@@ -330,6 +379,7 @@ xor_bitwise = {
 ## This effect perform a bitwise operation(NOT) on the bit array, and push the output to a new array
 ## The below functions have 2 parameters, some optional: temp_array_id, temp_array_output_id
 ## These parameters will be cleared(by resetting to 0) after the function execution
+## If any element in the array is not zero, then the function will display an error
 ## ARRAY_ID
 # the temp_array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
 # If no temp_array_id is assigned, the function will use temp_array_0 in place
@@ -369,6 +419,16 @@ not_bitwise = {
         compare = less_than
         value = idx
 
+        if = {
+            limit = {
+                AND = {
+                    NOT = { check_variable = { temp_array_@var:temp_array_id^idx = 0 } }
+                    NOT = { check_variable = { temp_array_@var:temp_array_id^idx = 1 } }
+                }
+            }
+            add_to_temp_variable = { bitwise_error_flag = 1 }
+            log = "not_bitwise array_value error, array_id = [?temp_array_id], idx = [?idx], val = [?temp_array_@var:temp_array_id^idx]"
+        }
         if = {
             limit = {
                 check_variable = { temp_array_@var:temp_array_id^idx = 0 }

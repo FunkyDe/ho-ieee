@@ -59,12 +59,313 @@ to_bitwise = {
     set_temp_variable = { temp_bitwise_input = 0 }
     set_temp_variable = { temp_array_id = 0 }
 }
+### STORE_BITWISE
+## Converts the bit array inputted to a 32-bit signed integer, divides it by 1000, and pushes the result to a pdxvar
+## The below function has 1 parameter: temp_array_id
+## This parameter will be cleared(by resetting to 0) after the function execution
+## If any element used is not one or zero, then the function will display an error
+## ARRAY_ID
+# the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
+# If no array_id is assigned, the function will use temp_array_0 in place
+# If the array_id is not an integer, then the function will display an error
+# If the array is not 32 bits long, the function will display an error
+## The output will be sent to the temp var store_bitwise_output
+## Errors consist of a temp error var (bitwise_error_flag) and a message in log corresponding to the error
+store_bitwise = {
+    set_temp_variable = { whole_check = temp_array_id }
+    round_temp_variable = whole_check
+    if = {
+        limit = {
+            NOT = { check_variable = { whole_check = temp_array_id } }
+        }
+
+        add_to_temp_variable = { bitwise_error_flag = 1 }
+        log="store_bitwise array_id error, temp_array_id = [?temp_array_id]"
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { temp_array_@var:temp_array_id^num = 32 } }
+        }
+
+        add_to_temp_variable = { bitwise_error_flag = 1 }
+        log="store_bitwise array length error, temp_array_id = [?temp_array_id], array length = [?temp_array_@var:temp_array_id^num]"
+    }
+    for_each_loop = {
+        start = 1
+        end = 32
+        value = idx
+
+        if = {
+            limit = {
+                AND = {
+                    NOT = { check_variable = { temp_array_@var:temp_array_id^idx = 0 } }
+                    NOT = { check_variable = { temp_array_@var:temp_array_id^idx = 1 } }
+                }
+            }
+            add_to_temp_variable = { bitwise_error_flag = 1 }
+            log = "store_bitwise value error, temp_array_id = [?temp_array_id], value = [?temp_array_@var:temp_array_id^idx], index = [?idx]"
+        }
+    }
+
+    set_temp_variable = { store_bitwise_output = 0 }
+    if = {
+        limit = {
+            check_variable = { temp_array_@var:temp_array_id^0 = 1 }
+        }
+        set_temp_variable = { store_bitwise_output = -2147483.648 }
+    }
+    set_temp_variable = { bit_compare = 1073741.824 }
+    for_loop_effect = {
+        start = 1
+        end = 32
+        value = idx
+
+        if = {
+            limit = {
+                check_variable = { temp_array_@var:temp_array_id^idx = 1 }
+            }
+            add_to_temp_variable = { store_bitwise_output = bit_compare }
+        }
+        divide_temp_variable = { bit_compare = 2 }
+    }
+    set_temp_variable = { temp_array_id = 0 }
+}
+
+### APPEND ARRAY
+## This effect appends all or a portion of array_b to the end of all or a portion of array_a before pushing the result to a new array
+## The below functions have 5 parameters, some optional: temp_array_a_id, temp_array_b_id, temp_array_a_offset, temp_array_b_offset, temp_array_output_id
+## These parameters will be cleared(by resetting to 0) after the function execution
+## ARRAY_ID
+# the temp_array_ids identify which temp array is to be used, in the format "temp_array_[?id]"
+# If no temp_array_id is assigned, the function will use temp_array_0 in place
+# There is no restriction to applying a function with both a and b id's being the same
+# If the temp_array_id is not an integer, then the function will display an error
+## OFFSET
+# The offsets identify the starting point of the APPEND for both arrays
+# If no offset is assigned, the function will start the operation from the beginning of the array
+# If offset >= array^num or offset < 0, then the function will display an error
+## OUTPUT_ID
+# Finally, the output_id identifies the array that the function will push the result to
+# If no output_id is assigned, the function will use temp_array_0 in place
+# If the temp_array_id is not an integer, then the function will display an error
+# If the output_id is equal to either temp_array_id, then the function will display an error because an array will be overriden
+## Errors consist of a temp error var (bitwise_error_flag) and a message in log corresponding to the error
+append_array = {
+    set_temp_variable = { whole_check_a = temp_array_a_id }
+    round_temp_variable = whole_check_a
+    set_temp_variable = { whole_check_b = temp_array_b_id }
+    round_temp_variable = whole_check_b
+    set_temp_variable = { whole_check_o = temp_array_output_id }
+    round_temp_variable = whole_check_o
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { whole_check_a = temp_array_a_id } }
+                NOT = { check_variable = { whole_check_b = temp_array_b_id } }
+                NOT = { check_variable = { whole_check_o = temp_array_output_id } }
+            }
+        }
+        add_to_temp_variable = { bitwise_error_flag = 1 }
+        log = "append_array array_id error, array_a_id = [?temp_array_a_id], array_b_id = [?temp_array_b_id], array_output_id = [?temp_array_output_id]"
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { temp_array_a_offset < temp_array_@var:temp_array_a_id^num } }
+                NOT = { check_variable = { temp_array_b_offset < temp_array_@var:temp_array_b_id^num } }
+
+                check_variable = { temp_array_a_offset < 0 }
+                check_variable = { temp_array_b_offset < 0 }
+            }
+        }
+        add_to_temp_variable = { bitwise_error_flag = 1 }
+        log = "append_array offset error, array_a len = [?temp_array_@var:temp_array_a_id^num], offset_a = [?temp_array_a_offset], array_b len = [?temp_array_@var:temp_array_b_id^num], offset_b = [?temp_array_b_offset]"
+    }
+    if = {
+        limit = {
+            OR = {
+                check_variable = { temp_array_a_id = temp_array_output_id }
+                check_variable = { temp_array_b_id = temp_array_output_id }
+            }
+        }
+        add_to_temp_variable = { bitwise_error_flag = 1 }
+        log = "append_array output_id error, array_a_id = [?temp_array_a_id], array_b_id = [?temp_array_b_id], array_output_id = [?temp_array_output_id]"
+    }
+
+    clear_temp_array = temp_array_@var:temp_array_output_id
+    for_loop_effect = {
+        start = temp_array_a_offset
+        end = temp_array_@var:temp_array_a_id^num
+        compare = less_than
+        value = idx
+
+        add_to_temp_array = { temp_array_@var:temp_array_output_id = temp_array_@var:temp_array_a_id^idx }
+    }
+    for_loop_effect = {
+        start = temp_array_b_offset
+        end = temp_array_@var:temp_array_b_id^num
+        compare = less_than
+        value = idx
+
+        add_to_temp_array = { temp_array_@var:temp_array_output_id = temp_array_@var:temp_array_b_id^idx }
+    }
+
+    set_temp_variable = { temp_array_a_id = 0 }
+    set_temp_variable = { temp_array_a_offset = 0 }
+    set_temp_variable = { temp_array_b_id = 0 }
+    set_temp_variable = { temp_array_b_offset = 0 }
+    set_temp_variable = { temp_array_output_id = 0 }
+}
+### COPY ARRAY
+## This effect pushes all or a portion of an array to a new array
+## The below functions have 4 parameters, some optional: temp_array_id, temp_array_start, temp_array_end, temp_array_output_id
+## These parameters will be cleared(by resetting to 0) after the function execution
+## ARRAY_ID
+# the temp_array_ids identify which temp array is to be used, in the format "temp_array_[?id]"
+# If no temp_array_id is assigned, the function will use temp_array_0 in place
+# There is no restriction to applying a function with both a and b id's being the same
+# If the temp_array_id is not an integer, then the function will display an error
+## START
+# The start identifies the starting point of the COPY for the array
+# If no start is assigned, the function will start the operation from the beginning of the array
+# If start >= array^num or start < 0, then the function will display an error
+## END
+# The end identifies the ending point of the COPY for the array
+# Note that this endpoint is exclusive, and won't be included in the copied array
+# If no end is assigned (start = 0), the function will end the operation at the end of the array
+# If end > array^num or end < 0, then the function will display an error
+# Note that in end <= start, the resultant array will be empty
+## OUTPUT_ID
+# Finally, the output_id identifies the array that the function will push the result to
+# If no output_id is assigned, the function will use temp_array_0 in place
+# If the temp_array_id is not an integer, then the function will display an error
+# If the output_id is equal to temp_array_id, then the function will display an error because an array will be overriden
+## Errors consist of a temp error var (bitwise_error_flag) and a message in log corresponding to the error
+copy_array = {set_temp_variable = { whole_check = temp_array_id }
+    round_temp_variable = whole_check
+    set_temp_variable = { whole_check_o = temp_array_output_id }
+    round_temp_variable = whole_check_o
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { whole_check = temp_array_id } }
+                NOT = { check_variable = { whole_check_o = temp_array_output_id } }
+            }
+        }
+        add_to_temp_variable = { bitwise_error_flag = 1 }
+        log = "copy_array array_id error, array_id = [?temp_array_id], array_output_id = [?temp_array_output_id]"
+    }
+    
+    if = {
+        limit = {
+            check_variable = { temp_array_end = 0 }
+        }
+        set_temp_variable = { temp_array_end = temp_array_@var:temp_array_id^num }
+    }
+    
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { temp_array_start < temp_array_@var:temp_array_id^num } }
+                check_variable = { temp_array_end > temp_array_@var:temp_array_id^num }
+
+                check_variable = { temp_array_start < 0 }
+                check_variable = { temp_array_end < 0 }
+            }
+        }
+        add_to_temp_variable = { bitwise_error_flag = 1 }
+        log = "copy_array start/end error, array len = [?temp_array_@var:temp_array_id^num], start = [?temp_array_start], end = [?temp_array_end]"
+    }
+    if = {
+        limit = {
+            check_variable = { temp_array_id = temp_array_output_id }
+        }
+        add_to_temp_variable = { bitwise_error_flag = 1 }
+        log = "copy_array output_id error, array_id = [?temp_array_id], array_output_id = [?temp_array_output_id]"
+    }
+
+    clear_temp_array = temp_array_@var:temp_array_output_id
+    for_loop_effect = {
+        start = temp_array_start
+        end = temp_array_end
+        compare = less_than
+        value = idx
+
+        add_to_temp_array = { temp_array_@var:temp_array_output_id = temp_array_@var:temp_array_a_id^idx }
+    }
+
+    set_temp_variable = { temp_array_id = 0 }
+    set_temp_variable = { temp_array_start = 0 }
+    set_temp_variable = { temp_array_end = 0 }
+    set_temp_variable = { temp_array_output_id = 0 }
+}
+### REVERSE ARRAY
+## This effect reverses an array and pushes it to a new array
+## The below functions have 2 parameters, some optional: temp_array_id, temp_array_output_id
+## These parameters will be cleared(by resetting to 0) after the function execution
+## ARRAY_ID
+# the temp_array_ids identify which temp array is to be used, in the format "temp_array_[?id]"
+# If no temp_array_id is assigned, the function will use temp_array_0 in place
+# If the temp_array_id is not an integer, then the function will display an error
+## OUTPUT_ID
+# Finally, the output_id identifies the array that the function will push the result to
+# If no output_id is assigned, the function will use temp_array_0 in place
+# If the temp_array_id is not an integer, then the function will display an error
+# If the output_id is equal to temp_array_id, then the function will display an error because an array will be overriden
+## Errors consist of a temp error var (bitwise_error_flag) and a message in log corresponding to the error
+reverse_array = {
+    set_temp_variable = { whole_check = temp_array_id }
+    round_temp_variable = whole_check
+    set_temp_variable = { whole_check_o = temp_array_output_id }
+    round_temp_variable = whole_check_o
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { whole_check = temp_array_id } }
+                NOT = { check_variable = { whole_check_o = temp_array_output_id } }
+            }
+        }
+        add_to_temp_variable = { bitwise_error_flag = 1 }
+        log = "copy_array array_id error, array_id = [?temp_array_id], array_output_id = [?temp_array_output_id]"
+    }
+    if = {
+        limit = {
+            check_variable = { temp_array_id = temp_array_output_id }
+        }
+        add_to_temp_variable = { bitwise_error_flag = 1 }
+        log = "copy_array output_id error, array_id = [?temp_array_id], array_output_id = [?temp_array_output_id]"
+    }
+
+    set_temp_variable = { left_idx = 0 }
+    set_temp_variable = { temp_end = temp_array_@var:temp_array_id^num }
+    set_temp_variable = { right_idx = temp_end }
+    subtract_from_temp_variable = { right_idx = 1 }
+    resize_temp_array = {
+        array = temp_array_@var:temp_array_output_id
+        size = temp_array_@var:temp_array_id^num
+        value = 0
+    }
+    for_loop_effect = {
+        start = 0
+        end = temp_end
+        compare = less_than
+        add = 2
+
+        set_temp_variable = { temp_array_@var:temp_array_output_id^left_idx = temp_array_@var:temp_array_id^right_idx }
+        set_temp_variable = { temp_array_@var:temp_array_output_id^right_idx = temp_array_@var:temp_array_id^left_idx }
+        add_to_temp_variable = { left_idx = 1 }
+        subtract_from_temp_variable = { right_idx = 1 }
+    }
+
+    set_temp_variable = { temp_array_id = 0 }
+    set_temp_variable = { temp_array_output_id = 0 }
+}
 
 ### BINARY BITWISE OPERATIONS(AND, OR, XOR)
 ## These effects perform a bitwise operation(AND, OR, XOR) between two bit arrays (or portions of them), marked a and b, and push the output to a new array
 ## The below functions have 5 parameters, some optional: temp_array_a_id, temp_array_b_id, temp_array_a_offset, temp_array_b_offset, temp_array_output_id
 ## These parameters will be cleared(by resetting to 0) after the function execution
-## If any element in the array is not zero, then the function will display an error
+## If any element used is not one or zero, then the function will display an error
 ## ARRAY_ID
 # the temp_array_ids identify which temp array is to be used, in the format "temp_array_[?id]"
 # If no temp_array_id is assigned, the function will use temp_array_0 in place
@@ -77,6 +378,7 @@ to_bitwise = {
 # If array_a^num - a_offset =/= array_b^num - b_offset (essentially the compared bit array lengths are unequal), then the function will display an error
 ## OUTPUT_ID
 # Finally, the output_id identifies the array that the function will push the result to
+# If no output_id is assigned, the function will use temp_array_0 in place
 # If the temp_array_id is not an integer, then the function will display an error
 # If the output_id is equal to either temp_array_id, then the function will display an error because an array will be overriden
 ## Errors consist of a temp error var (bitwise_error_flag) and a message in log corresponding to the error
@@ -292,7 +594,7 @@ xor_bitwise = {
             }
         }
         add_to_temp_variable = { bitwise_error_flag = 1 }
-        log = "and_bitwise array_id error, array_a_id = [?temp_array_a_id], array_b_id = [?temp_array_b_id], array_output_id = [?temp_array_output_id]"
+        log = "xor_bitwise array_id error, array_a_id = [?temp_array_a_id], array_b_id = [?temp_array_b_id], array_output_id = [?temp_array_output_id]"
     }
     if = {
         limit = {
@@ -379,7 +681,7 @@ xor_bitwise = {
 ## This effect perform a bitwise operation(NOT) on the bit array, and push the output to a new array
 ## The below functions have 2 parameters, some optional: temp_array_id, temp_array_output_id
 ## These parameters will be cleared(by resetting to 0) after the function execution
-## If any element in the array is not zero, then the function will display an error
+## If any element used is not one or zero, then the function will display an error
 ## ARRAY_ID
 # the temp_array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
 # If no temp_array_id is assigned, the function will use temp_array_0 in place
@@ -478,6 +780,6 @@ ieee_run_tests = {
         add_to_temp_array = { to_print_array = v }
     }
     log = "------------------------"
-    log = "Failed Tests: [debug_print_array]"
+    log = "Failed Test(s): [debug_print_array]"
     log = "------------------------"
 }

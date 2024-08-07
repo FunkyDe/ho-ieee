@@ -91,7 +91,7 @@ store_bitwise = {
         log="store_bitwise array length error, temp_array_id = [?temp_array_id], array length = [?temp_array_@var:temp_array_id^num]"
     }
     for_each_loop = {
-        start = 1
+        start = 0
         end = 32
         value = idx
 
@@ -234,14 +234,15 @@ append_array = {
 # Note that this endpoint is exclusive, and won't be included in the copied array
 # If no end is assigned (start = 0), the function will end the operation at the end of the array
 # If end > array^num or end < 0, then the function will display an error
-# Note that in end <= start, the resultant array will be empty
+# Note that if end <= start, the resultant array will be empty
 ## OUTPUT_ID
 # Finally, the output_id identifies the array that the function will push the result to
 # If no output_id is assigned, the function will use temp_array_0 in place
 # If the temp_array_id is not an integer, then the function will display an error
 # If the output_id is equal to temp_array_id, then the function will display an error because an array will be overriden
 ## Errors consist of a temp error var (bitwise_error_flag) and a message in log corresponding to the error
-copy_array = {set_temp_variable = { whole_check = temp_array_id }
+copy_array = {
+    set_temp_variable = { whole_check = temp_array_id }
     round_temp_variable = whole_check
     set_temp_variable = { whole_check_o = temp_array_output_id }
     round_temp_variable = whole_check_o

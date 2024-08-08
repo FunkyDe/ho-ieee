@@ -1,6 +1,6 @@
 ### TO_BITWISE
-## Converts the pdxvar "temp_bitwise_input" (when multiplied by 1000) a 32-bit signed integer bit array and pushes the result to a specified array
-## The below function has 2 parameters: temp_bitwise_input and temp_array_id
+## Converts the pdxvar "to_bitwise_input" (when multiplied by 1000) a 32-bit signed integer bit array and pushes the result to a specified array
+## The below function has 2 parameters: to_bitwise_input and temp_array_id
 ## These parameters will be cleared(by resetting to 0) after the function execution
 ## BITWISE_INPUT
 # The variable to be converted into bitwise format
@@ -21,7 +21,7 @@ to_bitwise = {
         add_to_temp_variable = { bitwise_error_flag = 1 }
         log="to_bitwise array_id error, temp_array_id = [?temp_array_id]"
     }
-    set_temp_variable = { bitwise_to_process = temp_bitwise_input }
+    set_temp_variable = { bitwise_to_process = to_bitwise_input }
     clear_temp_array = temp_array_@var:temp_array_id
     resize_temp_array = { temp_array_@var:temp_array_id = 32 }
     
@@ -56,7 +56,7 @@ to_bitwise = {
         }
         divide_temp_variable = { bit_compare = 2 }
     }
-    set_temp_variable = { temp_bitwise_input = 0 }
+    set_temp_variable = { to_bitwise_input = 0 }
     set_temp_variable = { temp_array_id = 0 }
 }
 ### STORE_BITWISE
@@ -90,7 +90,7 @@ store_bitwise = {
         add_to_temp_variable = { bitwise_error_flag = 1 }
         log="store_bitwise array length error, temp_array_id = [?temp_array_id], array length = [?temp_array_@var:temp_array_id^num]"
     }
-    for_each_loop = {
+    for_loop_effect = {
         start = 0
         end = 32
         value = idx
@@ -745,42 +745,4 @@ not_bitwise = {
 
     set_temp_variable = { temp_array_id = 0 }
     set_temp_variable = { temp_array_output_id = 0 }
-}
-
-# Run all tests defined in common/scripted_effects/ieee_tests.txt
-ieee_run_tests = {
-    ieee_get_test_count = yes
-    clear_temp_array = test_fail_array
-    for_each_loop = {
-        array = temp_test_count_array
-        value = test_count
-        index = test_block
-
-        for_loop_effect = {
-            start = 0
-            end = test_count
-            compare = less_than
-            value = test_offset
-
-            set_temp_variable = { test_id = test_block }
-            multiply_temp_variable = { test_id = 1000 }
-            add_to_temp_variable = { test_id = test_offset }
-
-            meta_effect = {
-                text = {
-                    ieee_test_[TEST_ID] = yes
-                }
-                TEST_ID = "[?test_id]"
-            }
-        }
-    }
-    for_each_loop = {
-        array = test_fail_array
-        value = v
-
-        add_to_temp_array = { to_print_array = v }
-    }
-    log = "------------------------"
-    log = "Failed Test(s): [debug_print_array]"
-    log = "------------------------"
 }

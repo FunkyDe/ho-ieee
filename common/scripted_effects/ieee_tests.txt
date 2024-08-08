@@ -1,3 +1,41 @@
+# Run all tests defined below
+ieee_run_tests = {
+    ieee_get_test_count = yes
+    clear_temp_array = test_fail_array
+    for_each_loop = {
+        array = temp_test_count_array
+        value = test_count
+        index = test_block
+
+        for_loop_effect = {
+            start = 0
+            end = test_count
+            compare = less_than
+            value = test_offset
+
+            set_temp_variable = { test_id = test_block }
+            multiply_temp_variable = { test_id = 1000 }
+            add_to_temp_variable = { test_id = test_offset }
+
+            meta_effect = {
+                text = {
+                    ieee_test_[TEST_ID] = yes
+                }
+                TEST_ID = "[?test_id]"
+            }
+        }
+    }
+    for_each_loop = {
+        array = test_fail_array
+        value = v
+
+        add_to_temp_array = { to_print_array = v }
+    }
+    log = "------------------------"
+    log = "Failed Test(s): [debug_print_array]"
+    log = "------------------------"
+}
+
 ######### TESTS #########
 # Test output to game.log should be in the format:
 # Test [?test_id] - WHAT IS BEING TESTED - PASS/FAIL
@@ -11,6 +49,7 @@ ieee_get_test_count = {
     add_to_temp_array = { temp_test_count_array = 12 } # to_bitwise and store_bitwise
     add_to_temp_array = { temp_test_count_array = 15 } # bitwise 
     add_to_temp_array = { temp_test_count_array = 8 } # array manip(append, copy, reverse array)
+    add_to_temp_array = { temp_test_count_array = 11 } # to_float
 }
 ## test to_bitwise and store_bitwise functions
 ieee_test_0 = {
@@ -18,7 +57,7 @@ ieee_test_0 = {
     clear_temp_array = temp_array_0
     clear_temp_array = temp_array_1
     
-    set_temp_variable = { temp_bitwise_input = 0 }
+    set_temp_variable = { to_bitwise_input = 0 }
     set_temp_variable = { temp_array_id = 0 }
     to_bitwise = yes
 
@@ -75,7 +114,7 @@ ieee_test_0 = {
     clear_temp_array = temp_array_1
 }
 ieee_test_1 = {
-    set_temp_variable = { temp_bitwise_input = -2147483.648 }
+    set_temp_variable = { to_bitwise_input = -2147483.648 }
     set_temp_variable = { temp_array_id = 0 }
     to_bitwise = yes
 
@@ -137,7 +176,7 @@ ieee_test_2 = {
     clear_temp_array = temp_array_0
     clear_temp_array = temp_array_1
     
-    set_temp_variable = { temp_bitwise_input = 2147483.647 }
+    set_temp_variable = { to_bitwise_input = 2147483.647 }
     set_temp_variable = { temp_array_id = 0 }
     to_bitwise = yes
 
@@ -203,7 +242,7 @@ ieee_test_3 = {
     clear_temp_array = temp_array_0
     clear_temp_array = temp_array_1
     
-    set_temp_variable = { temp_bitwise_input = 0.105 }
+    set_temp_variable = { to_bitwise_input = 0.105 }
     set_temp_variable = { temp_array_id = 0 }
     to_bitwise = yes
 
@@ -268,7 +307,7 @@ ieee_test_4 = {
     clear_temp_array = temp_array_0
     clear_temp_array = temp_array_1
     
-    set_temp_variable = { temp_bitwise_input = -0.105 }
+    set_temp_variable = { to_bitwise_input = -0.105 }
     set_temp_variable = { temp_array_id = 0 }
     to_bitwise = yes
 
@@ -336,7 +375,7 @@ ieee_test_5 = {
     clear_temp_array = temp_array_0
     clear_temp_array = temp_array_1
     
-    set_temp_variable = { temp_bitwise_input = 12.312 }
+    set_temp_variable = { to_bitwise_input = 12.312 }
     set_temp_variable = { temp_array_id = 0.002 }
     to_bitwise = yes
 
@@ -1989,4 +2028,861 @@ ieee_test_2007 = {
     clear_temp_array = temp_array_0
     clear_temp_array = temp_array_1
     clear_temp_array = temp_array_2
+}
+## test to_float
+ieee_test_3000 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+
+    set_temp_variable = { to_float_input = 1175 }
+    set_temp_variable = { temp_array_id = 1 }
+    to_float = yes
+    
+    clear_temp_array = temp_array_0
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = {
+                check_variable = { temp_array_0^num = temp_array_1^num }
+            }
+        }
+        set_temp_variable = { invalid = 1 } 
+    }
+    for_loop_effect = {
+        start = 0
+        end = temp_array_1^num
+        compare = less_than
+        value = idx
+
+        if = {
+            limit = {
+                NOT = { check_variable = { temp_array_0^idx = temp_array_1^idx } }
+            }
+            set_temp_variable = { invalid = 1 }
+        }
+    }
+    
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - basic to_float - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - basic to_float - PASS"
+    }
+    set_temp_variable = { temp_array_id = 1 }
+    log = "Actual: [debug_print_array_id]"
+    set_temp_variable = { temp_array_id = 0 }
+    log = "Expect: [debug_print_array_id]"
+
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+}
+ieee_test_3001 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+
+    set_temp_variable = { to_float_input = 2097152.874 }
+    set_temp_variable = { temp_array_id = 1 }
+    to_float = yes
+    
+    clear_temp_array = temp_array_0
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 1 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = {
+                check_variable = { temp_array_0^num = temp_array_1^num }
+            }
+        }
+        set_temp_variable = { invalid = 1 } 
+    }
+    for_loop_effect = {
+        start = 0
+        end = temp_array_2^num
+        compare = less_than
+        value = idx
+
+        if = {
+            limit = {
+                NOT = { check_variable = { temp_array_0^idx = temp_array_1^idx } }
+            }
+            set_temp_variable = { invalid = 1 }
+        }
+    }
+    
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - round down to_float - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - round down to_float - PASS"
+    }
+    set_temp_variable = { temp_array_id = 1 }
+    log = "Actual: [debug_print_array_id]"
+    set_temp_variable = { temp_array_id = 0 }
+    log = "Expect: [debug_print_array_id]"
+
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+}
+ieee_test_3002 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+
+    set_temp_variable = { to_float_input = 2097152.875 }
+    set_temp_variable = { temp_array_id = 1 }
+    to_float = yes
+    
+    clear_temp_array = temp_array_0
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = {
+                check_variable = { temp_array_0^num = temp_array_1^num }
+            }
+        }
+        set_temp_variable = { invalid = 1 } 
+    }
+    for_loop_effect = {
+        start = 0
+        end = temp_array_2^num
+        compare = less_than
+        value = idx
+
+        if = {
+            limit = {
+                NOT = { check_variable = { temp_array_0^idx = temp_array_1^idx } }
+            }
+            set_temp_variable = { invalid = 1 }
+        }
+    }
+    
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - round up, edge to_float - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - round up, edge to_float - PASS"
+    }
+    set_temp_variable = { temp_array_id = 1 }
+    log = "Actual: [debug_print_array_id]"
+    set_temp_variable = { temp_array_id = 0 }
+    log = "Expect: [debug_print_array_id]"
+
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+}
+ieee_test_3003 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+
+    set_temp_variable = { to_float_input = 2097152.125 }
+    set_temp_variable = { temp_array_id = 1 }
+    to_float = yes
+    
+    clear_temp_array = temp_array_0
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = {
+                check_variable = { temp_array_0^num = temp_array_1^num }
+            }
+        }
+        set_temp_variable = { invalid = 1 } 
+    }
+    for_loop_effect = {
+        start = 0
+        end = temp_array_2^num
+        compare = less_than
+        value = idx
+
+        if = {
+            limit = {
+                NOT = { check_variable = { temp_array_0^idx = temp_array_1^idx } }
+            }
+            set_temp_variable = { invalid = 1 }
+        }
+    }
+    
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - round down, edge to_float - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - round down, edge to_float - PASS"
+    }
+    set_temp_variable = { temp_array_id = 1 }
+    log = "Actual: [debug_print_array_id]"
+    set_temp_variable = { temp_array_id = 0 }
+    log = "Expect: [debug_print_array_id]"
+
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+}
+ieee_test_3004 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+
+    set_temp_variable = { to_float_input = 2097152.876 }
+    set_temp_variable = { temp_array_id = 1 }
+    to_float = yes
+    
+    clear_temp_array = temp_array_0
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = {
+                check_variable = { temp_array_0^num = temp_array_1^num }
+            }
+        }
+        set_temp_variable = { invalid = 1 } 
+    }
+    for_loop_effect = {
+        start = 0
+        end = temp_array_2^num
+        compare = less_than
+        value = idx
+
+        if = {
+            limit = {
+                NOT = { check_variable = { temp_array_0^idx = temp_array_1^idx } }
+            }
+            set_temp_variable = { invalid = 1 }
+        }
+    }
+    
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - round up to_float - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - round up to_float - PASS"
+    }
+    set_temp_variable = { temp_array_id = 1 }
+    log = "Actual: [debug_print_array_id]"
+    set_temp_variable = { temp_array_id = 0 }
+    log = "Expect: [debug_print_array_id]"
+
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+}
+ieee_test_3005 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+
+    set_temp_variable = { to_float_input = -2525.125 }
+    set_temp_variable = { temp_array_id = 1 }
+    to_float = yes
+    
+    clear_temp_array = temp_array_0
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = {
+                check_variable = { temp_array_0^num = temp_array_1^num }
+            }
+        }
+        set_temp_variable = { invalid = 1 } 
+    }
+    for_loop_effect = {
+        start = 0
+        end = temp_array_2^num
+        compare = less_than
+        value = idx
+
+        if = {
+            limit = {
+                NOT = { check_variable = { temp_array_0^idx = temp_array_1^idx } }
+            }
+            set_temp_variable = { invalid = 1 }
+        }
+    }
+    
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - negative to_float - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - negative to_float - PASS"
+    }
+    set_temp_variable = { temp_array_id = 1 }
+    log = "Actual: [debug_print_array_id]"
+    set_temp_variable = { temp_array_id = 0 }
+    log = "Expect: [debug_print_array_id]"
+
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+}
+ieee_test_3006 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+
+    set_temp_variable = { to_float_input = 0 }
+    set_temp_variable = { temp_array_id = 1 }
+    to_float = yes
+    
+    clear_temp_array = temp_array_0
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = {
+                check_variable = { temp_array_0^num = temp_array_1^num }
+            }
+        }
+        set_temp_variable = { invalid = 1 } 
+    }
+    for_loop_effect = {
+        start = 0
+        end = temp_array_2^num
+        compare = less_than
+        value = idx
+
+        if = {
+            limit = {
+                NOT = { check_variable = { temp_array_0^idx = temp_array_1^idx } }
+            }
+            set_temp_variable = { invalid = 1 }
+        }
+    }
+    
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - basic to_float - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - basic to_float - PASS"
+    }
+    set_temp_variable = { temp_array_id = 1 }
+    log = "Actual: [debug_print_array_id]"
+    set_temp_variable = { temp_array_id = 0 }
+    log = "Expect: [debug_print_array_id]"
+
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+}
+ieee_test_3007 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+
+    set_temp_variable = { to_float_input = -2147483.648 }
+    set_temp_variable = { temp_array_id = 1 }
+    to_float = yes
+    
+    clear_temp_array = temp_array_0
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 1 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = {
+                check_variable = { temp_array_0^num = temp_array_1^num }
+            }
+        }
+        set_temp_variable = { invalid = 1 } 
+    }
+    for_loop_effect = {
+        start = 0
+        end = temp_array_2^num
+        compare = less_than
+        value = idx
+
+        if = {
+            limit = {
+                NOT = { check_variable = { temp_array_0^idx = temp_array_1^idx } }
+            }
+            set_temp_variable = { invalid = 1 }
+        }
+    }
+    
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - min num to_float - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - min num to_float - PASS"
+    }
+    set_temp_variable = { temp_array_id = 1 }
+    log = "Actual: [debug_print_array_id]"
+    set_temp_variable = { temp_array_id = 0 }
+    log = "Expect: [debug_print_array_id]"
+
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+}
+ieee_test_3008 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+
+    set_temp_variable = { to_float_input = 123213 }
+    set_temp_variable = { temp_array_id = 1.01 }
+    to_float = yes
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            NOT = { check_variable = { io_error_flag = 1 } }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - error to_float - FAIL"
+        log = "Expected 1 error, got [?io_error_flag]"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - errors reverse_array - PASS"
+    }
+    
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+}
+ieee_test_3009 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+
+    set_temp_variable = { to_float_input = 973801.56 }
+    set_temp_variable = { temp_array_id = 1 }
+    to_float = yes
+    
+    set_temp_variable = { temp_array_id = 1 }
+    store_bitwise = yes
+
+    # expected value from test
+    set_temp_variable = { test_expectation = 1231928.985 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { store_bitwise_output = test_expectation } }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - to_float -> store_bitwise - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - to_float -> store_bitwise - PASS"
+    }
+    set_temp_variable = { temp_array_id = 1 }
+    log = "Actual: [?store_bitwise_output]"
+    set_temp_variable = { temp_array_id = 0 }
+    log = "Expect: [?test_expectation]"
+
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+}
+ieee_test_3010 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+
+    set_temp_variable = { to_float_input = -1580679.665 }
+    set_temp_variable = { temp_array_id = 1 }
+    to_float = yes
+    
+    set_temp_variable = { temp_array_id = 1 }
+    store_bitwise = yes
+
+    # expected value from test
+    set_temp_variable = { test_expectation = -910101.443 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { store_bitwise_output = test_expectation } }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - negative to_float -> store_bitwise - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - negative to_float -> store_bitwise - PASS"
+    }
+    set_temp_variable = { temp_array_id = 1 }
+    log = "Actual: [?store_bitwise_output]"
+    set_temp_variable = { temp_array_id = 0 }
+    log = "Expect: [?test_expectation]"
+
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
 }

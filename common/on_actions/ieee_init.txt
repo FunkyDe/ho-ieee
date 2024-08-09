@@ -1,0 +1,10 @@
+on_actions = {
+    on_startup = {
+        effect = {
+            # Scripted effects need to be scoped to work. If you don't have a state with ID 1, that's on you
+            1 = {
+                ieee_digits_init = yes            
+            }
+        }
+    }
+}

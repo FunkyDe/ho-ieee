@@ -51,11 +51,15 @@ Errors: This mod is complex, I have implemented a system of error logging for te
 
 Tests: Furthermore, I have implemented a series of tests in order to verify the function of code during development. If you want to examine the tests themselves, you can check out `scripted_effects/ieee_tests.txt` - each test is a scripted effect named `ieee_test_####`, which prints a short result to `game.log`. Additionally, you can execute all tests at once with the scripted effect `ieee_run_tests` (in-game terminal: `e ieee_run_tests`), which prints all of their results to `game.log`. Error messages may appear in the logs, but that is to be expected from testing the error catching portions of functions.
 
+Assumptions: When modding scripts try to read a variable that has not been set yet, it will get 0. This may raise a bit of confusion, as the code treats both the modder forgetting to set a variable and them deliberately setting a variable to 0 equivalently. Notes have been taken in the comments to describe the outcome for uninitialized variables, but extra care should be taken with scripted effects that handle numerical input: to_bitwise, to_float, etc. Since their inputs are meant to be numbers, leaving inputs uninitialized as 0 will proceed with no errors, warnings, or notification. These 0-critical inputs will be marked in comments with the line `# If no input is given, the function will use 0 in place **and return no error**`.
+
 # TODOlist:
 
-- Add warning(log and warning_flag temp var) for parameter = 0
-    - change code not to use temp_array_0
-    - edit README with details on warning
 - Add converter from FPVs to pdxvar
     - Edge cases and tests
 - Localizer from hoieee and from bit array
+- Addition
+    - positive case
+    - negative
+    - subnormal
+    - inf/NaN

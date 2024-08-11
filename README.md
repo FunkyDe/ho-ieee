@@ -67,4 +67,3 @@ Assumptions: When modding scripts try to read a variable that has not been set y
     - negative
     - subnormal
     - inf/NaN
-- Trim unused functions

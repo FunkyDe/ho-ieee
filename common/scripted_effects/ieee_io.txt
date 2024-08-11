@@ -228,9 +228,10 @@ to_float = {
 # If the array is not 32 elements long, then the function will display an error
 # If the array has elements which are not 0 or 1, then the function will display an error
 ## TO_PDXVAR_OUTPUT
-# The variable which holds the converted value
-# Do not confuse this with the store_bitwise function 
+# The output variable which holds the converted value
+# Do not confuse this with the store_bitwise function, as the two functions will output different values from the same bitarray
 ## Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
+## Additionally, any error will not trigger the to_digit_array function, and instead return 0 to the output variable
 to_pdxvar = {
 
 }
@@ -265,15 +266,15 @@ to_digit_array = {
         }
 
         add_to_temp_variable = { io_error_flag = 1 }
-        log="to_float array_id error, temp_array_id = [?temp_array_id]"
+        log="to_digit_array array_id error, temp_array_id = [?temp_array_id]"
     }
     if = {
         limit = {
             NOT = { check_variable = { temp_array_@var:temp_array_id^num = 32 } }
         }
 
-        add_to_temp_variable = { bitwise_error_flag = 1 }
-        log="store_bitwise array length error, temp_array_id = [?temp_array_id], array length = [?temp_array_@var:temp_array_id^num]"
+        add_to_temp_variable = { io_error_flag = 1 }
+        log="to_digit_array array length error, temp_array_id = [?temp_array_id], array length = [?temp_array_@var:temp_array_id^num]"
     }
     for_loop_effect = {
         start = 0
@@ -287,8 +288,8 @@ to_digit_array = {
                     NOT = { check_variable = { temp_array_@var:temp_array_id^idx = 1 } }
                 }
             }
-            add_to_temp_variable = { bitwise_error_flag = 1 }
-            log = "store_bitwise value error, temp_array_id = [?temp_array_id], value = [?temp_array_@var:temp_array_id^idx], index = [?idx]"
+            add_to_temp_variable = { io_error_flag = 1 }
+            log = "to_digit_array value error, temp_array_id = [?temp_array_id], value = [?temp_array_@var:temp_array_id^idx], index = [?idx]"
         }
     }
 
@@ -348,13 +349,16 @@ to_digit_array = {
             }
         }
     }
-    else_if = {
+    else_if = { # +/- zero case
         limit = {
             all_of = {
                 array = temp_array_@var:temp_array_id
-                value = val
+                index = idx
 
-                check_variable = { val = 0 }
+                OR = {
+                    check_variable = { idx = 0 } # Ignore sign bit
+                    check_variable = { temp_array_@var:temp_array_id^idx = 0 }
+                }
             }
         }
         set_temp_variable = { to_pdxvar_inf_flag = 0 }
@@ -373,6 +377,7 @@ to_digit_array = {
                 check_variable = { temp_exp = -127 }
             }
             add_to_temp_variable = { temp_exp = 1 }
+            set_temp_variable = { set_subnormal_power = 1 } # special flag to set the power due to subnormal shenanigans
         }
         else = {
             for_each_loop = {
@@ -381,10 +386,10 @@ to_digit_array = {
 
                 add_to_temp_array = { digit_array_output = v }
             }
+            set_temp_variable = { digit_power_output = global.digit_power@var:temp_exp }
         }
         
         # Add mantissa powers of two
-        set_temp_variable = { digit_power_output = global.digit_power@var:temp_exp }
         for_loop_effect = {
             start = 9
             end = 32
@@ -400,6 +405,15 @@ to_digit_array = {
                 set_temp_variable = { temp_mantissa_exp = temp_exp }
                 subtract_from_temp_variable = { temp_mantissa_exp = bit_idx }
                 add_to_temp_variable = { temp_mantissa_exp = 8 }
+                # Use flag set above to correctly assign power
+                if = {
+                    limit = {
+                        check_variable = { set_subnormal_power = 1 }
+                    }
+
+                    set_temp_variable = { digit_power_output = global.digit_power@var:temp_mantissa_exp }
+                    set_temp_variable = { set_subnormal_power = 0 }
+                }
                 # temp digit offset describes the digit in the bit array that the mantissa digits start from (digit power - mantissa power)
                 set_temp_variable = { temp_digit_offset = digit_power_output }
                 subtract_from_temp_variable = { temp_digit_offset = global.digit_power@var:temp_mantissa_exp }
@@ -463,24 +477,4 @@ to_digit_array = {
             }
         }
     }
-}
-test = {
-    #set_temp_variable = { to_float_input = 12482.696 }
-    #set_temp_variable = { temp_array_id = 1 }
-    #to_float = yes
-    set_temp_variable = { to_bitwise_input = 0 }
-    set_temp_variable = { temp_array_id = 1 }
-    to_bitwise = yes
-
-    set_temp_variable = { temp_array_id = 1 }
-    to_digit_array = yes
-
-    log="2^[?temp_exp] ~ 10^[?digit_power_output]"
-    for_each_loop = {
-        array = digit_array_output
-        value = v
-
-        add_to_temp_array = { to_print_array = v }
-    }
-    log="[debug_print_array]"
 }

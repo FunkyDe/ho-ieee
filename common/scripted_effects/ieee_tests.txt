@@ -48,6 +48,7 @@ ieee_run_tests = {
 ieee_get_test_count = {
     add_to_temp_array = { temp_test_count_array = 14 } # to_bitwise, store_bitwise, and reverse_array
     add_to_temp_array = { temp_test_count_array = 11 } # to_float
+    add_to_temp_array = { temp_test_count_array = 12 } # to_digit_array
 }
 ## test to_bitwise, store_bitwise, and reverse_array functions
 ieee_test_0 = {
@@ -1491,7 +1492,7 @@ ieee_test_1008 = {
         add_to_temp_array = { test_fail_array = test_id }
     }
     else = {
-        log = "Test [?test_id] - errors to_float - PASS"
+        log = "Test [?test_id] - error to_float - PASS"
     }
     
     set_temp_variable = { io_error_flag = 0 }
@@ -1592,4 +1593,1173 @@ ieee_test_1010 = {
     set_temp_variable = { io_error_flag = 0 }
     clear_temp_array = temp_array_0
     clear_temp_array = temp_array_1
+}
+## test to_digit_array and to_pdxvar
+ieee_test_2000 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+
+    resize_temp_array = { temp_array_0 = 32 }
+    set_temp_variable = { temp_array_0^1 = 1 }
+    set_temp_variable = { temp_array_0^5 = 1 }
+    set_temp_variable = { temp_array_0^8 = 1 }
+    set_temp_variable = { temp_array_0^10 = 1 }
+    set_temp_variable = { temp_array_0^12 = 1 }
+    set_temp_variable = { temp_array_0^13 = 1 }
+    set_temp_variable = { temp_array_0^16 = 1 }
+    set_temp_variable = { temp_array_0^18 = 1 }
+
+    set_temp_variable = { temp_array_id = 0 }
+    to_digit_array = yes
+
+    # expected value output(1381)
+    set_temp_variable = { expected_digit_power_output = 3 }
+    clear_temp_array = expected_digit_array_output
+    add_to_temp_array = { expected_digit_array_output = 1 }
+    add_to_temp_array = { expected_digit_array_output = 3 }
+    add_to_temp_array = { expected_digit_array_output = 8 }
+    add_to_temp_array = { expected_digit_array_output = 1 }
+    # expected flags(negative, inf, NaN)
+    set_temp_variable = { expected_sign_bit = 0 }
+    set_temp_variable = { expected_inf_flag = 0 }
+    set_temp_variable = { expected_nan_flag = 0 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { digit_array_output^num = expected_digit_array_output^num } }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
+            all_of = {
+                array = expected_digit_array_output
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { temp_sign_bit = expected_sign_bit } }
+                NOT = { check_variable = { to_pdxvar_inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { to_pdxvar_nan_flag = expected_nan_flag } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - basic to_digit_array - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - basic to_digit_array - PASS"
+    }
+
+    for_each_loop = {
+        array = digit_array_output
+        value = val
+        
+        add_to_temp_array = { to_print_array = val }
+    }
+    set_temp_variable = { print_sign_bit = temp_sign_bit }
+    log = "Actual: [ieee_plus_minus_decider]10^[?digit_power_output] inf: [?to_pdxvar_inf_flag] nan: [?to_pdxvar_nan_flag]"
+    log = "[debug_print_array]"
+
+    for_each_loop = {
+        array = expected_digit_array_output
+        value = val
+        
+        add_to_temp_array = { to_print_array = val }
+    }
+    set_temp_variable = { print_sign_bit = expected_sign_bit }
+    log = "Expect: [ieee_plus_minus_decider]10^[?expected_digit_power_output] inf: [?expected_inf_flag] nan: [?expected_nan_flag]"
+    log = "[debug_print_array]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+}
+ieee_test_2001 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+
+    resize_temp_array = { temp_array_0 = 32 }
+    set_temp_variable = { temp_array_0^0 = 1 }
+    set_temp_variable = { temp_array_0^1 = 1 }
+    set_temp_variable = { temp_array_0^5 = 1 }
+    set_temp_variable = { temp_array_0^8 = 1 }
+    set_temp_variable = { temp_array_0^10 = 1 }
+    set_temp_variable = { temp_array_0^12 = 1 }
+    set_temp_variable = { temp_array_0^13 = 1 }
+    set_temp_variable = { temp_array_0^16 = 1 }
+    set_temp_variable = { temp_array_0^18 = 1 }
+
+    set_temp_variable = { temp_array_id = 0 }
+    to_digit_array = yes
+
+    # expected value output(-1381)
+    set_temp_variable = { expected_digit_power_output = 3 }
+    clear_temp_array = expected_digit_array_output
+    add_to_temp_array = { expected_digit_array_output = 1 }
+    add_to_temp_array = { expected_digit_array_output = 3 }
+    add_to_temp_array = { expected_digit_array_output = 8 }
+    add_to_temp_array = { expected_digit_array_output = 1 }
+    # expected flags(negative, inf, NaN)
+    set_temp_variable = { expected_sign_bit = 1 }
+    set_temp_variable = { expected_inf_flag = 0 }
+    set_temp_variable = { expected_nan_flag = 0 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { digit_array_output^num = expected_digit_array_output^num } }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
+            all_of = {
+                array = expected_digit_array_output
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { temp_sign_bit = expected_sign_bit } }
+                NOT = { check_variable = { to_pdxvar_inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { to_pdxvar_nan_flag = expected_nan_flag } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - negative to_digit_array - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - negative to_digit_array - PASS"
+    }
+
+    for_each_loop = {
+        array = digit_array_output
+        value = val
+        
+        add_to_temp_array = { to_print_array = val }
+    }
+    set_temp_variable = { print_sign_bit = temp_sign_bit }
+    log = "Actual: [ieee_plus_minus_decider]10^[?digit_power_output] inf: [?to_pdxvar_inf_flag] nan: [?to_pdxvar_nan_flag]"
+    log = "[debug_print_array]"
+
+    for_each_loop = {
+        array = expected_digit_array_output
+        value = val
+        
+        add_to_temp_array = { to_print_array = val }
+    }
+    set_temp_variable = { print_sign_bit = expected_sign_bit }
+    log = "Expect: [ieee_plus_minus_decider]10^[?expected_digit_power_output] inf: [?expected_inf_flag] nan: [?expected_nan_flag]"
+    log = "[debug_print_array]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+}
+ieee_test_2002 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+
+    resize_temp_array = { temp_array_0 = 32 }
+    set_temp_variable = { temp_array_0^1 = 1 }
+    set_temp_variable = { temp_array_0^5 = 1 }
+    set_temp_variable = { temp_array_0^6 = 1 }
+    set_temp_variable = { temp_array_0^9 = 1 }
+    set_temp_variable = { temp_array_0^14 = 1 }
+    set_temp_variable = { temp_array_0^15 = 1 }
+    set_temp_variable = { temp_array_0^20 = 1 }
+    set_temp_variable = { temp_array_0^22 = 1 }
+    set_temp_variable = { temp_array_0^24 = 1 }
+    set_temp_variable = { temp_array_0^25 = 1 }
+    set_temp_variable = { temp_array_0^28 = 1 }
+    set_temp_variable = { temp_array_0^31 = 1 }
+
+    set_temp_variable = { temp_array_id = 0 }
+    to_digit_array = yes
+
+    # expected value output(around 12482.696)
+    set_temp_variable = { expected_digit_power_output = 4 }
+    clear_temp_array = expected_digit_array_output
+    add_to_temp_array = { expected_digit_array_output = 1 }
+    add_to_temp_array = { expected_digit_array_output = 2 }
+    add_to_temp_array = { expected_digit_array_output = 4 }
+    add_to_temp_array = { expected_digit_array_output = 8 }
+    add_to_temp_array = { expected_digit_array_output = 2 }
+    add_to_temp_array = { expected_digit_array_output = 6 }
+    add_to_temp_array = { expected_digit_array_output = 9 }
+    add_to_temp_array = { expected_digit_array_output = 6 }
+    add_to_temp_array = { expected_digit_array_output = 2 }
+    add_to_temp_array = { expected_digit_array_output = 8 }
+    add_to_temp_array = { expected_digit_array_output = 9 }
+    add_to_temp_array = { expected_digit_array_output = 0 }
+    add_to_temp_array = { expected_digit_array_output = 6 }
+    add_to_temp_array = { expected_digit_array_output = 2 }
+    add_to_temp_array = { expected_digit_array_output = 5 }
+    # expected flags(negative, inf, NaN)
+    set_temp_variable = { expected_sign_bit = 0 }
+    set_temp_variable = { expected_inf_flag = 0 }
+    set_temp_variable = { expected_nan_flag = 0 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { digit_array_output^num = expected_digit_array_output^num } }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
+            all_of = {
+                array = expected_digit_array_output
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { temp_sign_bit = expected_sign_bit } }
+                NOT = { check_variable = { to_pdxvar_inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { to_pdxvar_nan_flag = expected_nan_flag } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - zero to_digit_array - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - zero to_digit_array - PASS"
+    }
+
+    for_each_loop = {
+        array = digit_array_output
+        value = val
+        
+        add_to_temp_array = { to_print_array = val }
+    }
+    set_temp_variable = { print_sign_bit = temp_sign_bit }
+    log = "Actual: [ieee_plus_minus_decider]10^[?digit_power_output] inf: [?to_pdxvar_inf_flag] nan: [?to_pdxvar_nan_flag]"
+    log = "[debug_print_array]"
+
+    for_each_loop = {
+        array = expected_digit_array_output
+        value = val
+        
+        add_to_temp_array = { to_print_array = val }
+    }
+    set_temp_variable = { print_sign_bit = expected_sign_bit }
+    log = "Expect: [ieee_plus_minus_decider]10^[?expected_digit_power_output] inf: [?expected_inf_flag] nan: [?expected_nan_flag]"
+    log = "[debug_print_array]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+}
+ieee_test_2003 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+
+    resize_temp_array = { temp_array_0 = 32 }
+    set_temp_variable = { temp_array_0^1 = 1 }
+    set_temp_variable = { temp_array_0^9 = 1 }
+    set_temp_variable = { temp_array_0^13 = 1 }
+    set_temp_variable = { temp_array_0^17 = 1 }
+
+    set_temp_variable = { temp_array_id = 0 }
+    to_digit_array = yes
+
+    # expected value output(around 3.0664)
+    set_temp_variable = { expected_digit_power_output = 0 }
+    clear_temp_array = expected_digit_array_output
+    add_to_temp_array = { expected_digit_array_output = 3 }
+    add_to_temp_array = { expected_digit_array_output = 0 }
+    add_to_temp_array = { expected_digit_array_output = 6 }
+    add_to_temp_array = { expected_digit_array_output = 6 }
+    add_to_temp_array = { expected_digit_array_output = 4 }
+    add_to_temp_array = { expected_digit_array_output = 0 }
+    add_to_temp_array = { expected_digit_array_output = 6 }
+    add_to_temp_array = { expected_digit_array_output = 2 }
+    add_to_temp_array = { expected_digit_array_output = 5 }
+    # expected flags(negative, inf, NaN)
+    set_temp_variable = { expected_sign_bit = 0 }
+    set_temp_variable = { expected_inf_flag = 0 }
+    set_temp_variable = { expected_nan_flag = 0 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { digit_array_output^num = expected_digit_array_output^num } }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
+            all_of = {
+                array = expected_digit_array_output
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { temp_sign_bit = expected_sign_bit } }
+                NOT = { check_variable = { to_pdxvar_inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { to_pdxvar_nan_flag = expected_nan_flag } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - fractional to_digit_array - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - fractional to_digit_array - PASS"
+    }
+
+    for_each_loop = {
+        array = digit_array_output
+        value = val
+        
+        add_to_temp_array = { to_print_array = val }
+    }
+    set_temp_variable = { print_sign_bit = temp_sign_bit }
+    log = "Actual: [ieee_plus_minus_decider]10^[?digit_power_output] inf: [?to_pdxvar_inf_flag] nan: [?to_pdxvar_nan_flag]"
+    log = "[debug_print_array]"
+
+    for_each_loop = {
+        array = expected_digit_array_output
+        value = val
+        
+        add_to_temp_array = { to_print_array = val }
+    }
+    set_temp_variable = { print_sign_bit = expected_sign_bit }
+    log = "Expect: [ieee_plus_minus_decider]10^[?expected_digit_power_output] inf: [?expected_inf_flag] nan: [?expected_nan_flag]"
+    log = "[debug_print_array]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+}
+ieee_test_2004 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+
+    resize_temp_array = { temp_array_0 = 32 }
+    set_temp_variable = { temp_array_0^9 = 1 }
+    set_temp_variable = { temp_array_0^30 = 1 }
+    set_temp_variable = { temp_array_0^31 = 1 }
+
+    set_temp_variable = { temp_array_id = 0 }
+    to_digit_array = yes
+
+    # expected value output (if block used to hide all the digits)
+    set_temp_variable = { expected_digit_power_output = -39 }
+    clear_temp_array = expected_digit_array_output
+    if = {
+        limit = { always = yes }
+
+        add_to_temp_array = { expected_digit_array_output = 5 }
+        add_to_temp_array = { expected_digit_array_output = 8 }
+        add_to_temp_array = { expected_digit_array_output = 7 }
+        add_to_temp_array = { expected_digit_array_output = 7 }
+        add_to_temp_array = { expected_digit_array_output = 4 }
+        add_to_temp_array = { expected_digit_array_output = 7 }
+        add_to_temp_array = { expected_digit_array_output = 5 }
+        add_to_temp_array = { expected_digit_array_output = 9 }
+        add_to_temp_array = { expected_digit_array_output = 5 }
+        add_to_temp_array = { expected_digit_array_output = 8 }
+        add_to_temp_array = { expected_digit_array_output = 0 }
+        add_to_temp_array = { expected_digit_array_output = 0 }
+        add_to_temp_array = { expected_digit_array_output = 6 }
+        add_to_temp_array = { expected_digit_array_output = 8 }
+        add_to_temp_array = { expected_digit_array_output = 3 }
+        add_to_temp_array = { expected_digit_array_output = 0 }
+        add_to_temp_array = { expected_digit_array_output = 5 }
+        add_to_temp_array = { expected_digit_array_output = 1 }
+        add_to_temp_array = { expected_digit_array_output = 4 }
+        add_to_temp_array = { expected_digit_array_output = 2 }
+        add_to_temp_array = { expected_digit_array_output = 9 }
+        add_to_temp_array = { expected_digit_array_output = 4 }
+        add_to_temp_array = { expected_digit_array_output = 8 }
+        add_to_temp_array = { expected_digit_array_output = 9 }
+        add_to_temp_array = { expected_digit_array_output = 5 }
+        add_to_temp_array = { expected_digit_array_output = 4 }
+        add_to_temp_array = { expected_digit_array_output = 5 }
+        add_to_temp_array = { expected_digit_array_output = 7 }
+        add_to_temp_array = { expected_digit_array_output = 2 }
+        add_to_temp_array = { expected_digit_array_output = 9 }
+        add_to_temp_array = { expected_digit_array_output = 9 }
+        add_to_temp_array = { expected_digit_array_output = 9 }
+        add_to_temp_array = { expected_digit_array_output = 7 }
+        add_to_temp_array = { expected_digit_array_output = 8 }
+        add_to_temp_array = { expected_digit_array_output = 2 }
+        add_to_temp_array = { expected_digit_array_output = 5 }
+        add_to_temp_array = { expected_digit_array_output = 8 }
+        add_to_temp_array = { expected_digit_array_output = 8 }
+        add_to_temp_array = { expected_digit_array_output = 4 }
+        add_to_temp_array = { expected_digit_array_output = 1 }
+        add_to_temp_array = { expected_digit_array_output = 7 }
+        add_to_temp_array = { expected_digit_array_output = 2 }
+        add_to_temp_array = { expected_digit_array_output = 1 }
+        add_to_temp_array = { expected_digit_array_output = 6 }
+        add_to_temp_array = { expected_digit_array_output = 2 }
+        add_to_temp_array = { expected_digit_array_output = 4 }
+        add_to_temp_array = { expected_digit_array_output = 6 }
+        add_to_temp_array = { expected_digit_array_output = 4 }
+        add_to_temp_array = { expected_digit_array_output = 6 }
+        add_to_temp_array = { expected_digit_array_output = 2 }
+        add_to_temp_array = { expected_digit_array_output = 6 }
+        add_to_temp_array = { expected_digit_array_output = 3 }
+        add_to_temp_array = { expected_digit_array_output = 2 }
+        add_to_temp_array = { expected_digit_array_output = 3 }
+        add_to_temp_array = { expected_digit_array_output = 7 }
+        add_to_temp_array = { expected_digit_array_output = 0 }
+        add_to_temp_array = { expected_digit_array_output = 9 }
+        add_to_temp_array = { expected_digit_array_output = 1 }
+        add_to_temp_array = { expected_digit_array_output = 0 }
+        add_to_temp_array = { expected_digit_array_output = 7 }
+        add_to_temp_array = { expected_digit_array_output = 3 }
+        add_to_temp_array = { expected_digit_array_output = 8 }
+        add_to_temp_array = { expected_digit_array_output = 0 }
+        add_to_temp_array = { expected_digit_array_output = 2 }
+        add_to_temp_array = { expected_digit_array_output = 5 }
+        add_to_temp_array = { expected_digit_array_output = 9 }
+        add_to_temp_array = { expected_digit_array_output = 6 }
+        add_to_temp_array = { expected_digit_array_output = 9 }
+        add_to_temp_array = { expected_digit_array_output = 3 }
+        add_to_temp_array = { expected_digit_array_output = 7 }
+        add_to_temp_array = { expected_digit_array_output = 9 }
+        add_to_temp_array = { expected_digit_array_output = 6 }
+        add_to_temp_array = { expected_digit_array_output = 6 }
+        add_to_temp_array = { expected_digit_array_output = 6 }
+        add_to_temp_array = { expected_digit_array_output = 4 }
+        add_to_temp_array = { expected_digit_array_output = 6 }
+        add_to_temp_array = { expected_digit_array_output = 8 }
+        add_to_temp_array = { expected_digit_array_output = 8 }
+        add_to_temp_array = { expected_digit_array_output = 3 }
+        add_to_temp_array = { expected_digit_array_output = 9 }
+        add_to_temp_array = { expected_digit_array_output = 2 }
+        add_to_temp_array = { expected_digit_array_output = 1 }
+        add_to_temp_array = { expected_digit_array_output = 8 }
+        add_to_temp_array = { expected_digit_array_output = 3 }
+        add_to_temp_array = { expected_digit_array_output = 9 }
+        add_to_temp_array = { expected_digit_array_output = 6 }
+        add_to_temp_array = { expected_digit_array_output = 1 }
+        add_to_temp_array = { expected_digit_array_output = 6 }
+        add_to_temp_array = { expected_digit_array_output = 9 }
+        add_to_temp_array = { expected_digit_array_output = 5 }
+        add_to_temp_array = { expected_digit_array_output = 9 }
+        add_to_temp_array = { expected_digit_array_output = 9 }
+        add_to_temp_array = { expected_digit_array_output = 1 }
+        add_to_temp_array = { expected_digit_array_output = 4 }
+        add_to_temp_array = { expected_digit_array_output = 5 }
+        add_to_temp_array = { expected_digit_array_output = 6 }
+        add_to_temp_array = { expected_digit_array_output = 5 }
+        add_to_temp_array = { expected_digit_array_output = 0 }
+        add_to_temp_array = { expected_digit_array_output = 8 }
+        add_to_temp_array = { expected_digit_array_output = 6 }
+        add_to_temp_array = { expected_digit_array_output = 3 }
+        add_to_temp_array = { expected_digit_array_output = 6 }
+        add_to_temp_array = { expected_digit_array_output = 4 }
+        add_to_temp_array = { expected_digit_array_output = 7 }
+        add_to_temp_array = { expected_digit_array_output = 4 }
+        add_to_temp_array = { expected_digit_array_output = 6 }
+        add_to_temp_array = { expected_digit_array_output = 0 }
+        add_to_temp_array = { expected_digit_array_output = 9 }
+        add_to_temp_array = { expected_digit_array_output = 3 }
+        add_to_temp_array = { expected_digit_array_output = 7 }
+        add_to_temp_array = { expected_digit_array_output = 5 }
+    }
+    # expected flags(negative, inf, NaN)
+    set_temp_variable = { expected_sign_bit = 0 }
+    set_temp_variable = { expected_inf_flag = 0 }
+    set_temp_variable = { expected_nan_flag = 0 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { digit_array_output^num = expected_digit_array_output^num } }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
+            all_of = {
+                array = expected_digit_array_output
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { temp_sign_bit = expected_sign_bit } }
+                NOT = { check_variable = { to_pdxvar_inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { to_pdxvar_nan_flag = expected_nan_flag } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - subnormal to_digit_array - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - subnormal to_digit_array - PASS"
+    }
+
+    for_each_loop = {
+        array = digit_array_output
+        value = val
+        
+        add_to_temp_array = { to_print_array = val }
+    }
+    set_temp_variable = { print_sign_bit = temp_sign_bit }
+    log = "Actual: [ieee_plus_minus_decider]10^[?digit_power_output] inf: [?to_pdxvar_inf_flag] nan: [?to_pdxvar_nan_flag]"
+    log = "[debug_print_array]"
+
+    for_each_loop = {
+        array = expected_digit_array_output
+        value = val
+        
+        add_to_temp_array = { to_print_array = val }
+    }
+    set_temp_variable = { print_sign_bit = expected_sign_bit }
+    log = "Expect: [ieee_plus_minus_decider]10^[?expected_digit_power_output] inf: [?expected_inf_flag] nan: [?expected_nan_flag]"
+    log = "[debug_print_array]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+}
+ieee_test_2005 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+
+    resize_temp_array = { temp_array_0 = 32 }
+    set_temp_variable = { temp_array_0^1 = 1 }
+    set_temp_variable = { temp_array_0^2 = 1 }
+    set_temp_variable = { temp_array_0^3 = 1 }
+    set_temp_variable = { temp_array_0^4 = 1 }
+    set_temp_variable = { temp_array_0^5 = 1 }
+    set_temp_variable = { temp_array_0^6 = 1 }
+    set_temp_variable = { temp_array_0^7 = 1 }
+    set_temp_variable = { temp_array_0^8 = 1 }
+
+    set_temp_variable = { temp_array_id = 0 }
+    to_digit_array = yes
+
+    # expected value output
+    set_temp_variable = { expected_digit_power_output = 0 }
+    clear_temp_array = expected_digit_array_output
+    # expected flags(negative, inf, NaN)
+    set_temp_variable = { expected_sign_bit = 0 }
+    set_temp_variable = { expected_inf_flag = 1 }
+    set_temp_variable = { expected_nan_flag = 0 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { digit_array_output^num = expected_digit_array_output^num } }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
+            all_of = {
+                array = expected_digit_array_output
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { temp_sign_bit = expected_sign_bit } }
+                NOT = { check_variable = { to_pdxvar_inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { to_pdxvar_nan_flag = expected_nan_flag } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - inf to_digit_array - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - inf to_digit_array - PASS"
+    }
+
+    for_each_loop = {
+        array = digit_array_output
+        value = val
+        
+        add_to_temp_array = { to_print_array = val }
+    }
+    set_temp_variable = { print_sign_bit = temp_sign_bit }
+    log = "Actual: [ieee_plus_minus_decider]10^[?digit_power_output] inf: [?to_pdxvar_inf_flag] nan: [?to_pdxvar_nan_flag]"
+    log = "[debug_print_array]"
+
+    for_each_loop = {
+        array = expected_digit_array_output
+        value = val
+        
+        add_to_temp_array = { to_print_array = val }
+    }
+    set_temp_variable = { print_sign_bit = expected_sign_bit }
+    log = "Expect: [ieee_plus_minus_decider]10^[?expected_digit_power_output] inf: [?expected_inf_flag] nan: [?expected_nan_flag]"
+    log = "[debug_print_array]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+}
+ieee_test_2006 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+
+    resize_temp_array = { temp_array_0 = 32 }
+    set_temp_variable = { temp_array_0^0 = 1 }
+    set_temp_variable = { temp_array_0^1 = 1 }
+    set_temp_variable = { temp_array_0^2 = 1 }
+    set_temp_variable = { temp_array_0^3 = 1 }
+    set_temp_variable = { temp_array_0^4 = 1 }
+    set_temp_variable = { temp_array_0^5 = 1 }
+    set_temp_variable = { temp_array_0^6 = 1 }
+    set_temp_variable = { temp_array_0^7 = 1 }
+    set_temp_variable = { temp_array_0^8 = 1 }
+    set_temp_variable = { temp_array_0^9 = 1 }
+
+    set_temp_variable = { temp_array_id = 0 }
+    to_digit_array = yes
+
+    # expected value output
+    set_temp_variable = { expected_digit_power_output = 0 }
+    clear_temp_array = expected_digit_array_output
+    # expected flags(negative, inf, NaN)
+    set_temp_variable = { expected_sign_bit = 1 }
+    set_temp_variable = { expected_inf_flag = 0 }
+    set_temp_variable = { expected_nan_flag = 1 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { digit_array_output^num = expected_digit_array_output^num } }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
+            all_of = {
+                array = expected_digit_array_output
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { temp_sign_bit = expected_sign_bit } }
+                NOT = { check_variable = { to_pdxvar_inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { to_pdxvar_nan_flag = expected_nan_flag } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - negative NaN to_digit_array - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - negative NaN to_digit_array - PASS"
+    }
+
+    for_each_loop = {
+        array = digit_array_output
+        value = val
+        
+        add_to_temp_array = { to_print_array = val }
+    }
+    set_temp_variable = { print_sign_bit = temp_sign_bit }
+    log = "Actual: [ieee_plus_minus_decider]10^[?digit_power_output] inf: [?to_pdxvar_inf_flag] nan: [?to_pdxvar_nan_flag]"
+    log = "[debug_print_array]"
+
+    for_each_loop = {
+        array = expected_digit_array_output
+        value = val
+        
+        add_to_temp_array = { to_print_array = val }
+    }
+    set_temp_variable = { print_sign_bit = expected_sign_bit }
+    log = "Expect: [ieee_plus_minus_decider]10^[?expected_digit_power_output] inf: [?expected_inf_flag] nan: [?expected_nan_flag]"
+    log = "[debug_print_array]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+}
+ieee_test_2007 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+
+    resize_temp_array = { temp_array_0 = 32 }
+
+    set_temp_variable = { temp_array_id = 0 }
+    to_digit_array = yes
+
+    # expected value output
+    set_temp_variable = { expected_digit_power_output = 0 }
+    clear_temp_array = expected_digit_array_output
+    add_to_temp_array = { expected_digit_array_output = 0 }
+    # expected flags(negative, inf, NaN)
+    set_temp_variable = { expected_sign_bit = 0 }
+    set_temp_variable = { expected_inf_flag = 0 }
+    set_temp_variable = { expected_nan_flag = 0 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { digit_array_output^num = expected_digit_array_output^num } }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
+            all_of = {
+                array = expected_digit_array_output
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { temp_sign_bit = expected_sign_bit } }
+                NOT = { check_variable = { to_pdxvar_inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { to_pdxvar_nan_flag = expected_nan_flag } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - zero to_digit_array - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - zero to_digit_array - PASS"
+    }
+
+    for_each_loop = {
+        array = digit_array_output
+        value = val
+        
+        add_to_temp_array = { to_print_array = val }
+    }
+    set_temp_variable = { print_sign_bit = temp_sign_bit }
+    log = "Actual: [ieee_plus_minus_decider]10^[?digit_power_output] inf: [?to_pdxvar_inf_flag] nan: [?to_pdxvar_nan_flag]"
+    log = "[debug_print_array]"
+
+    for_each_loop = {
+        array = expected_digit_array_output
+        value = val
+        
+        add_to_temp_array = { to_print_array = val }
+    }
+    set_temp_variable = { print_sign_bit = expected_sign_bit }
+    log = "Expect: [ieee_plus_minus_decider]10^[?expected_digit_power_output] inf: [?expected_inf_flag] nan: [?expected_nan_flag]"
+    log = "[debug_print_array]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+}
+ieee_test_2008 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+
+    resize_temp_array = { temp_array_0 = 32 }
+    set_temp_variable = { temp_array_0^0 = 1 }
+
+    set_temp_variable = { temp_array_id = 0 }
+    to_digit_array = yes
+
+    # expected value output
+    set_temp_variable = { expected_digit_power_output = 0 }
+    clear_temp_array = expected_digit_array_output
+    add_to_temp_array = { expected_digit_array_output = 0 }
+    # expected flags(negative, inf, NaN)
+    set_temp_variable = { expected_sign_bit = 1 }
+    set_temp_variable = { expected_inf_flag = 0 }
+    set_temp_variable = { expected_nan_flag = 0 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { digit_array_output^num = expected_digit_array_output^num } }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
+            all_of = {
+                array = expected_digit_array_output
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { temp_sign_bit = expected_sign_bit } }
+                NOT = { check_variable = { to_pdxvar_inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { to_pdxvar_nan_flag = expected_nan_flag } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - negative zero to_digit_array - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - negative zero to_digit_array - PASS"
+    }
+
+    for_each_loop = {
+        array = digit_array_output
+        value = val
+        
+        add_to_temp_array = { to_print_array = val }
+    }
+    set_temp_variable = { print_sign_bit = temp_sign_bit }
+    log = "Actual: [ieee_plus_minus_decider]10^[?digit_power_output] inf: [?to_pdxvar_inf_flag] nan: [?to_pdxvar_nan_flag]"
+    log = "[debug_print_array]"
+
+    for_each_loop = {
+        array = expected_digit_array_output
+        value = val
+        
+        add_to_temp_array = { to_print_array = val }
+    }
+    set_temp_variable = { print_sign_bit = expected_sign_bit }
+    log = "Expect: [ieee_plus_minus_decider]10^[?expected_digit_power_output] inf: [?expected_inf_flag] nan: [?expected_nan_flag]"
+    log = "[debug_print_array]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+}
+ieee_test_2009 = {
+    set_temp_variable = { io_error_flag = 0 }
+
+    set_temp_variable = { temp_array_id = 1.01 }
+    resize_temp_array = { temp_array_@var:temp_array_id = 33 }
+    set_temp_variable = { temp_array_@var:temp_array_id^0 = 2 }
+    to_digit_array = yes
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            NOT = { check_variable = { io_error_flag = 3 } }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - errors to_digit_array - FAIL"
+        log = "Expected 3 errors, got [?io_error_flag]"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - errors to_digit_array - PASS"
+    }
+    
+    set_temp_variable = { io_error_flag = 0 }
+}
+ieee_test_2010 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+
+    set_temp_variable = { to_float_input = 1839620.888 }
+    set_temp_variable = { temp_array_id = 0 }
+    to_float = yes
+
+    set_temp_variable = { temp_array_id = 0 }
+    to_digit_array = yes
+
+    # expected value output(1839620.875)
+    set_temp_variable = { expected_digit_power_output = 6 }
+    clear_temp_array = expected_digit_array_output
+    add_to_temp_array = { expected_digit_array_output = 1 }
+    add_to_temp_array = { expected_digit_array_output = 8 }
+    add_to_temp_array = { expected_digit_array_output = 3 }
+    add_to_temp_array = { expected_digit_array_output = 9 }
+    add_to_temp_array = { expected_digit_array_output = 6 }
+    add_to_temp_array = { expected_digit_array_output = 2 }
+    add_to_temp_array = { expected_digit_array_output = 0 }
+    add_to_temp_array = { expected_digit_array_output = 8 }
+    add_to_temp_array = { expected_digit_array_output = 7 }
+    add_to_temp_array = { expected_digit_array_output = 5 }
+    # expected flags(negative, inf, NaN)
+    set_temp_variable = { expected_sign_bit = 0 }
+    set_temp_variable = { expected_inf_flag = 0 }
+    set_temp_variable = { expected_nan_flag = 0 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { digit_array_output^num = expected_digit_array_output^num } }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
+            all_of = {
+                array = expected_digit_array_output
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { temp_sign_bit = expected_sign_bit } }
+                NOT = { check_variable = { to_pdxvar_inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { to_pdxvar_nan_flag = expected_nan_flag } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - to_float -> to_digit_array - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - to_float -> to_digit_array - PASS"
+    }
+
+    for_each_loop = {
+        array = digit_array_output
+        value = val
+        
+        add_to_temp_array = { to_print_array = val }
+    }
+    set_temp_variable = { print_sign_bit = temp_sign_bit }
+    log = "Actual: [ieee_plus_minus_decider]10^[?digit_power_output] inf: [?to_pdxvar_inf_flag] nan: [?to_pdxvar_nan_flag]"
+    log = "[debug_print_array]"
+
+    for_each_loop = {
+        array = expected_digit_array_output
+        value = val
+        
+        add_to_temp_array = { to_print_array = val }
+    }
+    set_temp_variable = { print_sign_bit = expected_sign_bit }
+    log = "Expect: [ieee_plus_minus_decider]10^[?expected_digit_power_output] inf: [?expected_inf_flag] nan: [?expected_nan_flag]"
+    log = "[debug_print_array]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+}
+ieee_test_2011 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+
+    set_temp_variable = { to_bitwise_input = -991915.008 }
+    resize_temp_array = { temp_array_id = 0 }
+    to_bitwise = yes
+
+    set_temp_variable = { temp_array_id = 0 }
+    to_digit_array = yes
+
+    # expected value output()
+    set_temp_variable = { expected_digit_power_output = 3 }
+    clear_temp_array = expected_digit_array_output
+    add_to_temp_array = { expected_digit_array_output = 1 }
+    add_to_temp_array = { expected_digit_array_output = 7 }
+    add_to_temp_array = { expected_digit_array_output = 9 }
+    add_to_temp_array = { expected_digit_array_output = 6 }
+    add_to_temp_array = { expected_digit_array_output = 6 }
+    add_to_temp_array = { expected_digit_array_output = 2 }
+    add_to_temp_array = { expected_digit_array_output = 5 }
+    # expected flags(negative, inf, NaN)
+    set_temp_variable = { expected_sign_bit = 1 }
+    set_temp_variable = { expected_inf_flag = 0 }
+    set_temp_variable = { expected_nan_flag = 0 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { digit_array_output^num = expected_digit_array_output^num } }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
+            all_of = {
+                array = expected_digit_array_output
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { temp_sign_bit = expected_sign_bit } }
+                NOT = { check_variable = { to_pdxvar_inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { to_pdxvar_nan_flag = expected_nan_flag } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - to_bitwise -> to_digit_array - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - to_bitwise -> to_digit_array - PASS"
+    }
+
+    for_each_loop = {
+        array = digit_array_output
+        value = val
+        
+        add_to_temp_array = { to_print_array = val }
+    }
+    set_temp_variable = { print_sign_bit = temp_sign_bit }
+    log = "Actual: [ieee_plus_minus_decider]10^[?digit_power_output] inf: [?to_pdxvar_inf_flag] nan: [?to_pdxvar_nan_flag]"
+    log = "[debug_print_array]"
+
+    for_each_loop = {
+        array = expected_digit_array_output
+        value = val
+        
+        add_to_temp_array = { to_print_array = val }
+    }
+    set_temp_variable = { print_sign_bit = expected_sign_bit }
+    log = "Expect: [ieee_plus_minus_decider]10^[?expected_digit_power_output] inf: [?expected_inf_flag] nan: [?expected_nan_flag]"
+    log = "[debug_print_array]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
 }

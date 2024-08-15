@@ -51,7 +51,7 @@ Digit Arrays: Localization and conversion from floating point back to pdxvars bo
 
 Errors: This mod is complex, I have implemented a system of error logging for testing purposes. Generally, an error will do two things, raise a message in `game.log` and increment a temp var called `NAME_error_flag`. These flags are useful as they can accumulate the error number, so reading the counter after a bad function call counts the number of errors. However, due to the nature of scripted effects, these errors cannot affect control flow efficiently. This means that in the case errors do occur, their impact will propagate to anything else it interacts with.
 
-Tests: Furthermore, I have implemented a series of tests in order to verify the function of code during development. If you want to examine the tests themselves, you can check out `scripted_effects/ieee_tests.txt` - each test is a scripted effect named `ieee_test_####`, which prints a short result to `game.log`. Additionally, you can execute all tests at once with the scripted effect `ieee_run_tests` (in-game terminal: `e ieee_run_tests`), which prints all of their results to `game.log`. Error messages may appear in the logs, but that is to be expected from testing the error catching portions of functions.
+Tests: Furthermore, I have implemented a series of tests in order to verify the function of code during development. If you want to examine the tests themselves, you can check out `scripted_effects/ieee_tests.txt` - each test is a scripted effect named `ieee_test_####`, which prints a short result to `game.log`. These tests run on game startup and generate a report in `game.log` for each test and any failures. Additionally, you can execute all tests at once with the scripted effect `ieee_run_tests` (in-game terminal: `e ieee_run_tests`). Error messages may appear in `game.log`, but that is expected from testing the functions' error handlers.
 
 Assumptions: When modding scripts try to read a variable that has not been set yet, it will get 0. This may raise a bit of confusion, as the code treats both the modder forgetting to set a variable and them deliberately setting a variable to 0 equivalently. Notes have been taken in the comments to describe the outcome for uninitialized variables, but extra care should be taken with scripted effects that handle numerical input: to_bitwise, to_float, etc. Since their inputs are meant to be numbers, leaving inputs uninitialized as 0 will proceed with no errors, warnings, or notification. These 0-critical inputs will be marked in comments with the line `# If no input is given, the function will use 0 in place **and return no error**`.
 
@@ -60,6 +60,7 @@ Assumptions: When modding scripts try to read a variable that has not been set y
 - Add converter from FPVs to pdxvar
     - Edge cases and tests
 - Localizer from hoieee and from bit array
+    - Implement display options and non-normal cases
     - Implement wrapper function
     - Implement multi-float print arrays
 - Addition

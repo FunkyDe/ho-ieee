@@ -262,7 +262,7 @@ to_pdxvar = {
 ## SPECIAL CASES
 # Infinity - Some cases cannot be converted to a number as usual. Therefore, a temp var is set to signify the special case: to_pdxvar_inf_flag
 # NaN - Some cases cannot be converted to a number as usual. Therefore, a temp var is set to signify the special case: to_pdxvar_nan_flag
-# In both cases, 
+# In both cases, no error is returned and both the power and array remain zeroed out and empty respectively
 to_digit_array = {
     set_temp_variable = { whole_check = temp_array_id }
     round_temp_variable = whole_check

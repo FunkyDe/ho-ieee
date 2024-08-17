@@ -608,16 +608,16 @@ ieee_test_11 = {
     set_temp_variable = { temp_array_0^0 = 2 }
     set_temp_variable = { temp_array_0^31 = -1 }
     
-    set_temp_variable = { temp_array_id = 0.001 }
+    set_temp_variable = { temp_array_id = 0 }
     store_bitwise = yes
 
     set_temp_variable = { invalid = 0 }
     if = {
         limit = {
-            NOT = { check_variable = { bitwise_error_flag = 2 } }
+            NOT = { check_variable = { bitwise_error_flag = 3 } }
         }
         log = "Test [?test_id] - errors store_bitwise - FAIL"
-        log = "Expected 2 errors, got [?bitwise_error_flag]"
+        log = "Expected 3 errors, got [?bitwise_error_flag]"
         add_to_temp_array = { test_fail_array = test_id }
     }
     else = {

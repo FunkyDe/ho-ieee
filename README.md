@@ -57,6 +57,7 @@ Assumptions: When modding scripts try to read a variable that has not been set y
 
 # TODOlist:
 
+- Triggerify things for localization
 - Add converter from FPVs to pdxvar
     - Edge cases and tests
 - Localizer from hoieee and from bit array

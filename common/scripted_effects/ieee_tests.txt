@@ -1639,9 +1639,14 @@ ieee_test_2000 = {
     }
     if = {
         limit = {
-            NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
-            all_of = {
-                array = expected_digit_array_output
+            OR = {
+                NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
+                any_of = {
+                    array = expected_digit_array_output
+                    index = idx
+
+                    NOT = { check_variable = { digit_array_output^idx = expected_digit_array_output^idx } }
+                }
             }
         }
         set_temp_variable = { invalid = 1 }
@@ -1735,9 +1740,14 @@ ieee_test_2001 = {
     }
     if = {
         limit = {
-            NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
-            all_of = {
-                array = expected_digit_array_output
+            OR = {
+                NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
+                any_of = {
+                    array = expected_digit_array_output
+                    index = idx
+
+                    NOT = { check_variable = { digit_array_output^idx = expected_digit_array_output^idx } }
+                }
             }
         }
         set_temp_variable = { invalid = 1 }
@@ -1845,9 +1855,14 @@ ieee_test_2002 = {
     }
     if = {
         limit = {
-            NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
-            all_of = {
-                array = expected_digit_array_output
+            OR = {
+                NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
+                any_of = {
+                    array = expected_digit_array_output
+                    index = idx
+
+                    NOT = { check_variable = { digit_array_output^idx = expected_digit_array_output^idx } }
+                }
             }
         }
         set_temp_variable = { invalid = 1 }
@@ -1866,11 +1881,11 @@ ieee_test_2002 = {
         limit = {
             check_variable = { invalid = 1 }
         }
-        log = "Test [?test_id] - zero to_digit_array - FAIL"
+        log = "Test [?test_id] - inc_power to_digit_array - FAIL"
         add_to_temp_array = { test_fail_array = test_id }
     }
     else = {
-        log = "Test [?test_id] - zero to_digit_array - PASS"
+        log = "Test [?test_id] - inc_power to_digit_array - PASS"
     }
 
     for_each_loop = {
@@ -1941,9 +1956,14 @@ ieee_test_2003 = {
     }
     if = {
         limit = {
-            NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
-            all_of = {
-                array = expected_digit_array_output
+            OR = {
+                NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
+                any_of = {
+                    array = expected_digit_array_output
+                    index = idx
+
+                    NOT = { check_variable = { digit_array_output^idx = expected_digit_array_output^idx } }
+                }
             }
         }
         set_temp_variable = { invalid = 1 }
@@ -2142,9 +2162,14 @@ ieee_test_2004 = {
     }
     if = {
         limit = {
-            NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
-            all_of = {
-                array = expected_digit_array_output
+            OR = {
+                NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
+                any_of = {
+                    array = expected_digit_array_output
+                    index = idx
+
+                    NOT = { check_variable = { digit_array_output^idx = expected_digit_array_output^idx } }
+                }
             }
         }
         set_temp_variable = { invalid = 1 }
@@ -2233,9 +2258,14 @@ ieee_test_2005 = {
     }
     if = {
         limit = {
-            NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
-            all_of = {
-                array = expected_digit_array_output
+            OR = {
+                NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
+                any_of = {
+                    array = expected_digit_array_output
+                    index = idx
+
+                    NOT = { check_variable = { digit_array_output^idx = expected_digit_array_output^idx } }
+                }
             }
         }
         set_temp_variable = { invalid = 1 }
@@ -2326,9 +2356,14 @@ ieee_test_2006 = {
     }
     if = {
         limit = {
-            NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
-            all_of = {
-                array = expected_digit_array_output
+            OR = {
+                NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
+                any_of = {
+                    array = expected_digit_array_output
+                    index = idx
+
+                    NOT = { check_variable = { digit_array_output^idx = expected_digit_array_output^idx } }
+                }
             }
         }
         set_temp_variable = { invalid = 1 }
@@ -2410,9 +2445,14 @@ ieee_test_2007 = {
     }
     if = {
         limit = {
-            NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
-            all_of = {
-                array = expected_digit_array_output
+            OR = {
+                NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
+                any_of = {
+                    array = expected_digit_array_output
+                    index = idx
+
+                    NOT = { check_variable = { digit_array_output^idx = expected_digit_array_output^idx } }
+                }
             }
         }
         set_temp_variable = { invalid = 1 }
@@ -2495,9 +2535,14 @@ ieee_test_2008 = {
     }
     if = {
         limit = {
-            NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
-            all_of = {
-                array = expected_digit_array_output
+            OR = {
+                NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
+                any_of = {
+                    array = expected_digit_array_output
+                    index = idx
+
+                    NOT = { check_variable = { digit_array_output^idx = expected_digit_array_output^idx } }
+                }
             }
         }
         set_temp_variable = { invalid = 1 }
@@ -2620,9 +2665,14 @@ ieee_test_2010 = {
     }
     if = {
         limit = {
-            NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
-            all_of = {
-                array = expected_digit_array_output
+            OR = {
+                NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
+                any_of = {
+                    array = expected_digit_array_output
+                    index = idx
+
+                    NOT = { check_variable = { digit_array_output^idx = expected_digit_array_output^idx } }
+                }
             }
         }
         set_temp_variable = { invalid = 1 }
@@ -2712,9 +2762,14 @@ ieee_test_2011 = {
     }
     if = {
         limit = {
-            NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
-            all_of = {
-                array = expected_digit_array_output
+            OR = {
+                NOT = { check_variable = { digit_power_output = expected_digit_power_output } }
+                any_of = {
+                    array = expected_digit_array_output
+                    index = idx
+
+                    NOT = { check_variable = { digit_array_output^idx = expected_digit_array_output^idx } }
+                }
             }
         }
         set_temp_variable = { invalid = 1 }

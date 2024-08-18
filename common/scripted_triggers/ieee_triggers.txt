@@ -1,0 +1,77 @@
+### TO_BITWISE_TRIGGER
+## Converts the pdxvar "to_bitwise_input" (when multiplied by 1000) a 32-bit signed integer bit array and pushes the result to a specified array
+## The below function has 2 parameters: to_bitwise_input and temp_array_id
+## These parameters will be cleared(by resetting to 0) after the function execution
+## BITWISE_INPUT
+# The variable to be converted into bitwise format
+# If no input is given, the function will use 0 in place **and return no error**
+## ARRAY_ID
+# the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
+# If no array_id is assigned, the function will use temp_array_0 in place
+# If the array_id is not an integer, then the function will display an error
+## Errors consist of a temp error var (bitwise_error_flag) and a message in log corresponding to the error
+to_bitwise_trigger = {
+    # Needed to prevent mysterious double trigger
+    check_variable = { double^num = 1 }
+
+    set_temp_variable = { whole_check = temp_array_id }
+    round_temp_variable = whole_check
+    if = {
+        limit = {
+            NOT = { check_variable = { whole_check = temp_array_id } }
+        }
+
+        add_to_temp_variable = { bitwise_error_flag = 1 }
+        log="to_bitwise array_id error, temp_array_id = [?temp_array_id]"
+    }
+    set_temp_variable = { bitwise_to_process = to_bitwise_input }
+    clear_temp_array = temp_array_@var:temp_array_id
+    resize_temp_array = { temp_array_@var:temp_array_id = 32 }
+    
+    # Checks if temp bitwise is negative, if so, flip sign bit and prepare for remaining conversion
+    if = {
+        limit = {
+            check_variable = { bitwise_to_process < 0 }
+        }
+        set_temp_variable = { temp_array_@var:temp_array_id^0 = 1 }
+        add_to_temp_variable = { bitwise_to_process = 2147483.648 }
+    }
+
+    # convert bitwise_to_process to remaining 31 bits
+    set_temp_variable = { bit_compare = 1073741.824 }
+
+    # Use all_state scope to emulate a for_loop
+    all_state = {
+        set_temp_variable = { idx = 0 }
+        meta_trigger = {
+            text = {
+                set_temp_variable = { idx = [STATE_ID] }
+            }
+            STATE_ID = "[THIS.GetID]"
+        }
+        if = {
+            limit = {
+                NOT = { check_variable = { idx < 1 } }
+                check_variable = { idx < 32 }
+            }
+
+            # Effects in for_loop
+            if = {
+                limit = {
+                    check_variable = {
+                        var = bitwise_to_process
+                        value = bit_compare
+                        compare = greater_than_or_equals
+                    }
+                }
+
+                set_temp_variable = { temp_array_@var:temp_array_id^idx = 1 }
+                subtract_from_temp_variable = { bitwise_to_process = bit_compare }
+            }
+            divide_temp_variable = { bit_compare = 2 }
+        }
+    }
+
+    set_temp_variable = { to_bitwise_input = 0 }
+    set_temp_variable = { temp_array_id = 0 }
+}

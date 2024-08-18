@@ -51,7 +51,7 @@ add_to_temp_array = { double = 1 }
 ### TRIGGER ###
 clear_temp_array = double
 ```
-For ease of use a wrapper scripted effect is also available, which does not need this workaround.
+For ease of use a wrapper scripted effect is also available, which does not need this workaround. As a final caveat, `all_state` has been used as a scoping workaround to triggers lacking loops. If your mod changes the map, and the map lacks a sufficient number of states, this localization may be broken. Currently, at least 40 states must be in the mod for the digit converter to function.
 
 Bit Arrays: In order to process floating-point numbers, this mod makes extensive use of bit arrays. These arrays are marked by their names `temp_array_###`, and their elements are restricted to being either 0 or 1. While the floating-point variables can be stored as usual in pdxvars, in the background they will be converted to bit arrays for actual use. Therefore, I recommend not to tamper with these temporary arrays. While errors (detailed below) may catch some of the effects of bit array manipulation, it may not notice all of them.
 
@@ -65,7 +65,6 @@ Assumptions: When modding scripts try to read a variable that has not been set y
 
 # TODOlist:
 
-- Triggerify to_digit_array for localization
 - Add converter from FPVs to pdxvar
     - Edge cases and tests
 - Localizer from hoieee and from bit array

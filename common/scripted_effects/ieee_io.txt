@@ -245,6 +245,7 @@ to_pdxvar = {
 ## Reads a bit array in floating-point format and outputs two things: The array of digits(digit_array_output) and the power of 10(digit_power_output), akin to scientific format
 ## The below function has 1 parameter: temp_array_id
 ## This parameter will be cleared(by resetting to 0) after the function execution
+## This function has been triggerized, for use in localization. The effect should have no difference in result, as long as the temp array double is unused
 ## ARRAY_ID
 # the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
 # If no array_id is assigned, the function will use temp_array_0 in place
@@ -257,230 +258,18 @@ to_pdxvar = {
 # [1, 2, 5]
 ## DIGIT_POWER_OUTPUT
 # The power gives the power of 10 the floating-point number
-# For example, the decimal 625 would have a power of 2
+# For example, the decimal number 625 would have a power of 2
 ## Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
 ## SPECIAL CASES
 # Infinity - Some cases cannot be converted to a number as usual. Therefore, a temp var is set to signify the special case: to_pdxvar_inf_flag
 # NaN - Some cases cannot be converted to a number as usual. Therefore, a temp var is set to signify the special case: to_pdxvar_nan_flag
 # In both cases, no error is returned and both the power and array remain zeroed out and empty respectively
 to_digit_array = {
-    set_temp_variable = { whole_check = temp_array_id }
-    round_temp_variable = whole_check
+    add_to_temp_array = { double = 1 }
     if = {
         limit = {
-            NOT = { check_variable = { whole_check = temp_array_id } }
-        }
-
-        add_to_temp_variable = { io_error_flag = 1 }
-        log="to_digit_array array_id error, temp_array_id = [?temp_array_id]"
-    }
-    if = {
-        limit = {
-            NOT = { check_variable = { temp_array_@var:temp_array_id^num = 32 } }
-        }
-
-        add_to_temp_variable = { io_error_flag = 1 }
-        log="to_digit_array array length error, temp_array_id = [?temp_array_id], array length = [?temp_array_@var:temp_array_id^num]"
-    }
-    for_loop_effect = {
-        start = 0
-        end = 32
-        value = idx
-
-        if = {
-            limit = {
-                AND = {
-                    NOT = { check_variable = { temp_array_@var:temp_array_id^idx = 0 } }
-                    NOT = { check_variable = { temp_array_@var:temp_array_id^idx = 1 } }
-                }
-            }
-            add_to_temp_variable = { io_error_flag = 1 }
-            log = "to_digit_array value error, temp_array_id = [?temp_array_id], value = [?temp_array_@var:temp_array_id^idx], index = [?idx]"
+            to_digit_array_trigger = yes
         }
     }
-
-    clear_temp_array = digit_array_output
-    set_temp_variable = { digit_power_output = 0 }
-    # get sign bit
-    if = {
-        limit = {
-            check_variable = { temp_array_@var:temp_array_id^0 = 1 }
-        }
-        set_temp_variable = { temp_sign_bit = 1 }
-    }
-    else = {
-        set_temp_variable = { temp_sign_bit = 0 }
-    }
-    # get exponent
-    set_temp_variable = { temp_exp = 0 }
-    set_temp_variable = { bit_compare = 128 }
-    for_loop_effect = {
-        start = 1
-        end = 9
-        compare = less_than
-        value = idx
-
-        if = {
-            limit = {
-                check_variable = { temp_array_@var:temp_array_id^idx = 1 }
-            }
-            add_to_temp_variable = { temp_exp = bit_compare }
-        }
-        divide_temp_variable = { bit_compare = 2 }
-    }
-    subtract_from_temp_variable = { temp_exp = 127 }
-
-    # Check/set special case flags
-    if = { # infinity/NaN case
-        limit = {
-            check_variable = { temp_exp = 128 }
-        }
-        set_temp_variable = { to_pdxvar_inf_flag = 1 }
-        set_temp_variable = { to_pdxvar_nan_flag = 0 }
-
-        for_loop_effect = {
-            start = 9
-            end = 32
-            compare = less_than
-            value = idx
-            break = break_flag
-
-            if = {
-                limit = {
-                    check_variable = { temp_array_@var:temp_array_id^idx = 1 }
-                }
-                set_temp_variable = { to_pdxvar_inf_flag = 0 }
-                set_temp_variable = { to_pdxvar_nan_flag = 1 }
-                set_temp_variable = { break_flag = 1 }
-            }
-        }
-    }
-    else_if = { # +/- zero case
-        limit = {
-            all_of = {
-                array = temp_array_@var:temp_array_id
-                index = idx
-
-                OR = {
-                    check_variable = { idx = 0 } # Ignore sign bit
-                    check_variable = { temp_array_@var:temp_array_id^idx = 0 }
-                }
-            }
-        }
-        set_temp_variable = { to_pdxvar_inf_flag = 0 }
-        set_temp_variable = { to_pdxvar_nan_flag = 0 }
-
-        set_temp_variable = { digit_power_output = 0 }
-        add_to_temp_array = { digit_array_output = 0 }
-    }
-    else = {
-        set_temp_variable = { to_pdxvar_inf_flag = 0 }
-        set_temp_variable = { to_pdxvar_nan_flag = 0 }
-
-        # Subnormal case
-        if = {
-            limit = {
-                check_variable = { temp_exp = -127 }
-            }
-            add_to_temp_variable = { temp_exp = 1 }
-            set_temp_variable = { set_subnormal_power = 1 } # special flag to set the power due to subnormal shenanigans
-        }
-        else = {
-            for_each_loop = {
-                array = global.digit_array@var:temp_exp
-                value = v
-
-                add_to_temp_array = { digit_array_output = v }
-            }
-            set_temp_variable = { digit_power_output = global.digit_power@var:temp_exp }
-        }
-        
-        # Add mantissa powers of two
-        for_loop_effect = {
-            start = 9
-            end = 32
-            compare = less_than
-            value = bit_idx
-            
-            if = {
-                limit = {
-                    check_variable = { temp_array_@var:temp_array_id^bit_idx = 1 }
-                }
-                
-                # temp mantissa exp describes the power of 2 which the current mantissa bit describes (exp - bit_idx + 8)
-                set_temp_variable = { temp_mantissa_exp = temp_exp }
-                subtract_from_temp_variable = { temp_mantissa_exp = bit_idx }
-                add_to_temp_variable = { temp_mantissa_exp = 8 }
-                # Use flag set above to correctly assign power
-                if = {
-                    limit = {
-                        check_variable = { set_subnormal_power = 1 }
-                    }
-
-                    set_temp_variable = { digit_power_output = global.digit_power@var:temp_mantissa_exp }
-                    set_temp_variable = { set_subnormal_power = 0 }
-                }
-                # temp digit offset describes the digit in the bit array that the mantissa digits start from (digit power - mantissa power)
-                set_temp_variable = { temp_digit_offset = digit_power_output }
-                subtract_from_temp_variable = { temp_digit_offset = global.digit_power@var:temp_mantissa_exp }
-                for_loop_effect = {
-                    start = 0
-                    end = global.digit_array@var:temp_mantissa_exp^num
-                    value = idx
-
-                    # Decide whether to add to existing array element or append new digit
-                    if = {
-                        limit = {
-                            check_variable = { temp_digit_offset < digit_array_output^num }
-                        }
-                        add_to_temp_variable = { digit_array_output^temp_digit_offset = global.digit_array@var:temp_mantissa_exp^idx }
-                    }
-                    else = {
-                        add_to_temp_array = { digit_array_output = global.digit_array@var:temp_mantissa_exp^idx }
-                    }
-
-                    add_to_temp_variable = { temp_digit_offset = 1 }
-                }
-            }
-        }
-
-        # Carry digits
-        for_loop_effect = {
-            start = digit_array_output^num
-            end = 0
-            add = -1
-            compare = greater_than_or_equals
-            value = idx
-            break = carry_flag
-
-            if = {
-                limit = {
-                    check_variable = { digit_array_output^idx > 9 }
-                }
-                set_temp_variable = { temp_diff = digit_array_output^idx }
-                modulo_temp_variable = { digit_array_output^idx = 10 }
-                subtract_from_temp_variable = { temp_diff = digit_array_output^idx }
-                divide_temp_variable = { temp_diff = 10 }
-
-                set_temp_variable = { prev_idx = idx }
-                subtract_from_temp_variable = { prev_idx = 1 }
-                if = {
-                    limit = {
-                        check_variable = { prev_idx = -1 }
-                    }
-
-                    add_to_temp_array = {
-                        array = digit_array_output
-                        index = 0
-                        value = 1
-                    }
-                    add_to_temp_variable = { digit_power_output = 1 }
-                    set_temp_variable = { carry_flag = 1 }
-                }
-                else = {
-                    add_to_temp_variable = { digit_array_output^prev_idx = temp_diff }
-                }
-            }
-        }
-    }
+    clear_temp_array = double
 }

@@ -40,22 +40,14 @@ to_bitwise_trigger = {
     # convert bitwise_to_process to remaining 31 bits
     set_temp_variable = { bit_compare = 1073741.824 }
 
-    # Use all_state scope to emulate a for_loop_effect
-    all_state = {
-        set_temp_variable = { idx = 0 }
-        meta_trigger = {
-            text = {
-                set_temp_variable = { idx = [STATE_ID] }
-            }
-            STATE_ID = "[THIS.GetID]"
-        }
+    all_of = {
+        array = temp_array_@var:temp_array_id
+        index = idx
         if = {
             limit = {
                 NOT = { check_variable = { idx < 1 } }
                 check_variable = { idx < 32 }
             }
-
-            # Effects in "for_loop_effect"
             if = {
                 limit = {
                     check_variable = {
@@ -150,14 +142,9 @@ to_digit_array_trigger = {
     # get exponent
     set_temp_variable = { temp_exp = 0 }
     set_temp_variable = { bit_compare = 128 }
-    all_state = {
-        set_temp_variable = { idx = 0 }
-        meta_trigger = {
-            text = {
-                set_temp_variable = { idx = [STATE_ID] }
-            }
-            STATE_ID = "[THIS.GetID]"
-        }
+    all_of = {
+        array = temp_array_@var:temp_array_id
+        index = idx
         if = {
             limit = {
                 NOT = { check_variable = { idx < 1 } }
@@ -183,14 +170,9 @@ to_digit_array_trigger = {
         set_temp_variable = { to_pdxvar_inf_flag = 1 }
         set_temp_variable = { to_pdxvar_nan_flag = 0 }
 
-        all_state = {
-            set_temp_variable = { idx = 0 }
-            meta_trigger = {
-                text = {
-                    set_temp_variable = { idx = [STATE_ID] }
-                }
-                STATE_ID = "[THIS.GetID]"
-            }
+        all_of = {
+            array = temp_array_@var:temp_array_id
+            index = idx
             if = {
                 limit = {
                     NOT = { check_variable = { idx < 9 } }
@@ -249,14 +231,9 @@ to_digit_array_trigger = {
         }
         
         # Add mantissa powers of two
-        all_state = {
-            set_temp_variable = { bit_idx = 0 }
-            meta_trigger = {
-                text = {
-                    set_temp_variable = { bit_idx = [STATE_ID] }
-                }
-                STATE_ID = "[THIS.GetID]"
-            }
+        all_of = {
+            array = temp_array_@var:temp_array_id
+            index = bit_idx
             if = {
                 limit = {
                     NOT = { check_variable = { bit_idx < 9 } }
@@ -285,95 +262,72 @@ to_digit_array_trigger = {
                     set_temp_variable = { temp_digit_offset = digit_power_output }
                     subtract_from_temp_variable = { temp_digit_offset = global.digit_power@var:temp_mantissa_exp }
 
-                    # include index zero, all_state misses 0
-                    set_temp_variable = { idx = 0 }
-                    if = {
-                        limit = {
-                            check_variable = { temp_digit_offset < digit_array_output^num }
-                        }
-                        add_to_temp_variable = { digit_array_output^temp_digit_offset = global.digit_array@var:temp_mantissa_exp^idx }
-                    }
-                    else = {
-                        # Pad array with zeroes until proper place for new digit
-                        resize_temp_array = { digit_array_output = temp_digit_offset }
-
-                        # Finally, append new digit to proper place
-                        add_to_temp_array = { digit_array_output = global.digit_array@var:temp_mantissa_exp^idx }
-                    }
-                    add_to_temp_variable = { temp_digit_offset = 1 }
-
-                    all_state = {
-                        set_temp_variable = { idx = 0 }
-                        meta_trigger = {
-                            text = {
-                                set_temp_variable = { idx = [STATE_ID] }
-                            }
-                            STATE_ID = "[THIS.GetID]"
-                        }
+                    all_of = {
+                        array = global.digit_array@var:temp_mantissa_exp
+                        index = idx
+                        # Decide whether to add to existing array element or append new digit
                         if = {
                             limit = {
-                                NOT = { check_variable = { idx < 1 } }
-                                check_variable = { idx < global.digit_array@var:temp_mantissa_exp^num }
+                                check_variable = { temp_digit_offset < digit_array_output^num }
                             }
-
-                            # Decide whether to add to existing array element or append new digit
+                            add_to_temp_variable = { digit_array_output^temp_digit_offset = global.digit_array@var:temp_mantissa_exp^idx }
+                        }
+                        else = {
                             if = {
                                 limit = {
-                                    check_variable = { temp_digit_offset < digit_array_output^num }
+                                    check_variable = { idx = 0 }
                                 }
-                                add_to_temp_variable = { digit_array_output^temp_digit_offset = global.digit_array@var:temp_mantissa_exp^idx }
-                            }
-                            else = {
-                                add_to_temp_array = { digit_array_output = global.digit_array@var:temp_mantissa_exp^idx }
+
+                                # Pad array with zeroes until proper place for new digit
+                                resize_temp_array = { digit_array_output = temp_digit_offset }
                             }
 
-                            add_to_temp_variable = { temp_digit_offset = 1 }
+                            
+                            add_to_temp_array = { digit_array_output = global.digit_array@var:temp_mantissa_exp^idx }
                         }
+
+                        # Append new digit to proper place
+                        add_to_temp_variable = { temp_digit_offset = 1 }
                     }
                 }
             }
         }
 
         # Carry digits
-        all_state = {
+        all_of = {
+            array = digit_array_output
+            index = reverse_idx
+
+            # traverse array backwards
             set_temp_variable = { idx = digit_array_output^num }
-            meta_trigger = {
-                text = {
-                    subtract_from_temp_variable = { idx = [STATE_ID] }
-                }
-                STATE_ID = "[THIS.GetID]"
-            }
+            subtract_from_temp_variable = { idx = reverse_idx }
+            subtract_from_temp_variable = { idx = 1 }
+
             if = {
                 limit = {
-                    NOT = { check_variable = { idx < 0 } }
+                    check_variable = { digit_array_output^idx > 9 }
                 }
+                set_temp_variable = { temp_diff = digit_array_output^idx }
+                modulo_temp_variable = { digit_array_output^idx = 10 }
+                subtract_from_temp_variable = { temp_diff = digit_array_output^idx }
+                divide_temp_variable = { temp_diff = 10 }
 
+                set_temp_variable = { prev_idx = idx }
+                subtract_from_temp_variable = { prev_idx = 1 }
                 if = {
                     limit = {
-                        check_variable = { digit_array_output^idx > 9 }
+                        check_variable = { prev_idx = -1 }
                     }
-                    set_temp_variable = { temp_diff = digit_array_output^idx }
-                    modulo_temp_variable = { digit_array_output^idx = 10 }
-                    subtract_from_temp_variable = { temp_diff = digit_array_output^idx }
-                    divide_temp_variable = { temp_diff = 10 }
 
-                    set_temp_variable = { prev_idx = idx }
-                    subtract_from_temp_variable = { prev_idx = 1 }
-                    if = {
-                        limit = {
-                            check_variable = { prev_idx = -1 }
-                        }
-
-                        add_to_temp_array = {
-                            array = digit_array_output
-                            index = 0
-                            value = 1
-                        }
-                        add_to_temp_variable = { digit_power_output = 1 }
+                    add_to_temp_array = {
+                        array = digit_array_output
+                        index = 0
+                        value = 1
                     }
-                    else = {
-                        add_to_temp_variable = { digit_array_output^prev_idx = temp_diff }
-                    }
+                    add_to_temp_variable = { digit_power_output = 1 }
+                }
+                else = {
+                    add_to_temp_variable = { digit_array_output^prev_idx = temp_diff }
                 }
             }
         }

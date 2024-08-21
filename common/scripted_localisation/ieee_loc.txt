@@ -11,6 +11,19 @@ defined_text = {
         localization_key = ""
     }
 }
+# Prints a plus depending on the decimal power of the number for scientific notation
+defined_text = {
+    name = ieee_plus_decider
+    text = {
+        trigger = {
+            check_variable = { digit_power_output < 0 }
+        }
+        localization_key = ""
+    }
+    text = {
+        localization_key = "+"
+    }
+}
 # Prints ONLY a minus depending on the value of the temp var temp_sign_bit(0 -> nothing, 1 -> -)
 defined_text = {
     name = ieee_plus_minus_decider
@@ -95,4 +108,639 @@ defined_text = {
         localization_key = ""
     }
 }
-# Prints the given 
+## Floating-point localization wrappers
+## Generally, these use to_print_float as the input float, which will *not* be the same as the value stored in the pdxvar
+# Prints the given array to_print_digit_array, using to_print_digit_power to determine where to place the decimal point
+# No rounding will be done
+defined_text = {
+    name = print_digit_full
+    text = {
+        trigger = {
+            # First, convert input to bits
+            set_temp_variable = { to_bitwise_input = to_print_float }
+            set_temp_variable = { temp_array_id = 0 }
+
+            add_to_temp_array = { double = 1 }
+            to_bitwise_trigger = yes
+            clear_temp_array = double
+
+            # Then, use bits to convert to digit array
+            set_temp_variable = { temp_array_id = 0 }
+
+            add_to_temp_array = { double = 1 }
+            to_digit_array_trigger = yes
+            clear_temp_array = double
+
+            # Finally, print digits out
+            set_temp_variable = { print_sign_bit = temp_sign_bit }
+            set_temp_variable = { print_inf_flag = to_pdxvar_inf_flag }
+            set_temp_variable = { print_nan_flag = to_pdxvar_nan_flag }
+            all_of = {
+                array = digit_array_output
+                value = val
+
+                add_to_temp_array = { to_print_digit_array = val }
+            }
+            set_temp_variable = { to_print_digit_power = digit_power_output }
+        }
+        localization_key = "[debug_print_digit]"
+    }
+}
+# Prints the given array to_print_digit_array, using to_print_digit_power to determine where to place the decimal point
+# Any decimal component will be truncated, rounding towards 0, meaning if -1 < number < 1 for example, then "0" will be displayed
+defined_text = {
+    name = print_digit_trunc
+    text = {
+        trigger = {
+            # First, convert input to bits
+            set_temp_variable = { to_bitwise_input = to_print_float }
+            set_temp_variable = { temp_array_id = 0 }
+
+            add_to_temp_array = { double = 1 }
+            to_bitwise_trigger = yes
+            clear_temp_array = double
+
+            # Then, use bits to convert to digit array
+            set_temp_variable = { temp_array_id = 0 }
+
+            add_to_temp_array = { double = 1 }
+            to_digit_array_trigger = yes
+            clear_temp_array = double
+
+            # Finally, print digits out
+            set_temp_variable = { print_sign_bit = temp_sign_bit }
+            set_temp_variable = { print_inf_flag = to_pdxvar_inf_flag }
+            set_temp_variable = { print_nan_flag = to_pdxvar_nan_flag }
+            set_temp_variable = { to_print_digit_power = digit_power_output }
+            all_of = {
+                array = digit_array_output
+                value = val
+                index = idx
+
+                if = {
+                    limit = {
+                        NOT = { check_variable = { idx > digit_power_output } }
+                    }
+                    add_to_temp_array = { to_print_digit_array = val }
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = { to_print_digit_array^num = 0 }
+                }
+
+                add_to_temp_array = { to_print_digit_array = 0 }
+                set_temp_variable = { to_print_digit_power = 0 }
+            }
+        }
+        localization_key = "[debug_print_digit]"
+    }
+}
+# Prints the given array to_print_digit_array, using to_print_digit_power to determine where to place the decimal point
+# This number will be rounded to the thousandths place, as if it was converted to a pdxvar first
+defined_text = {
+    name = print_digit_pdx
+    text = {
+        trigger = {
+            # First, convert input to bits
+            set_temp_variable = { to_bitwise_input = to_print_float }
+            set_temp_variable = { temp_array_id = 0 }
+
+            add_to_temp_array = { double = 1 }
+            to_bitwise_trigger = yes
+            clear_temp_array = double
+
+            # Then, use bits to convert to digit array
+            set_temp_variable = { temp_array_id = 0 }
+
+            add_to_temp_array = { double = 1 }
+            to_digit_array_trigger = yes
+            clear_temp_array = double
+
+            # Finally, print digits out
+            set_temp_variable = { print_sign_bit = temp_sign_bit }
+            set_temp_variable = { print_inf_flag = to_pdxvar_inf_flag }
+            set_temp_variable = { print_nan_flag = to_pdxvar_nan_flag }
+            set_temp_variable = { to_print_digit_power = digit_power_output }
+            all_of = {
+                array = digit_array_output
+                value = val
+                index = idx
+
+                set_temp_variable = { pdx_digit_cap = digit_power_output }
+                add_to_temp_variable = { pdx_digit_cap = 4 }
+                if = {
+                    limit = {
+                        check_variable = { idx < pdx_digit_cap }
+                    }
+                    add_to_temp_array = { to_print_digit_array = val }
+                }
+                else = {
+                    set_temp_variable = { least_sig_digit_idx = pdx_digit_cap }
+                    subtract_from_temp_variable = { least_sig_digit_idx = 1 }
+                    set_temp_variable = { least_sig_digit = digit_array_output^least_sig_digit_idx }
+                    modulo_temp_variable = { least_sig_digit = 2 }
+                    if = {
+                        limit = {
+                            check_variable = { idx = pdx_digit_cap }
+                            ### Rounds using the recommended TiesToEven, consult 4.3 (pg 27) in ieee_754.pdf
+                            OR = {
+                                check_variable = { val > 5 }
+                                AND = {
+                                    check_variable = { val = 5 }
+                                    OR = {
+                                        check_variable = { digit_array_output^num > pdx_digit_cap }
+                                        check_variable = { least_sig_digit = 1 }
+                                    }
+                                }
+                            }
+
+                        }
+                        ### add one to previous var and propagate addition
+                        add_to_temp_variable = { to_print_digit_array^least_sig_digit_idx = 1 }
+
+                        all_of = {
+                            array = digit_array_output
+                            index = idx
+                            
+                            # traverse array backwards
+                            set_temp_variable = { carry_idx = digit_array_output^num }
+                            subtract_from_temp_variable = { carry_idx = idx }
+                            subtract_from_temp_variable = { carry_idx = 1 }
+                            
+                            if = {
+                                limit = {
+                                    check_variable = { to_print_digit_array^carry_idx > 9 }
+                                }
+                                subtract_from_temp_variable = { to_print_digit_array^carry_idx = 10 }
+
+                                set_temp_variable = { prev_idx = carry_idx }
+                                subtract_from_temp_variable = { prev_idx = 1 }
+                                if = {
+                                    limit = {
+                                        check_variable = { prev_idx = -1 }
+                                    }
+
+                                    add_to_temp_array = {
+                                        array = to_print_digit_array
+                                        index = 0
+                                        value = 1
+                                    }
+                                    add_to_temp_variable = { to_print_digit_power = 1 }
+                                }
+                                else = {
+                                    add_to_temp_variable = { to_print_digit_array^prev_idx = 1 }
+                                }
+
+                                # Trim trailing zeroes if after decimal
+                                if = {
+                                    limit = {
+                                        check_variable = { to_print_digit_array^carry_idx = 0 }
+                                    }
+                                    resize_temp_array = { to_print_digit_array = carry_idx }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = { to_print_digit_array^num = 0 }
+                }
+
+                add_to_temp_array = { to_print_digit_array = 0 }
+                set_temp_variable = { to_print_digit_power = 0 }
+            }
+        }
+        localization_key = "[debug_print_digit]"
+    }
+}
+# Prints the given array to_print_digit_array, using to_print_digit_power to determine where to place the decimal point
+# This scripted loc takes an additional parameter, print_digits_param, which is used to determine how many digits to round to. A value of either *0* or higher than the number of digits in the number will display the entire value
+defined_text = {
+    name = print_digit_round
+    text = {
+        trigger = {
+            # First, convert input to bits
+            set_temp_variable = { to_bitwise_input = to_print_float }
+            set_temp_variable = { temp_array_id = 0 }
+
+            add_to_temp_array = { double = 1 }
+            to_bitwise_trigger = yes
+            clear_temp_array = double
+
+            # Then, use bits to convert to digit array
+            set_temp_variable = { temp_array_id = 0 }
+
+            add_to_temp_array = { double = 1 }
+            to_digit_array_trigger = yes
+            clear_temp_array = double
+
+            # If parameter is 0, set it to large
+            if = {
+                limit = {
+                    check_variable = { to_print_param = 0 }
+                }
+                set_temp_variable = { to_print_param = digit_array_output^num }
+                add_to_temp_variable = { to_print_param = 1 }
+            }
+
+            # Finally, print digits out
+            set_temp_variable = { print_sign_bit = temp_sign_bit }
+            set_temp_variable = { print_inf_flag = to_pdxvar_inf_flag }
+            set_temp_variable = { print_nan_flag = to_pdxvar_nan_flag }
+            set_temp_variable = { to_print_digit_power = digit_power_output }
+            all_of = {
+                array = digit_array_output
+                value = val
+                index = idx
+
+                if = {
+                    limit = {
+                        check_variable = { idx < to_print_param }
+                    }
+                    add_to_temp_array = { to_print_digit_array = val }
+                }
+                else = {
+                    set_temp_variable = { least_sig_digit_idx = to_print_param }
+                    subtract_from_temp_variable = { least_sig_digit_idx = 1 }
+                    set_temp_variable = { least_sig_digit = digit_array_output^least_sig_digit_idx }
+                    modulo_temp_variable = { least_sig_digit = 2 }
+                    if = {
+                        limit = {
+                            check_variable = { idx = to_print_param }
+                            ### Rounds using the recommended TiesToEven, consult 4.3 (pg 27) in ieee_754.pdf
+                            OR = {
+                                check_variable = { val > 5 }
+                                AND = {
+                                    check_variable = { val = 5 }
+                                    OR = {
+                                        check_variable = { digit_array_output^num > to_print_param }
+                                        check_variable = { least_sig_digit = 1 }
+                                    }
+                                }
+                            }
+
+                        }
+                        ### add one to previous var and propagate addition
+                        add_to_temp_variable = { to_print_digit_array^least_sig_digit_idx = 1 }
+
+                        all_of = {
+                            array = digit_array_output
+                            index = idx
+                            
+                            # traverse array backwards
+                            set_temp_variable = { carry_idx = digit_array_output^num }
+                            subtract_from_temp_variable = { carry_idx = idx }
+                            subtract_from_temp_variable = { carry_idx = 1 }
+                            
+                            if = {
+                                limit = {
+                                    check_variable = { to_print_digit_array^carry_idx > 9 }
+                                }
+                                subtract_from_temp_variable = { to_print_digit_array^carry_idx = 10 }
+
+                                set_temp_variable = { prev_idx = carry_idx }
+                                subtract_from_temp_variable = { prev_idx = 1 }
+                                if = {
+                                    limit = {
+                                        check_variable = { prev_idx = -1 }
+                                    }
+
+                                    add_to_temp_array = {
+                                        array = to_print_digit_array
+                                        index = 0
+                                        value = 1
+                                    }
+                                    add_to_temp_variable = { to_print_digit_power = 1 }
+                                }
+                                else = {
+                                    add_to_temp_variable = { to_print_digit_array^prev_idx = 1 }
+                                }
+
+
+                                # Trim trailing zeroes if after decimal
+                                set_temp_variable = { temp_array_size = to_print_param }
+                                # Pad after significant digits
+                                set_temp_variable = { temp_power_digits = to_print_digit_power }
+                                add_to_temp_variable = { temp_power_digits = 1 }
+                                if = {
+                                    limit = {
+                                        check_variable = { temp_power_digits > temp_array_size }
+                                    }
+                                    set_temp_variable = { temp_array_size = temp_power_digits }
+                                }
+                                resize_temp_array = { to_print_digit_array = temp_array_size }
+                            }
+                        }
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = { to_print_digit_array^num = 0 }
+                }
+
+                add_to_temp_array = { to_print_digit_array = 0 }
+                set_temp_variable = { to_print_digit_power = 0 }
+            }
+        }
+        localization_key = "[debug_print_digit]"
+    }
+}
+# Prints the given array to_print_digit_array in a scientific value format, using to_print_digit_power to determine the power of 10
+# This scripted loc takes an additional parameter, to_print_param, which is used to determine how many digits to round to. A value of either *0* or higher than the number of digits in the number will display the entire value
+defined_text = {
+    name = print_digit_sci
+    text = {
+        trigger = {
+            # First, convert input to bits
+            set_temp_variable = { to_bitwise_input = to_print_float }
+            set_temp_variable = { temp_array_id = 0 }
+
+            add_to_temp_array = { double = 1 }
+            to_bitwise_trigger = yes
+            clear_temp_array = double
+
+            # Then, use bits to convert to digit array
+            set_temp_variable = { temp_array_id = 0 }
+
+            add_to_temp_array = { double = 1 }
+            to_digit_array_trigger = yes
+            clear_temp_array = double
+
+            # If parameter is 0, set it to large
+            if = {
+                limit = {
+                    check_variable = { to_print_param = 0 }
+                }
+                set_temp_variable = { to_print_param = digit_array_output^num }
+                add_to_temp_variable = { to_print_param = 1 }
+            }
+
+            # Finally, print digits out
+            set_temp_variable = { print_sign_bit = temp_sign_bit }
+            set_temp_variable = { print_inf_flag = to_pdxvar_inf_flag }
+            set_temp_variable = { print_nan_flag = to_pdxvar_nan_flag }
+            set_temp_variable = { to_print_digit_power = 0 }
+            all_of = {
+                array = digit_array_output
+                value = val
+                index = idx
+
+                if = {
+                    limit = {
+                        check_variable = { idx < to_print_param }
+                    }
+                    add_to_temp_array = { to_print_digit_array = val }
+                }
+                else = {
+                    set_temp_variable = { least_sig_digit_idx = to_print_param }
+                    subtract_from_temp_variable = { least_sig_digit_idx = 1 }
+                    set_temp_variable = { least_sig_digit = digit_array_output^least_sig_digit_idx }
+                    modulo_temp_variable = { least_sig_digit = 2 }
+                    if = {
+                        limit = {
+                            check_variable = { idx = to_print_param }
+                            ### Rounds using the recommended TiesToEven, consult 4.3 (pg 27) in ieee_754.pdf
+                            OR = {
+                                check_variable = { val > 5 }
+                                AND = {
+                                    check_variable = { val = 5 }
+                                    OR = {
+                                        check_variable = { digit_array_output^num > to_print_param }
+                                        check_variable = { least_sig_digit = 1 }
+                                    }
+                                }
+                            }
+
+                        }
+                        ### add one to previous var and propagate addition
+                        add_to_temp_variable = { to_print_digit_array^least_sig_digit_idx = 1 }
+
+                        all_of = {
+                            array = digit_array_output
+                            index = idx
+                            
+                            # traverse array backwards
+                            set_temp_variable = { carry_idx = digit_array_output^num }
+                            subtract_from_temp_variable = { carry_idx = idx }
+                            subtract_from_temp_variable = { carry_idx = 1 }
+                            
+                            if = {
+                                limit = {
+                                    check_variable = { to_print_digit_array^carry_idx > 9 }
+                                }
+                                subtract_from_temp_variable = { to_print_digit_array^carry_idx = 10 }
+
+                                set_temp_variable = { prev_idx = carry_idx }
+                                subtract_from_temp_variable = { prev_idx = 1 }
+                                if = {
+                                    limit = {
+                                        check_variable = { prev_idx = -1 }
+                                    }
+
+                                    add_to_temp_array = {
+                                        array = to_print_digit_array
+                                        index = 0
+                                        value = 1
+                                    }
+                                    add_to_temp_variable = { digit_power_output = 1 }
+                                }
+                                else = {
+                                    add_to_temp_variable = { to_print_digit_array^prev_idx = 1 }
+                                }
+
+                                # Trim array to significant digits desired
+                                resize_temp_array = { to_print_digit_array = to_print_param }
+                            }
+                        }
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = { to_print_digit_array^num = 0 }
+                }
+
+                add_to_temp_array = { to_print_digit_array = 0 }
+                set_temp_variable = { to_print_digit_power = 0 }
+            }
+        }
+        localization_key = "[debug_print_digit_sci]"
+    }
+}
+# Prints the digits in to_print_digit_array and places the decimal in to_print_digit_power after potentially being processed in the wrappers
+# Do not use the scripted locs after this one, since those are for use by this script
+defined_text = {
+    name = debug_print_digit
+    text = {
+        trigger = {
+            check_variable = { print_inf_flag = 1 }
+        }
+        localization_key = "[ieee_minus_decider]infinity"
+    }
+    text = {
+        trigger = {
+            check_variable = { print_nan_flag = 1 }
+        }
+        localization_key = "NaN"
+    }
+    text = {
+        trigger = {
+            check_variable = { to_print_digit_array^num = 0 }
+        }
+        localization_key = "{ERROR: empty array}"
+    }
+    text = {
+        trigger = {
+            set_temp_variable = { temp_index = 0 }
+            set_temp_variable = { temp_power = to_print_digit_power }
+        }
+        localization_key = "[ieee_minus_decider][zero_padding][debug_print_digit_step][clear_digit_array]"
+    }
+}
+# If the power is less than 0, fills in the left of the decimal with zeroes
+defined_text = {
+    name = zero_padding
+    text = {
+        trigger = {
+            NOT = { check_variable = { temp_power < 0 } }
+        }
+        localization_key = ""
+    }
+    text = {
+        trigger = {
+            add_to_temp_variable = { temp_power = 1 }
+            set_temp_variable = { round_check = temp_power }
+            divide_temp_variable = { round_check = 2 }
+            round_temp_variable = round_check
+            multiply_temp_variable = { round_check = 2 }
+
+            check_variable = { temp_power = round_check }
+        }
+        localization_key = "0.[zero_padding_step]"
+    }
+    text = {
+        trigger = {
+            add_to_temp_variable = { temp_power = 1 }
+        }
+        localization_key = "0.0[zero_padding_step]"
+    }
+}
+defined_text = {
+    name = zero_padding_step
+    text = {
+        trigger = {
+            add_to_temp_variable = { temp_power = 2 }
+            check_variable = { temp_power > 0 }
+        }
+        localization_key = ""
+    }
+    text = {
+        localization_key = "00[zero_padding_step]"
+    }
+}
+# Recursively prints the next 2 digits and places decimal if needed
+defined_text = {
+    name = debug_print_digit_step
+    text = {
+        trigger = {
+            add_to_temp_variable = { temp_index = 2 }
+
+            set_temp_variable = { temp_index_a = temp_index }
+            subtract_from_temp_variable = { temp_index_a = 2 }
+            set_temp_variable = { temp_index_b = temp_index }
+            subtract_from_temp_variable = { temp_index_b = 1 }
+
+            subtract_from_temp_variable = { to_print_digit_power = 2 }
+
+            set_temp_variable = { to_print_digit_power_a = to_print_digit_power }
+            add_to_temp_variable = { to_print_digit_power_a = 2 }
+            set_temp_variable = { to_print_digit_power_b = to_print_digit_power }
+            add_to_temp_variable = { to_print_digit_power_b = 1 }
+
+            always = no
+        }
+        localization_key = ""
+    }
+    text = {
+        trigger = {
+            check_variable = { temp_index > to_print_digit_array^num }
+        }
+        localization_key = "[?to_print_digit_array^temp_index_a]"
+    }
+    text = {
+        trigger = {
+            check_variable = { temp_index = to_print_digit_array^num }
+        }
+        localization_key = "[?to_print_digit_array^temp_index_a][decimal_decider_a][?to_print_digit_array^temp_index_b]"
+    }
+    text = {
+        localization_key = "[?to_print_digit_array^temp_index_a][decimal_decider_a][?to_print_digit_array^temp_index_b][decimal_decider_b][debug_print_digit_step]"
+    }
+}
+defined_text = {
+    name = clear_digit_array
+    text = {
+        trigger = {
+            clear_temp_array = to_print_digit_array
+            set_temp_variable = { to_print_digit_power = 0 }
+        }
+        localization_key = ""
+    }
+}
+defined_text = {
+    name = decimal_decider_a
+    text = {
+        trigger = {
+            check_variable = { to_print_digit_power_a = 0 }
+        }
+        localization_key = "."
+    }
+    text = {
+        localization_key = ""
+    }
+}
+defined_text = {
+    name = decimal_decider_b
+    text = {
+        trigger = {
+            check_variable = { to_print_digit_power_b = 0 }
+        }
+        localization_key = "."
+    }
+    text = {
+        localization_key = ""
+    }
+}
+# Helper to format scientific notation
+defined_text = {
+    name = debug_print_digit_sci
+    text = {
+        trigger = {
+            check_variable = { print_inf_flag = 1 }
+        }
+        localization_key = "[ieee_minus_decider]infinity"
+    }
+    text = {
+        trigger = {
+            check_variable = { print_nan_flag = 1 }
+        }
+        localization_key = "NaN"
+    }
+    text = {
+        trigger = {
+            check_variable = { to_print_digit_array^num = 0 }
+        }
+        localization_key = "{ERROR: empty array}"
+    }
+    text = {
+        trigger = {
+            set_temp_variable = { temp_index = 0 }
+            set_temp_variable = { temp_power = to_print_digit_power }
+        }
+        localization_key = "[ieee_minus_decider][zero_padding][debug_print_digit_step][clear_digit_array]E[ieee_plus_decider][?digit_power_output]"
+    }
+}

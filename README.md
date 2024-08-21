@@ -68,8 +68,6 @@ Assumptions: When modding scripts try to read a variable that has not been set y
 - Add converter from FPVs to pdxvar
     - Edge cases and tests
 - Localizer from hoieee and from bit array
-    - Implement display options and non-normal cases
-    - Implement wrapper function
     - Implement multi-float print arrays
 - Addition
     - positive case

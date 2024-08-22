@@ -108,6 +108,81 @@ defined_text = {
         localization_key = ""
     }
 }
+
+## Multi-print wrapper
+## In order to print multiple floats in one loc block, you need to push values to three arrays
+## multi_print_float: determines the value to be printed(again, please note this is NOT the same as the actual value of the element)
+## multi_print_style: determines the mode of printing(0: full, 1: trunc, 2: pdx, 3: round, 4: sci). Any other number will use the full print mode
+## multi_print_param: determines the number of significant digits for rounded and scientific printing modes(unused for other modes). Any negative or non-whole value will default to zero
+## Every time you call print_multi_float, the first value in each array will be popped and used to print the floating-point variable.
+## If the size of the arrays differ, you will only be able to print as many times as there are values in the multi_print_float array. Further calls to the print_multi_float scripted loc will print "0"
+defined_text = {
+    name = print_multi_float
+    text = {
+        trigger = {
+            # Extract values, then decide printing mode
+            set_temp_variable = { to_print_float = multi_print_float^0 }
+            remove_from_temp_array = {
+                array = multi_print_float
+                index = 0
+            }
+            set_temp_variable = { to_print_style = multi_print_style^0 }
+            remove_from_temp_array = {
+                array = multi_print_style
+                index = 0
+            }
+            set_temp_variable = { to_print_param = multi_print_param^0 }
+            remove_from_temp_array = {
+                array = multi_print_param
+                index = 0
+            }
+
+            # Sanitize param, if decimal or less than zero, default to 0, with no error played
+            set_temp_variable = { whole_check = to_print_param }
+            round_temp_variable = whole_check
+            if = {
+                limit = {
+                    OR = {
+                        NOT = { check_variable = { whole_check = to_print_param } }
+                        check_variable = { to_print_param < 0 }
+                    }
+                }
+                set_temp_variable = { to_print_param = 0 }
+            }
+            log="[?to_print_float] [?to_print_style] [?to_print_param]"
+
+            check_variable = { to_print_style = 0 }
+        }
+        localization_key = "[print_float_full]"
+    }
+    text = {
+        trigger = {
+            check_variable = { to_print_style = 1 }
+        }
+        localization_key = "[print_float_trunc]"
+    }
+    text = {
+        trigger = {
+            check_variable = { to_print_style = 2 }
+        }
+        localization_key = "[print_float_pdx]"
+    }
+    text = {
+        trigger = {
+            check_variable = { to_print_style = 3 }
+        }
+        localization_key = "[print_float_round]"
+    }
+    text = {
+        trigger = {
+            check_variable = { to_print_style = 4 }
+        }
+        localization_key = "[print_float_sci]"
+    }
+    text = {
+        localization_key = "[print_float_full]"
+    }
+}
 ## Floating-point localization wrappers
 ## Generally, these use to_print_float as the input float, which will *not* be the same as the value stored in the pdxvar
 # Prints the given array to_print_digit_array, using to_print_digit_power to determine where to place the decimal point

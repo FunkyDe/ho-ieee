@@ -12,13 +12,11 @@
 # If the array_id is not an integer, then the function will display an error
 ## Errors consist of a temp error var (bitwise_error_flag) and a message in log corresponding to the error
 to_bitwise = {
-    add_to_temp_array = { double = 1 }
     if = {
         limit = {
             to_bitwise_trigger = yes
         }
     }
-    clear_temp_array = double
 }
 ### STORE_BITWISE
 ## Converts the bit array inputted to a 32-bit signed integer, divides it by 1000, and pushes the result to a pdxvar

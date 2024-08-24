@@ -265,11 +265,9 @@ to_pdxvar = {
 # NaN - Some cases cannot be converted to a number as usual. Therefore, a temp var is set to signify the special case: to_pdxvar_nan_flag
 # In both cases, no error is returned and both the power and array remain zeroed out and empty respectively
 to_digit_array = {
-    add_to_temp_array = { double = 1 }
     if = {
         limit = {
             to_digit_array_trigger = yes
         }
     }
-    clear_temp_array = double
 }

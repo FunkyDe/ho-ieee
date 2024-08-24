@@ -30,7 +30,7 @@ This mod is a work in progress at the moment, but for now the task map is:
 - [x] Creation and Destruction of floating-point variables (FPVs)
     - [x] Implement system of input to transform pdxvars to FPVs
 - [ ] FPV Output
-    - [ ] Implement localization of FPVs
+    - [x] Implement localization of FPVs
     - [ ] Implement transformation back to pdxvars
 - [ ] Addition and Subtraction
     - [ ] Exceptions and special cases (subnormals, infinities, NaNs)
@@ -45,13 +45,7 @@ This project is currently maintained by one modder, FunkyDe.
 
 # Additional Details
 
-Triggers: Localization only allows triggers to be utilized beforehand, meaning that the scripted effects that are necessary to pre-process variables and arrays are not available. Therefore, certain scripted effects(so far only two, `to_bitwise` and `to_digit_array`) have been  converted to a scripted trigger. There should be no difference between them, except for the fact that before using them in any trigger block, two lines must be added beforehand:
-```
-add_to_temp_array = { double = 1 }
-### TRIGGER ###
-clear_temp_array = double
-```
-For ease of use a wrapper scripted effect is also available, which does not need this workaround.
+Triggers: Localization only allows triggers to be utilized beforehand, meaning that the scripted effects that are necessary to pre-process variables and arrays are not available. Therefore, certain scripted effects(so far only two, `to_bitwise` and `to_digit_array`) have been converted to a scripted trigger. There should be no difference between them. For ease of use a wrapper scripted effect is also available.
 
 Bit Arrays: In order to process floating-point numbers, this mod makes extensive use of bit arrays. These arrays are marked by their names `temp_array_###`, and their elements are restricted to being either 0 or 1. While the floating-point variables can be stored as usual in pdxvars, in the background they will be converted to bit arrays for actual use. Therefore, I recommend not to tamper with these temporary arrays. While errors (detailed below) may catch some of the effects of bit array manipulation, it may not notice all of them.
 
@@ -67,8 +61,6 @@ Assumptions: When modding scripts try to read a variable that has not been set y
 
 - Add converter from FPVs to pdxvar
     - Edge cases and tests
-- Localizer from hoieee and from bit array
-    - Implement multi-float print arrays
 - Addition
     - positive case
     - negative

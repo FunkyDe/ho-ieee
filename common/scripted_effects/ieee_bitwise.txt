@@ -2,7 +2,6 @@
 ## Converts the pdxvar "to_bitwise_input" (when multiplied by 1000) a 32-bit signed integer bit array and pushes the result to a specified array
 ## The below function has 2 parameters: to_bitwise_input and temp_array_id
 ## These parameters will be cleared(by resetting to 0) after the function execution
-## This function has been triggerized, for use in localization. The effect should have no difference in result, as long as the temp array double is unused
 ## BITWISE_INPUT
 # The variable to be converted into bitwise format
 # If no input is given, the function will use 0 in place **and return no error**

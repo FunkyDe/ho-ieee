@@ -1,14 +1,14 @@
 # Prints either a minus or plus sign depending on the value of the temp var temp_sign_bit(0 -> +, 1 -> -) 
 defined_text = {
-    name = ieee_minus_decider
+    name = ieee_plus_minus_decider
     text = {
         trigger = {
-            check_variable = { print_sign_bit = 1 }
+            check_variable = { temp_sign_bit = 1 }
         }
         localization_key = "-"
     }
     text = {
-        localization_key = ""
+        localization_key = "+"
     }
 }
 # Prints a plus depending on the decimal power of the number for scientific notation
@@ -26,15 +26,15 @@ defined_text = {
 }
 # Prints ONLY a minus depending on the value of the temp var temp_sign_bit(0 -> nothing, 1 -> -)
 defined_text = {
-    name = ieee_plus_minus_decider
+    name = ieee_minus_decider
     text = {
         trigger = {
-            check_variable = { print_sign_bit = 1 }
+            check_variable = { temp_sign_bit = 1 }
         }
         localization_key = "-"
     }
     text = {
-        localization_key = "+"
+        localization_key = ""
     }
 }
 # Prints the array temp_array_[?temp_array_id]
@@ -149,7 +149,6 @@ defined_text = {
                 }
                 set_temp_variable = { to_print_param = 0 }
             }
-            log="[?to_print_float] [?to_print_style] [?to_print_param]"
 
             check_variable = { to_print_style = 0 }
         }
@@ -194,17 +193,11 @@ defined_text = {
             # First, convert input to bits
             set_temp_variable = { to_bitwise_input = to_print_float }
             set_temp_variable = { temp_array_id = 0 }
-
-            add_to_temp_array = { double = 1 }
             to_bitwise_trigger = yes
-            clear_temp_array = double
 
             # Then, use bits to convert to digit array
             set_temp_variable = { temp_array_id = 0 }
-
-            add_to_temp_array = { double = 1 }
             to_digit_array_trigger = yes
-            clear_temp_array = double
 
             # Finally, print digits out
             set_temp_variable = { print_sign_bit = temp_sign_bit }
@@ -230,17 +223,11 @@ defined_text = {
             # First, convert input to bits
             set_temp_variable = { to_bitwise_input = to_print_float }
             set_temp_variable = { temp_array_id = 0 }
-
-            add_to_temp_array = { double = 1 }
             to_bitwise_trigger = yes
-            clear_temp_array = double
 
             # Then, use bits to convert to digit array
             set_temp_variable = { temp_array_id = 0 }
-
-            add_to_temp_array = { double = 1 }
             to_digit_array_trigger = yes
-            clear_temp_array = double
 
             # Finally, print digits out
             set_temp_variable = { print_sign_bit = temp_sign_bit }
@@ -280,17 +267,11 @@ defined_text = {
             # First, convert input to bits
             set_temp_variable = { to_bitwise_input = to_print_float }
             set_temp_variable = { temp_array_id = 0 }
-
-            add_to_temp_array = { double = 1 }
             to_bitwise_trigger = yes
-            clear_temp_array = double
 
             # Then, use bits to convert to digit array
             set_temp_variable = { temp_array_id = 0 }
-
-            add_to_temp_array = { double = 1 }
             to_digit_array_trigger = yes
-            clear_temp_array = double
 
             # Finally, print digits out
             set_temp_variable = { print_sign_bit = temp_sign_bit }
@@ -379,6 +360,7 @@ defined_text = {
                     }
                 }
             }
+            # If empty, set to 0 by default
             if = {
                 limit = {
                     check_variable = { to_print_digit_array^num = 0 }
@@ -400,17 +382,11 @@ defined_text = {
             # First, convert input to bits
             set_temp_variable = { to_bitwise_input = to_print_float }
             set_temp_variable = { temp_array_id = 0 }
-
-            add_to_temp_array = { double = 1 }
             to_bitwise_trigger = yes
-            clear_temp_array = double
 
             # Then, use bits to convert to digit array
             set_temp_variable = { temp_array_id = 0 }
-
-            add_to_temp_array = { double = 1 }
             to_digit_array_trigger = yes
-            clear_temp_array = double
 
             # If parameter is 0, set it to large
             if = {
@@ -537,17 +513,11 @@ defined_text = {
             # First, convert input to bits
             set_temp_variable = { to_bitwise_input = to_print_float }
             set_temp_variable = { temp_array_id = 0 }
-
-            add_to_temp_array = { double = 1 }
             to_bitwise_trigger = yes
-            clear_temp_array = double
 
             # Then, use bits to convert to digit array
             set_temp_variable = { temp_array_id = 0 }
-
-            add_to_temp_array = { double = 1 }
             to_digit_array_trigger = yes
-            clear_temp_array = double
 
             # If parameter is 0, set it to large
             if = {
@@ -555,7 +525,6 @@ defined_text = {
                     check_variable = { to_print_param = 0 }
                 }
                 set_temp_variable = { to_print_param = digit_array_output^num }
-                add_to_temp_variable = { to_print_param = 1 }
             }
 
             # Finally, print digits out
@@ -660,7 +629,7 @@ defined_text = {
         trigger = {
             check_variable = { print_inf_flag = 1 }
         }
-        localization_key = "[ieee_minus_decider]infinity"
+        localization_key = "[ieee_plus_minus_decider]infinity"
     }
     text = {
         trigger = {
@@ -803,7 +772,7 @@ defined_text = {
         trigger = {
             check_variable = { print_inf_flag = 1 }
         }
-        localization_key = "[ieee_minus_decider]infinity"
+        localization_key = "[ieee_plus_minus_decider]infinity"
     }
     text = {
         trigger = {

@@ -45,7 +45,7 @@ This project is currently maintained by one modder, FunkyDe.
 
 # Additional Details
 
-Triggers: Localization only allows triggers to be utilized beforehand, meaning that the scripted effects that are necessary to pre-process variables and arrays are not available. Therefore, certain scripted effects(so far only two, `to_bitwise` and `to_digit_array`) have been converted to a scripted trigger. There should be no difference between them. For ease of use a wrapper scripted effect is also available.
+Triggers: Localization only allows triggers to be utilized beforehand, meaning that the scripted effects that are necessary to pre-process variables and arrays are not available. Therefore, certain scripted effects have been converted to a scripted trigger. There should be no difference between them, but for ease of use a wrapper scripted effect is also available.
 
 Bit Arrays: In order to process floating-point numbers, this mod makes extensive use of bit arrays. These arrays are marked by their names `temp_array_###`, and their elements are restricted to being either 0 or 1. While the floating-point variables can be stored as usual in pdxvars, in the background they will be converted to bit arrays for actual use. Therefore, I recommend not to tamper with these temporary arrays. While errors (detailed below) may catch some of the effects of bit array manipulation, it may not notice all of them.
 

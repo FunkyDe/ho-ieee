@@ -245,7 +245,6 @@ to_pdxvar = {
 ## Reads a bit array in floating-point format and outputs two things: The array of digits(digit_array_output) and the power of 10(digit_power_output), akin to scientific format
 ## The below function has 1 parameter: temp_array_id
 ## This parameter will be cleared(by resetting to 0) after the function execution
-## This function has been triggerized, for use in localization. The effect should have no difference in result, as long as the temp array double is unused
 ## ARRAY_ID
 # the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
 # If no array_id is assigned, the function will use temp_array_0 in place

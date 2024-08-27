@@ -29,9 +29,9 @@ This mod is a work in progress at the moment, but for now the task map is:
 - [x] Experiment with bit-wise operators
 - [x] Creation and Destruction of floating-point variables (FPVs)
     - [x] Implement system of input to transform pdxvars to FPVs
-- [ ] FPV Output
+- [x] FPV Output
     - [x] Implement localization of FPVs
-    - [ ] Implement transformation back to pdxvars
+    - [x] Implement transformation back to pdxvars
 - [ ] Addition and Subtraction
     - [ ] Exceptions and special cases (subnormals, infinities, NaNs)
 - [ ] Multiplication and comparison
@@ -59,8 +59,6 @@ Assumptions: When modding scripts try to read a variable that has not been set y
 
 # TODOlist:
 
-- Add converter from FPVs to pdxvar
-    - Edge cases and tests
 - Addition
     - positive case
     - negative

@@ -239,7 +239,11 @@ to_float = {
 ## Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
 ## Additionally, any error will not trigger the to_digit_array function, and instead return 0 to the output variable
 to_pdxvar = {
-
+    if = {
+        limit = {
+            to_pdxvar_trigger = yes
+        }
+    }
 }
 ### TO_DIGIT_ARRAY
 ## Reads a bit array in floating-point format and outputs two things: The array of digits(digit_array_output) and the power of 10(digit_power_output), akin to scientific format

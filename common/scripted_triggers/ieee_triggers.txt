@@ -326,4 +326,237 @@ to_digit_array_trigger = {
             }
         }
     }
+    set_temp_variable = { temp_array_id = 0 }
+}
+### TO_PDXVAR
+## Reads a bit array in floating-point format and outputs the closest pdxvar to_pdxvar_output
+## The below function has 1 parameter: temp_array_id
+## This parameter will be cleared(by resetting to 0) after the function execution
+## ARRAY_ID
+# the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
+# If no array_id is assigned, the function will use temp_array_0 in place
+# If the array_id is not an integer, then the function will display an error
+# If the array is not 32 elements long, then the function will display an error
+# If the array has elements which are not 0 or 1, then the function will display an error
+## TO_PDXVAR_OUTPUT
+# The output variable which holds the converted value
+# Do not confuse this with the store_bitwise function, as the two functions will output different values from the same bitarray
+# If the value is too high to fit in a pdxvar(greater than 2148483.647 or less than 2147483.648), then a temp var(to_pdxvar_excess_flag) will be set to 1, a warning will be logged, and the pdxvar will default to 0 
+# In addition, two temp vars exist to notify the user of an infinity or NaN(to_pdxvar_inf_flag and to_pdxvar_nan_flag respectively) and the output will default to 0
+## Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
+## Additionally, any error will not trigger the to_digit_array function, and instead return 0 to the output variable
+to_pdxvar_trigger = {
+    # Convert bits to digits
+    to_digit_array_trigger = yes
+
+    # Process digits to pdxvar format (stolen from loc code)
+    set_temp_variable = { print_inf_flag = to_pdxvar_inf_flag }
+    set_temp_variable = { print_nan_flag = to_pdxvar_nan_flag }
+    set_temp_variable = { to_print_digit_power = digit_power_output }
+    all_of = {
+        array = digit_array_output
+        value = val
+        index = idx
+
+        set_temp_variable = { pdx_digit_cap = digit_power_output }
+        add_to_temp_variable = { pdx_digit_cap = 4 }
+        if = {
+            limit = {
+                check_variable = { idx < pdx_digit_cap }
+            }
+            add_to_temp_array = { to_print_digit_array = val }
+        }
+        else = {
+            set_temp_variable = { least_sig_digit_idx = pdx_digit_cap }
+            subtract_from_temp_variable = { least_sig_digit_idx = 1 }
+            set_temp_variable = { least_sig_digit = digit_array_output^least_sig_digit_idx }
+            modulo_temp_variable = { least_sig_digit = 2 }
+            if = {
+                limit = {
+                    check_variable = { idx = pdx_digit_cap }
+                    ### Rounds using the recommended TiesToEven, consult 4.3 (pg 27) in ieee_754.pdf
+                    OR = {
+                        check_variable = { val > 5 }
+                        AND = {
+                            check_variable = { val = 5 }
+                            OR = {
+                                check_variable = { digit_array_output^num > pdx_digit_cap }
+                                check_variable = { least_sig_digit = 1 }
+                            }
+                        }
+                    }
+
+                }
+                ### add one to previous var and propagate addition
+                add_to_temp_variable = { to_print_digit_array^least_sig_digit_idx = 1 }
+
+                all_of = {
+                    array = digit_array_output
+                    index = idx
+                    
+                    # traverse array backwards
+                    set_temp_variable = { carry_idx = digit_array_output^num }
+                    subtract_from_temp_variable = { carry_idx = idx }
+                    subtract_from_temp_variable = { carry_idx = 1 }
+                    
+                    if = {
+                        limit = {
+                            check_variable = { to_print_digit_array^carry_idx > 9 }
+                        }
+                        subtract_from_temp_variable = { to_print_digit_array^carry_idx = 10 }
+
+                        set_temp_variable = { prev_idx = carry_idx }
+                        subtract_from_temp_variable = { prev_idx = 1 }
+                        if = {
+                            limit = {
+                                check_variable = { prev_idx = -1 }
+                            }
+
+                            add_to_temp_array = {
+                                array = to_print_digit_array
+                                index = 0
+                                value = 1
+                            }
+                            add_to_temp_variable = { to_print_digit_power = 1 }
+                        }
+                        else = {
+                            add_to_temp_variable = { to_print_digit_array^prev_idx = 1 }
+                        }
+
+                        # Trim trailing zeroes if after decimal
+                        if = {
+                            limit = {
+                                check_variable = { to_print_digit_array^carry_idx = 0 }
+                            }
+                            resize_temp_array = { to_print_digit_array = carry_idx }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    set_temp_variable = { to_pdxvar_output = 0 }
+    if = {
+        limit = {
+            NOT = { check_variable = { to_print_digit_array^num = 0 } }
+        }
+
+        add_to_temp_array = { temp_positive_check = 2 }
+        add_to_temp_array = { temp_positive_check = 1 }
+        add_to_temp_array = { temp_positive_check = 4 }
+        add_to_temp_array = { temp_positive_check = 7 }
+        add_to_temp_array = { temp_positive_check = 4 }
+        add_to_temp_array = { temp_positive_check = 8 }
+        add_to_temp_array = { temp_positive_check = 3 }
+        add_to_temp_array = { temp_positive_check = 6 }
+        add_to_temp_array = { temp_positive_check = 4 }
+        add_to_temp_array = { temp_positive_check = 7 }
+
+        add_to_temp_array = { temp_negative_check = 2 }
+        add_to_temp_array = { temp_negative_check = 1 }
+        add_to_temp_array = { temp_negative_check = 4 }
+        add_to_temp_array = { temp_negative_check = 7 }
+        add_to_temp_array = { temp_negative_check = 4 }
+        add_to_temp_array = { temp_negative_check = 8 }
+        add_to_temp_array = { temp_negative_check = 3 }
+        add_to_temp_array = { temp_negative_check = 6 }
+        add_to_temp_array = { temp_negative_check = 4 }
+        add_to_temp_array = { temp_negative_check = 8 }
+        # Check if number on order of 10^6(millions) exceeds pdx limit
+        if = {
+            limit = {
+                check_variable = { to_print_digit_power = 6 }
+                check_variable = { temp_sign_bit = 0 }
+            }
+            # Positive case
+            all_of = {
+                array = temp_positive_check
+                index = idx
+
+                if = {
+                    limit = {
+                        check_variable = { temp_positive_check^idx < to_print_digit_array^idx }
+                    }
+                    set_temp_variable = { to_pdxvar_excess_flag = 1 }
+                }
+            }
+        }
+        else_if = {
+            limit = {
+                check_variable = { to_print_digit_power = 6 }
+                check_variable = { temp_sign_bit = 1 }
+            }
+            # Negative case
+            all_of = {
+                array = temp_negative_check
+                index = idx
+
+                if = {
+                    limit = {
+                        check_variable = { temp_negative_check^idx < to_print_digit_array^idx }
+                    }
+                    set_temp_variable = { to_pdxvar_excess_flag = 1 }
+                }
+            }
+        }
+        if = {
+            limit = {
+                OR = {
+                    check_variable = { to_print_digit_power > 6 }
+                    check_variable = { to_pdxvar_excess_flag = 1 }
+                }
+            }
+
+            # Too high! Can't do anything, set flag
+            set_temp_variable = { to_pdxvar_excess_flag = 1 }
+            log = "Number exceeds pdxvar cap, value = [debug_print_digit]"
+        }
+        else = {
+            # Output variable
+            set_temp_variable = { index_offset = to_print_digit_array^num }
+            subtract_from_temp_variable = { index_offset = to_print_digit_power }
+            subtract_from_temp_variable = { index_offset = 1 }
+            if = {
+                limit = {
+                    check_variable = { index_offset = 3 }
+                }
+                set_temp_variable = { mult_factor = 0.001 }
+            }
+            else_if = {
+                limit = {
+                    check_variable = { index_offset = 2 }
+                }
+                set_temp_variable = { mult_factor = 0.01 }
+            }
+            else_if = {
+                limit = {
+                    check_variable = { index_offset = 1 }
+                }
+                set_temp_variable = { mult_factor = 0.1 }
+            }
+            else_if = {
+                limit = {
+                    check_variable = { index_offset = 0 }
+                }
+                set_temp_variable = { mult_factor = 1 }
+            }
+            if = {
+                limit = {
+                    check_variable = { temp_sign_bit = 1 }
+                }
+                multiply_temp_variable = { mult_factor = -1 }
+            }
+            all_of = {
+                array = to_print_digit_array
+                index = idx
+
+                multiply_temp_variable = { to_pdxvar_output = 10 }
+
+                set_temp_variable = { val = to_print_digit_array^idx }
+                multiply_temp_variable = { val = mult_factor }
+                add_to_temp_variable = { to_pdxvar_output = val }
+            }
+        }
+    }
+    set_temp_variable = { temp_array_id = 0 }
 }

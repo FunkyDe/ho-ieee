@@ -236,6 +236,8 @@ to_float = {
 ## TO_PDXVAR_OUTPUT
 # The output variable which holds the converted value
 # Do not confuse this with the store_bitwise function, as the two functions will output different values from the same bitarray
+# If the value is too high to fit in a pdxvar(greater than 2148483.647 or less than 2147483.648), then a temp var(to_pdxvar_overflow_flag) will be set to 1 or -1 depending on whether the float was too high or too low respectively, a warning will be logged, and the pdxvar will default to 0 
+# In addition, two temp vars exist to notify the user of an infinity or NaN(to_pdxvar_inf_flag and to_pdxvar_nan_flag respectively) and the output will default to 0. Similarly, +1 or -1 will denote a positive or negative special value 
 ## Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
 ## Additionally, any error will not trigger the to_digit_array function, and instead return 0 to the output variable
 to_pdxvar = {

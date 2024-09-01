@@ -60,7 +60,6 @@ Assumptions: When modding scripts try to access a variable that has not been set
 
 # TODOlist:
 
-- Add to_pdxvar tests and errors
 - Triggerize store_bitwise and to_float
 - Add ftp and ptf wrappers
 - Comparison

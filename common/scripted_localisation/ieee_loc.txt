@@ -296,6 +296,8 @@ defined_text = {
                     subtract_from_temp_variable = { least_sig_digit_idx = 1 }
                     set_temp_variable = { least_sig_digit = digit_array_output^least_sig_digit_idx }
                     modulo_temp_variable = { least_sig_digit = 2 }
+                    set_temp_variable = { round_digit_threshold = pdx_digit_cap }
+                    add_to_temp_variable = { round_digit_threshold = 1 }
                     if = {
                         limit = {
                             check_variable = { idx = pdx_digit_cap }
@@ -305,12 +307,11 @@ defined_text = {
                                 AND = {
                                     check_variable = { val = 5 }
                                     OR = {
-                                        check_variable = { digit_array_output^num > pdx_digit_cap }
+                                        check_variable = { digit_array_output^num > round_digit_threshold }
                                         check_variable = { least_sig_digit = 1 }
                                     }
                                 }
                             }
-
                         }
                         ### add one to previous var and propagate addition
                         add_to_temp_variable = { to_print_digit_array^least_sig_digit_idx = 1 }

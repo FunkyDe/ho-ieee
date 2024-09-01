@@ -48,7 +48,7 @@ ieee_run_tests = {
 ieee_get_test_count = {
     add_to_temp_array = { temp_test_count_array = 12 } # to_bitwise and store_bitwise
     add_to_temp_array = { temp_test_count_array = 11 } # to_float
-    add_to_temp_array = { temp_test_count_array = 12 } # to_digit_array
+    add_to_temp_array = { temp_test_count_array = 25 } # to_digit_array and to_pdxvar
 }
 ## test to_bitwise and store_bitwise functions
 ieee_test_0 = {
@@ -2707,4 +2707,579 @@ ieee_test_2011 = {
     
     set_temp_variable = { io_error_flag = 0 }
     clear_temp_array = temp_array_0
+}
+ieee_test_2012 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+
+    set_temp_variable = { to_bitwise_input = 1148846.08 }
+    resize_temp_array = { temp_array_id = 0 }
+    to_bitwise = yes
+
+    set_temp_variable = { temp_array_id = 0 }
+    to_pdxvar = yes
+
+    # expected value output()
+    set_temp_variable = { expected_output = 1000 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { to_pdxvar_output = expected_output } }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - basic to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - basic to_pdxvar - PASS"
+    }
+
+    log="[?io_error_flag]"
+    log = "Actual: [?to_pdxvar_output]"
+    log = "Expect: [?expected_output]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+}
+ieee_test_2013 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+
+    set_temp_variable = { to_bitwise_input = 1148854.272 }
+    resize_temp_array = { temp_array_id = 0 }
+    to_bitwise = yes
+
+    set_temp_variable = { temp_array_id = 0 }
+    to_pdxvar = yes
+
+    # expected value output()
+    set_temp_variable = { expected_output = 1000.5 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { to_pdxvar_output = expected_output } }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - 1 decimal to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - 1 decimal to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?to_pdxvar_output]"
+    log = "Expect: [?expected_output]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+}
+ieee_test_2014 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+
+    set_temp_variable = { to_bitwise_input = 1148858.368 }
+    resize_temp_array = { temp_array_id = 0 }
+    to_bitwise = yes
+
+    set_temp_variable = { temp_array_id = 0 }
+    to_pdxvar = yes
+
+    # expected value output()
+    set_temp_variable = { expected_output = 1000.75 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { to_pdxvar_output = expected_output } }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - 2 decimal to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - 2 decimal to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?to_pdxvar_output]"
+    log = "Expect: [?expected_output]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+}
+ieee_test_2015 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+
+    set_temp_variable = { to_bitwise_input = 1148859.187 }
+    resize_temp_array = { temp_array_id = 0 }
+    to_bitwise = yes
+
+    set_temp_variable = { temp_array_id = 0 }
+    to_pdxvar = yes
+
+    # expected value output()
+    set_temp_variable = { expected_output = 1000.800 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { to_pdxvar_output = expected_output } }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - round simple to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - round simple to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?to_pdxvar_output]"
+    log = "Expect: [?expected_output]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+}
+ieee_test_2016 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+
+    set_temp_variable = { to_bitwise_input = 1148849.152 }
+    resize_temp_array = { temp_array_id = 0 }
+    to_bitwise = yes
+
+    set_temp_variable = { temp_array_id = 0 }
+    to_pdxvar = yes
+
+    # expected value output()
+    set_temp_variable = { expected_output = 1000.188 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { to_pdxvar_output = expected_output } }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - round up to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - round up to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?to_pdxvar_output]"
+    log = "Expect: [?expected_output]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+}
+ieee_test_2017 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+
+    set_temp_variable = { to_bitwise_input = 1031798.784 }
+    resize_temp_array = { temp_array_id = 0 }
+    to_bitwise = yes
+
+    set_temp_variable = { temp_array_id = 0 }
+    to_pdxvar = yes
+
+    # expected value output()
+    set_temp_variable = { expected_output = 0.062 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { to_pdxvar_output = expected_output } }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - round down to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - round down to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?to_pdxvar_output]"
+    log = "Expect: [?expected_output]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+}
+ieee_test_2018 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+
+    set_temp_variable = { to_bitwise_input = -1090451.932 }
+    resize_temp_array = { temp_array_id = 0 }
+    to_bitwise = yes
+
+    set_temp_variable = { temp_array_id = 0 }
+    to_pdxvar = yes
+
+    # expected value output()
+    set_temp_variable = { expected_output = -0.504 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { to_pdxvar_output = expected_output } }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - negative to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - negative to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?to_pdxvar_output]"
+    log = "Expect: [?expected_output]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+}
+ieee_test_2019 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+
+    set_temp_variable = { to_bitwise_input = -998624.461 }
+    resize_temp_array = { temp_array_id = 0 }
+    to_bitwise = yes
+
+    set_temp_variable = { temp_array_id = 0 }
+    to_pdxvar = yes
+
+    # expected value output()
+    set_temp_variable = { expected_output = -1000.800 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { to_pdxvar_output = expected_output } }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - negative round to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - negative round to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?to_pdxvar_output]"
+    log = "Expect: [?expected_output]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+}
+ieee_test_2020 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+
+    set_temp_variable = { to_bitwise_input = 1242014.264 }
+    resize_temp_array = { temp_array_id = 0 }
+    to_bitwise = yes
+
+    set_temp_variable = { temp_array_id = 0 }
+    to_pdxvar = yes
+
+    # expected value output()
+    set_temp_variable = { expected_output = 0 }
+    set_temp_variable = { expected_to_pdxvar_overflow_flag = 1 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { to_pdxvar_output = expected_output } }
+                NOT = { check_variable = { to_pdxvar_overflow_flag = expected_to_pdxvar_overflow_flag } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - positive overflow to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - positive overflow to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?to_pdxvar_output] overflow: [?to_pdxvar_overflow_flag]"
+    log = "Expect: [?expected_output] overflow: [?expected_to_pdxvar_overflow_flag]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+}
+ieee_test_2021 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+
+    set_temp_variable = { to_bitwise_input = -905469.384 }
+    resize_temp_array = { temp_array_id = 0 }
+    to_bitwise = yes
+
+    set_temp_variable = { temp_array_id = 0 }
+    to_pdxvar = yes
+
+    # expected value output()
+    set_temp_variable = { expected_output = 0 }
+    set_temp_variable = { expected_to_pdxvar_overflow_flag = -1 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { to_pdxvar_output = expected_output } }
+                NOT = { check_variable = { to_pdxvar_overflow_flag = expected_to_pdxvar_overflow_flag } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - negative overflow to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - negative overflow to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?to_pdxvar_output] overflow: [?to_pdxvar_overflow_flag]"
+    log = "Expect: [?expected_output] overflow: [?expected_to_pdxvar_overflow_flag]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+}
+ieee_test_2022 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+
+    set_temp_variable = { to_bitwise_input = 2139095.04 }
+    resize_temp_array = { temp_array_id = 0 }
+    to_bitwise = yes
+
+    set_temp_variable = { temp_array_id = 0 }
+    to_pdxvar = yes
+
+    # expected value output()
+    set_temp_variable = { expected_output = 0 }
+    set_temp_variable = { expected_inf_flag = 1 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { to_pdxvar_output = expected_output } }
+                NOT = { check_variable = { to_pdxvar_inf_flag = expected_inf_flag } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - inf to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - inf to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?to_pdxvar_output] inf: [?to_pdxvar_inf_flag]"
+    log = "Expect: [?expected_output] inf: [?expected_inf_flag]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+}
+ieee_test_2023 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+
+    set_temp_variable = { to_bitwise_input = -4194.304 }
+    resize_temp_array = { temp_array_id = 0 }
+    to_bitwise = yes
+
+    set_temp_variable = { temp_array_id = 0 }
+    to_pdxvar = yes
+
+    # expected value output()
+    set_temp_variable = { expected_output = 0 }
+    set_temp_variable = { expected_nan_flag = -1 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { to_pdxvar_output = expected_output } }
+                NOT = { check_variable = { to_pdxvar_nan_flag = expected_nan_flag } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - negative nan to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - negative nan to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?to_pdxvar_output] nan: [?to_pdxvar_nan_flag]"
+    log = "Expect: [?expected_output] nan: [?expected_nan_flag]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+}
+ieee_test_2024 = {
+    set_temp_variable = { io_error_flag = 0 }
+
+    set_temp_variable = { temp_array_id = 1.01 }
+    resize_temp_array = { temp_array_@var:temp_array_id = 33 }
+    set_temp_variable = { temp_array_@var:temp_array_id^0 = 2 }
+    to_pdxvar = yes
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            NOT = { check_variable = { io_error_flag = 6 } } # errors double
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - errors to_pdxvar - FAIL"
+        log = "Expected 3 errors, got [?io_error_flag]"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - errors to_pdxvar - PASS"
+    }
+    
+    set_temp_variable = { io_error_flag = 0 }
 }

@@ -341,18 +341,58 @@ to_digit_array_trigger = {
 ## TO_PDXVAR_OUTPUT
 # The output variable which holds the converted value
 # Do not confuse this with the store_bitwise function, as the two functions will output different values from the same bitarray
-# If the value is too high to fit in a pdxvar(greater than 2148483.647 or less than 2147483.648), then a temp var(to_pdxvar_excess_flag) will be set to 1, a warning will be logged, and the pdxvar will default to 0 
-# In addition, two temp vars exist to notify the user of an infinity or NaN(to_pdxvar_inf_flag and to_pdxvar_nan_flag respectively) and the output will default to 0
+# If the value is too high to fit in a pdxvar(greater than 2148483.647 or less than 2147483.648), then a temp var(to_pdxvar_overflow_flag) will be set to 1 or -1 depending on whether the float was too high or too low respectively, a warning will be logged, and the pdxvar will default to 0 
+# In addition, two temp vars exist to notify the user of an infinity or NaN(to_pdxvar_inf_flag and to_pdxvar_nan_flag respectively) and the output will default to 0. Similarly, +1 or -1 will denote a positive or negative special value 
 ## Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
 ## Additionally, any error will not trigger the to_digit_array function, and instead return 0 to the output variable
 to_pdxvar_trigger = {
+    set_temp_variable = { whole_check = temp_array_id }
+    round_temp_variable = whole_check
+    if = {
+        limit = {
+            NOT = { check_variable = { whole_check = temp_array_id } }
+        }
+
+        add_to_temp_variable = { io_error_flag = 1 }
+        log="to_pdxvar array_id error, temp_array_id = [?temp_array_id]"
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { temp_array_@var:temp_array_id^num = 32 } }
+        }
+
+        add_to_temp_variable = { io_error_flag = 1 }
+        log="to_pdxvar array length error, temp_array_id = [?temp_array_id], array length = [?temp_array_@var:temp_array_id^num]"
+    }
+    all_of = {
+        array = temp_array_@var:temp_array_id
+        index = idx
+
+        if = {
+            limit = {
+                AND = {
+                    NOT = { check_variable = { temp_array_@var:temp_array_id^idx = 0 } }
+                    NOT = { check_variable = { temp_array_@var:temp_array_id^idx = 1 } }
+                }
+            }
+            add_to_temp_variable = { io_error_flag = 1 }
+            log = "to_pdxvar value error, temp_array_id = [?temp_array_id], value = [?temp_array_@var:temp_array_id^idx], index = [?idx]"
+        }
+    }
+
     # Convert bits to digits
     to_digit_array_trigger = yes
 
     # Process digits to pdxvar format (stolen from loc code)
-    set_temp_variable = { print_inf_flag = to_pdxvar_inf_flag }
-    set_temp_variable = { print_nan_flag = to_pdxvar_nan_flag }
+    clear_temp_array = to_print_digit_array
     set_temp_variable = { to_print_digit_power = digit_power_output }
+    if = { # flip pdxvar special flags
+        limit = {
+            check_variable = { temp_sign_bit = 1 }
+        }
+        multiply_temp_variable = { to_pdxvar_inf_flag = -1 }
+        multiply_temp_variable = { to_pdxvar_nan_flag = -1 }
+    }
     all_of = {
         array = digit_array_output
         value = val
@@ -371,6 +411,8 @@ to_pdxvar_trigger = {
             subtract_from_temp_variable = { least_sig_digit_idx = 1 }
             set_temp_variable = { least_sig_digit = digit_array_output^least_sig_digit_idx }
             modulo_temp_variable = { least_sig_digit = 2 }
+            set_temp_variable = { round_digit_threshold = pdx_digit_cap }
+            add_to_temp_variable = { round_digit_threshold = 1 }
             if = {
                 limit = {
                     check_variable = { idx = pdx_digit_cap }
@@ -380,12 +422,11 @@ to_pdxvar_trigger = {
                         AND = {
                             check_variable = { val = 5 }
                             OR = {
-                                check_variable = { digit_array_output^num > pdx_digit_cap }
+                                check_variable = { digit_array_output^num > round_digit_threshold }
                                 check_variable = { least_sig_digit = 1 }
                             }
                         }
                     }
-
                 }
                 ### add one to previous var and propagate addition
                 add_to_temp_variable = { to_print_digit_array^least_sig_digit_idx = 1 }
@@ -435,6 +476,13 @@ to_pdxvar_trigger = {
             }
         }
     }
+    all_of = {
+        array = to_print_digit_array
+        value = val
+
+        add_to_temp_array = { to_print_array = val }
+    }
+    log="[debug_print_array]"
     set_temp_variable = { to_pdxvar_output = 0 }
     if = {
         limit = {
@@ -477,7 +525,7 @@ to_pdxvar_trigger = {
                     limit = {
                         check_variable = { temp_positive_check^idx < to_print_digit_array^idx }
                     }
-                    set_temp_variable = { to_pdxvar_excess_flag = 1 }
+                    set_temp_variable = { to_pdxvar_overflow_flag = 1 }
                 }
             }
         }
@@ -495,20 +543,16 @@ to_pdxvar_trigger = {
                     limit = {
                         check_variable = { temp_negative_check^idx < to_print_digit_array^idx }
                     }
-                    set_temp_variable = { to_pdxvar_excess_flag = 1 }
+                    set_temp_variable = { to_pdxvar_overflow_flag = -1 }
                 }
             }
         }
         if = {
             limit = {
-                OR = {
-                    check_variable = { to_print_digit_power > 6 }
-                    check_variable = { to_pdxvar_excess_flag = 1 }
-                }
+                NOT = { check_variable = { to_pdxvar_overflow_flag = 0 } }
             }
 
-            # Too high! Can't do anything, set flag
-            set_temp_variable = { to_pdxvar_excess_flag = 1 }
+            # Too high! Can't do anything, output warning
             log = "Number exceeds pdxvar cap, value = [debug_print_digit]"
         }
         else = {

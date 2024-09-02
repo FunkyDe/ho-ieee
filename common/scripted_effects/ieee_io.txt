@@ -30,63 +30,11 @@ to_bitwise = {
 ## The output will be sent to the temp var store_bitwise_output
 ## Errors consist of a temp error var (bitwise_error_flag) and a message in log corresponding to the error
 store_bitwise = {
-    set_temp_variable = { whole_check = temp_array_id }
-    round_temp_variable = whole_check
     if = {
         limit = {
-            NOT = { check_variable = { whole_check = temp_array_id } }
-        }
-
-        add_to_temp_variable = { bitwise_error_flag = 1 }
-        log="store_bitwise array_id error, temp_array_id = [?temp_array_id]"
-    }
-    if = {
-        limit = {
-            NOT = { check_variable = { temp_array_@var:temp_array_id^num = 32 } }
-        }
-
-        add_to_temp_variable = { bitwise_error_flag = 1 }
-        log="store_bitwise array length error, temp_array_id = [?temp_array_id], array length = [?temp_array_@var:temp_array_id^num]"
-    }
-    for_loop_effect = {
-        start = 0
-        end = 32
-        value = idx
-
-        if = {
-            limit = {
-                AND = {
-                    NOT = { check_variable = { temp_array_@var:temp_array_id^idx = 0 } }
-                    NOT = { check_variable = { temp_array_@var:temp_array_id^idx = 1 } }
-                }
-            }
-            add_to_temp_variable = { bitwise_error_flag = 1 }
-            log = "store_bitwise value error, temp_array_id = [?temp_array_id], value = [?temp_array_@var:temp_array_id^idx], index = [?idx]"
+            store_bitwise_trigger = yes
         }
     }
-
-    set_temp_variable = { store_bitwise_output = 0 }
-    if = {
-        limit = {
-            check_variable = { temp_array_@var:temp_array_id^0 = 1 }
-        }
-        set_temp_variable = { store_bitwise_output = -2147483.648 }
-    }
-    set_temp_variable = { bit_compare = 1073741.824 }
-    for_loop_effect = {
-        start = 1
-        end = 32
-        value = idx
-
-        if = {
-            limit = {
-                check_variable = { temp_array_@var:temp_array_id^idx = 1 }
-            }
-            add_to_temp_variable = { store_bitwise_output = bit_compare }
-        }
-        divide_temp_variable = { bit_compare = 2 }
-    }
-    set_temp_variable = { temp_array_id = 0 }
 }
 ### TO_FLOAT
 ## Converts the pdxvar "to_float_input" to a bitwise array 

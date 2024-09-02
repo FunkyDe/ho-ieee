@@ -77,7 +77,66 @@ to_bitwise_trigger = {
 ## The output will be sent to the temp var store_bitwise_output
 ## Errors consist of a temp error var (bitwise_error_flag) and a message in log corresponding to the error
 store_bitwise_trigger = {
+    set_temp_variable = { whole_check = temp_array_id }
+    round_temp_variable = whole_check
+    if = {
+        limit = {
+            NOT = { check_variable = { whole_check = temp_array_id } }
+        }
 
+        add_to_temp_variable = { bitwise_error_flag = 1 }
+        log="store_bitwise array_id error, temp_array_id = [?temp_array_id]"
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { temp_array_@var:temp_array_id^num = 32 } }
+        }
+
+        add_to_temp_variable = { bitwise_error_flag = 1 }
+        log="store_bitwise array length error, temp_array_id = [?temp_array_id], array length = [?temp_array_@var:temp_array_id^num]"
+    }
+    all_of = {
+        array = temp_array_@var:temp_array_id
+        index = idx
+
+        if = {
+            limit = {
+                AND = {
+                    NOT = { check_variable = { temp_array_@var:temp_array_id^idx = 0 } }
+                    NOT = { check_variable = { temp_array_@var:temp_array_id^idx = 1 } }
+                }
+            }
+            add_to_temp_variable = { bitwise_error_flag = 1 }
+            log = "store_bitwise value error, temp_array_id = [?temp_array_id], value = [?temp_array_@var:temp_array_id^idx], index = [?idx]"
+        }
+    }
+
+    set_temp_variable = { store_bitwise_output = 0 }
+    if = {
+        limit = {
+            check_variable = { temp_array_@var:temp_array_id^0 = 1 }
+        }
+        set_temp_variable = { store_bitwise_output = -2147483.648 }
+    }
+    set_temp_variable = { bit_compare = 1073741.824 }
+    all_of = {
+        array = temp_array_@var:temp_array_id
+        index = idx
+
+        if = {
+            limit = { # Skip first bit, that's the sign bit
+                check_variable = { idx > 0 }
+            }
+            if = {
+                limit = {
+                    check_variable = { temp_array_@var:temp_array_id^idx = 1 }
+                }
+                add_to_temp_variable = { store_bitwise_output = bit_compare }
+            }
+            divide_temp_variable = { bit_compare = 2 }
+        }
+    }
+    set_temp_variable = { temp_array_id = 0 }
 }
 ### TO_FLOAT
 ## Converts the pdxvar "to_float_input" to a bitwise array 
@@ -93,7 +152,233 @@ store_bitwise_trigger = {
 ## Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
 ## This function does not implement infinity or NaN cases, since pdxvars do not reach those situations(subnormals however, are included with 0)
 to_float_trigger = {
+    set_temp_variable = { whole_check = temp_array_id }
+    round_temp_variable = whole_check
+    if = {
+        limit = {
+            NOT = { check_variable = { whole_check = temp_array_id } }
+        }
+
+        add_to_temp_variable = { io_error_flag = 1 }
+        log="to_float array_id error, temp_array_id = [?temp_array_id]"
+    }
     
+    clear_temp_array = temp_array_@var:temp_array_id
+    clear_temp_array = temp_mantissa_array
+    set_temp_variable = { temp_exp = 21 }
+    set_temp_variable = { actual_exp = -127 }
+    set_temp_variable = { negative_flag = 0 }
+    if = { # Special hard-coded case for minimum paradox numbers because +2147483.648 is not a valid pdxvar
+        limit = {
+            check_variable = { to_float_input = -2147483.648 }
+        }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 1 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 1 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 0 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 0 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 1 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 0 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 1 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 0 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 0 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 0 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 0 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 0 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 0 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 0 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 1 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 1 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 0 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 0 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 0 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 1 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 0 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 0 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 1 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 0 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 0 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 1 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 1 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 0 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 1 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 1 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 1 }
+        add_to_temp_array = { temp_array_@var:temp_array_id = 1 }
+    }
+    else = {
+        # Set sign bit
+        if = {
+            limit = {
+                check_variable = { to_float_input < 0 }
+            }
+            add_to_temp_array = { temp_array_@var:temp_array_id = 1 }
+            multiply_temp_variable = { to_float_input = -1 }
+        }
+        else = {
+            add_to_temp_array = { temp_array_@var:temp_array_id = 0 }
+        }
+
+        # Encode integer portion
+        ### TODO ###
+        # First resize array to 22 bits
+        # Then set "temp_idx" to 0 process integer as such:
+        # If temp_idx = 0
+        #   If bit should be set to 1 (usual bit_compare)
+        #       Set 0th bit of array to 1
+        #       Increment temp_idx
+        #   Else
+        #       Remove 0th bit of array
+        # Else
+        #   If bit should be set to 1 (usual)
+        #       Set ^temp_idx to 1
+        #   Increment temp_idx
+        set_temp_variable = { bit_compare = 2097152 }
+        while_loop_effect = {
+            limit = {
+                NOT = { check_variable = { bit_compare < 1 } }
+            }
+        
+            if = {
+                limit = {
+                    NOT = { check_variable = { to_float_input < bit_compare } }
+                }
+
+                subtract_from_temp_variable = { to_float_input = bit_compare }
+                add_to_temp_array = { temp_mantissa_array = 1 }
+                if = {
+                    limit = {
+                        check_variable = { actual_exp = -127 }
+                    }
+                    set_temp_variable = { actual_exp = temp_exp }
+                }
+            }
+            else = {
+                if = {
+                    limit = {
+                        NOT = { check_variable = { actual_exp = -127 } }
+                    }
+                    add_to_temp_array = { temp_mantissa_array = 0 }
+                }
+            }
+            subtract_from_temp_variable = { temp_exp = 1 }
+            divide_temp_variable = { bit_compare = 2 }
+        }
+        # Encode decimal portion
+        ### TODO ###
+        # Avoid while loop by presetting array to 24 bits
+        while_loop_effect = {
+            limit = {
+                AND = {
+                    check_variable = { temp_mantissa_array^num < 24 }
+                    NOT = { check_variable = { to_float_input = 0 } }
+                }
+            }
+
+            multiply_temp_variable = { to_float_input = 2 }
+            if = {
+                limit = {
+                    NOT = { check_variable = { to_float_input < 1 } }
+                }
+
+                subtract_from_temp_variable = { to_float_input = 1 }
+                add_to_temp_array = { temp_mantissa_array = 1 }
+                if = {
+                    limit = {
+                        check_variable = { actual_exp = -127 }
+                    }
+                    set_temp_variable = { actual_exp = temp_exp }
+                }
+            }
+            else = {
+                if = {
+                    limit = {
+                        NOT = { check_variable = { actual_exp = -127 } }
+                    }
+                    add_to_temp_array = { temp_mantissa_array = 0 }
+                }
+            }
+            subtract_from_temp_variable = { temp_exp = 1 }
+        }
+
+        # round mantissa
+        if = {
+            limit = {
+                OR = {
+                    check_variable = { to_float_input > 0.5 }
+                    AND = {
+                        check_variable = { to_float_input = 0.5 }
+                        check_variable = { temp_mantissa_array^23 = 1 }
+                    }
+                }
+            }
+
+            # add and carry addition upwards
+            add_to_temp_variable = { temp_mantissa_array^23 = 1 }
+            for_loop_effect = {
+                start = 23
+                end = 0
+                compare = greater_than
+                add = -1
+                value = idx
+
+                if = {
+                    limit = {
+                        check_variable = { temp_mantissa_array^idx = 2 }
+                    }
+                    if = {
+                        limit = {
+                            check_variable = { idx = 0 }
+                        }
+                        add_to_temp_variable = { actual_exp = 1 }
+                    }
+                    else = {
+                        set_temp_variable = { temp_index = idx }
+                        subtract_from_temp_variable = { temp_index = 1 }
+                        add_to_temp_variable = { temp_mantissa_array^temp_index = 1 }
+                    }
+                    set_temp_variable = { temp_mantissa_array^idx = 0 }
+                }
+            }
+        }
+        # Trim leading zero(if exist) and pad mantissa to 23 bits
+        if = {
+            limit = {
+                check_variable = { temp_mantissa_array^num > 0 }
+            }
+            remove_from_temp_array = {
+                array = temp_mantissa_array
+                index = 0
+            }
+        }
+        resize_temp_array = { temp_mantissa_array = 23 }
+
+        add_to_temp_variable = { actual_exp = 127 } # add exponent bias
+        set_temp_variable = { bit_compare = 128 }
+        for_loop_effect = {
+            start = 0
+            end = 8
+            if = {
+                limit = {
+                    NOT = { check_variable = { actual_exp < bit_compare } }
+                }
+                add_to_temp_array = { temp_array_@var:temp_array_id = 1 }
+                subtract_from_temp_variable = { actual_exp = bit_compare }
+            }
+            else = {
+                add_to_temp_array = { temp_array_@var:temp_array_id = 0 }
+            }
+            divide_temp_variable = { bit_compare = 2 }
+        }
+        for_each_loop = {
+            array = temp_mantissa_array
+            value = v
+
+            add_to_temp_array = { temp_array_@var:temp_array_id = v }
+        }
+    }
+
+    set_temp_variable = { to_float_input = 0 }
+    set_temp_variable = { temp_array_id = 0 }
 }
 ### TO_DIGIT_ARRAY_TRIGGER
 ## Reads a bit array in floating-point format and outputs two things: The array of digits(digit_array_output) and the power of 10(digit_power_output), akin to scientific format

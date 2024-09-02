@@ -64,6 +64,37 @@ to_bitwise_trigger = {
     set_temp_variable = { to_bitwise_input = 0 }
     set_temp_variable = { temp_array_id = 0 }
 }
+### STORE_BITWISE
+## Converts the bit array inputted to a 32-bit signed integer, divides it by 1000, and pushes the result to a pdxvar
+## The below function has 1 parameter: temp_array_id
+## This parameter will be cleared(by resetting to 0) after the function execution
+## If any element used is not one or zero, then the function will display an error
+## ARRAY_ID
+# the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
+# If no array_id is assigned, the function will use temp_array_0 in place
+# If the array_id is not an integer, then the function will display an error
+# If the array is not 32 bits long, the function will display an error
+## The output will be sent to the temp var store_bitwise_output
+## Errors consist of a temp error var (bitwise_error_flag) and a message in log corresponding to the error
+store_bitwise_trigger = {
+
+}
+### TO_FLOAT
+## Converts the pdxvar "to_float_input" to a bitwise array 
+## The below function has 2 parameters: to_float_input and temp_array_id
+## These parameters will be cleared(by resetting to 0) after the function execution
+## TO_FLOAT_INPUT
+# The variable to be converted into bitwise format
+# If no input is given, the function will use 0 in place **and return no error**
+## ARRAY_ID
+# the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
+# If no array_id is assigned, the function will use temp_array_0 in place
+# If the array_id is not an integer, then the function will display an error
+## Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
+## This function does not implement infinity or NaN cases, since pdxvars do not reach those situations(subnormals however, are included with 0)
+to_float_trigger = {
+    
+}
 ### TO_DIGIT_ARRAY_TRIGGER
 ## Reads a bit array in floating-point format and outputs two things: The array of digits(digit_array_output) and the power of 10(digit_power_output), akin to scientific format
 ## The below function has 1 parameter: temp_array_id

@@ -181,6 +181,8 @@ to_float = {
             subtract_from_temp_variable = { temp_exp = 1 }
         }
 
+
+
         # round mantissa
         if = {
             limit = {
@@ -198,7 +200,7 @@ to_float = {
             for_loop_effect = {
                 start = 23
                 end = 0
-                compare = greater_than
+                compare = greater_than_or_equals
                 add = -1
                 value = idx
 

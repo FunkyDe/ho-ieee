@@ -47,7 +47,7 @@ ieee_run_tests = {
 # Hard code the number of tests, each test block is separated by 1000, so it goes 0### block, 1### block, etc, with tests filling in the 000-999 range
 ieee_get_test_count = {
     add_to_temp_array = { temp_test_count_array = 12 } # to_bitwise and store_bitwise
-    add_to_temp_array = { temp_test_count_array = 11 } # to_float
+    add_to_temp_array = { temp_test_count_array = 12 } # to_float
     add_to_temp_array = { temp_test_count_array = 25 } # to_digit_array and to_pdxvar
 }
 ## test to_bitwise and store_bitwise functions
@@ -628,6 +628,15 @@ ieee_test_11 = {
     clear_temp_array = temp_array_0
 }
 ## test to_float
+test = {
+    set_temp_variable = { to_float_input = 1175.5 }
+    set_temp_variable = { temp_array_id = 1 }
+    if = {
+        limit = {
+            to_float_trigger = yes
+        }
+    }
+}
 ieee_test_1000 = {
     set_temp_variable = { io_error_flag = 0 }
     clear_temp_array = temp_array_0
@@ -779,7 +788,7 @@ ieee_test_1001 = {
     }
     for_loop_effect = {
         start = 0
-        end = temp_array_2^num
+        end = temp_array_1^num
         compare = less_than
         value = idx
 
@@ -870,7 +879,7 @@ ieee_test_1002 = {
     }
     for_loop_effect = {
         start = 0
-        end = temp_array_2^num
+        end = temp_array_1^num
         compare = less_than
         value = idx
 
@@ -961,7 +970,7 @@ ieee_test_1003 = {
     }
     for_loop_effect = {
         start = 0
-        end = temp_array_2^num
+        end = temp_array_1^num
         compare = less_than
         value = idx
 
@@ -1052,7 +1061,7 @@ ieee_test_1004 = {
     }
     for_loop_effect = {
         start = 0
-        end = temp_array_2^num
+        end = temp_array_1^num
         compare = less_than
         value = idx
 
@@ -1143,7 +1152,7 @@ ieee_test_1005 = {
     }
     for_loop_effect = {
         start = 0
-        end = temp_array_2^num
+        end = temp_array_1^num
         compare = less_than
         value = idx
 
@@ -1234,7 +1243,7 @@ ieee_test_1006 = {
     }
     for_loop_effect = {
         start = 0
-        end = temp_array_2^num
+        end = temp_array_1^num
         compare = less_than
         value = idx
 
@@ -1325,7 +1334,7 @@ ieee_test_1007 = {
     }
     for_loop_effect = {
         start = 0
-        end = temp_array_2^num
+        end = temp_array_1^num
         compare = less_than
         value = idx
 
@@ -1361,6 +1370,97 @@ ieee_test_1008 = {
     clear_temp_array = temp_array_0
     clear_temp_array = temp_array_1
 
+    set_temp_variable = { to_float_input = 2097151.938 }
+    set_temp_variable = { temp_array_id = 1 }
+    to_float = yes
+    
+    clear_temp_array = temp_array_0
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 1 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+    add_to_temp_array = { temp_array_0 = 0 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            NOT = {
+                check_variable = { temp_array_0^num = temp_array_1^num }
+            }
+        }
+        set_temp_variable = { invalid = 1 } 
+    }
+    for_loop_effect = {
+        start = 0
+        end = temp_array_1^num
+        compare = less_than
+        value = idx
+
+        if = {
+            limit = {
+                NOT = { check_variable = { temp_array_0^idx = temp_array_1^idx } }
+            }
+            set_temp_variable = { invalid = 1 }
+        }
+    }
+    
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - min num to_float - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - min num to_float - PASS"
+    }
+    set_temp_variable = { temp_array_id = 1 }
+    log = "Actual: [debug_print_array_id]"
+    set_temp_variable = { temp_array_id = 0 }
+    log = "Expect: [debug_print_array_id]"
+
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+}
+ieee_test_1009 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+    clear_temp_array = temp_array_1
+
     set_temp_variable = { to_float_input = 123213 }
     set_temp_variable = { temp_array_id = 1.01 }
     to_float = yes
@@ -1389,7 +1489,7 @@ ieee_test_1008 = {
     clear_temp_array = temp_array_0
     clear_temp_array = temp_array_1
 }
-ieee_test_1009 = {
+ieee_test_1010 = {
     set_temp_variable = { io_error_flag = 0 }
     clear_temp_array = temp_array_0
     clear_temp_array = temp_array_1
@@ -1436,7 +1536,7 @@ ieee_test_1009 = {
     clear_temp_array = temp_array_0
     clear_temp_array = temp_array_1
 }
-ieee_test_1010 = {
+ieee_test_1011 = {
     set_temp_variable = { io_error_flag = 0 }
     clear_temp_array = temp_array_0
     clear_temp_array = temp_array_1

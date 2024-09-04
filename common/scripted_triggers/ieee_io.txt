@@ -151,6 +151,13 @@ store_bitwise_trigger = {
 # If the array_id is not an integer, then the function will display an error
 ## Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
 ## This function does not implement infinity or NaN cases, since pdxvars do not reach those situations(subnormals however, are included with 0)
+##### TODO #####
+# Test if you can iterate indefinitely by decrementing index in an all_of loop
+test = {
+    all_of = {
+
+    }
+}
 to_float_trigger = {
     set_temp_variable = { whole_check = temp_array_id }
     round_temp_variable = whole_check
@@ -233,6 +240,51 @@ to_float_trigger = {
         #       Set ^temp_idx to 1
         #   Increment temp_idx
         set_temp_variable = { bit_compare = 2097152 }
+        resize_temp_array = { temp_mantissa_array = 22 }
+        set_temp_variable = { temp_idx = 0 }
+        all_of = {
+            array = temp_mantissa_array
+            index = idx
+
+            if = {
+                limit = {
+                    check_variable = { temp_idx = 0 }
+                }
+
+                if = {
+                    limit = {
+                        NOT = { check_variable = { to_float_input < bit_compare } }
+                    }
+                    subtract_from_temp_variable = { to_float_input = bit_compare }
+                    set_temp_variable = { temp_mantissa_array^temp_idx = 1 }
+                    if = {
+                        limit = {
+                            check_variable = { actual_exp = -127 }
+                        }
+                        set_temp_variable = { actual_exp = temp_exp }
+                    }
+                    add_to_temp_variable = { temp_idx = 1 }
+                }
+                else = {
+                    remove_from_temp_array = {
+                        array = temp_mantissa_array
+                        index = 0
+                    }
+                }
+            }
+            else = {
+                if = {
+                    limit = {
+                        NOT = { check_variable = { to_float_input < bit_compare } }
+                    }
+                    subtract_from_temp_variable = { to_float_input = bit_compare }
+                    set_temp_variable = { temp_mantissa_array^temp_idx = 1 }
+                }
+                add_to_temp_variable = { temp_idx = 1 }
+            }
+            subtract_from_temp_variable = { temp_exp = 1 }
+            divide_temp_variable = { bit_compare = 2 }
+        }
         while_loop_effect = {
             limit = {
                 NOT = { check_variable = { bit_compare < 1 } }
@@ -263,9 +315,51 @@ to_float_trigger = {
             subtract_from_temp_variable = { temp_exp = 1 }
             divide_temp_variable = { bit_compare = 2 }
         }
+        all_of = {
+            array = temp_mantissa_array
+            value = val
+
+            add_to_temp_array = { to_print_array = val }
+        }
+        log="[debug_print_array] remainder = [?to_float_input]"
         # Encode decimal portion
         ### TODO ###
-        # Avoid while loop by presetting array to 24 bits
+        # Not sure what to do, there are two broad cases:
+        # 1. Mantissa already started
+        #   Extend mantissa array to 24
+        #   Set start index to after 2^0 bit
+        #   Do algorithm for decimal float convert as usual
+        #   
+        # 2. Mantissa not started (input < 1)
+        #   Extend mantissa array to 33
+        #   Set temp_idx to 0
+        #   Iterate through array like integer, removing if supposed to be 0
+        #   Cutoff when either run out of elements OR temp_idx > 24 (I think, check edge cases)
+        # ROUNDING IDK CHECK EDGES AHHHHHHHHHH
+        set_temp_variable = { temp_idx = temp_mantissa_array^num }
+        if = {
+            limit = {
+                check_variable = { temp_idx = 0 }
+            }
+            resize_temp_array = { temp_mantissa_array = 33 }
+
+            all_of = {
+                array = temp_mantissa_array
+                index = idx
+
+
+            }
+        }
+        else = {
+            resize_temp_array = { temp_mantissa_array = 24 }
+
+            all_of = {
+                array = temp_mantissa_array
+                index = idx
+
+
+            }
+        }
         while_loop_effect = {
             limit = {
                 AND = {
@@ -314,13 +408,12 @@ to_float_trigger = {
 
             # add and carry addition upwards
             add_to_temp_variable = { temp_mantissa_array^23 = 1 }
-            for_loop_effect = {
-                start = 23
-                end = 0
-                compare = greater_than
-                add = -1
-                value = idx
+            all_of = {
+                array = temp_mantissa_array
+                index = temp_idx
 
+                set_temp_variable = { idx = 23 }
+                subtract_from_temp_variable = { idx = temp_idx }
                 if = {
                     limit = {
                         check_variable = { temp_mantissa_array^idx = 2 }
@@ -354,22 +447,28 @@ to_float_trigger = {
 
         add_to_temp_variable = { actual_exp = 127 } # add exponent bias
         set_temp_variable = { bit_compare = 128 }
-        for_loop_effect = {
-            start = 0
-            end = 8
+        resize_temp_array = { temp_array_@var:temp_array_id = 9 }
+        all_of = {
+            array = temp_array_@var:temp_array_id
+            index = idx
             if = {
                 limit = {
-                    NOT = { check_variable = { actual_exp < bit_compare } }
+                    check_variable = { idx > 0 }
                 }
-                add_to_temp_array = { temp_array_@var:temp_array_id = 1 }
-                subtract_from_temp_variable = { actual_exp = bit_compare }
+                if = {
+                    limit = {
+                        NOT = { check_variable = { actual_exp < bit_compare } }
+                    }
+                    set_temp_variable = { temp_array_@var:temp_array_id^idx = 1 }
+                    subtract_from_temp_variable = { actual_exp = bit_compare }
+                }
+                else = {
+                    set_temp_variable = { temp_array_@var:temp_array_id^idx = 0 }
+                }
+                divide_temp_variable = { bit_compare = 2 }
             }
-            else = {
-                add_to_temp_array = { temp_array_@var:temp_array_id = 0 }
-            }
-            divide_temp_variable = { bit_compare = 2 }
         }
-        for_each_loop = {
+        all_of = {
             array = temp_mantissa_array
             value = v
 
@@ -792,13 +891,6 @@ to_pdxvar_trigger = {
             }
         }
     }
-    all_of = {
-        array = to_print_digit_array
-        value = val
-
-        add_to_temp_array = { to_print_array = val }
-    }
-    log="[debug_print_array]"
     set_temp_variable = { to_pdxvar_output = 0 }
     if = {
         limit = {

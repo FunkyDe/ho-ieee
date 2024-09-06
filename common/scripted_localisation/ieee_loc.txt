@@ -11,9 +11,9 @@ defined_text = {
         localization_key = "+"
     }
 }
-# Prints a plus depending on the decimal power of the number for scientific notation
+# Prints a plus depending on the decimal power of the number for scientific notation, since the minus is already printed
 defined_text = {
-    name = ieee_plus_decider
+    name = ieee_sci_plus_decider
     text = {
         trigger = {
             check_variable = { digit_power_output < 0 }
@@ -792,6 +792,6 @@ defined_text = {
             set_temp_variable = { temp_index = 0 }
             set_temp_variable = { temp_power = to_print_digit_power }
         }
-        localization_key = "[ieee_minus_decider][zero_padding][debug_print_digit_step][clear_digit_array]E[ieee_plus_decider][?digit_power_output]"
+        localization_key = "[ieee_minus_decider][zero_padding][debug_print_digit_step][clear_digit_array]E[ieee_sci_plus_decider][?digit_power_output]"
     }
 }

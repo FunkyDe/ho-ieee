@@ -629,13 +629,9 @@ ieee_test_11 = {
 }
 ## test to_float
 test = {
-    set_temp_variable = { to_float_input = 1175.5 }
+    set_temp_variable = { to_float_input = -2147483.647 }
     set_temp_variable = { temp_array_id = 1 }
-    if = {
-        limit = {
-            to_float_trigger = yes
-        }
-    }
+    to_float = yes
 }
 ieee_test_1000 = {
     set_temp_variable = { io_error_flag = 0 }
@@ -1259,11 +1255,11 @@ ieee_test_1006 = {
         limit = {
             check_variable = { invalid = 1 }
         }
-        log = "Test [?test_id] - basic to_float - FAIL"
+        log = "Test [?test_id] - zero to_float - FAIL"
         add_to_temp_array = { test_fail_array = test_id }
     }
     else = {
-        log = "Test [?test_id] - basic to_float - PASS"
+        log = "Test [?test_id] - zero to_float - PASS"
     }
     set_temp_variable = { temp_array_id = 1 }
     log = "Actual: [debug_print_array_id]"
@@ -1441,11 +1437,11 @@ ieee_test_1008 = {
         limit = {
             check_variable = { invalid = 1 }
         }
-        log = "Test [?test_id] - min num to_float - FAIL"
+        log = "Test [?test_id] - round add exp to_float - FAIL"
         add_to_temp_array = { test_fail_array = test_id }
     }
     else = {
-        log = "Test [?test_id] - min num to_float - PASS"
+        log = "Test [?test_id] - round add exp to_float - PASS"
     }
     set_temp_variable = { temp_array_id = 1 }
     log = "Actual: [debug_print_array_id]"

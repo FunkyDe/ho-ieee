@@ -64,7 +64,7 @@ to_bitwise_trigger = {
     set_temp_variable = { to_bitwise_input = 0 }
     set_temp_variable = { temp_array_id = 0 }
 }
-### STORE_BITWISE
+### STORE_BITWISE_TRIGGER
 ## Converts the bit array inputted to a 32-bit signed integer, divides it by 1000, and pushes the result to a pdxvar
 ## The below function has 1 parameter: temp_array_id
 ## This parameter will be cleared(by resetting to 0) after the function execution
@@ -138,7 +138,7 @@ store_bitwise_trigger = {
     }
     set_temp_variable = { temp_array_id = 0 }
 }
-### TO_FLOAT
+### TO_FLOAT_TRIGGEr
 ## Converts the pdxvar "to_float_input" to a bitwise array 
 ## The below function has 2 parameters: to_float_input and temp_array_id
 ## These parameters will be cleared(by resetting to 0) after the function execution
@@ -218,20 +218,6 @@ to_float_trigger = {
             add_to_temp_array = { temp_array_@var:temp_array_id = 0 }
         }
 
-        # Encode integer portion
-        ### TODO ###
-        # First resize array to 22 bits
-        # Then set "temp_idx" to 0 process integer as such:
-        # If temp_idx = 0
-        #   If bit should be set to 1 (usual bit_compare)
-        #       Set 0th bit of array to 1
-        #       Increment temp_idx
-        #   Else
-        #       Remove 0th bit of array
-        # Else
-        #   If bit should be set to 1 (usual)
-        #       Set ^temp_idx to 1
-        #   Increment temp_idx
         set_temp_variable = { bit_compare = 2097152 }
         resize_temp_array = { temp_mantissa_array = 22 }
         set_temp_variable = { temp_idx = 0 }
@@ -278,50 +264,6 @@ to_float_trigger = {
             subtract_from_temp_variable = { temp_exp = 1 }
             divide_temp_variable = { bit_compare = 2 }
         }
-        #while_loop_effect = {
-        #    limit = {
-        #        NOT = { check_variable = { bit_compare < 1 } }
-        #    }
-        #
-        #    if = {
-        #        limit = {
-        #            NOT = { check_variable = { to_float_input < bit_compare } }
-        #        }
-        #
-        #        subtract_from_temp_variable = { to_float_input = bit_compare }
-        #        add_to_temp_array = { temp_mantissa_array = 1 }
-        #        if = {
-        #            limit = {
-        #                check_variable = { actual_exp = -127 }
-        #            }
-        #            set_temp_variable = { actual_exp = temp_exp }
-        #        }
-        #    }
-        #    else = {
-        #        if = {
-        #            limit = {
-        #                NOT = { check_variable = { actual_exp = -127 } }
-        #            }
-        #            add_to_temp_array = { temp_mantissa_array = 0 }
-        #        }
-        #    }
-        #    subtract_from_temp_variable = { temp_exp = 1 }
-        #    divide_temp_variable = { bit_compare = 2 }
-        #}
-
-        # Encode decimal portion
-        ### TODO ###
-        # Not sure what to do, there are two broad cases:
-        # 1. Mantissa already started
-        #   Extend mantissa array to 24
-        #   Set start index to after 2^0 bit
-        #   Do algorithm for decimal float convert as usual
-        #   
-        # 2. Mantissa not started (input < 1)
-        #   Extend mantissa array to 33
-        #   Set temp_idx to 0
-        #   Iterate through array like integer, removing if supposed to be 0
-        #   Cutoff when either run out of elements OR temp_idx > 24 (I think, check edge cases)
 
         # temp_idx serves two roles depending on whether or not the converted number was greater than 1
         # If no integers were converted above, temp_idx will be 0
@@ -386,44 +328,11 @@ to_float_trigger = {
                         }
 
                         subtract_from_temp_variable = { to_float_input = 1 }
-                        set_temp_variable = { temp_mantissa_array^idx = 0 }
+                        set_temp_variable = { temp_mantissa_array^idx = 1 }
                     }
                 }
             }
         }
-        #while_loop_effect = {
-        #    limit = {
-        #        AND = {
-        #            check_variable = { temp_mantissa_array^num < 24 }
-        #            NOT = { check_variable = { to_float_input = 0 } }
-        #        }
-        #    }
-        #
-        #    multiply_temp_variable = { to_float_input = 2 }
-        #    if = {
-        #        limit = {
-        #            NOT = { check_variable = { to_float_input < 1 } }
-        #        }
-        #
-        #        subtract_from_temp_variable = { to_float_input = 1 }
-        #        add_to_temp_array = { temp_mantissa_array = 1 }
-        #        if = {
-        #            limit = {
-        #                check_variable = { actual_exp = -127 }
-        #            }
-        #            set_temp_variable = { actual_exp = temp_exp }
-        #        }
-        #    }
-        #    else = {
-        #        if = {
-        #            limit = {
-        #                NOT = { check_variable = { actual_exp = -127 } }
-        #            }
-        #            add_to_temp_array = { temp_mantissa_array = 0 }
-        #        }
-        #    }
-        #    subtract_from_temp_variable = { temp_exp = 1 }
-        #}
 
         # round mantissa
         if = {
@@ -464,7 +373,7 @@ to_float_trigger = {
                 }
             }
         }
-        # Trim leading zero(if exist) and pad mantissa to 23 bits
+        # Trim leading zero(if exist), mantissa is now proper 23 bits
         if = {
             limit = {
                 check_variable = { temp_mantissa_array^num > 0 }
@@ -474,7 +383,6 @@ to_float_trigger = {
                 index = 0
             }
         }
-        resize_temp_array = { temp_mantissa_array = 23 }
 
         add_to_temp_variable = { actual_exp = 127 } # add exponent bias
         set_temp_variable = { bit_compare = 128 }
@@ -774,7 +682,7 @@ to_digit_array_trigger = {
     }
     set_temp_variable = { temp_array_id = 0 }
 }
-### TO_PDXVAR
+### TO_PDXVAR_TRIGGEr
 ## Reads a bit array in floating-point format and outputs the closest pdxvar to_pdxvar_output
 ## The below function has 1 parameter: temp_array_id
 ## This parameter will be cleared(by resetting to 0) after the function execution

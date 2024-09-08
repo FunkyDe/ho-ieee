@@ -60,8 +60,6 @@ Assumptions: When modding scripts try to access a variable that has not been set
 
 # TODOlist:
 
-- Triggerize to_float
-    - Recode converter to not use for/while loops
 - Add ftp and ptf wrappers
 - Comparison
 - Addition

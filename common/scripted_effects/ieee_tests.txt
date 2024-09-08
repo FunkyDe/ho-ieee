@@ -628,11 +628,6 @@ ieee_test_11 = {
     clear_temp_array = temp_array_0
 }
 ## test to_float
-test = {
-    set_temp_variable = { to_float_input = -2147483.647 }
-    set_temp_variable = { temp_array_id = 1 }
-    to_float = yes
-}
 ieee_test_1000 = {
     set_temp_variable = { io_error_flag = 0 }
     clear_temp_array = temp_array_0
@@ -2712,7 +2707,7 @@ ieee_test_2011 = {
     clear_temp_array = temp_array_0
 
     set_temp_variable = { to_bitwise_input = -991915.008 }
-    resize_temp_array = { temp_array_id = 0 }
+    set_temp_variable = { temp_array_id = 0 }
     to_bitwise = yes
 
     set_temp_variable = { temp_array_id = 0 }
@@ -2809,7 +2804,7 @@ ieee_test_2012 = {
     clear_temp_array = temp_array_0
 
     set_temp_variable = { to_bitwise_input = 1148846.08 }
-    resize_temp_array = { temp_array_id = 0 }
+    set_temp_variable = { temp_array_id = 0 }
     to_bitwise = yes
 
     set_temp_variable = { temp_array_id = 0 }
@@ -2817,11 +2812,25 @@ ieee_test_2012 = {
 
     # expected value output()
     set_temp_variable = { expected_output = 1000 }
+    set_temp_variable = { expected_overflow_flag = 0 }
+    set_temp_variable = { expected_inf_flag = 0 }
+    set_temp_variable = { expected_nan_flag = 0 }
 
     set_temp_variable = { invalid = 0 }
     if = {
         limit = {
             check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { to_pdxvar_output = expected_output } }
+                NOT = { check_variable = { to_pdxvar_overflow_flag = expected_overflow_flag } }
+                NOT = { check_variable = { to_pdxvar_inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { to_pdxvar_nan_flag = expected_nan_flag } }
+            }
         }
         set_temp_variable = { invalid = 1 }
     }
@@ -2854,7 +2863,7 @@ ieee_test_2013 = {
     clear_temp_array = temp_array_0
 
     set_temp_variable = { to_bitwise_input = 1148854.272 }
-    resize_temp_array = { temp_array_id = 0 }
+    set_temp_variable = { temp_array_id = 0 }
     to_bitwise = yes
 
     set_temp_variable = { temp_array_id = 0 }
@@ -2862,11 +2871,25 @@ ieee_test_2013 = {
 
     # expected value output()
     set_temp_variable = { expected_output = 1000.5 }
+    set_temp_variable = { expected_overflow_flag = 0 }
+    set_temp_variable = { expected_inf_flag = 0 }
+    set_temp_variable = { expected_nan_flag = 0 }
 
     set_temp_variable = { invalid = 0 }
     if = {
         limit = {
             check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { to_pdxvar_output = expected_output } }
+                NOT = { check_variable = { to_pdxvar_overflow_flag = expected_overflow_flag } }
+                NOT = { check_variable = { to_pdxvar_inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { to_pdxvar_nan_flag = expected_nan_flag } }
+            }
         }
         set_temp_variable = { invalid = 1 }
     }
@@ -2898,7 +2921,7 @@ ieee_test_2014 = {
     clear_temp_array = temp_array_0
 
     set_temp_variable = { to_bitwise_input = 1148858.368 }
-    resize_temp_array = { temp_array_id = 0 }
+    set_temp_variable = { temp_array_id = 0 }
     to_bitwise = yes
 
     set_temp_variable = { temp_array_id = 0 }
@@ -2906,11 +2929,25 @@ ieee_test_2014 = {
 
     # expected value output()
     set_temp_variable = { expected_output = 1000.75 }
+    set_temp_variable = { expected_overflow_flag = 0 }
+    set_temp_variable = { expected_inf_flag = 0 }
+    set_temp_variable = { expected_nan_flag = 0 }
 
     set_temp_variable = { invalid = 0 }
     if = {
         limit = {
             check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { to_pdxvar_output = expected_output } }
+                NOT = { check_variable = { to_pdxvar_overflow_flag = expected_overflow_flag } }
+                NOT = { check_variable = { to_pdxvar_inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { to_pdxvar_nan_flag = expected_nan_flag } }
+            }
         }
         set_temp_variable = { invalid = 1 }
     }
@@ -2942,7 +2979,7 @@ ieee_test_2015 = {
     clear_temp_array = temp_array_0
 
     set_temp_variable = { to_bitwise_input = 1148859.187 }
-    resize_temp_array = { temp_array_id = 0 }
+    set_temp_variable = { temp_array_id = 0 }
     to_bitwise = yes
 
     set_temp_variable = { temp_array_id = 0 }
@@ -2950,11 +2987,25 @@ ieee_test_2015 = {
 
     # expected value output()
     set_temp_variable = { expected_output = 1000.800 }
+    set_temp_variable = { expected_overflow_flag = 0 }
+    set_temp_variable = { expected_inf_flag = 0 }
+    set_temp_variable = { expected_nan_flag = 0 }
 
     set_temp_variable = { invalid = 0 }
     if = {
         limit = {
             check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { to_pdxvar_output = expected_output } }
+                NOT = { check_variable = { to_pdxvar_overflow_flag = expected_overflow_flag } }
+                NOT = { check_variable = { to_pdxvar_inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { to_pdxvar_nan_flag = expected_nan_flag } }
+            }
         }
         set_temp_variable = { invalid = 1 }
     }
@@ -2986,7 +3037,7 @@ ieee_test_2016 = {
     clear_temp_array = temp_array_0
 
     set_temp_variable = { to_bitwise_input = 1148849.152 }
-    resize_temp_array = { temp_array_id = 0 }
+    set_temp_variable = { temp_array_id = 0 }
     to_bitwise = yes
 
     set_temp_variable = { temp_array_id = 0 }
@@ -2994,11 +3045,25 @@ ieee_test_2016 = {
 
     # expected value output()
     set_temp_variable = { expected_output = 1000.188 }
+    set_temp_variable = { expected_overflow_flag = 0 }
+    set_temp_variable = { expected_inf_flag = 0 }
+    set_temp_variable = { expected_nan_flag = 0 }
 
     set_temp_variable = { invalid = 0 }
     if = {
         limit = {
             check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { to_pdxvar_output = expected_output } }
+                NOT = { check_variable = { to_pdxvar_overflow_flag = expected_overflow_flag } }
+                NOT = { check_variable = { to_pdxvar_inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { to_pdxvar_nan_flag = expected_nan_flag } }
+            }
         }
         set_temp_variable = { invalid = 1 }
     }
@@ -3030,7 +3095,7 @@ ieee_test_2017 = {
     clear_temp_array = temp_array_0
 
     set_temp_variable = { to_bitwise_input = 1031798.784 }
-    resize_temp_array = { temp_array_id = 0 }
+    set_temp_variable = { temp_array_id = 0 }
     to_bitwise = yes
 
     set_temp_variable = { temp_array_id = 0 }
@@ -3038,11 +3103,25 @@ ieee_test_2017 = {
 
     # expected value output()
     set_temp_variable = { expected_output = 0.062 }
+    set_temp_variable = { expected_overflow_flag = 0 }
+    set_temp_variable = { expected_inf_flag = 0 }
+    set_temp_variable = { expected_nan_flag = 0 }
 
     set_temp_variable = { invalid = 0 }
     if = {
         limit = {
             check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { to_pdxvar_output = expected_output } }
+                NOT = { check_variable = { to_pdxvar_overflow_flag = expected_overflow_flag } }
+                NOT = { check_variable = { to_pdxvar_inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { to_pdxvar_nan_flag = expected_nan_flag } }
+            }
         }
         set_temp_variable = { invalid = 1 }
     }
@@ -3074,7 +3153,7 @@ ieee_test_2018 = {
     clear_temp_array = temp_array_0
 
     set_temp_variable = { to_bitwise_input = -1090451.932 }
-    resize_temp_array = { temp_array_id = 0 }
+    set_temp_variable = { temp_array_id = 0 }
     to_bitwise = yes
 
     set_temp_variable = { temp_array_id = 0 }
@@ -3082,11 +3161,25 @@ ieee_test_2018 = {
 
     # expected value output()
     set_temp_variable = { expected_output = -0.504 }
+    set_temp_variable = { expected_overflow_flag = 0 }
+    set_temp_variable = { expected_inf_flag = 0 }
+    set_temp_variable = { expected_nan_flag = 0 }
 
     set_temp_variable = { invalid = 0 }
     if = {
         limit = {
             check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { to_pdxvar_output = expected_output } }
+                NOT = { check_variable = { to_pdxvar_overflow_flag = expected_overflow_flag } }
+                NOT = { check_variable = { to_pdxvar_inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { to_pdxvar_nan_flag = expected_nan_flag } }
+            }
         }
         set_temp_variable = { invalid = 1 }
     }
@@ -3118,7 +3211,7 @@ ieee_test_2019 = {
     clear_temp_array = temp_array_0
 
     set_temp_variable = { to_bitwise_input = -998624.461 }
-    resize_temp_array = { temp_array_id = 0 }
+    set_temp_variable = { temp_array_id = 0 }
     to_bitwise = yes
 
     set_temp_variable = { temp_array_id = 0 }
@@ -3126,11 +3219,25 @@ ieee_test_2019 = {
 
     # expected value output()
     set_temp_variable = { expected_output = -1000.800 }
+    set_temp_variable = { expected_overflow_flag = 0 }
+    set_temp_variable = { expected_inf_flag = 0 }
+    set_temp_variable = { expected_nan_flag = 0 }
 
     set_temp_variable = { invalid = 0 }
     if = {
         limit = {
             check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { to_pdxvar_output = expected_output } }
+                NOT = { check_variable = { to_pdxvar_overflow_flag = expected_overflow_flag } }
+                NOT = { check_variable = { to_pdxvar_inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { to_pdxvar_nan_flag = expected_nan_flag } }
+            }
         }
         set_temp_variable = { invalid = 1 }
     }
@@ -3162,7 +3269,7 @@ ieee_test_2020 = {
     clear_temp_array = temp_array_0
 
     set_temp_variable = { to_bitwise_input = 1242014.264 }
-    resize_temp_array = { temp_array_id = 0 }
+    set_temp_variable = { temp_array_id = 0 }
     to_bitwise = yes
 
     set_temp_variable = { temp_array_id = 0 }
@@ -3170,7 +3277,9 @@ ieee_test_2020 = {
 
     # expected value output()
     set_temp_variable = { expected_output = 0 }
-    set_temp_variable = { expected_to_pdxvar_overflow_flag = 1 }
+    set_temp_variable = { expected_overflow_flag = 1 }
+    set_temp_variable = { expected_inf_flag = 0 }
+    set_temp_variable = { expected_nan_flag = 0 }
 
     set_temp_variable = { invalid = 0 }
     if = {
@@ -3183,7 +3292,9 @@ ieee_test_2020 = {
         limit = {
             OR = {
                 NOT = { check_variable = { to_pdxvar_output = expected_output } }
-                NOT = { check_variable = { to_pdxvar_overflow_flag = expected_to_pdxvar_overflow_flag } }
+                NOT = { check_variable = { to_pdxvar_overflow_flag = expected_overflow_flag } }
+                NOT = { check_variable = { to_pdxvar_inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { to_pdxvar_nan_flag = expected_nan_flag } }
             }
         }
         set_temp_variable = { invalid = 1 }
@@ -3200,7 +3311,7 @@ ieee_test_2020 = {
     }
 
     log = "Actual: [?to_pdxvar_output] overflow: [?to_pdxvar_overflow_flag]"
-    log = "Expect: [?expected_output] overflow: [?expected_to_pdxvar_overflow_flag]"
+    log = "Expect: [?expected_output] overflow: [?expected_overflow_flag]"
     
     set_temp_variable = { io_error_flag = 0 }
     clear_temp_array = temp_array_0
@@ -3210,7 +3321,7 @@ ieee_test_2021 = {
     clear_temp_array = temp_array_0
 
     set_temp_variable = { to_bitwise_input = -905469.384 }
-    resize_temp_array = { temp_array_id = 0 }
+    set_temp_variable = { temp_array_id = 0 }
     to_bitwise = yes
 
     set_temp_variable = { temp_array_id = 0 }
@@ -3218,7 +3329,9 @@ ieee_test_2021 = {
 
     # expected value output()
     set_temp_variable = { expected_output = 0 }
-    set_temp_variable = { expected_to_pdxvar_overflow_flag = -1 }
+    set_temp_variable = { expected_overflow_flag = -1 }
+    set_temp_variable = { expected_inf_flag = 0 }
+    set_temp_variable = { expected_nan_flag = 0 }
 
     set_temp_variable = { invalid = 0 }
     if = {
@@ -3231,7 +3344,9 @@ ieee_test_2021 = {
         limit = {
             OR = {
                 NOT = { check_variable = { to_pdxvar_output = expected_output } }
-                NOT = { check_variable = { to_pdxvar_overflow_flag = expected_to_pdxvar_overflow_flag } }
+                NOT = { check_variable = { to_pdxvar_overflow_flag = expected_overflow_flag } }
+                NOT = { check_variable = { to_pdxvar_inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { to_pdxvar_nan_flag = expected_nan_flag } }
             }
         }
         set_temp_variable = { invalid = 1 }
@@ -3248,7 +3363,7 @@ ieee_test_2021 = {
     }
 
     log = "Actual: [?to_pdxvar_output] overflow: [?to_pdxvar_overflow_flag]"
-    log = "Expect: [?expected_output] overflow: [?expected_to_pdxvar_overflow_flag]"
+    log = "Expect: [?expected_output] overflow: [?expected_overflow_flag]"
     
     set_temp_variable = { io_error_flag = 0 }
     clear_temp_array = temp_array_0
@@ -3258,7 +3373,7 @@ ieee_test_2022 = {
     clear_temp_array = temp_array_0
 
     set_temp_variable = { to_bitwise_input = 2139095.04 }
-    resize_temp_array = { temp_array_id = 0 }
+    set_temp_variable = { temp_array_id = 0 }
     to_bitwise = yes
 
     set_temp_variable = { temp_array_id = 0 }
@@ -3266,7 +3381,9 @@ ieee_test_2022 = {
 
     # expected value output()
     set_temp_variable = { expected_output = 0 }
+    set_temp_variable = { expected_overflow_flag = 0 }
     set_temp_variable = { expected_inf_flag = 1 }
+    set_temp_variable = { expected_nan_flag = 0 }
 
     set_temp_variable = { invalid = 0 }
     if = {
@@ -3279,7 +3396,9 @@ ieee_test_2022 = {
         limit = {
             OR = {
                 NOT = { check_variable = { to_pdxvar_output = expected_output } }
+                NOT = { check_variable = { to_pdxvar_overflow_flag = expected_overflow_flag } }
                 NOT = { check_variable = { to_pdxvar_inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { to_pdxvar_nan_flag = expected_nan_flag } }
             }
         }
         set_temp_variable = { invalid = 1 }
@@ -3306,7 +3425,7 @@ ieee_test_2023 = {
     clear_temp_array = temp_array_0
 
     set_temp_variable = { to_bitwise_input = -4194.304 }
-    resize_temp_array = { temp_array_id = 0 }
+    set_temp_variable = { temp_array_id = 0 }
     to_bitwise = yes
 
     set_temp_variable = { temp_array_id = 0 }
@@ -3314,6 +3433,8 @@ ieee_test_2023 = {
 
     # expected value output()
     set_temp_variable = { expected_output = 0 }
+    set_temp_variable = { expected_overflow_flag = 0 }
+    set_temp_variable = { expected_inf_flag = 0 }
     set_temp_variable = { expected_nan_flag = -1 }
 
     set_temp_variable = { invalid = 0 }
@@ -3327,6 +3448,8 @@ ieee_test_2023 = {
         limit = {
             OR = {
                 NOT = { check_variable = { to_pdxvar_output = expected_output } }
+                NOT = { check_variable = { to_pdxvar_overflow_flag = expected_overflow_flag } }
+                NOT = { check_variable = { to_pdxvar_inf_flag = expected_inf_flag } }
                 NOT = { check_variable = { to_pdxvar_nan_flag = expected_nan_flag } }
             }
         }
@@ -3345,7 +3468,7 @@ ieee_test_2023 = {
 
     log = "Actual: [?to_pdxvar_output] nan: [?to_pdxvar_nan_flag]"
     log = "Expect: [?expected_output] nan: [?expected_nan_flag]"
-    
+
     set_temp_variable = { io_error_flag = 0 }
     clear_temp_array = temp_array_0
 }

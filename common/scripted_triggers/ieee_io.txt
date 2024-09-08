@@ -138,7 +138,7 @@ store_bitwise_trigger = {
     }
     set_temp_variable = { temp_array_id = 0 }
 }
-### TO_FLOAT_TRIGGEr
+### TO_FLOAT_TRIGGER
 ## Converts the pdxvar "to_float_input" to a bitwise array 
 ## The below function has 2 parameters: to_float_input and temp_array_id
 ## These parameters will be cleared(by resetting to 0) after the function execution
@@ -441,6 +441,10 @@ to_float_trigger = {
 # NaN - Some cases cannot be converted to a number as usual. Therefore, a temp var is set to signify the special case: to_pdxvar_nan_flag
 # In both cases, no error is returned and both the power and array remain zeroed out and empty respectively
 to_digit_array_trigger = {
+    # Reset flags
+    set_temp_variable = { to_pdxvar_inf_flag = 0 }
+    set_temp_variable = { to_pdxvar_nan_flag = 0 }
+
     set_temp_variable = { whole_check = temp_array_id }
     round_temp_variable = whole_check
     if = {
@@ -533,7 +537,6 @@ to_digit_array_trigger = {
                     }
                     set_temp_variable = { to_pdxvar_inf_flag = 0 }
                     set_temp_variable = { to_pdxvar_nan_flag = 1 }
-                    set_temp_variable = { break_flag = 1 }
                 }
             }
         }
@@ -682,7 +685,7 @@ to_digit_array_trigger = {
     }
     set_temp_variable = { temp_array_id = 0 }
 }
-### TO_PDXVAR_TRIGGEr
+### TO_PDXVAR_TRIGGER
 ## Reads a bit array in floating-point format and outputs the closest pdxvar to_pdxvar_output
 ## The below function has 1 parameter: temp_array_id
 ## This parameter will be cleared(by resetting to 0) after the function execution
@@ -696,10 +699,14 @@ to_digit_array_trigger = {
 # The output variable which holds the converted value
 # Do not confuse this with the store_bitwise function, as the two functions will output different values from the same bitarray
 # If the value is too high to fit in a pdxvar(greater than 2148483.647 or less than 2147483.648), then a temp var(to_pdxvar_overflow_flag) will be set to 1 or -1 depending on whether the float was too high or too low respectively, a warning will be logged, and the pdxvar will default to 0 
-# In addition, two temp vars exist to notify the user of an infinity or NaN(to_pdxvar_inf_flag and to_pdxvar_nan_flag respectively) and the output will default to 0. Similarly, +1 or -1 will denote a positive or negative special value 
+# In addition, two temp vars exist to notify the user of an infinity or NaN(to_pdxvar_inf_flag and to_pdxvar_nan_flag respectively) and the output will default to 0. Similarly, +1 or -1 will denote a positive or negative special value. These results will not log any warning and should be checked before further use
 ## Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
 ## Additionally, any error will not trigger the to_digit_array function, and instead return 0 to the output variable
 to_pdxvar_trigger = {
+    # Reset flags
+    set_temp_variable = { to_pdxvar_output = 0 }
+    set_temp_variable = { to_pdxvar_overflow_flag = 0 }
+    
     set_temp_variable = { whole_check = temp_array_id }
     round_temp_variable = whole_check
     if = {

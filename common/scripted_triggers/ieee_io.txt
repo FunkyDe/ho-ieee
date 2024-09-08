@@ -151,13 +151,6 @@ store_bitwise_trigger = {
 # If the array_id is not an integer, then the function will display an error
 ## Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
 ## This function does not implement infinity or NaN cases, since pdxvars do not reach those situations(subnormals however, are included with 0)
-##### TODO #####
-# Test if you can iterate indefinitely by decrementing index in an all_of loop
-test = {
-    all_of = {
-
-    }
-}
 to_float_trigger = {
     set_temp_variable = { whole_check = temp_array_id }
     round_temp_variable = whole_check
@@ -285,43 +278,37 @@ to_float_trigger = {
             subtract_from_temp_variable = { temp_exp = 1 }
             divide_temp_variable = { bit_compare = 2 }
         }
-        while_loop_effect = {
-            limit = {
-                NOT = { check_variable = { bit_compare < 1 } }
-            }
-        
-            if = {
-                limit = {
-                    NOT = { check_variable = { to_float_input < bit_compare } }
-                }
+        #while_loop_effect = {
+        #    limit = {
+        #        NOT = { check_variable = { bit_compare < 1 } }
+        #    }
+        #
+        #    if = {
+        #        limit = {
+        #            NOT = { check_variable = { to_float_input < bit_compare } }
+        #        }
+        #
+        #        subtract_from_temp_variable = { to_float_input = bit_compare }
+        #        add_to_temp_array = { temp_mantissa_array = 1 }
+        #        if = {
+        #            limit = {
+        #                check_variable = { actual_exp = -127 }
+        #            }
+        #            set_temp_variable = { actual_exp = temp_exp }
+        #        }
+        #    }
+        #    else = {
+        #        if = {
+        #            limit = {
+        #                NOT = { check_variable = { actual_exp = -127 } }
+        #            }
+        #            add_to_temp_array = { temp_mantissa_array = 0 }
+        #        }
+        #    }
+        #    subtract_from_temp_variable = { temp_exp = 1 }
+        #    divide_temp_variable = { bit_compare = 2 }
+        #}
 
-                subtract_from_temp_variable = { to_float_input = bit_compare }
-                add_to_temp_array = { temp_mantissa_array = 1 }
-                if = {
-                    limit = {
-                        check_variable = { actual_exp = -127 }
-                    }
-                    set_temp_variable = { actual_exp = temp_exp }
-                }
-            }
-            else = {
-                if = {
-                    limit = {
-                        NOT = { check_variable = { actual_exp = -127 } }
-                    }
-                    add_to_temp_array = { temp_mantissa_array = 0 }
-                }
-            }
-            subtract_from_temp_variable = { temp_exp = 1 }
-            divide_temp_variable = { bit_compare = 2 }
-        }
-        all_of = {
-            array = temp_mantissa_array
-            value = val
-
-            add_to_temp_array = { to_print_array = val }
-        }
-        log="[debug_print_array] remainder = [?to_float_input]"
         # Encode decimal portion
         ### TODO ###
         # Not sure what to do, there are two broad cases:
@@ -335,64 +322,108 @@ to_float_trigger = {
         #   Set temp_idx to 0
         #   Iterate through array like integer, removing if supposed to be 0
         #   Cutoff when either run out of elements OR temp_idx > 24 (I think, check edge cases)
-        # ROUNDING IDK CHECK EDGES AHHHHHHHHHH
+
+        # temp_idx serves two roles depending on whether or not the converted number was greater than 1
+        # If no integers were converted above, temp_idx will be 0
         set_temp_variable = { temp_idx = temp_mantissa_array^num }
+        resize_temp_array = { temp_mantissa_array = 24 }
         if = {
             limit = {
                 check_variable = { temp_idx = 0 }
             }
-            resize_temp_array = { temp_mantissa_array = 33 }
+            # Define a temp array to calculate the mantissa(with extra padding for lower powers of 2), which is then copied over to temp_mantissa_array
+            resize_temp_array = { temp_mantissa_subone = 33 }
 
+            # temp_idx defines which bit in temp_mantissa_array is being assigned
             all_of = {
-                array = temp_mantissa_array
+                array = temp_mantissa_subone
                 index = idx
 
+                multiply_temp_variable = { to_float_input = 2 }
+                if = {
+                    limit = {
+                        NOT = { check_variable = { to_float_input < 1 } }
+                    }
 
+                    subtract_from_temp_variable = { to_float_input = 1 }
+                    set_temp_variable = { temp_mantissa_array^temp_idx = 1 }
+                    
+                    # set exponent since hasn't been set in integer converter
+                    if = {
+                        limit = {
+                            check_variable = { actual_exp = -127 }
+                        }
+                        set_temp_variable = { actual_exp = temp_exp }
+                    }
+                    add_to_temp_variable = { temp_idx = 1 }
+                }
+                else = {
+                    if = {
+                        limit = {
+                            NOT = { check_variable = { actual_exp = -127 } }
+                        }
+                        add_to_temp_variable = { temp_idx = 1 }
+                    }
+                }
+                subtract_from_temp_variable = { temp_exp = 1 }
             }
         }
         else = {
-            resize_temp_array = { temp_mantissa_array = 24 }
-
+            # temp_idx defines where decimal portion of mantissa starts
             all_of = {
                 array = temp_mantissa_array
                 index = idx
 
-
-            }
-        }
-        while_loop_effect = {
-            limit = {
-                AND = {
-                    check_variable = { temp_mantissa_array^num < 24 }
-                    NOT = { check_variable = { to_float_input = 0 } }
-                }
-            }
-
-            multiply_temp_variable = { to_float_input = 2 }
-            if = {
-                limit = {
-                    NOT = { check_variable = { to_float_input < 1 } }
-                }
-
-                subtract_from_temp_variable = { to_float_input = 1 }
-                add_to_temp_array = { temp_mantissa_array = 1 }
                 if = {
                     limit = {
-                        check_variable = { actual_exp = -127 }
+                        NOT = { check_variable = { idx < temp_idx } }
                     }
-                    set_temp_variable = { actual_exp = temp_exp }
+
+                    multiply_temp_variable = { to_float_input = 2 }
+                    if = {
+                        limit = {
+                            NOT = { check_variable = { to_float_input < 1 } }
+                        }
+
+                        subtract_from_temp_variable = { to_float_input = 1 }
+                        set_temp_variable = { temp_mantissa_array^idx = 0 }
+                    }
                 }
             }
-            else = {
-                if = {
-                    limit = {
-                        NOT = { check_variable = { actual_exp = -127 } }
-                    }
-                    add_to_temp_array = { temp_mantissa_array = 0 }
-                }
-            }
-            subtract_from_temp_variable = { temp_exp = 1 }
         }
+        #while_loop_effect = {
+        #    limit = {
+        #        AND = {
+        #            check_variable = { temp_mantissa_array^num < 24 }
+        #            NOT = { check_variable = { to_float_input = 0 } }
+        #        }
+        #    }
+        #
+        #    multiply_temp_variable = { to_float_input = 2 }
+        #    if = {
+        #        limit = {
+        #            NOT = { check_variable = { to_float_input < 1 } }
+        #        }
+        #
+        #        subtract_from_temp_variable = { to_float_input = 1 }
+        #        add_to_temp_array = { temp_mantissa_array = 1 }
+        #        if = {
+        #            limit = {
+        #                check_variable = { actual_exp = -127 }
+        #            }
+        #            set_temp_variable = { actual_exp = temp_exp }
+        #        }
+        #    }
+        #    else = {
+        #        if = {
+        #            limit = {
+        #                NOT = { check_variable = { actual_exp = -127 } }
+        #            }
+        #            add_to_temp_array = { temp_mantissa_array = 0 }
+        #        }
+        #    }
+        #    subtract_from_temp_variable = { temp_exp = 1 }
+        #}
 
         # round mantissa
         if = {

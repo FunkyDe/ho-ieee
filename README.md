@@ -46,6 +46,8 @@ This project is currently maintained by one modder, FunkyDe.
 
 # Additional Details
 
+Documentation: There is a lot of information to parse when using this mod for the first time. Every function has documentation above it highlighting the functionality, errors, and notes associated with the function. As the developer, I strongly recommend at least skimming the docs for the float_to_pdxvar and pdxvar_to_float functions, since those handle the basic translation between floats and pdxvars. Furthermore, I am considering opening channels for further communication and assistance, perhaps through Discord, but that is a matter for when the mod is ready for public release.
+
 Triggers: Localization only allows triggers to be utilized beforehand, meaning that the scripted effects that are necessary to pre-process variables and arrays are not available. Therefore, certain scripted effects have been converted to a scripted trigger. There should be no difference between them, but for ease of use a wrapper scripted effect is also available.
 
 Bit Arrays: In order to process floating-point numbers, this mod makes extensive use of bit arrays. These arrays are marked by their names `temp_array_###`, and their elements are restricted to being either 0 or 1. While the floating-point variables can be stored as usual in pdxvars, in the background they will be converted to bit arrays for actual use. Therefore, I recommend not to tamper with these temporary arrays. While errors (detailed below) may catch some of the effects of bit array manipulation, it may not notice all of them.
@@ -61,6 +63,7 @@ Assumptions: When modding scripts try to access a variable that has not been set
 # TODOlist:
 
 - Add ftp and ptf wrappers
+    - Make ftp and ptf not single-parameter, make it have input and output vars
 - Comparison
 - Addition
     - positive case

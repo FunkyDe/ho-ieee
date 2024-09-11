@@ -49,6 +49,7 @@ ieee_get_test_count = {
     add_to_temp_array = { temp_test_count_array = 12 } # to_bitwise and store_bitwise
     add_to_temp_array = { temp_test_count_array = 12 } # to_float
     add_to_temp_array = { temp_test_count_array = 25 } # to_digit_array and to_pdxvar
+    add_to_temp_array = { temp_test_count_array = 0  } # ftp and ptf wrappers
 }
 ## test to_bitwise and store_bitwise functions
 ieee_test_0 = {
@@ -3501,4 +3502,41 @@ ieee_test_2024 = {
     }
     
     set_temp_variable = { io_error_flag = 0 }
+}
+# test ftp and ptf wrappers
+ieee_test_3000 = {
+    set_temp_variable = { ftp_parameter = 1148846.08 }
+
+    float_to_pdxvar = yes
+
+    set_temp_variable = { expected_output = 1000 }
+    set_temp_variable = { expected_overflow_flag = 0 }
+    set_temp_variable = { expected_inf_flag = 0 }
+    set_temp_variable = { expected_nan_flag = 0 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { ftp_parameter = expected_output } }
+                NOT = { check_variable = { overflow_flag = expected_overflow_flag } }
+                NOT = { check_variable = { inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { nan_flag = expected_nan_flag } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - basic float_to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - basic float_to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?ftp_parameter]"
+    log = "Expect: [?expected_output]"
 }

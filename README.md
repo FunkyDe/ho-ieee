@@ -62,8 +62,6 @@ Assumptions: When modding scripts try to access a variable that has not been set
 
 # TODOlist:
 
-- Add ftp and ptf wrappers
-    - Make ftp and ptf not single-parameter, make it have input and output vars
 - Comparison
 - Addition
     - positive case

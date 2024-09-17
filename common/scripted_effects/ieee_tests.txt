@@ -49,7 +49,7 @@ ieee_get_test_count = {
     add_to_temp_array = { temp_test_count_array = 12 } # to_bitwise and store_bitwise
     add_to_temp_array = { temp_test_count_array = 12 } # to_float
     add_to_temp_array = { temp_test_count_array = 25 } # to_digit_array and to_pdxvar
-    add_to_temp_array = { temp_test_count_array = 0  } # ftp and ptf wrappers
+    add_to_temp_array = { temp_test_count_array = 21  } # ftp and ptf wrappers
 }
 ## test to_bitwise and store_bitwise functions
 ieee_test_0 = {
@@ -2812,10 +2812,10 @@ ieee_test_2012 = {
     to_pdxvar = yes
 
     # expected value output()
-    set_temp_variable = { expected_output = 1000 }
-    set_temp_variable = { expected_overflow_flag = 0 }
-    set_temp_variable = { expected_inf_flag = 0 }
-    set_temp_variable = { expected_nan_flag = 0 }
+    set_temp_variable = { expected_output =         1000 }
+    set_temp_variable = { expected_overflow_flag =  0 }
+    set_temp_variable = { expected_inf_flag =       0 }
+    set_temp_variable = { expected_nan_flag =       0 }
 
     set_temp_variable = { invalid = 0 }
     if = {
@@ -2871,10 +2871,10 @@ ieee_test_2013 = {
     to_pdxvar = yes
 
     # expected value output()
-    set_temp_variable = { expected_output = 1000.5 }
-    set_temp_variable = { expected_overflow_flag = 0 }
-    set_temp_variable = { expected_inf_flag = 0 }
-    set_temp_variable = { expected_nan_flag = 0 }
+    set_temp_variable = { expected_output =         1000.5 }
+    set_temp_variable = { expected_overflow_flag =  0 }
+    set_temp_variable = { expected_inf_flag =       0 }
+    set_temp_variable = { expected_nan_flag =       0 }
 
     set_temp_variable = { invalid = 0 }
     if = {
@@ -2929,10 +2929,10 @@ ieee_test_2014 = {
     to_pdxvar = yes
 
     # expected value output()
-    set_temp_variable = { expected_output = 1000.75 }
-    set_temp_variable = { expected_overflow_flag = 0 }
-    set_temp_variable = { expected_inf_flag = 0 }
-    set_temp_variable = { expected_nan_flag = 0 }
+    set_temp_variable = { expected_output =         1000.75 }
+    set_temp_variable = { expected_overflow_flag =  0 }
+    set_temp_variable = { expected_inf_flag =       0 }
+    set_temp_variable = { expected_nan_flag =       0 }
 
     set_temp_variable = { invalid = 0 }
     if = {
@@ -2987,10 +2987,10 @@ ieee_test_2015 = {
     to_pdxvar = yes
 
     # expected value output()
-    set_temp_variable = { expected_output = 1000.800 }
-    set_temp_variable = { expected_overflow_flag = 0 }
-    set_temp_variable = { expected_inf_flag = 0 }
-    set_temp_variable = { expected_nan_flag = 0 }
+    set_temp_variable = { expected_output =         1000.800 }
+    set_temp_variable = { expected_overflow_flag =  0 }
+    set_temp_variable = { expected_inf_flag =       0 }
+    set_temp_variable = { expected_nan_flag =       0 }
 
     set_temp_variable = { invalid = 0 }
     if = {
@@ -3045,10 +3045,10 @@ ieee_test_2016 = {
     to_pdxvar = yes
 
     # expected value output()
-    set_temp_variable = { expected_output = 1000.188 }
-    set_temp_variable = { expected_overflow_flag = 0 }
-    set_temp_variable = { expected_inf_flag = 0 }
-    set_temp_variable = { expected_nan_flag = 0 }
+    set_temp_variable = { expected_output =         1000.188 }
+    set_temp_variable = { expected_overflow_flag =  0 }
+    set_temp_variable = { expected_inf_flag =       0 }
+    set_temp_variable = { expected_nan_flag =       0 }
 
     set_temp_variable = { invalid = 0 }
     if = {
@@ -3103,10 +3103,10 @@ ieee_test_2017 = {
     to_pdxvar = yes
 
     # expected value output()
-    set_temp_variable = { expected_output = 0.062 }
-    set_temp_variable = { expected_overflow_flag = 0 }
-    set_temp_variable = { expected_inf_flag = 0 }
-    set_temp_variable = { expected_nan_flag = 0 }
+    set_temp_variable = { expected_output =         0.062 }
+    set_temp_variable = { expected_overflow_flag =  0 }
+    set_temp_variable = { expected_inf_flag =       0 }
+    set_temp_variable = { expected_nan_flag =       0 }
 
     set_temp_variable = { invalid = 0 }
     if = {
@@ -3161,10 +3161,10 @@ ieee_test_2018 = {
     to_pdxvar = yes
 
     # expected value output()
-    set_temp_variable = { expected_output = -0.504 }
-    set_temp_variable = { expected_overflow_flag = 0 }
-    set_temp_variable = { expected_inf_flag = 0 }
-    set_temp_variable = { expected_nan_flag = 0 }
+    set_temp_variable = { expected_output =         -0.504 }
+    set_temp_variable = { expected_overflow_flag =  0 }
+    set_temp_variable = { expected_inf_flag =       0 }
+    set_temp_variable = { expected_nan_flag =       0 }
 
     set_temp_variable = { invalid = 0 }
     if = {
@@ -3219,10 +3219,10 @@ ieee_test_2019 = {
     to_pdxvar = yes
 
     # expected value output()
-    set_temp_variable = { expected_output = -1000.800 }
-    set_temp_variable = { expected_overflow_flag = 0 }
-    set_temp_variable = { expected_inf_flag = 0 }
-    set_temp_variable = { expected_nan_flag = 0 }
+    set_temp_variable = { expected_output =         -1000.800 }
+    set_temp_variable = { expected_overflow_flag =  0 }
+    set_temp_variable = { expected_inf_flag =       0 }
+    set_temp_variable = { expected_nan_flag =       0 }
 
     set_temp_variable = { invalid = 0 }
     if = {
@@ -3277,10 +3277,10 @@ ieee_test_2020 = {
     to_pdxvar = yes
 
     # expected value output()
-    set_temp_variable = { expected_output = 0 }
-    set_temp_variable = { expected_overflow_flag = 1 }
-    set_temp_variable = { expected_inf_flag = 0 }
-    set_temp_variable = { expected_nan_flag = 0 }
+    set_temp_variable = { expected_output =         0 }
+    set_temp_variable = { expected_overflow_flag =  1 }
+    set_temp_variable = { expected_inf_flag =       0 }
+    set_temp_variable = { expected_nan_flag =       0 }
 
     set_temp_variable = { invalid = 0 }
     if = {
@@ -3329,10 +3329,10 @@ ieee_test_2021 = {
     to_pdxvar = yes
 
     # expected value output()
-    set_temp_variable = { expected_output = 0 }
-    set_temp_variable = { expected_overflow_flag = -1 }
-    set_temp_variable = { expected_inf_flag = 0 }
-    set_temp_variable = { expected_nan_flag = 0 }
+    set_temp_variable = { expected_output =         0 }
+    set_temp_variable = { expected_overflow_flag =  -1 }
+    set_temp_variable = { expected_inf_flag =       0 }
+    set_temp_variable = { expected_nan_flag =       0 }
 
     set_temp_variable = { invalid = 0 }
     if = {
@@ -3381,10 +3381,10 @@ ieee_test_2022 = {
     to_pdxvar = yes
 
     # expected value output()
-    set_temp_variable = { expected_output = 0 }
-    set_temp_variable = { expected_overflow_flag = 0 }
-    set_temp_variable = { expected_inf_flag = 1 }
-    set_temp_variable = { expected_nan_flag = 0 }
+    set_temp_variable = { expected_output =         0 }
+    set_temp_variable = { expected_overflow_flag =  0 }
+    set_temp_variable = { expected_inf_flag =       1 }
+    set_temp_variable = { expected_nan_flag =       0 }
 
     set_temp_variable = { invalid = 0 }
     if = {
@@ -3433,10 +3433,10 @@ ieee_test_2023 = {
     to_pdxvar = yes
 
     # expected value output()
-    set_temp_variable = { expected_output = 0 }
-    set_temp_variable = { expected_overflow_flag = 0 }
-    set_temp_variable = { expected_inf_flag = 0 }
-    set_temp_variable = { expected_nan_flag = -1 }
+    set_temp_variable = { expected_output =         0 }
+    set_temp_variable = { expected_overflow_flag =  0 }
+    set_temp_variable = { expected_inf_flag =       0 }
+    set_temp_variable = { expected_nan_flag =       -1 }
 
     set_temp_variable = { invalid = 0 }
     if = {
@@ -3505,20 +3505,28 @@ ieee_test_2024 = {
 }
 # test ftp and ptf wrappers
 ieee_test_3000 = {
-    set_temp_variable = { ftp_parameter = 1148846.08 }
+    set_temp_variable = { io_error_flag = 0 }
+    
+    set_temp_variable = { ftp_in = 1148846.08 }
 
     float_to_pdxvar = yes
 
-    set_temp_variable = { expected_output = 1000 }
-    set_temp_variable = { expected_overflow_flag = 0 }
-    set_temp_variable = { expected_inf_flag = 0 }
-    set_temp_variable = { expected_nan_flag = 0 }
+    set_temp_variable = { expected_output =         1000 }
+    set_temp_variable = { expected_overflow_flag =  0 }
+    set_temp_variable = { expected_inf_flag =       0 }
+    set_temp_variable = { expected_nan_flag =       0 }
 
     set_temp_variable = { invalid = 0 }
     if = {
         limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
             OR = {
-                NOT = { check_variable = { ftp_parameter = expected_output } }
+                NOT = { check_variable = { ftp_out = expected_output } }
                 NOT = { check_variable = { overflow_flag = expected_overflow_flag } }
                 NOT = { check_variable = { inf_flag = expected_inf_flag } }
                 NOT = { check_variable = { nan_flag = expected_nan_flag } }
@@ -3537,6 +3545,874 @@ ieee_test_3000 = {
         log = "Test [?test_id] - basic float_to_pdxvar - PASS"
     }
 
-    log = "Actual: [?ftp_parameter]"
+    log = "Actual: [?ftp_out]"
     log = "Expect: [?expected_output]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+}
+ieee_test_3001 = {
+    set_temp_variable = { io_error_flag = 0 }
+    
+    set_temp_variable = { ftp_in = 1148854.272 }
+
+    float_to_pdxvar = yes
+
+    set_temp_variable = { expected_output =         1000.5 }
+    set_temp_variable = { expected_overflow_flag =  0 }
+    set_temp_variable = { expected_inf_flag =       0 }
+    set_temp_variable = { expected_nan_flag =       0 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { ftp_out = expected_output } }
+                NOT = { check_variable = { overflow_flag = expected_overflow_flag } }
+                NOT = { check_variable = { inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { nan_flag = expected_nan_flag } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - 1 decimal float_to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - 1 decimal float_to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?ftp_out]"
+    log = "Expect: [?expected_output]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+}
+ieee_test_3002 = {
+    set_temp_variable = { io_error_flag = 0 }
+    
+    set_temp_variable = { ftp_in = 1148858.368 }
+
+    float_to_pdxvar = yes
+
+    set_temp_variable = { expected_output =         1000.75 }
+    set_temp_variable = { expected_overflow_flag =  0 }
+    set_temp_variable = { expected_inf_flag =       0 }
+    set_temp_variable = { expected_nan_flag =       0 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { ftp_out = expected_output } }
+                NOT = { check_variable = { overflow_flag = expected_overflow_flag } }
+                NOT = { check_variable = { inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { nan_flag = expected_nan_flag } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - 2 decimal float_to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - 2 decimal float_to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?ftp_out]"
+    log = "Expect: [?expected_output]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+}
+ieee_test_3003 = {
+    set_temp_variable = { io_error_flag = 0 }
+    
+    set_temp_variable = { ftp_in = 1148859.187 }
+
+    float_to_pdxvar = yes
+
+    set_temp_variable = { expected_output =         1000.800 }
+    set_temp_variable = { expected_overflow_flag =  0 }
+    set_temp_variable = { expected_inf_flag =       0 }
+    set_temp_variable = { expected_nan_flag =       0 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { ftp_out = expected_output } }
+                NOT = { check_variable = { overflow_flag = expected_overflow_flag } }
+                NOT = { check_variable = { inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { nan_flag = expected_nan_flag } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - round simple float_to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - round simple float_to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?ftp_out]"
+    log = "Expect: [?expected_output]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+}
+ieee_test_3004 = {
+    set_temp_variable = { io_error_flag = 0 }
+    
+    set_temp_variable = { ftp_in = 1148849.152 }
+
+    float_to_pdxvar = yes
+
+    set_temp_variable = { expected_output =         1000.188 }
+    set_temp_variable = { expected_overflow_flag =  0 }
+    set_temp_variable = { expected_inf_flag =       0 }
+    set_temp_variable = { expected_nan_flag =       0 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { ftp_out = expected_output } }
+                NOT = { check_variable = { overflow_flag = expected_overflow_flag } }
+                NOT = { check_variable = { inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { nan_flag = expected_nan_flag } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - round up float_to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - round up float_to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?ftp_out]"
+    log = "Expect: [?expected_output]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+}
+ieee_test_3005 = {
+    set_temp_variable = { io_error_flag = 0 }
+    
+    set_temp_variable = { ftp_in = 1031798.784 }
+
+    float_to_pdxvar = yes
+
+    set_temp_variable = { expected_output =         0.062 }
+    set_temp_variable = { expected_overflow_flag =  0 }
+    set_temp_variable = { expected_inf_flag =       0 }
+    set_temp_variable = { expected_nan_flag =       0 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { ftp_out = expected_output } }
+                NOT = { check_variable = { overflow_flag = expected_overflow_flag } }
+                NOT = { check_variable = { inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { nan_flag = expected_nan_flag } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - round down float_to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - round down float_to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?ftp_out]"
+    log = "Expect: [?expected_output]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+}
+ieee_test_3006 = {
+    set_temp_variable = { io_error_flag = 0 }
+    
+    set_temp_variable = { ftp_in = -1090451.932 }
+
+    float_to_pdxvar = yes
+
+    set_temp_variable = { expected_output =         -0.504 }
+    set_temp_variable = { expected_overflow_flag =  0 }
+    set_temp_variable = { expected_inf_flag =       0 }
+    set_temp_variable = { expected_nan_flag =       0 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { ftp_out = expected_output } }
+                NOT = { check_variable = { overflow_flag = expected_overflow_flag } }
+                NOT = { check_variable = { inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { nan_flag = expected_nan_flag } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - negative float_to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - negative float_to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?ftp_out]"
+    log = "Expect: [?expected_output]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+}
+ieee_test_3007 = {
+    set_temp_variable = { io_error_flag = 0 }
+    
+    set_temp_variable = { ftp_in = -998624.461 }
+
+    float_to_pdxvar = yes
+
+    set_temp_variable = { expected_output =         -1000.800 }
+    set_temp_variable = { expected_overflow_flag =  0 }
+    set_temp_variable = { expected_inf_flag =       0 }
+    set_temp_variable = { expected_nan_flag =       0 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { ftp_out = expected_output } }
+                NOT = { check_variable = { overflow_flag = expected_overflow_flag } }
+                NOT = { check_variable = { inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { nan_flag = expected_nan_flag } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - negative round float_to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - negative round float_to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?ftp_out]"
+    log = "Expect: [?expected_output]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+}
+ieee_test_3008 = {
+    set_temp_variable = { io_error_flag = 0 }
+    
+    set_temp_variable = { ftp_in = 1242014.264 }
+
+    float_to_pdxvar = yes
+
+    set_temp_variable = { expected_output =         0 }
+    set_temp_variable = { expected_overflow_flag =  1 }
+    set_temp_variable = { expected_inf_flag =       0 }
+    set_temp_variable = { expected_nan_flag =       0 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { ftp_out = expected_output } }
+                NOT = { check_variable = { overflow_flag = expected_overflow_flag } }
+                NOT = { check_variable = { inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { nan_flag = expected_nan_flag } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - positive overflow float_to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - positive overflow float_to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?ftp_out]"
+    log = "Expect: [?expected_output]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+}
+ieee_test_3009 = {
+    set_temp_variable = { io_error_flag = 0 }
+    
+    set_temp_variable = { ftp_in = -905469.384 }
+
+    float_to_pdxvar = yes
+
+    set_temp_variable = { expected_output =         0 }
+    set_temp_variable = { expected_overflow_flag =  -1 }
+    set_temp_variable = { expected_inf_flag =       0 }
+    set_temp_variable = { expected_nan_flag =       0 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { ftp_out = expected_output } }
+                NOT = { check_variable = { overflow_flag = expected_overflow_flag } }
+                NOT = { check_variable = { inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { nan_flag = expected_nan_flag } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - negative overflow float_to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - negative overflow float_to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?ftp_out]"
+    log = "Expect: [?expected_output]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+}
+ieee_test_3010 = {
+    set_temp_variable = { io_error_flag = 0 }
+    
+    set_temp_variable = { ftp_in = 2139095.04 }
+
+    float_to_pdxvar = yes
+
+    set_temp_variable = { expected_output =         0 }
+    set_temp_variable = { expected_overflow_flag =  0 }
+    set_temp_variable = { expected_inf_flag =       1 }
+    set_temp_variable = { expected_nan_flag =       0 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { ftp_out = expected_output } }
+                NOT = { check_variable = { overflow_flag = expected_overflow_flag } }
+                NOT = { check_variable = { inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { nan_flag = expected_nan_flag } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - inf float_to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - inf float_to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?ftp_out]"
+    log = "Expect: [?expected_output]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+}
+ieee_test_3011 = {
+    set_temp_variable = { io_error_flag = 0 }
+    
+    set_temp_variable = { ftp_in = -4194.304 }
+
+    float_to_pdxvar = yes
+
+    set_temp_variable = { expected_output =         0 }
+    set_temp_variable = { expected_overflow_flag =  0 }
+    set_temp_variable = { expected_inf_flag =       0 }
+    set_temp_variable = { expected_nan_flag =       -1 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { ftp_out = expected_output } }
+                NOT = { check_variable = { overflow_flag = expected_overflow_flag } }
+                NOT = { check_variable = { inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { nan_flag = expected_nan_flag } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - negative nan float_to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - negative nan float_to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?ftp_out]"
+    log = "Expect: [?expected_output]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+}
+ieee_test_3012 = {
+    set_temp_variable = { io_error_flag = 0 }
+    
+    set_temp_variable = { ptf_in = 1175 }
+
+    pdxvar_to_float = yes
+
+    set_temp_variable = { expected_output = 1150476.288 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { ptf_out = expected_output } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - basic float_to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - basic float_to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?ptf_out]"
+    log = "Expect: [?expected_output]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+}
+ieee_test_3013 = {
+    set_temp_variable = { io_error_flag = 0 }
+    
+    set_temp_variable = { ptf_in = 2097152.874 }
+
+    pdxvar_to_float = yes
+
+    set_temp_variable = { expected_output = 1241513.987 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { ptf_out = expected_output } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - round down float_to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - round down float_to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?ptf_out]"
+    log = "Expect: [?expected_output]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+}
+ieee_test_3014 = {
+    set_temp_variable = { io_error_flag = 0 }
+    
+    set_temp_variable = { ptf_in = 2097152.875 }
+
+    pdxvar_to_float = yes
+
+    set_temp_variable = { expected_output = 1241513.988 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { ptf_out = expected_output } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - round up, edge float_to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - round up, edge float_to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?ptf_out]"
+    log = "Expect: [?expected_output]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+}
+ieee_test_3015 = {
+    set_temp_variable = { io_error_flag = 0 }
+    
+    set_temp_variable = { ptf_in = 2097152.125 }
+
+    pdxvar_to_float = yes
+
+    set_temp_variable = { expected_output = 1241513.984 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { ptf_out = expected_output } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - round down, edge float_to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - round down, edge float_to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?ptf_out]"
+    log = "Expect: [?expected_output]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+}
+ieee_test_3016 = {
+    set_temp_variable = { io_error_flag = 0 }
+    
+    set_temp_variable = { ptf_in = 2097152.876 }
+
+    pdxvar_to_float = yes
+
+    set_temp_variable = { expected_output = 1241513.988 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { ptf_out = expected_output } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - round up float_to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - round up float_to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?ptf_out]"
+    log = "Expect: [?expected_output]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+}
+ieee_test_3017 = {
+    set_temp_variable = { io_error_flag = 0 }
+    
+    set_temp_variable = { ptf_in = -2525.125 }
+
+    pdxvar_to_float = yes
+
+    set_temp_variable = { expected_output = -987901.440 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { ptf_out = expected_output } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - negative float_to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - negative float_to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?ptf_out]"
+    log = "Expect: [?expected_output]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+}
+ieee_test_3018 = {
+    set_temp_variable = { io_error_flag = 0 }
+    
+    set_temp_variable = { ptf_in = 0 }
+
+    pdxvar_to_float = yes
+
+    set_temp_variable = { expected_output = 0.000 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { ptf_out = expected_output } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - zero float_to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - zero float_to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?ptf_out]"
+    log = "Expect: [?expected_output]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+}
+ieee_test_3019 = {
+    set_temp_variable = { io_error_flag = 0 }
+    
+    set_temp_variable = { ptf_in = -2147483.648 }
+
+    pdxvar_to_float = yes
+
+    set_temp_variable = { expected_output = -905768.337 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { ptf_out = expected_output } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - min num float_to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - min num float_to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?ptf_out]"
+    log = "Expect: [?expected_output]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+}
+ieee_test_3020 = {
+    set_temp_variable = { io_error_flag = 0 }
+    
+    set_temp_variable = { ptf_in = 2097151.938 }
+
+    pdxvar_to_float = yes
+
+    set_temp_variable = { expected_output = 1241513.984 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { ptf_out = expected_output } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - round add exp float_to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - 00000000 float_to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?ptf_out]"
+    log = "Expect: [?expected_output]"
+    
+    set_temp_variable = { io_error_flag = 0 }
 }

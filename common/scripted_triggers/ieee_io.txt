@@ -74,7 +74,8 @@ to_bitwise_trigger = {
 # If no array_id is assigned, the function will use temp_array_0 in place
 # If the array_id is not an integer, then the function will display an error
 # If the array is not 32 bits long, the function will display an error
-## The output will be sent to the temp var store_bitwise_output
+## STORE_BITWISE_OUTPUT
+# The output of store_bitwise will be sent to this temp var
 ## Errors consist of a temp error var (bitwise_error_flag) and a message in log corresponding to the error
 store_bitwise_trigger = {
     set_temp_variable = { whole_check = temp_array_id }

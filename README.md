@@ -40,6 +40,8 @@ The tentative task map is:
 - [ ] Additional basic functions
 - [ ] Recommended operations (consult Clause 9 of IEEE 754)
 
+A more detailed roadmap can be found at `extras/progress.md`, which displays which of the necessary functions have been implemented.
+
 # Who?
 
 This project is currently maintained by one modder, FunkyDe.
@@ -59,6 +61,8 @@ Errors: This mod is complex, so I have implemented a system of error logging for
 Tests: I have implemented a series of tests in order to verify the function of functions during development. If you want to examine the tests themselves, you can check out `scripted_effects/ieee_tests.txt` - each test is a scripted effect named `ieee_test_####`, which prints a short result to `game.log`. These tests run on game startup and generate a report in `game.log` for each test and any failures. Additionally, you can execute all tests at once with the scripted effect `ieee_run_tests` (in-game terminal: `e ieee_run_tests`). Error messages may appear in `game.log` after executing tests, but that is to be expected from testing the functions' error handlers.
 
 Assumptions: When modding scripts try to access a variable that has not been set yet, it will read 0. This may raise a bit of confusion, as the script treats both the modder forgetting to set a variable/parameter and them deliberately setting a variable to 0 equivalently. Notes have been taken in the comments to describe the outcome for uninitialized variables, but extra care should be taken with scripted effects that handle numerical input: to_bitwise, to_float, etc. Since their inputs are meant to be numbers, leaving inputs uninitialized as 0 will proceed with no errors, warnings, or notification. These 0-critical inputs will be marked in comments with the line `# If no input is given, the function will use 0 in place **and return no error**` in the comments above each function.
+
+NaN: It is very difficult to create exceptions in Hearts of Iron IV, as there is no way to break the execution of a scripted effect or trigger as far as I can tell. This means that signaling NaNs are effectively impossible as sNaNs require an exception to be raised immediately. Therefore, all NaNs implemented in ho-ieee-754 are effectively quiet NaN. Since exceptions are impossible, the only difference between quiet and signaling functions is whether or not a warning is displayed and a flag incremented.
 
 # TODOlist:
 

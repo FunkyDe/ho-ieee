@@ -50,6 +50,8 @@ ieee_get_test_count = {
     add_to_temp_array = { temp_test_count_array = 12 } # to_float
     add_to_temp_array = { temp_test_count_array = 25 } # to_digit_array and to_pdxvar
     add_to_temp_array = { temp_test_count_array = 21  } # ftp and ptf wrappers
+    add_to_temp_array = { temp_test_count_array = 500 } # relations and totalorder
+    add_to_temp_array = { temp_test_count_array = 972 } # predicates
 }
 ## test to_bitwise and store_bitwise functions
 ieee_test_0 = {
@@ -4408,7 +4410,7 @@ ieee_test_3020 = {
         add_to_temp_array = { test_fail_array = test_id }
     }
     else = {
-        log = "Test [?test_id] - 00000000 float_to_pdxvar - PASS"
+        log = "Test [?test_id] - round add exp float_to_pdxvar - PASS"
     }
 
     log = "Actual: [?ptf_out]"
@@ -4416,3 +4418,8 @@ ieee_test_3020 = {
     
     set_temp_variable = { io_error_flag = 0 }
 }
+# test base relations and totalOrder
+## See ieee_tests_relations.txt and ieee_tests_totalorder.txt
+# test quiet predicates and negations
+## See ieee_tests_predicates.txt
+# test signaling predicates and negations

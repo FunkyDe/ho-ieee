@@ -1,0 +1,10 @@
+# comp_error_flag
+# relations, predicates, and totalOrder all use arg_a, arg_b
+
+#### RELATIONS
+### RELATION_LESS
+### RELATION_EQUAL
+### RELATION_GREATER
+### RELATION_UNORDERED
+
+#### PREDICATES

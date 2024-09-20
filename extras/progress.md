@@ -36,13 +36,12 @@ This Markdown page provides a view of the progress towards the implementation of
 | convertToIntegerExactTowardZero | <span style="color:red">Not Done</span> | ##### | modified to convertToPdx, converts to pdxvar instead of integer, signals if inexact |
 | convertToIntegerExactTowardPositive | <span style="color:red">Not Done</span> | ##### | modified to convertToPdx, converts to pdxvar instead of integer, signals if inexact |
 | convertToIntegerExactTowardNegative | <span style="color:red">Not Done</span> | ##### | modified to convertToPdx, converts to pdxvar instead of integer, signals if inexact |
-| convertFormat | <span style="color:red">Not Done</span> | ##### |  |
 | convertToDecimalCharacter | <span style="color:blue">Done</span> | **Various localization scripts** | 5 styles given: full accuracy, truncated at decimal, truncated at thousandth, rounded, and scientific notation |
 
 ## 5.5 Quiet-computational Operations
 | Operation | Progress | Implemented By | Notes |
 | :--- | :--- | :--- | :--- |
-| copy | <span style="color:blue">Done</span> | **set_temp_variable** / **set_variable** | Effectively implemented by pdxscript |
+| copy | <span style="color:blue">Done</span> | **set_temp_variable** / **set_variable** | Already implemented by pdxscript |
 | negate | <span style="color:red">Not Done</span> | ##### |  |
 | abs | <span style="color:red">Not Done</span> | ##### |  |
 | copySign | <span style="color:red">Not Done</span> | ##### |  |
@@ -60,8 +59,8 @@ This Markdown page provides a view of the progress towards the implementation of
 | compareQuietNotGreaterEqual | <span style="color:red">Not Done</span> | ##### |  |
 | compareQuietNotLess | <span style="color:red">Not Done</span> | ##### |  |
 | compareQuietNotLessEqual | <span style="color:red">Not Done</span> | ##### |  |
-| compareQuietOrdered | <span style="color:red">Not Done</span> | ##### | No signaling counterpart because they would error on receiving a NaN argument |
-| compareQuietNotOrdered | <span style="color:red">Not Done</span> | ##### | No signaling counterpart because they would error on receiving a NaN argument |
+| compareQuietOrdered | <span style="color:red">Not Done</span> | ##### | No signaling counterpart because they would raise an error upon receiving a NaN argument |
+| compareQuietNotOrdered | <span style="color:red">Not Done</span> | ##### | No signaling counterpart because they would raise an error upon receiving a NaN argument |
 | compareSignalingEqual | <span style="color:red">Not Done</span> | ##### |  |
 | compareSignalingGreater | <span style="color:red">Not Done</span> | ##### |  |
 | compareSignalingGreaterEqual | <span style="color:red">Not Done</span> | ##### |  |
@@ -76,9 +75,9 @@ This Markdown page provides a view of the progress towards the implementation of
 ## 5.7 Non-computational Operations
 | Operation | Progress | Implemented By | Notes |
 | :--- | :--- | :--- | :--- |
-| is754version1985 | <span style="color:red">Not Done</span> | ##### |  |
-| is754version2008 | <span style="color:red">Not Done</span> | ##### |  |
-| is754version2019 | <span style="color:red">Not Done</span> | ##### |  |
+| is754version1985 | <span style="color:red">Not Done</span> | ##### | Always false |
+| is754version2008 | <span style="color:red">Not Done</span> | ##### | Always false |
+| is754version2019 | <span style="color:red">Not Done</span> | ##### | Always true |
 | class | <span style="color:red">Not Done</span> | ##### |  |
 | isSignMinus | <span style="color:red">Not Done</span> | ##### |  |
 | isZero | <span style="color:red">Not Done</span> | ##### |  |
@@ -86,12 +85,12 @@ This Markdown page provides a view of the progress towards the implementation of
 | isSubnormal | <span style="color:red">Not Done</span> | ##### |  |
 | isFinite | <span style="color:red">Not Done</span> | ##### |  |
 | isInfinite | <span style="color:red">Not Done</span> | ##### |  |
-| IsNaN | <span style="color:red">Not Done</span> | ##### |  |
-| isSignaling | <span style="color:red">Not Done</span> | ##### |  |
+| isNaN | <span style="color:red">Not Done</span> | ##### |  |
+| isSignaling | <span style="color:red">Not Done</span> | ##### | Always false, see ../README.md as to why signaling NaNs are not implemented |
 | isCanonical | <span style="color:red">Not Done</span> | ##### |  |
-| radix | <span style="color:red">Not Done</span> | ##### |  |
+| radix | <span style="color:red">Not Done</span> | ##### | Always 2, no decimal formats implemented |
 | totalOrder | <span style="color:red">Not Done</span> | ##### |  |
-| totalOrderMag | <span style="color:red">Not Done</span> | ##### |  |
+| totalOrderMag | <span style="color:red">Not Done</span> | ##### | totalOrder(abs(x), abs(y)) |
 
 ### 5.7.4 Non-computational Operations, Flags
 | Operation | Progress | Implemented By | Notes |
@@ -110,9 +109,10 @@ Some operations mentioned in the requirements are not listed above, as they are 
 | :--- | :--- | :--- |
 | quantize | 5.3.2 | Pertains to decimal floating-point formats |
 | quantum | 5.3.2 | Pertains to decimal floating-point formats |
+| convertFormat | 5.4.2 | unused because only one format used and no signaling NaNs nor exceptions |
 | convertFromDecimalCharacter | 5.4.2 | Impossible to handle string inputs in pdxscript |
 | convertFromHexCharacter | 5.4.3 | Impossible to handle string inputs in pdxscript |
-| convertToHexCharacter | 5.4.3 | Uniquely difficult to create strings in pdxscript. Might consider doing this as an bonus at the end. |
+| convertToHexCharacter | 5.4.3 | Uniquely difficult to create strings in pdxscript. Might consider doing this as a bonus at the end. |
 | encodeDecimal | 5.5.2 | Pertains to decimal floating-point formats |
 | decodeDecimal | 5.5.2 | Pertains to decimal floating-point formats |
 | encodeBinary | 5.5.2 | Pertains to decimal floating-point formats |

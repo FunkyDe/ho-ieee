@@ -1,3 +1,4 @@
+## test POSNAN : POSNAN
 ieee_test_5000 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -562,6 +563,7 @@ ieee_test_5011 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSNAN : NEGINF
 ieee_test_5012 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -1126,6 +1128,7 @@ ieee_test_5023 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSNAN : NEGNRM
 ieee_test_5024 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -1690,6 +1693,7 @@ ieee_test_5035 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSNAN : NEGSUB
 ieee_test_5036 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -2254,6 +2258,7 @@ ieee_test_5047 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSNAN : NEGZRO
 ieee_test_5048 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -2818,6 +2823,7 @@ ieee_test_5059 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSNAN : POSZRO
 ieee_test_5060 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -3382,6 +3388,7 @@ ieee_test_5071 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSNAN : POSSUB
 ieee_test_5072 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -3946,6 +3953,7 @@ ieee_test_5083 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSNAN : POSNRM
 ieee_test_5084 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -4510,6 +4518,7 @@ ieee_test_5095 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSNAN : POSINF
 ieee_test_5096 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -5074,6 +5083,7 @@ ieee_test_5107 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGINF : POSNAN
 ieee_test_5108 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -5638,6 +5648,7 @@ ieee_test_5119 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGINF : NEGINF
 ieee_test_5120 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -6202,6 +6213,7 @@ ieee_test_5131 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGINF : NEGNRM
 ieee_test_5132 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -6766,6 +6778,7 @@ ieee_test_5143 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGINF : NEGSUB
 ieee_test_5144 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -7330,6 +7343,7 @@ ieee_test_5155 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGINF : NEGZRO
 ieee_test_5156 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -7894,6 +7908,7 @@ ieee_test_5167 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGINF : POSZRO
 ieee_test_5168 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -8458,6 +8473,7 @@ ieee_test_5179 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGINF : POSSUB
 ieee_test_5180 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -9022,6 +9038,7 @@ ieee_test_5191 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGINF : POSNRM
 ieee_test_5192 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -9586,6 +9603,7 @@ ieee_test_5203 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGINF : POSINF
 ieee_test_5204 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -10150,6 +10168,7 @@ ieee_test_5215 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGNRM : POSNAN
 ieee_test_5216 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -10714,6 +10733,7 @@ ieee_test_5227 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGNRM : NEGINF
 ieee_test_5228 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -11278,6 +11298,7 @@ ieee_test_5239 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGNRM : NEGNRM
 ieee_test_5240 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -11842,6 +11863,7 @@ ieee_test_5251 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGNRM : NEGSUB
 ieee_test_5252 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -12406,6 +12428,7 @@ ieee_test_5263 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGNRM : NEGZRO
 ieee_test_5264 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -12970,6 +12993,7 @@ ieee_test_5275 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGNRM : POSZRO
 ieee_test_5276 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -13534,6 +13558,7 @@ ieee_test_5287 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGNRM : POSSUB
 ieee_test_5288 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -14098,6 +14123,7 @@ ieee_test_5299 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGNRM : POSNRM
 ieee_test_5300 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -14662,6 +14688,7 @@ ieee_test_5311 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGNRM : POSINF
 ieee_test_5312 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -15226,6 +15253,7 @@ ieee_test_5323 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGSUB : POSNAN
 ieee_test_5324 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -15790,6 +15818,7 @@ ieee_test_5335 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGSUB : NEGINF
 ieee_test_5336 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -16354,6 +16383,7 @@ ieee_test_5347 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGSUB : NEGNRM
 ieee_test_5348 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -16918,6 +16948,7 @@ ieee_test_5359 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGSUB : NEGSUB
 ieee_test_5360 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -17482,6 +17513,7 @@ ieee_test_5371 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGSUB : NEGZRO
 ieee_test_5372 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -18046,6 +18078,7 @@ ieee_test_5383 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGSUB : POSZRO
 ieee_test_5384 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -18610,6 +18643,7 @@ ieee_test_5395 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGSUB : POSSUB
 ieee_test_5396 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -19174,6 +19208,7 @@ ieee_test_5407 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGSUB : POSNRM
 ieee_test_5408 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -19738,6 +19773,7 @@ ieee_test_5419 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGSUB : POSINF
 ieee_test_5420 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -20302,6 +20338,7 @@ ieee_test_5431 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGZRO : POSNAN
 ieee_test_5432 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -20866,6 +20903,7 @@ ieee_test_5443 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGZRO : NEGINF
 ieee_test_5444 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -21430,6 +21468,7 @@ ieee_test_5455 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGZRO : NEGNRM
 ieee_test_5456 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -21994,6 +22033,7 @@ ieee_test_5467 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGZRO : NEGSUB
 ieee_test_5468 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -22558,6 +22598,7 @@ ieee_test_5479 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGZRO : NEGZRO
 ieee_test_5480 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -23122,6 +23163,7 @@ ieee_test_5491 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGZRO : POSZRO
 ieee_test_5492 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -23686,6 +23728,7 @@ ieee_test_5503 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGZRO : POSSUB
 ieee_test_5504 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -24250,6 +24293,7 @@ ieee_test_5515 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGZRO : POSNRM
 ieee_test_5516 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -24814,6 +24858,7 @@ ieee_test_5527 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test NEGZRO : POSINF
 ieee_test_5528 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -25378,6 +25423,7 @@ ieee_test_5539 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSZRO : POSNAN
 ieee_test_5540 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -25942,6 +25988,7 @@ ieee_test_5551 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSZRO : NEGINF
 ieee_test_5552 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -26506,6 +26553,7 @@ ieee_test_5563 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSZRO : NEGNRM
 ieee_test_5564 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -27070,6 +27118,7 @@ ieee_test_5575 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSZRO : NEGSUB
 ieee_test_5576 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -27634,6 +27683,7 @@ ieee_test_5587 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSZRO : NEGZRO
 ieee_test_5588 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -28198,6 +28248,7 @@ ieee_test_5599 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSZRO : POSZRO
 ieee_test_5600 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -28762,6 +28813,7 @@ ieee_test_5611 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSZRO : POSSUB
 ieee_test_5612 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -29326,6 +29378,7 @@ ieee_test_5623 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSZRO : POSNRM
 ieee_test_5624 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -29890,6 +29943,7 @@ ieee_test_5635 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSZRO : POSINF
 ieee_test_5636 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -30454,6 +30508,7 @@ ieee_test_5647 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSSUB : POSNAN
 ieee_test_5648 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -31018,6 +31073,7 @@ ieee_test_5659 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSSUB : NEGINF
 ieee_test_5660 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -31582,6 +31638,7 @@ ieee_test_5671 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSSUB : NEGNRM
 ieee_test_5672 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -32146,6 +32203,7 @@ ieee_test_5683 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSSUB : NEGSUB
 ieee_test_5684 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -32710,6 +32768,7 @@ ieee_test_5695 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSSUB : NEGZRO
 ieee_test_5696 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -33274,6 +33333,7 @@ ieee_test_5707 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSSUB : POSZRO
 ieee_test_5708 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -33838,6 +33898,7 @@ ieee_test_5719 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSSUB : POSSUB
 ieee_test_5720 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -34402,6 +34463,7 @@ ieee_test_5731 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSSUB : POSNRM
 ieee_test_5732 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -34966,6 +35028,7 @@ ieee_test_5743 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSSUB : POSINF
 ieee_test_5744 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -35530,6 +35593,7 @@ ieee_test_5755 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSNRM : POSNAN
 ieee_test_5756 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -36094,6 +36158,7 @@ ieee_test_5767 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSNRM : NEGINF
 ieee_test_5768 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -36658,6 +36723,7 @@ ieee_test_5779 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSNRM : NEGNRM
 ieee_test_5780 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -37222,6 +37288,7 @@ ieee_test_5791 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSNRM : NEGSUB
 ieee_test_5792 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -37786,6 +37853,7 @@ ieee_test_5803 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSNRM : NEGZRO
 ieee_test_5804 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -38350,6 +38418,7 @@ ieee_test_5815 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSNRM : POSZRO
 ieee_test_5816 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -38914,6 +38983,7 @@ ieee_test_5827 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSNRM : POSSUB
 ieee_test_5828 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -39478,6 +39548,7 @@ ieee_test_5839 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSNRM : POSNRM
 ieee_test_5840 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -40042,6 +40113,7 @@ ieee_test_5851 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSNRM : POSINF
 ieee_test_5852 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -40606,6 +40678,7 @@ ieee_test_5863 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSINF : POSNAN
 ieee_test_5864 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -41170,6 +41243,7 @@ ieee_test_5875 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSINF : NEGINF
 ieee_test_5876 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -41734,6 +41808,7 @@ ieee_test_5887 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSINF : NEGNRM
 ieee_test_5888 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -42298,6 +42373,7 @@ ieee_test_5899 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSINF : NEGSUB
 ieee_test_5900 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -42862,6 +42938,7 @@ ieee_test_5911 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSINF : NEGZRO
 ieee_test_5912 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -43426,6 +43503,7 @@ ieee_test_5923 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSINF : POSZRO
 ieee_test_5924 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -43990,6 +44068,7 @@ ieee_test_5935 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSINF : POSSUB
 ieee_test_5936 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -44554,6 +44633,7 @@ ieee_test_5947 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSINF : POSNRM
 ieee_test_5948 = {
     set_temp_variable = { comp_error_flag = 0 }
 
@@ -45118,6 +45198,7 @@ ieee_test_5959 = {
     
     set_temp_variable = { comp_error_flag = 0 }
 }
+## test POSINF : POSINF
 ieee_test_5960 = {
     set_temp_variable = { comp_error_flag = 0 }
 

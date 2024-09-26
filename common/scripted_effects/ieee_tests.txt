@@ -32,7 +32,7 @@ ieee_run_tests = {
         add_to_temp_array = { to_print_array = v }
     }
     log = "------------------------"
-    log = "Failed Test(s): [debug_print_array]"
+    log = "<[?test_fail_array^num]> Failed Test(s): [debug_print_array]"
     log = "------------------------"
 }
 
@@ -52,6 +52,7 @@ ieee_get_test_count = {
     add_to_temp_array = { temp_test_count_array = 21  } # ftp and ptf wrappers
     add_to_temp_array = { temp_test_count_array = 500 } # relations and totalorder
     add_to_temp_array = { temp_test_count_array = 972 } # predicates
+    add_to_temp_array = { temp_test_count_array = 1000 } # signaling predicates
 }
 ## test to_bitwise and store_bitwise functions
 ieee_test_0 = {

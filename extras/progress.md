@@ -89,7 +89,7 @@ This Markdown page provides a view of the progress towards the implementation of
 | isSignaling | <span style="color:red">Not Done</span> | ##### | Always false, see ../README.md as to why signaling NaNs are not implemented |
 | isCanonical | <span style="color:red">Not Done</span> | ##### |  |
 | radix | <span style="color:red">Not Done</span> | ##### | Always 2, no decimal formats implemented |
-| totalOrder | <span style="color:red">Not Done</span> | ##### |  |
+| totalOrder | <span style="color:blue">Done</span> | ##### |  |
 | totalOrderMag | <span style="color:red">Not Done</span> | ##### | totalOrder(abs(x), abs(y)) |
 
 ### 5.7.4 Non-computational Operations, Flags

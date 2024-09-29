@@ -1,11 +1,258 @@
-# comp_error_flag
-# relations, predicates, and totalOrder all use arg_a, arg_b
-
-#### RELATIONS
+#### RELATIONS(consult clause 5.11)
 ### relationLess
+## Provides the less than relation for use in predicates
+## The below function has 2 parameters: arg_a and arg_b
+## These parameters will NOT be cleared after the function execution
+## ARGUMENTS
+# Relation returns true when float(a) < float(b) and neither are NaNs
+relationLess = {
+    # Check for NaNs
+    if = {
+        limit = {
+            OR = {
+                check_variable = { arg_a > 2139095.040 }
+                AND = {
+                    check_variable = { arg_a > -8388.608 }
+                    check_variable = { arg_a < 0 }
+                }
+            }
+        }
+        always = no
+    }
+    if = {
+        limit = {
+            OR = {
+                check_variable = { arg_b > 2139095.040 }
+                AND = {
+                    check_variable = { arg_b > -8388.608 }
+                    check_variable = { arg_b < 0 }
+                }
+            }
+        }
+        always = no
+    }
+
+    # Check for +- zero
+    if = {
+        limit = {
+            OR = {
+                AND = {
+                    check_variable = { arg_a = 0 }
+                    check_variable = { arg_b = -2147483.648 }
+                }
+                AND = {
+                    check_variable = { arg_a = -2147483.648 }
+                    check_variable = { arg_b = 0 }
+                }
+            }
+        }
+        always = no
+    }
+
+    # Both positive(less when magnitude smaller)
+    if = {
+        limit = {
+            check_variable = { arg_a > 0 }
+            check_variable = { arg_b > 0 }
+        }
+        check_variable = { arg_a < arg_b }
+    }
+    # Both negative(less when magnitude greater)
+    else_if = {
+        limit = {
+            check_variable = { arg_a < 0 }
+            check_variable = { arg_b < 0 }
+        }
+        check_variable = { arg_a > arg_b }
+    }
+    # Opposite sign(less when arg_a negative)
+    else = {
+        check_variable = { arg_a < arg_b }
+    }
+}
 ### relationEqual
+## Provides the less than relation for use in predicates
+## The below function has 2 parameters: arg_a and arg_b
+## These parameters will NOT be cleared after the function execution
+## ARGUMENTS
+# Relation returns true when float(a) = float(b) and neither are NaNs
+relationEqual = {
+    # Check for NaNs
+    if = {
+        limit = {
+            OR = {
+                check_variable = { arg_a > 2139095.040 }
+                AND = {
+                    check_variable = { arg_a > -8388.608 }
+                    check_variable = { arg_a < 0 }
+                }
+            }
+        }
+        always = no
+    }
+    if = {
+        limit = {
+            OR = {
+                check_variable = { arg_b > 2139095.040 }
+                AND = {
+                    check_variable = { arg_b > -8388.608 }
+                    check_variable = { arg_b < 0 }
+                }
+            }
+        }
+        always = no
+    }
+
+    # Not NaN, check if floats equal or +- zero
+    OR = {
+        check_variable = { arg_a = arg_b }
+        AND = {
+            check_variable = { arg_a = 0 }
+            check_variable = { arg_b = -2147483.648 }
+        }
+        AND = {
+            check_variable = { arg_a = -2147483.648 }
+            check_variable = { arg_b = 0 }
+        }
+    }
+}
 ### relationGreater
+## Provides the less than relation for use in predicates
+## The below function has 2 parameters: arg_a and arg_b
+## These parameters will NOT be cleared after the function execution
+## ARGUMENTS
+# Relation returns true when float(a) > float(b) and neither are NaNs
+relationGreater = {
+    # Check for NaNs
+    if = {
+        limit = {
+            OR = {
+                check_variable = { arg_a > 2139095.040 }
+                AND = {
+                    check_variable = { arg_a > -8388.608 }
+                    check_variable = { arg_a < 0 }
+                }
+            }
+        }
+        always = no
+    }
+    if = {
+        limit = {
+            OR = {
+                check_variable = { arg_b > 2139095.040 }
+                AND = {
+                    check_variable = { arg_b > -8388.608 }
+                    check_variable = { arg_b < 0 }
+                }
+            }
+        }
+        always = no
+    }
+
+    # Check for +- zero
+    if = {
+        limit = {
+            OR = {
+                AND = {
+                    check_variable = { arg_a = 0 }
+                    check_variable = { arg_b = -2147483.648 }
+                }
+                AND = {
+                    check_variable = { arg_a = -2147483.648 }
+                    check_variable = { arg_b = 0 }
+                }
+            }
+        }
+        always = no
+    }
+
+    # Both positive(greater when magnitude greater)
+    if = {
+        limit = {
+            check_variable = { arg_a > 0 }
+            check_variable = { arg_b > 0 }
+        }
+        check_variable = { arg_a > arg_b }
+    }
+    # Both negative(greater when magnitude smaller)
+    else_if = {
+        limit = {
+            check_variable = { arg_a < 0 }
+            check_variable = { arg_b < 0 }
+        }
+        check_variable = { arg_a < arg_b }
+    }
+    # Opposite sign(greater when arg_a positive)
+    else = {
+        check_variable = { arg_a > arg_b }
+    }
+}
 ### relationUnordered
+## Provides the less than relation for use in predicates
+## The below function has 2 parameters: arg_a and arg_b
+## These parameters will NOT be cleared after the function execution
+## ARGUMENTS
+# Relation returns true when float(a) < float(b) and neither are NaNs
+relationUnordered = {
+    # If no NaNs, relation is not unordered
+    if = {
+        limit = {
+            NOT = {
+                OR = {
+                    check_variable = { arg_a > 2139095.040 }
+                    AND = {
+                        check_variable = { arg_a > -8388.608 }
+                        check_variable = { arg_a < 0 }
+                    }
+                }
+            }
+
+            NOT = {
+                OR = {
+                    check_variable = { arg_b > 2139095.040 }
+                    AND = { 
+                        check_variable = { arg_b > -8388.608 }
+                        check_variable = { arg_b < 0 }
+                    }
+                }
+            }
+        }
+        always = no
+    }
+
+    # NaNs, relation is unordered
+    always = yes
+}
+
+### totalOrder
+## Provides a total ordering between two floats arg_a and arg_b(consult clause 5.10)
+## The below function has 2 parameters: arg_a and arg_b
+## These parameters will NOT be cleared after the function execution
+## ARGUMENTS
+# Relation returns true when float(a) is ordered before float(b), including cases where either or both are NaNs
+totalOrder = {
+    # Both positive case
+    if = {
+        limit = {
+            check_variable = { arg_a > 0 }
+            check_variable = { arg_b > 0 }
+        }
+        NOT = { check_variable = { arg_a > arg_b } }
+    }
+    # Both negative case
+    else_if = {
+        limit = {
+            check_variable = { arg_a < 0 }
+            check_variable = { arg_b < 0 }
+        }
+        NOT = { check_variable = { arg_a < arg_b } }
+
+    }
+    # Opposite sign case
+    else = {
+        NOT = { check_variable = { arg_a > arg_b } }
+    }
+}
 
 #### PREDICATES
 ### compareQuietEqual
@@ -20,3 +267,13 @@
 ### compareQuietNotLessEqual
 ### compareQuietOrdered
 ### compareQuietNotOrdered
+### compareSignalingEqual
+### compareSignalingGreater
+### compareSignalingGreaterEqual
+### compareSignalingLess
+### compareSignalingLessEqual
+### compareSignalingNotEqual
+### compareSignalingNotGreater
+### compareSignalingNotGreaterEqual
+### compareSignalingNotLess
+### compareSignalingNotLessEqual

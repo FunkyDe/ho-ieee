@@ -34,13 +34,17 @@ The tentative task map is:
     - [x] Implement transformation back to pdxvars
 - [x] Comparison
 - [ ] Addition and Subtraction
+    - [ ] Test cases
+    - [ ] Positive+Positive base case
+    - [ ] Addition with negatives / Subtraction
     - [ ] Exceptions and special cases (subnormals, infinities, NaNs)
 - [ ] Multiplication
 - [ ] Division
+- [ ] Square Root
 - [ ] Additional basic functions
 - [ ] Recommended operations (consult Clause 9 of IEEE 754)
 
-A more detailed roadmap can be found at `extras/progress.md`, which displays which of the necessary functions have been implemented.
+A more detailed progress chart can be found at `extras/progress.md`, which displays which of the functions deemed necessary by the IEEE 754 standard have been implemented.
 
 # Who?
 

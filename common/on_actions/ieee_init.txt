@@ -4,6 +4,9 @@ on_actions = {
             # Scripted effects need to be scoped to work. If you don't have a state with ID 1, that's on you
             1 = {
                 ieee_digits_init = yes
+
+                # Comment this line if startup is taking longer than usual, to disable tests on startup
+                # Uncomment this line if you want to test everything on startup, otherwise tests can be run with `e ieee_run_tests`, which may be slow
                 ieee_run_tests = yes
             }
         }

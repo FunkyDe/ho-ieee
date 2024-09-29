@@ -4,103 +4,103 @@ This Markdown page provides a view of the progress towards the implementation of
 ## 5.3 - Homogeneous General-computational Operations
 | Operation | Progress | Implemented By | Notes |
 | :--- | :--- | :--- | :--- |
-| roundToIntegralTiesToEven | <span style="color:red"><span style="color:red">Not Done</span></span> | ##### | Converts float -> float |
-| roundToIntegralTiesToAway | <span style="color:red">Not Done</span> | ##### | Converts float -> float |
-| roundToIntegralTowardZero | <span style="color:red">Not Done</span> | ##### | Converts float -> float |
-| roundToIntegralTowardPositive | <span style="color:red">Not Done</span> | ##### | Converts float -> float |
-| roundToIntegralTowardNegative | <span style="color:red">Not Done</span> | ##### | Converts float -> float |
-| roundToIntegralExact | <span style="color:red">Not Done</span> | ##### | Converts float -> float, signals if inexact |
-| nextUp | <span style="color:red">Not Done</span> | ##### | The least float greater than the input |
-| nextDown | <span style="color:red">Not Done</span> | ##### | Defined as -nextUp(-x) |
-| remainder | <span style="color:red">Not Done</span> | ##### | remainder(x, y) = x-y*n, n is an integer |
-| scaleB | <span style="color:red">Not Done</span> | ##### | x(2)<sup>y</sup>, y is an integer |
-| logB | <span style="color:red">Not Done</span> | ##### | floor(log<sub>2</sub>(x)) |
+| roundToIntegralTiesToEven | Not Done | ##### | Converts float -> float |
+| roundToIntegralTiesToAway | Not Done | ##### | Converts float -> float |
+| roundToIntegralTowardZero | Not Done | ##### | Converts float -> float |
+| roundToIntegralTowardPositive | Not Done | ##### | Converts float -> float |
+| roundToIntegralTowardNegative | Not Done | ##### | Converts float -> float |
+| roundToIntegralExact | Not Done | ##### | Converts float -> float, signals if inexact |
+| nextUp | Not Done | ##### | The least float greater than the input |
+| nextDown | Not Done | ##### | Defined as -nextUp(-x) |
+| remainder | Not Done | ##### | remainder(x, y) = x-y*n, n is an integer |
+| scaleB | Not Done | ##### | x(2)<sup>y</sup>, y is an integer |
+| logB | Not Done | ##### | floor(log<sub>2</sub>(x)) |
 
 ## 5.4 formatOf General-computational Operations
 | Operation | Progress | Implemented By | Notes |
 | :--- | :--- | :--- | :--- |
-| addition | <span style="color:red">Not Done</span> | ##### | ##### |
-| subtraction | <span style="color:red">Not Done</span> | ##### | ##### |
-| multiplication | <span style="color:red">Not Done</span> | ##### | ##### |
-| division | <span style="color:red">Not Done</span> | ##### | ##### |
-| squareRoot | <span style="color:red">Not Done</span> | ##### | ##### |
-| fusedMultiplyAdd | <span style="color:red">Not Done</span> | ##### | fMA(x, y, z) = x*y + z, rounded only at end |
-| convertFromInt | <span style="color:blue">Done</span> | **pdxvar_to_float** | modified to convertFromPdx, converts from pdxvar instead of integer |
-| convertToIntegerTiesToEven | <span style="color:blue">Done</span> | **float_to_pdxvar** | modified to convertToPdx, converts to pdxvar instead of integer |
-| convertToIntegerTiesToAway | <span style="color:red">Not Done</span> | ##### | modified to convertToPdx, converts to pdxvar instead of integer |
-| convertToIntegerTowardZero | <span style="color:red">Not Done</span> | ##### | modified to convertToPdx, converts to pdxvar instead of integer |
-| convertToIntegerTowardPositive | <span style="color:red">Not Done</span> | ##### | modified to convertToPdx, converts to pdxvar instead of integer |
-| convertToIntegerTowardNegative | <span style="color:red">Not Done</span> | ##### | modified to convertToPdx, converts to pdxvar instead of integer |
-| convertToIntegerExactTiesToEven | <span style="color:red">Not Done</span> | ##### | modified to convertToPdx, converts to pdxvar instead of integer, signals if inexact |
-| convertToIntegerExactTiesToAway | <span style="color:red">Not Done</span> | ##### | modified to convertToPdx, converts to pdxvar instead of integer, signals if inexact |
-| convertToIntegerExactTowardZero | <span style="color:red">Not Done</span> | ##### | modified to convertToPdx, converts to pdxvar instead of integer, signals if inexact |
-| convertToIntegerExactTowardPositive | <span style="color:red">Not Done</span> | ##### | modified to convertToPdx, converts to pdxvar instead of integer, signals if inexact |
-| convertToIntegerExactTowardNegative | <span style="color:red">Not Done</span> | ##### | modified to convertToPdx, converts to pdxvar instead of integer, signals if inexact |
-| convertToDecimalCharacter | <span style="color:blue">Done</span> | **Various localization scripts** | 5 styles given: full accuracy, truncated at decimal, truncated at thousandth, rounded, and scientific notation |
+| addition | Not Done | ##### | ##### |
+| subtraction | Not Done | ##### | ##### |
+| multiplication | Not Done | ##### | ##### |
+| division | Not Done | ##### | ##### |
+| squareRoot | Not Done | ##### | ##### |
+| fusedMultiplyAdd | Not Done | ##### | fMA(x, y, z) = x*y + z, rounded only at end |
+| convertFromInt | Done | **pdxvar_to_float** | modified to convertFromPdx, converts from pdxvar instead of integer |
+| convertToIntegerTiesToEven | Done | **float_to_pdxvar** | modified to convertToPdx, converts to pdxvar instead of integer |
+| convertToIntegerTiesToAway | Not Done | ##### | modified to convertToPdx, converts to pdxvar instead of integer |
+| convertToIntegerTowardZero | Not Done | ##### | modified to convertToPdx, converts to pdxvar instead of integer |
+| convertToIntegerTowardPositive | Not Done | ##### | modified to convertToPdx, converts to pdxvar instead of integer |
+| convertToIntegerTowardNegative | Not Done | ##### | modified to convertToPdx, converts to pdxvar instead of integer |
+| convertToIntegerExactTiesToEven | Not Done | ##### | modified to convertToPdx, converts to pdxvar instead of integer, signals if inexact |
+| convertToIntegerExactTiesToAway | Not Done | ##### | modified to convertToPdx, converts to pdxvar instead of integer, signals if inexact |
+| convertToIntegerExactTowardZero | Not Done | ##### | modified to convertToPdx, converts to pdxvar instead of integer, signals if inexact |
+| convertToIntegerExactTowardPositive | Not Done | ##### | modified to convertToPdx, converts to pdxvar instead of integer, signals if inexact |
+| convertToIntegerExactTowardNegative | Not Done | ##### | modified to convertToPdx, converts to pdxvar instead of integer, signals if inexact |
+| convertToDecimalCharacter | Done | **Various localization scripts** | 5 styles given: full accuracy, truncated at decimal, truncated at thousandth, rounded, and scientific notation |
 
 ## 5.5 Quiet-computational Operations
 | Operation | Progress | Implemented By | Notes |
 | :--- | :--- | :--- | :--- |
-| copy | <span style="color:blue">Done</span> | **set_temp_variable** / **set_variable** | Already implemented by pdxscript |
-| negate | <span style="color:red">Not Done</span> | ##### |  |
-| abs | <span style="color:red">Not Done</span> | ##### |  |
-| copySign | <span style="color:red">Not Done</span> | ##### |  |
+| copy | Done | **set_temp_variable** / **set_variable** | Already implemented by pdxscript |
+| negate | Not Done | ##### |  |
+| abs | Not Done | ##### |  |
+| copySign | Not Done | ##### |  |
 
 ## 5.6 Signaling-computational Operations
 | Operation | Progress | Implemented By | Notes |
 | :--- | :--- | :--- | :--- |
-| compareQuietEqual | <span style="color:red">Not Done</span> | ##### |  |
-| compareQuietGreater | <span style="color:red">Not Done</span> | ##### |  |
-| compareQuietGreaterEqual | <span style="color:red">Not Done</span> | ##### |  |
-| compareQuietLess | <span style="color:red">Not Done</span> | ##### |  |
-| compareQuietLessEqual | <span style="color:red">Not Done</span> | ##### |  |
-| compareQuietNotEqual | <span style="color:red">Not Done</span> | ##### |  |
-| compareQuietNotGreater | <span style="color:red">Not Done</span> | ##### |  |
-| compareQuietNotGreaterEqual | <span style="color:red">Not Done</span> | ##### |  |
-| compareQuietNotLess | <span style="color:red">Not Done</span> | ##### |  |
-| compareQuietNotLessEqual | <span style="color:red">Not Done</span> | ##### |  |
-| compareQuietOrdered | <span style="color:red">Not Done</span> | ##### | No signaling counterpart because they would raise an error upon receiving a NaN argument |
-| compareQuietNotOrdered | <span style="color:red">Not Done</span> | ##### | No signaling counterpart because they would raise an error upon receiving a NaN argument |
-| compareSignalingEqual | <span style="color:red">Not Done</span> | ##### |  |
-| compareSignalingGreater | <span style="color:red">Not Done</span> | ##### |  |
-| compareSignalingGreaterEqual | <span style="color:red">Not Done</span> | ##### |  |
-| compareSignalingLess | <span style="color:red">Not Done</span> | ##### |  |
-| compareSignalingLessEqual | <span style="color:red">Not Done</span> | ##### |  |
-| compareSignalingNotEqual | <span style="color:red">Not Done</span> | ##### |  |
-| compareSignalingNotGreater | <span style="color:red">Not Done</span> | ##### |  |
-| compareSignalingNotGreaterEqual | <span style="color:red">Not Done</span> | ##### |  |
-| compareSignalingNotLess | <span style="color:red">Not Done</span> | ##### |  |
-| compareSignalingNotLessEqual | <span style="color:red">Not Done</span> | ##### |  |
+| compareQuietEqual | Done | **compareEqual** |  |
+| compareQuietGreater | Done | **compareGreater** |  |
+| compareQuietGreaterEqual | Done | **compareGreaterEqual** |  |
+| compareQuietLess | Done | **compareLess** |  |
+| compareQuietLessEqual | Done | **compareLessEqual** |  |
+| compareQuietNotEqual | Done | **compareNotEqual** |  |
+| compareQuietNotGreater | Done | **compareNotGreater** |  |
+| compareQuietNotGreaterEqual | Done | **compareNotGreaterEqual** |  |
+| compareQuietNotLess | Done | **compareNotLess** |  |
+| compareQuietNotLessEqual | Done | **compareNotLessEqual** |  |
+| compareQuietOrdered | Done | **compareOrdered** | No signaling counterpart because they would raise an error upon receiving a NaN argument |
+| compareQuietNotOrdered | Done | **compareNotOrdered** | No signaling counterpart because they would raise an error upon receiving a NaN argument |
+| compareSignalingEqual | Done | **compareSignalingEqual** |  |
+| compareSignalingGreater | Done | **compareSignalingGreater** |  |
+| compareSignalingGreaterEqual | Done | **compareSignalingGreaterEqual** |  |
+| compareSignalingLess | Done | **compareSignalingLess** |  |
+| compareSignalingLessEqual | Done | **compareSignalingLessEqual** |  |
+| compareSignalingNotEqual | Done | **compareSignalingNotEqual** |  |
+| compareSignalingNotGreater | Done | **compareSignalingNotGreater** |  |
+| compareSignalingNotGreaterEqual | Done | **compareSignalingNotGreaterEqual** |  |
+| compareSignalingNotLess | Done | **compareSignalingNotLess** |  |
+| compareSignalingNotLessEqual | Done | **compareSignalingNotLessEqual** |  |
 
 ## 5.7 Non-computational Operations
 | Operation | Progress | Implemented By | Notes |
 | :--- | :--- | :--- | :--- |
-| is754version1985 | <span style="color:red">Not Done</span> | ##### | Always false |
-| is754version2008 | <span style="color:red">Not Done</span> | ##### | Always false |
-| is754version2019 | <span style="color:red">Not Done</span> | ##### | Always true |
-| class | <span style="color:red">Not Done</span> | ##### |  |
-| isSignMinus | <span style="color:red">Not Done</span> | ##### |  |
-| isZero | <span style="color:red">Not Done</span> | ##### |  |
-| isNormal | <span style="color:red">Not Done</span> | ##### |  |
-| isSubnormal | <span style="color:red">Not Done</span> | ##### |  |
-| isFinite | <span style="color:red">Not Done</span> | ##### |  |
-| isInfinite | <span style="color:red">Not Done</span> | ##### |  |
-| isNaN | <span style="color:red">Not Done</span> | ##### |  |
-| isSignaling | <span style="color:red">Not Done</span> | ##### | Always false, see ../README.md as to why signaling NaNs are not implemented |
-| isCanonical | <span style="color:red">Not Done</span> | ##### |  |
-| radix | <span style="color:red">Not Done</span> | ##### | Always 2, no decimal formats implemented |
-| totalOrder | <span style="color:blue">Done</span> | ##### |  |
-| totalOrderMag | <span style="color:red">Not Done</span> | ##### | totalOrder(abs(x), abs(y)) |
+| is754version1985 | Not Done | ##### | Always false |
+| is754version2008 | Not Done | ##### | Always false |
+| is754version2019 | Not Done | ##### | Always true |
+| class | Not Done | ##### | 10 classes: signaling NaN, quiet NaN, negative infinity, negative normal, negative subnormal, negative zero, positive zero, positive subnormal, positive normal, and positive infinity |
+| isSignMinus | Not Done | ##### |  |
+| isZero | Not Done | ##### |  |
+| isNormal | Not Done | ##### |  |
+| isSubnormal | Not Done | ##### |  |
+| isFinite | Not Done | ##### |  |
+| isInfinite | Not Done | ##### |  |
+| isNaN | Not Done | ##### |  |
+| isSignaling | Not Done | ##### | Always false, see ../README.md as to why signaling NaNs are not implemented |
+| isCanonical | Not Done | ##### |  |
+| radix | Not Done | ##### | Always 2, no decimal formats implemented |
+| totalOrder | Done | **totalOrder** | Consult clause 5.10 in IEEE 754 |
+| totalOrderMag | Not Done | ##### | totalOrder(abs(x), abs(y)) |
 
 ### 5.7.4 Non-computational Operations, Flags
 | Operation | Progress | Implemented By | Notes |
 | :--- | :--- | :--- | :--- |
-| lowerFlags | <span style="color:red">Not Done</span> | ##### |  |
-| raiseFlags | <span style="color:red">Not Done</span> | ##### |  |
-| testFlags | <span style="color:red">Not Done</span> | ##### |  |
-| testSavedFlags | <span style="color:red">Not Done</span> | ##### |  |
-| restoreFlags | <span style="color:red">Not Done</span> | ##### |  |
-| saveAllFlags | <span style="color:red">Not Done</span> | ##### |  |
+| lowerFlags | Not Done | ##### |  |
+| raiseFlags | Not Done | ##### |  |
+| testFlags | Not Done | ##### |  |
+| testSavedFlags | Not Done | ##### |  |
+| restoreFlags | Not Done | ##### |  |
+| saveAllFlags | Not Done | ##### |  |
 
 ## Skipped Operations
 Some operations mentioned in the requirements are not listed above, as they are uniquely difficult to implement, pertain to decimal floating-point formats, or are simply impossible. Please consult the clause(s) listed in each row for more details.

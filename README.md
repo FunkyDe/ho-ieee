@@ -32,7 +32,7 @@ The tentative task map is:
 - [x] FPV Output
     - [x] Implement localization of FPVs
     - [x] Implement transformation back to pdxvars
-- [ ] Comparison
+- [x] Comparison
 - [ ] Addition and Subtraction
     - [ ] Exceptions and special cases (subnormals, infinities, NaNs)
 - [ ] Multiplication
@@ -66,9 +66,6 @@ NaN: It is very difficult to create exceptions in Hearts of Iron IV, as there is
 
 # TODOlist:
 
-- Comparisons
-- Rename all functions to camelCase and change documentation headers to camelCase
-- Simplify arguments
 - Addition
     - positive case
     - negative

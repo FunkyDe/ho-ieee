@@ -46,13 +46,14 @@ ieee_run_tests = {
 
 # Hard code the number of tests, each test block is separated by 1000, so it goes 0### block, 1### block, etc, with tests filling in the 000-999 range
 ieee_get_test_count = {
-    add_to_temp_array = { temp_test_count_array = 12 } # to_bitwise and store_bitwise
-    add_to_temp_array = { temp_test_count_array = 12 } # to_float
-    add_to_temp_array = { temp_test_count_array = 25 } # to_digit_array and to_pdxvar
-    add_to_temp_array = { temp_test_count_array = 21  } # ftp and ptf wrappers
-    add_to_temp_array = { temp_test_count_array = 500 } # relations and totalOrder
-    add_to_temp_array = { temp_test_count_array = 972 } # predicates
-    add_to_temp_array = { temp_test_count_array = 1000 } # signaling predicates
+    add_to_temp_array = { temp_test_count_array = 12 }      # to_bitwise and store_bitwise
+    add_to_temp_array = { temp_test_count_array = 12 }      # to_float
+    add_to_temp_array = { temp_test_count_array = 25 }      # to_digit_array and to_pdxvar
+    add_to_temp_array = { temp_test_count_array = 21  }     # ftp and ptf wrappers
+    add_to_temp_array = { temp_test_count_array = 500 }     # relations and totalOrder
+    add_to_temp_array = { temp_test_count_array = 972 }     # predicates
+    add_to_temp_array = { temp_test_count_array = 1000 }    # signaling predicates
+    add_to_temp_array = { temp_test_count_array = 406 }     # addition and subtraction
 }
 ## test to_bitwise and store_bitwise functions
 ieee_test_0 = {
@@ -4425,3 +4426,5 @@ ieee_test_3020 = {
 ## See ieee_tests_predicates.txt
 # test signaling predicates and negations
 ## See ieee_tests_signaling_predicates.txt
+# test addition and subtration
+## See ieee_tests_addsub.txt

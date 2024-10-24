@@ -34,7 +34,7 @@ The tentative task map is:
     - [x] Implement transformation back to pdxvars
 - [x] Comparison
 - [ ] Addition and Subtraction
-    - [ ] Test cases
+    - [x] Test cases
     - [ ] Positive+Positive base case
     - [ ] Addition with negatives / Subtraction
     - [ ] Exceptions and special cases (subnormals, infinities, NaNs)
@@ -75,3 +75,4 @@ NaN: It is very difficult to create exceptions in Hearts of Iron IV, as there is
     - negative
     - subnormal
     - inf/NaN
+- Add mention of defines.lua change and what to keep

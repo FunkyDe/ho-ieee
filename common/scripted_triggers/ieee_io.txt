@@ -102,10 +102,8 @@ store_bitwise_trigger = {
 
         if = {
             limit = {
-                AND = {
-                    NOT = { check_variable = { temp_array_@var:temp_array_id^idx = 0 } }
-                    NOT = { check_variable = { temp_array_@var:temp_array_id^idx = 1 } }
-                }
+                NOT = { check_variable = { temp_array_@var:temp_array_id^idx = 0 } }
+                NOT = { check_variable = { temp_array_@var:temp_array_id^idx = 1 } }
             }
             add_to_temp_variable = { bitwise_error_flag = 1 }
             log = "store_bitwise value error, temp_array_id = [?temp_array_id], value = [?temp_array_@var:temp_array_id^idx], index = [?idx]"
@@ -386,7 +384,7 @@ to_float_trigger = {
         }
 
         add_to_temp_variable = { actual_exp = 127 } # add exponent bias
-        set_temp_variable = { bit_compare = 128 }
+        set_temp_variable = { exponent_inc = 128 }
         resize_temp_array = { temp_array_@var:temp_array_id = 9 }
         all_of = {
             array = temp_array_@var:temp_array_id
@@ -397,15 +395,15 @@ to_float_trigger = {
                 }
                 if = {
                     limit = {
-                        NOT = { check_variable = { actual_exp < bit_compare } }
+                        NOT = { check_variable = { actual_exp < exponent_inc } }
                     }
                     set_temp_variable = { temp_array_@var:temp_array_id^idx = 1 }
-                    subtract_from_temp_variable = { actual_exp = bit_compare }
+                    subtract_from_temp_variable = { actual_exp = exponent_inc }
                 }
                 else = {
                     set_temp_variable = { temp_array_@var:temp_array_id^idx = 0 }
                 }
-                divide_temp_variable = { bit_compare = 2 }
+                divide_temp_variable = { exponent_inc = 2 }
             }
         }
         all_of = {
@@ -470,10 +468,8 @@ to_digit_array_trigger = {
 
         if = {
             limit = {
-                AND = {
-                    NOT = { check_variable = { temp_array_@var:temp_array_id^idx = 0 } }
-                    NOT = { check_variable = { temp_array_@var:temp_array_id^idx = 1 } }
-                }
+                NOT = { check_variable = { temp_array_@var:temp_array_id^idx = 0 } }
+                NOT = { check_variable = { temp_array_@var:temp_array_id^idx = 1 } }
             }
             add_to_temp_variable = { io_error_flag = 1 }
             log = "to_digit_array value error, temp_array_id = [?temp_array_id], value = [?temp_array_@var:temp_array_id^idx], index = [?idx]"
@@ -494,7 +490,7 @@ to_digit_array_trigger = {
     }
     # get exponent
     set_temp_variable = { temp_exp = 0 }
-    set_temp_variable = { bit_compare = 128 }
+    set_temp_variable = { exponent_inc = 128 }
     all_of = {
         array = temp_array_@var:temp_array_id
         index = idx
@@ -508,9 +504,9 @@ to_digit_array_trigger = {
                 limit = {
                     check_variable = { temp_array_@var:temp_array_id^idx = 1 }
                 }
-                add_to_temp_variable = { temp_exp = bit_compare }
+                add_to_temp_variable = { temp_exp = exponent_inc }
             }
-            divide_temp_variable = { bit_compare = 2 }
+            divide_temp_variable = { exponent_inc = 2 }
         }
     }
     subtract_from_temp_variable = { temp_exp = 127 }
@@ -732,10 +728,8 @@ to_pdxvar_trigger = {
 
         if = {
             limit = {
-                AND = {
-                    NOT = { check_variable = { temp_array_@var:temp_array_id^idx = 0 } }
-                    NOT = { check_variable = { temp_array_@var:temp_array_id^idx = 1 } }
-                }
+                NOT = { check_variable = { temp_array_@var:temp_array_id^idx = 0 } }
+                NOT = { check_variable = { temp_array_@var:temp_array_id^idx = 1 } }
             }
             add_to_temp_variable = { io_error_flag = 1 }
             log = "to_pdxvar value error, temp_array_id = [?temp_array_id], value = [?temp_array_@var:temp_array_id^idx], index = [?idx]"
@@ -745,7 +739,7 @@ to_pdxvar_trigger = {
     # Convert bits to digits
     to_digit_array_trigger = yes
 
-    # Process digits to pdxvar format (stolen from loc code)
+    # Process digits to pdxvar format (borrowed from localization code)
     clear_temp_array = to_print_digit_array
     set_temp_variable = { to_print_digit_power = digit_power_output }
     if = { # flip pdxvar special flags
@@ -839,122 +833,134 @@ to_pdxvar_trigger = {
         }
     }
     set_temp_variable = { to_pdxvar_output = 0 }
+    # Check if number on order of 10^6(millions) exceeds pdx limit
+
+    clear_temp_array = temp_positive_check
+    add_to_temp_array = { temp_positive_check = 2 }
+    add_to_temp_array = { temp_positive_check = 1 }
+    add_to_temp_array = { temp_positive_check = 4 }
+    add_to_temp_array = { temp_positive_check = 7 }
+    add_to_temp_array = { temp_positive_check = 4 }
+    add_to_temp_array = { temp_positive_check = 8 }
+    add_to_temp_array = { temp_positive_check = 3 }
+    add_to_temp_array = { temp_positive_check = 6 }
+    add_to_temp_array = { temp_positive_check = 4 }
+    add_to_temp_array = { temp_positive_check = 7 }
+
+    clear_temp_array = temp_negative_check
+    add_to_temp_array = { temp_negative_check = 2 }
+    add_to_temp_array = { temp_negative_check = 1 }
+    add_to_temp_array = { temp_negative_check = 4 }
+    add_to_temp_array = { temp_negative_check = 7 }
+    add_to_temp_array = { temp_negative_check = 4 }
+    add_to_temp_array = { temp_negative_check = 8 }
+    add_to_temp_array = { temp_negative_check = 3 }
+    add_to_temp_array = { temp_negative_check = 6 }
+    add_to_temp_array = { temp_negative_check = 4 }
+    add_to_temp_array = { temp_negative_check = 8 }
     if = {
         limit = {
-            NOT = { check_variable = { to_print_digit_array^num = 0 } }
+            check_variable = { to_print_digit_power > 6 }
         }
-
-        add_to_temp_array = { temp_positive_check = 2 }
-        add_to_temp_array = { temp_positive_check = 1 }
-        add_to_temp_array = { temp_positive_check = 4 }
-        add_to_temp_array = { temp_positive_check = 7 }
-        add_to_temp_array = { temp_positive_check = 4 }
-        add_to_temp_array = { temp_positive_check = 8 }
-        add_to_temp_array = { temp_positive_check = 3 }
-        add_to_temp_array = { temp_positive_check = 6 }
-        add_to_temp_array = { temp_positive_check = 4 }
-        add_to_temp_array = { temp_positive_check = 7 }
-
-        add_to_temp_array = { temp_negative_check = 2 }
-        add_to_temp_array = { temp_negative_check = 1 }
-        add_to_temp_array = { temp_negative_check = 4 }
-        add_to_temp_array = { temp_negative_check = 7 }
-        add_to_temp_array = { temp_negative_check = 4 }
-        add_to_temp_array = { temp_negative_check = 8 }
-        add_to_temp_array = { temp_negative_check = 3 }
-        add_to_temp_array = { temp_negative_check = 6 }
-        add_to_temp_array = { temp_negative_check = 4 }
-        add_to_temp_array = { temp_negative_check = 8 }
-        # Check if number on order of 10^6(millions) exceeds pdx limit
+        # Bigger than 10^6 case
         if = {
             limit = {
-                check_variable = { to_print_digit_power = 6 }
                 check_variable = { temp_sign_bit = 0 }
             }
-            # Positive case
-            all_of = {
-                array = temp_positive_check
-                index = idx
+            set_temp_variable = { to_pdxvar_overflow_flag = 1 }
+        }
+        else = {
+            set_temp_variable = { to_pdxvar_overflow_flag = -1 }
+        }
+    }
+    else_if = {
+        limit = {
+            check_variable = { to_print_digit_power = 6 }
+            check_variable = { temp_sign_bit = 0 }
+        }
+        # Positive case
+        all_of = {
+            array = temp_positive_check
+            index = idx
 
-                if = {
-                    limit = {
-                        check_variable = { temp_positive_check^idx < to_print_digit_array^idx }
-                    }
-                    set_temp_variable = { to_pdxvar_overflow_flag = 1 }
+            if = {
+                limit = {
+                    check_variable = { temp_positive_check^idx < to_print_digit_array^idx }
                 }
+                set_temp_variable = { to_pdxvar_overflow_flag = 1 }
             }
+        }
+    }
+    else_if = {
+        limit = {
+            check_variable = { to_print_digit_power = 6 }
+            check_variable = { temp_sign_bit = 1 }
+        }
+        # Negative case
+        all_of = {
+            array = temp_negative_check
+            index = idx
+
+            if = {
+                limit = {
+                    check_variable = { temp_negative_check^idx < to_print_digit_array^idx }
+                }
+                set_temp_variable = { to_pdxvar_overflow_flag = -1 }
+            }
+        }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { to_pdxvar_overflow_flag = 0 } }
+        }
+
+        # Too high! Can't do anything, output warning
+        log = "Number exceeds pdxvar cap, value = [debug_print_digit]"
+    }
+    else = {
+        # Output variable
+        set_temp_variable = { index_offset = to_print_digit_array^num }
+        subtract_from_temp_variable = { index_offset = to_print_digit_power }
+        subtract_from_temp_variable = { index_offset = 1 }
+        if = {
+            limit = {
+                check_variable = { index_offset = 3 }
+            }
+            set_temp_variable = { mult_factor = 0.001 }
         }
         else_if = {
             limit = {
-                check_variable = { to_print_digit_power = 6 }
-                check_variable = { temp_sign_bit = 1 }
+                check_variable = { index_offset = 2 }
             }
-            # Negative case
-            all_of = {
-                array = temp_negative_check
-                index = idx
-
-                if = {
-                    limit = {
-                        check_variable = { temp_negative_check^idx < to_print_digit_array^idx }
-                    }
-                    set_temp_variable = { to_pdxvar_overflow_flag = -1 }
-                }
+            set_temp_variable = { mult_factor = 0.01 }
+        }
+        else_if = {
+            limit = {
+                check_variable = { index_offset = 1 }
             }
+            set_temp_variable = { mult_factor = 0.1 }
+        }
+        else_if = {
+            limit = {
+                check_variable = { index_offset = 0 }
+            }
+            set_temp_variable = { mult_factor = 1 }
         }
         if = {
             limit = {
-                NOT = { check_variable = { to_pdxvar_overflow_flag = 0 } }
+                check_variable = { temp_sign_bit = 1 }
             }
-
-            # Too high! Can't do anything, output warning
-            log = "Number exceeds pdxvar cap, value = [debug_print_digit]"
+            multiply_temp_variable = { mult_factor = -1 }
         }
-        else = {
-            # Output variable
-            set_temp_variable = { index_offset = to_print_digit_array^num }
-            subtract_from_temp_variable = { index_offset = to_print_digit_power }
-            subtract_from_temp_variable = { index_offset = 1 }
-            if = {
-                limit = {
-                    check_variable = { index_offset = 3 }
-                }
-                set_temp_variable = { mult_factor = 0.001 }
-            }
-            else_if = {
-                limit = {
-                    check_variable = { index_offset = 2 }
-                }
-                set_temp_variable = { mult_factor = 0.01 }
-            }
-            else_if = {
-                limit = {
-                    check_variable = { index_offset = 1 }
-                }
-                set_temp_variable = { mult_factor = 0.1 }
-            }
-            else_if = {
-                limit = {
-                    check_variable = { index_offset = 0 }
-                }
-                set_temp_variable = { mult_factor = 1 }
-            }
-            if = {
-                limit = {
-                    check_variable = { temp_sign_bit = 1 }
-                }
-                multiply_temp_variable = { mult_factor = -1 }
-            }
-            all_of = {
-                array = to_print_digit_array
-                index = idx
+        all_of = {
+            array = to_print_digit_array
+            index = idx
 
-                multiply_temp_variable = { to_pdxvar_output = 10 }
+            multiply_temp_variable = { to_pdxvar_output = 10 }
 
-                set_temp_variable = { val = to_print_digit_array^idx }
-                multiply_temp_variable = { val = mult_factor }
-                add_to_temp_variable = { to_pdxvar_output = val }
-            }
+            set_temp_variable = { val = to_print_digit_array^idx }
+            multiply_temp_variable = { val = mult_factor }
+            add_to_temp_variable = { to_pdxvar_output = val }
         }
     }
     set_temp_variable = { temp_array_id = 0 }

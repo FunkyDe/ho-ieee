@@ -48,7 +48,7 @@ ieee_run_tests = {
 ieee_get_test_count = {
     add_to_temp_array = { temp_test_count_array = 12 }      # to_bitwise and store_bitwise
     add_to_temp_array = { temp_test_count_array = 12 }      # to_float
-    add_to_temp_array = { temp_test_count_array = 25 }      # to_digit_array and to_pdxvar
+    add_to_temp_array = { temp_test_count_array = 26 }      # to_digit_array and to_pdxvar
     add_to_temp_array = { temp_test_count_array = 21  }     # ftp and ptf wrappers
     add_to_temp_array = { temp_test_count_array = 500 }     # relations and totalOrder
     add_to_temp_array = { temp_test_count_array = 972 }     # predicates
@@ -3377,6 +3377,58 @@ ieee_test_2022 = {
     set_temp_variable = { io_error_flag = 0 }
     clear_temp_array = temp_array_0
 
+    set_temp_variable = { to_bitwise_input = -368598.472 }
+    set_temp_variable = { temp_array_id = 0 }
+    to_bitwise = yes
+
+    set_temp_variable = { temp_array_id = 0 }
+    to_pdxvar = yes
+
+    # expected value output()
+    set_temp_variable = { expected_output =         0 }
+    set_temp_variable = { expected_overflow_flag =  -1 }
+    set_temp_variable = { expected_inf_flag =       0 }
+    set_temp_variable = { expected_nan_flag =       0 }
+
+    set_temp_variable = { invalid = 0 }
+    if = {
+        limit = {
+            check_variable = { io_error_flag > 0 }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            OR = {
+                NOT = { check_variable = { to_pdxvar_output = expected_output } }
+                NOT = { check_variable = { to_pdxvar_overflow_flag = expected_overflow_flag } }
+                NOT = { check_variable = { to_pdxvar_inf_flag = expected_inf_flag } }
+                NOT = { check_variable = { to_pdxvar_nan_flag = expected_nan_flag } }
+            }
+        }
+        set_temp_variable = { invalid = 1 }
+    }
+    if = {
+        limit = {
+            check_variable = { invalid = 1 }
+        }
+        log = "Test [?test_id] - big negative overflow to_pdxvar - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - big negative overflow to_pdxvar - PASS"
+    }
+
+    log = "Actual: [?to_pdxvar_output] overflow: [?to_pdxvar_overflow_flag]"
+    log = "Expect: [?expected_output] overflow: [?expected_overflow_flag]"
+    
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+}
+ieee_test_2023 = {
+    set_temp_variable = { io_error_flag = 0 }
+    clear_temp_array = temp_array_0
+
     set_temp_variable = { to_bitwise_input = 2139095.04 }
     set_temp_variable = { temp_array_id = 0 }
     to_bitwise = yes
@@ -3425,7 +3477,7 @@ ieee_test_2022 = {
     set_temp_variable = { io_error_flag = 0 }
     clear_temp_array = temp_array_0
 }
-ieee_test_2023 = {
+ieee_test_2024 = {
     set_temp_variable = { io_error_flag = 0 }
     clear_temp_array = temp_array_0
 
@@ -3477,7 +3529,7 @@ ieee_test_2023 = {
     set_temp_variable = { io_error_flag = 0 }
     clear_temp_array = temp_array_0
 }
-ieee_test_2024 = {
+ieee_test_2025 = {
     set_temp_variable = { io_error_flag = 0 }
 
     set_temp_variable = { temp_array_id = 1.01 }

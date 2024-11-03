@@ -6,6 +6,14 @@ The goal of this mod is to provide an implementation floating-point numbers, acc
 
 HOI4's base modding script uses signed 32-bit fixed-point variables(referred to later as pdxvars), ranging from -2,147,483.648 to 2,147,483.647, with accuracy to the thousandth-place. This means that variables can overflow or are truncated, losing data. So, I am working on an implementation floating-point variables according to the IEEE 754 standard, which would allow for both a greater range of numbers and a greater precision, while maintaining a modder-friendly interface within Paradox's provided modding script. Currently, this project is a work-in-progress, and likely will be for the near future as there is still much to do.
 
+# Key Functions
+Below is a chart of the scripts I found most interesting, where to find them, and what they do. I have omitted the "_trigger" ending for some of them, as that has no impact on the function:
+| Script | Located In | Function |
+| :--- | :--- | :--- |
+| to_float | [common/scripted_triggers/ieee_io.txt](common/scripted_triggers/ieee_io.txt) | Converts a variable into a corresponding array of 32 bits holding the equivalent single-precision floating-point value |
+| to_digit_array | [common/scripted_triggers/ieee_io.txt](common/scripted_triggers/ieee_io.txt) | Converts a 32-bit array into an array of digits for output and printing |
+| to_pdxvar | [common/scripted_triggers/ieee_io.txt](common/scripted_triggers/ieee_io.txt) | ##### |
+
 # Background
 
 From [Wikipedia](https://en.wikipedia.org/wiki/IEEE_754):
@@ -67,6 +75,8 @@ Tests: I have implemented a series of tests in order to verify the function of f
 Assumptions: When modding scripts try to access a variable that has not been set yet, it will read 0. This may raise a bit of confusion, as the script treats both the modder forgetting to set a variable/parameter and them deliberately setting a variable to 0 equivalently. Notes have been taken in the comments to describe the outcome for uninitialized variables, but extra care should be taken with scripted effects that handle numerical input: to_bitwise, to_float, etc. Since their inputs are meant to be numbers, leaving inputs uninitialized as 0 will proceed with no errors, warnings, or notification. These 0-critical inputs will be marked in comments with the line `# If no input is given, the function will use 0 in place **and return no error**` in the comments above each function.
 
 NaN: It is very difficult to create exceptions in Hearts of Iron IV, as there is no way to break the execution of a scripted effect or trigger as far as I can tell. This means that signaling NaNs are effectively impossible as sNaNs require an exception to be raised immediately. Therefore, all NaNs implemented in ho-ieee-754 are effectively quiet NaNs. Since exceptions are impossible, the only difference between quiet and signaling functions is whether or not a warning is displayed and a flag incremented.
+
+[Defines](common/defines/00_defines.lua): There is a localization script that prints out arrays recursively. However, to extend the maximum length the [defines.lua](common/defines/00_defines.lua) has been modified. If you want to change the defines.lua for other purposes, please keep the [MAX_SCRIPTED_LOC_RECURSION](common/defines/00_defines.lua#L23) at least 70 for debugging's sake.
 
 # TODOlist:
 

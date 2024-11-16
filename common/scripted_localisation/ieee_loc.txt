@@ -5,10 +5,10 @@ defined_text = {
         trigger = {
             check_variable = { temp_sign_bit = 1 }
         }
-        localization_key = "-"
+        localization_key = ieee_minus_sign
     }
     text = {
-        localization_key = "+"
+        localization_key = ieee_plus_sign
     }
 }
 # Prints a plus depending on the decimal power of the number for scientific notation, since the minus is already printed
@@ -18,10 +18,10 @@ defined_text = {
         trigger = {
             check_variable = { digit_power_output < 0 }
         }
-        localization_key = ""
+        localization_key = ieee_empty
     }
     text = {
-        localization_key = "+"
+        localization_key = ieee_plus_sign
     }
 }
 # Prints ONLY a minus depending on the value of the temp var temp_sign_bit(0 -> nothing, 1 -> -)
@@ -31,10 +31,10 @@ defined_text = {
         trigger = {
             check_variable = { temp_sign_bit = 1 }
         }
-        localization_key = "-"
+        localization_key = ieee_minus_sign
     }
     text = {
-        localization_key = ""
+        localization_key = ieee_empty
     }
 }
 # Prints the array temp_array_[?temp_array_id]
@@ -49,7 +49,7 @@ defined_text = {
                 add_to_temp_array = { to_print_array = v }
             }
         }
-        localization_key = "[debug_print_array]"
+        localization_key = ieee_print_array_id
     }
 }
 # The next three scripted locs print the content of temp array to_print_array using a recursive step, limited to a max length of about 128. You should not execute the _step or the clear_ by themselves
@@ -59,13 +59,13 @@ defined_text = {
         trigger = {
             check_variable = { to_print_array^num = 0 }
         }
-        localization_key = ""
+        localization_key = ieee_empty
     }
     text = {
         trigger = {
             set_temp_variable = { temp_index = 0 }
         }
-        localization_key = "[debug_print_array_step][clear_to_print_array]"
+        localization_key = ieee_print_array
     }
 }
 defined_text = {
@@ -81,22 +81,22 @@ defined_text = {
 
             always = no
         }
-        localization_key = ""
+        localization_key = ieee_empty
     }
     text = {
         trigger = {
             check_variable = { temp_index > to_print_array^num }
         }
-        localization_key = "[?to_print_array^temp_index_a]"
+        localization_key = ieee_print_array_step_1
     }
     text = {
         trigger = {
             check_variable = { temp_index = to_print_array^num }
         }
-        localization_key = "[?to_print_array^temp_index_a] [?to_print_array^temp_index_b]"
+        localization_key = ieee_print_array_step_2
     }
     text = {
-        localization_key = "[?to_print_array^temp_index_a] [?to_print_array^temp_index_b] [debug_print_array_step]"
+        localization_key = ieee_print_array_step_rec
     }
 }
 defined_text = {
@@ -105,7 +105,7 @@ defined_text = {
         trigger = {
             clear_temp_array = to_print_array
         }
-        localization_key = ""
+        localization_key = ieee_empty
     }
 }
 
@@ -152,34 +152,34 @@ defined_text = {
 
             check_variable = { to_print_style = 0 }
         }
-        localization_key = "[print_float_full]"
+        localization_key = ieee_print_float_full
     }
     text = {
         trigger = {
             check_variable = { to_print_style = 1 }
         }
-        localization_key = "[print_float_trunc]"
+        localization_key = ieee_print_float_trunc
     }
     text = {
         trigger = {
             check_variable = { to_print_style = 2 }
         }
-        localization_key = "[print_float_pdx]"
+        localization_key = ieee_print_float_pdx
     }
     text = {
         trigger = {
             check_variable = { to_print_style = 3 }
         }
-        localization_key = "[print_float_round]"
+        localization_key = ieee_print_float_round
     }
     text = {
         trigger = {
             check_variable = { to_print_style = 4 }
         }
-        localization_key = "[print_float_sci]"
+        localization_key = ieee_print_float_sci
     }
     text = {
-        localization_key = "[print_float_full]"
+        localization_key = ieee_print_float_full
     }
 }
 ## Floating-point localization wrappers
@@ -211,7 +211,7 @@ defined_text = {
             }
             set_temp_variable = { to_print_digit_power = digit_power_output }
         }
-        localization_key = "[debug_print_digit]"
+        localization_key = ieee_print_digit
     }
 }
 # Prints the given array to_print_digit_array, using to_print_digit_power to determine where to place the decimal point
@@ -255,7 +255,7 @@ defined_text = {
                 set_temp_variable = { to_print_digit_power = 0 }
             }
         }
-        localization_key = "[debug_print_digit]"
+        localization_key = ieee_print_digit
     }
 }
 # Prints the given array to_print_digit_array, using to_print_digit_power to determine where to place the decimal point
@@ -371,7 +371,7 @@ defined_text = {
                 set_temp_variable = { to_print_digit_power = 0 }
             }
         }
-        localization_key = "[debug_print_digit]"
+        localization_key = ieee_print_digit
     }
 }
 # Prints the given array to_print_digit_array, using to_print_digit_power to determine where to place the decimal point
@@ -502,7 +502,7 @@ defined_text = {
                 set_temp_variable = { to_print_digit_power = 0 }
             }
         }
-        localization_key = "[debug_print_digit]"
+        localization_key = ieee_print_digit
     }
 }
 # Prints the given array to_print_digit_array in a scientific value format, using to_print_digit_power to determine the power of 10
@@ -619,7 +619,7 @@ defined_text = {
             # Resize array to significant digits desired
             resize_temp_array = { to_print_digit_array = to_print_param }
         }
-        localization_key = "[debug_print_digit_sci]"
+        localization_key = ieee_print_digit_sci
     }
 }
 # Prints the digits in to_print_digit_array and places the decimal in to_print_digit_power after potentially being processed in the wrappers
@@ -630,26 +630,26 @@ defined_text = {
         trigger = {
             check_variable = { print_inf_flag = 1 }
         }
-        localization_key = "[ieee_plus_minus_decider]infinity"
+        localization_key = ieee_infinity
     }
     text = {
         trigger = {
             check_variable = { print_nan_flag = 1 }
         }
-        localization_key = "NaN"
+        localization_key = ieee_nan
     }
     text = {
         trigger = {
             check_variable = { to_print_digit_array^num = 0 }
         }
-        localization_key = "{ERROR: empty array}"
+        localization_key = ieee_error_empty
     }
     text = {
         trigger = {
             set_temp_variable = { temp_index = 0 }
             set_temp_variable = { temp_power = to_print_digit_power }
         }
-        localization_key = "[ieee_minus_decider][zero_padding][debug_print_digit_step][clear_digit_array]"
+        localization_key = ieee_debug_print_digit
     }
 }
 # If the power is less than 0, fills in the left of the decimal with zeroes
@@ -659,7 +659,7 @@ defined_text = {
         trigger = {
             NOT = { check_variable = { temp_power < 0 } }
         }
-        localization_key = ""
+        localization_key = ieee_empty
     }
     text = {
         trigger = {
@@ -671,13 +671,13 @@ defined_text = {
 
             check_variable = { temp_power = round_check }
         }
-        localization_key = "0.[zero_padding_step]"
+        localization_key = ieee_zero_1
     }
     text = {
         trigger = {
             add_to_temp_variable = { temp_power = 1 }
         }
-        localization_key = "0.0[zero_padding_step]"
+        localization_key = ieee_zero_2
     }
 }
 defined_text = {
@@ -687,10 +687,10 @@ defined_text = {
             add_to_temp_variable = { temp_power = 2 }
             check_variable = { temp_power > 0 }
         }
-        localization_key = ""
+        localization_key = ieee_empty
     }
     text = {
-        localization_key = "00[zero_padding_step]"
+        localization_key = ieee_zero_rec
     }
 }
 # Recursively prints the next 2 digits and places decimal if needed
@@ -714,22 +714,22 @@ defined_text = {
 
             always = no
         }
-        localization_key = ""
+        localization_key = ieee_empty
     }
     text = {
         trigger = {
             check_variable = { temp_index > to_print_digit_array^num }
         }
-        localization_key = "[?to_print_digit_array^temp_index_a]"
+        localization_key = ieee_print_digit_step_1
     }
     text = {
         trigger = {
             check_variable = { temp_index = to_print_digit_array^num }
         }
-        localization_key = "[?to_print_digit_array^temp_index_a][decimal_decider_a][?to_print_digit_array^temp_index_b]"
+        localization_key = ieee_print_digit_step_2
     }
     text = {
-        localization_key = "[?to_print_digit_array^temp_index_a][decimal_decider_a][?to_print_digit_array^temp_index_b][decimal_decider_b][debug_print_digit_step]"
+        localization_key = ieee_print_digit_step_rec
     }
 }
 defined_text = {
@@ -739,7 +739,7 @@ defined_text = {
             clear_temp_array = to_print_digit_array
             set_temp_variable = { to_print_digit_power = 0 }
         }
-        localization_key = ""
+        localization_key = ieee_empty
     }
 }
 defined_text = {
@@ -748,10 +748,10 @@ defined_text = {
         trigger = {
             check_variable = { to_print_digit_power_a = 0 }
         }
-        localization_key = "."
+        localization_key = ieee_decimal_pt
     }
     text = {
-        localization_key = ""
+        localization_key = ieee_empty
     }
 }
 defined_text = {
@@ -760,10 +760,10 @@ defined_text = {
         trigger = {
             check_variable = { to_print_digit_power_b = 0 }
         }
-        localization_key = "."
+        localization_key = ieee_decimal_pt
     }
     text = {
-        localization_key = ""
+        localization_key = ieee_empty
     }
 }
 # Helper to format scientific notation
@@ -773,25 +773,25 @@ defined_text = {
         trigger = {
             check_variable = { print_inf_flag = 1 }
         }
-        localization_key = "[ieee_plus_minus_decider]infinity"
+        localization_key = ieee_infinity
     }
     text = {
         trigger = {
             check_variable = { print_nan_flag = 1 }
         }
-        localization_key = "NaN"
+        localization_key = ieee_nan
     }
     text = {
         trigger = {
             check_variable = { to_print_digit_array^num = 0 }
         }
-        localization_key = "{ERROR: empty array}"
+        localization_key = ieee_error_empty
     }
     text = {
         trigger = {
             set_temp_variable = { temp_index = 0 }
             set_temp_variable = { temp_power = to_print_digit_power }
         }
-        localization_key = "[ieee_minus_decider][zero_padding][debug_print_digit_step][clear_digit_array]E[ieee_sci_plus_decider][?digit_power_output]"
+        localization_key = ieee_debug_print_digit_sci
     }
 }

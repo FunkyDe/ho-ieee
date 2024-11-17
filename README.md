@@ -43,7 +43,7 @@ The tentative task map is:
 - [x] Comparison
 - [ ] Addition and Subtraction
     - [x] Test cases
-    - [ ] Positive+Positive base case
+    - [x] Positive+Positive base case
     - [ ] Addition with negatives / Subtraction
     - [ ] Exceptions and special cases (subnormals, infinities, NaNs)
 - [ ] Multiplication
@@ -76,13 +76,8 @@ Assumptions: When modding scripts try to access a variable that has not been set
 
 NaN: It is very difficult to create exceptions in Hearts of Iron IV, as there is no way to break the execution of a scripted effect or trigger as far as I can tell. This means that signaling NaNs are effectively impossible as sNaNs require an exception to be raised immediately. Therefore, all NaNs implemented in ho-ieee-754 are effectively quiet NaNs. Since exceptions are impossible, the only difference between quiet and signaling functions is whether or not a warning is displayed and a flag incremented.
 
-[Defines](common/defines/00_defines.lua): There is a localization script that prints out arrays recursively. However, to extend the maximum length the [defines.lua](common/defines/00_defines.lua) has been modified. If you want to change the defines.lua for other purposes, please keep the [MAX_SCRIPTED_LOC_RECURSION](common/defines/00_defines.lua#L23) at least 70 for debugging's sake.
-
 # TODOlist:
 
 - Addition
-    - positive case
     - negative
     - subnormal
-    - inf/NaN
-- Add mention of defines.lua change and what to keep

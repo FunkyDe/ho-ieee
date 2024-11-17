@@ -42,7 +42,7 @@ ieee_run_tests = {
 # Any additional test information below
 
 # Furthermore, in the fail block add the line `add_to_temp_array = { test_fail_array = test_id }` to add the failure to a list printed at the end
-# Error flags (e.g. bitwise_error_flag) are temp variables that mark errors. Currently I don't think it would be feasible to implement a complete fail-fast system (too many if statements), but 
+# Error flags (e.g. bitwise_error_flag) are temp variables that mark errors.
 
 # Hard code the number of tests, each test block is separated by 1000, so it goes 0### block, 1### block, etc, with tests filling in the 000-999 range
 ieee_get_test_count = {

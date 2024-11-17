@@ -1,5 +1,496 @@
 ### ieeeAdd
+## Adds the floating point variables and pushes the result to an output variable
+## The below function has 2 parameters: arg_a and arg_b
+## These parameters will be cleared(by resetting to 0) after the function execution
+## The output will be pushed to the temp variable out_a
+## temp_array_1000 and temp_array_1001 are reserved for this function, so outside use of this temp array will be interrupted and malfunction
+## ARGUMENTS
+# arg_a and arg_b will be interpreted as floating-point variables, so the value of 1 is represented by storing 1065353.216 in a variable(see pdxvar_to_float)
+## OUTPUT
+# out_a will contain the floating-point value of float(arg_a) + float(arg_b) after function execution
+# Continuing the example in the arguments, float-adding 1065353.216 to 1065353.216 (1+1) will yield 1073741.824 (2)
+ieeeAdd_trigger = {
+    set_temp_variable = { out_a = 0 }
+    set_temp_variable = { to_bitwise_input = arg_a }
+    set_temp_variable = { temp_array_id = 1000 }
+    to_bitwise_trigger = yes
+
+    set_temp_variable = { to_bitwise_input = arg_b }
+    set_temp_variable = { temp_array_id = 1001 }
+    to_bitwise_trigger = yes
+    
+    set_temp_variable = { exp_a = -127 }
+    set_temp_variable = { exp_b = -127 }
+    set_temp_variable = { exponent_inc = 128 }
+    all_of = {
+        array = temp_array_1001
+        index = idx
+
+        if = {
+            limit = {
+                NOT = { check_variable = { idx < 1 } }
+                check_variable = { idx < 9 }
+            }
+            
+            if = {
+                limit = {
+                    check_variable = { temp_array_1001^idx = 1 }
+                }
+                add_to_temp_variable = { exp_b = exponent_inc }
+            }
+            if = {
+                limit = {
+                    check_variable = { temp_array_1000^idx = 1 }
+                }
+                add_to_temp_variable = { exp_a = exponent_inc }
+            }
+            divide_temp_variable = { exponent_inc = 2 }
+        }
+    }
+    set_temp_variable = { exp_max = exp_a }
+    if = {
+        limit = {
+            check_variable = { exp_a < exp_b }
+        }
+        set_temp_variable = { exp_max = exp_b }
+    }
+    if = {
+        limit = {
+            check_variable = { exp_max = 128 }
+        }
+
+        # Special cases handler
+        # +infinity = 2139095.040
+        # -infinity = -8388.608
+        # NaN = 2143289.344
+        if = {
+            limit = {
+                check_variable = { arg_a = 2139095.040 }
+                check_variable = { arg_b = 2139095.040 }
+            }
+            set_temp_variable = { out_a = 2139095.040 }
+        }
+        else_if = {
+            limit = {
+                check_variable = { arg_a = 2139095.040 }
+                check_variable = { arg_b = -8388.608 }
+            }
+            set_temp_variable = { out_a = 2143289.344 }
+        }
+        else_if = {
+            limit = {
+                check_variable = { arg_a = -8388.608 }
+                check_variable = { arg_b = 2139095.040 }
+            }
+            set_temp_variable = { out_a = 2143289.344 }
+        }
+        else_if = {
+            limit = {
+                check_variable = { arg_a = -8388.608 }
+                check_variable = { arg_b = -8388.608 }
+            }
+            set_temp_variable = { out_a = -8388.608 }
+        }
+        # If not infinity addition, then take the value of arg_a if a is infinity or NaN, then defer to arg_b
+        else_if = {
+            limit = {
+                OR = {
+                    # arg_a is NaN
+                    check_variable = { arg_a > 2139095.040 }
+                    AND = {
+                        check_variable = { arg_a > -8388.608 }
+                        check_variable = { arg_a < 0 }
+                    }
+                    # arg_b is a normal/subnormal float(overriden by arg_a)
+                    AND = {
+                        NOT = { check_variable = { arg_b < 0 } }
+                        check_variable = { arg_b < 2139095.040 }
+                    }
+                    check_variable = { arg_b < -8388.608 }
+                }
+            }
+            set_temp_variable = { out_a = arg_a }
+        }
+        else = {
+            set_temp_variable = { out_a = arg_b }
+        }
+    }
+    else = {
+        # Mantissa arrays are 279 bits long:
+        # 277 bits for the potential values of the mantissa(254 valid exponents + 23 trailing bits)
+        # 2 extra bits in the beginning to determine sign and overflow
+
+        set_temp_variable = { temp_negative_flag = 0 }
+        # Generate mantissas
+        clear_temp_array = temp_mantissa_a
+        resize_temp_array = { temp_mantissa_a = 279 }
+        if = {
+            limit = {
+                check_variable = { temp_array_1000^0 = 1 }
+            }
+            set_temp_variable = { temp_negative_flag = 1 }
+        }
+        all_of = {
+            array = temp_mantissa_a
+            index = idx
+
+            set_temp_variable = { temp_mantissa_a^idx = temp_array_1000^0 }
+        }
+        
+        # Leading bit
+        if = {
+            limit = {
+                check_variable = { exp_a > -127 }
+            }
+            set_temp_variable = { mantissa_index = 129 }
+            subtract_from_temp_variable = { mantissa_index = exp_a }
+            
+            # Flip bit
+            set_temp_variable = { set_val = 1 }
+            subtract_from_temp_variable = { set_val = temp_mantissa_a^mantissa_index }
+            set_temp_variable = { temp_mantissa_a^mantissa_index = set_val }
+        }
+
+        # Fill mantissa out
+        set_temp_variable = { mantissa_index = 129 }
+        subtract_from_temp_variable = { mantissa_index = exp_a }
+        if = {
+            limit = {
+                check_variable = { exp_a = -127 }
+            }
+            # shift subnormals back up one bit
+            add_to_temp_variable = { mantissa_index = 1 }
+        }
+        all_of = {
+            array = temp_array_1000
+            index = idx
+
+            if = {
+                limit = {
+                    check_variable = { idx > 8 }
+                }
+                add_to_temp_variable = { mantissa_index = 1 }
+                if = {
+                    limit = {
+                        check_variable = { temp_array_1000^idx = 1 }
+                    }
+                    # Flip bit
+                    set_temp_variable = { set_val = 1 }
+                    subtract_from_temp_variable = { set_val = temp_mantissa_a^mantissa_index }
+                    set_temp_variable = { temp_mantissa_a^mantissa_index = set_val }
+               }
+            }
+        }
+
+        # Generate second mantissa
+        clear_temp_array = temp_mantissa_b
+        resize_temp_array = { temp_mantissa_b = 279 }
+        if = {
+            limit = {
+                check_variable = { temp_array_1001^0 = 1 }
+            }
+            set_temp_variable = { temp_negative_flag = 1 }
+        }
+        all_of = {
+            array = temp_mantissa_b
+            index = idx
+
+            set_temp_variable = { temp_mantissa_b^idx = temp_array_1001^0 }
+        }
+        
+        # Leading bit
+        if = {
+            limit = {
+                check_variable = { exp_b > -127 }
+            }
+            set_temp_variable = { mantissa_index = 129 }
+            subtract_from_temp_variable = { mantissa_index = exp_b }
+            
+            # Flip bit
+            set_temp_variable = { set_val = 1 }
+            subtract_from_temp_variable = { set_val = temp_mantissa_b^mantissa_index }
+            set_temp_variable = { temp_mantissa_b^mantissa_index = set_val }
+        }
+
+        # Fill mantissa out
+        set_temp_variable = { mantissa_index = 129 }
+        subtract_from_temp_variable = { mantissa_index = exp_b }
+        if = {
+            limit = {
+                check_variable = { exp_b = -127 }
+            }
+            # shift subnormals back up one bit
+            add_to_temp_variable = { mantissa_index = 1 }
+        }
+        all_of = {
+            array = temp_array_1001
+            index = idx
+
+            if = {
+                limit = {
+                    check_variable = { idx > 8 }
+                }
+
+                add_to_temp_variable = { mantissa_index = 1 }
+                if = {
+                    limit = {
+                        check_variable = { temp_array_1001^idx = 1 }
+                    }
+                    # Flip bit
+                    set_temp_variable = { set_val = 1 }
+                    subtract_from_temp_variable = { set_val = temp_mantissa_b^mantissa_index }
+                    set_temp_variable = { temp_mantissa_b^mantissa_index = set_val }
+               }
+            }
+        }
+
+        # Add mantissas
+        clear_temp_array = temp_mantissa_o
+        resize_temp_array = { temp_mantissa_o = 279 }
+        set_temp_variable = { carry = temp_negative_flag } # Temp-negative flag used to complete two's complement
+        set_temp_variable = { idx = 279 }
+        all_of = {
+            array = temp_mantissa_o
+            
+            subtract_from_temp_variable = { idx = 1 }
+            set_temp_variable = { temp_mantissa_o^idx = 0 }
+            add_to_temp_variable = { temp_mantissa_o^idx = temp_mantissa_a^idx }
+            add_to_temp_variable = { temp_mantissa_o^idx = temp_mantissa_b^idx }
+            add_to_temp_variable = { temp_mantissa_o^idx = carry }
+
+            if = {
+                limit = {
+                    check_variable = { temp_mantissa_o^idx > 1 }
+                }
+                subtract_from_temp_variable = { temp_mantissa_o^idx = 2 }
+                set_temp_variable = { carry = 1 }
+            }
+            else = {
+                set_temp_variable = { carry = 0 }
+            }
+        }
+
+        # Top two bits are used to determine overflow and sign change
+        if = {
+            limit = {
+                NOT = { check_variable = { temp_mantissa_o^0 = temp_mantissa_o^1 } }
+            }
+            # Mismatch means that the addition carried past +-2^127, so set to an infinity
+            if = {
+                limit = {
+                    check_variable = { temp_mantissa_o^0 = 0 }
+                }
+                # positive
+                set_temp_variable = { out_a = 2139095.040 }
+            }
+            else = {
+                # negative
+                set_temp_variable = { out_a = -8388.608 }
+            }
+        }
+        else = {
+            # Calculate new exponent
+            set_temp_variable = { exp_o = -127 }
+            all_of = {
+                array = temp_mantissa_o
+                index = idx
+
+                if = {
+                    # scan within valid exponents for leading bit
+                    limit = {
+                        NOT = { check_variable = { idx < 2 } }
+                        check_variable = { idx < 256 }
+                        NOT = { check_variable = { temp_mantissa_o^idx = temp_mantissa_o^0 } }
+                    }
+                    if = {
+                        limit = {
+                            check_variable = { exp_o = -127 }
+                        }
+
+                        log="wtf [?temp_mantissa_o^idx] [?temp_mantissa_o^0] [?idx]"
+                        set_temp_variable = { exp_o = 129 }
+                        subtract_from_temp_variable = { exp_o = idx }
+                    }
+                }
+            }
+            clear_temp_array = to_print_array
+            all_of = {
+                array = temp_mantissa_o
+                value = v
+
+                add_to_temp_array = { to_print_array = v }
+            }
+            log="[debug_print_array]"
+            log="[?exp_o]"
+
+            # Check for rounding
+            set_temp_variable = { start_bit = 129 } # leading bit in mantissa
+            subtract_from_temp_variable = { start_bit = exp_o }
+            set_temp_variable = { last_bit = 152 } # last bit in mantissa
+            subtract_from_temp_variable = { last_bit = exp_o }
+            set_temp_variable = { after_bit = 153 } # first bit after mantissa
+            subtract_from_temp_variable = { after_bit = exp_o }
+            set_temp_variable = { round_guard = 0 } # Are any bits after the after_bit active? Note that this doesn't exactly mean being one, see two's complement
+            all_of = {
+                array = temp_mantissa_o
+                index = idx
+
+                if = {
+                    limit = {
+                        check_variable = { idx > after_bit }
+                    }
+                    if = {
+                        limit = {
+                            NOT = { check_variable = { temp_mantissa_o^idx = temp_mantissa_o^0 } }
+                        }
+
+                        set_temp_variable = { round_guard = 1 }
+                    }
+                }
+            }
+
+            # If needed, perform rounding, incrementing exponent if overflow
+            clear_temp_array = temp_mantissa_array
+            all_of = {
+                array = temp_mantissa_o
+                index = idx
+
+                if = {
+                    limit = {
+                        NOT = { check_variable = { idx < start_bit } }
+                        check_variable = { idx < after_bit }
+                    }
+                    if = {
+                        limit = {
+                            NOT = { check_variable = { temp_mantissa_o^idx = temp_mantissa_o^0 } }
+                        }
+                        add_to_temp_array = { temp_mantissa_array = 1 }
+                    }
+                    else = {
+                        add_to_temp_array = { temp_mantissa_array = 0 }
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    NOT = { check_variable = { temp_mantissa_o^after_bit = temp_mantissa_o^0 } }
+                    OR = {
+                        check_variable = { round_guard > 0 }
+                        NOT = { check_variable = { temp_mantissa_o^last_bit = temp_mantissa_o^0 } }
+                    }
+                }
+
+                add_to_temp_variable = { temp_mantissa_array^23 = 1 }
+                all_of = {
+                    array = temp_mantissa_array
+                    index = temp_idx
+
+                    set_temp_variable = { idx = 23 }
+                    subtract_from_temp_variable = { idx = temp_idx }
+                    if = {
+                        limit = {
+                            check_variable = { temp_mantissa_array^idx = 2 }
+                        }
+                        if = {
+                            limit = {
+                                check_variable = { idx = 0 }
+                            }
+                            add_to_temp_variable = { exp_o = 1 }
+                        }
+                        else = {
+                            set_temp_variable = { prev_bit = idx }
+                            subtract_from_temp_variable = { prev_bit = 1 }
+                            add_to_temp_variable = { temp_mantissa_array^prev_bit = 1 }
+                        }
+                        set_temp_variable = { temp_mantissa_array^idx = 0 }
+                    }
+                }
+            }
+            # Technically if trimming the bit from a rounded array, should trim last bit if exponent increases, but then the entire mantissa would be 0 anyways
+            remove_from_temp_array = {
+                array = temp_mantissa_array
+                index = 0
+            }
+
+            if = {
+                limit = {
+                    check_variable = { exp_o = 128 }
+                }
+                if = {
+                    limit = {
+                        check_variable = { temp_mantissa_o^0 = 0 }
+                    }
+                    set_temp_variable = { out_a = 2139095.040 }
+                }
+                else = {
+                    set_temp_variable = { out_a = -8388.608 }
+                }
+            }
+            else = {
+                # Merge new bit array
+                clear_temp_array = temp_array_1000
+                add_to_temp_array = { temp_array_1000 = temp_mantissa_o^0 }
+                add_to_temp_variable = { exp_o = 127 } # add exponent bias
+                set_temp_variable = { exponent_inc = 128 }
+                resize_temp_array = { temp_array_1000 = 9 }
+                all_of = {
+                    array = temp_array_1000
+                    index = idx
+                    if = {
+                        limit = {
+                            check_variable = { idx > 0 }
+                        }
+                        if = {
+                            limit = {
+                                NOT = { check_variable = { exp_o < exponent_inc } }
+                            }
+                            set_temp_variable = { temp_array_1000^idx = 1 }
+                            subtract_from_temp_variable = { exp_o = exponent_inc }
+                        }
+                        else = {
+                            set_temp_variable = { temp_array_1000^idx = 0 }
+                        }
+                        divide_temp_variable = { exponent_inc = 2 }
+                    }
+                }
+                all_of = {
+                    array = temp_mantissa_array
+                    value = v
+
+                    add_to_temp_array = { temp_array_1000 = v }
+                }
+
+                # Convert bit to final output
+                set_temp_variable = { temp_array_id = 1000 }
+                store_bitwise_trigger = yes
+                set_temp_variable = { out_a = store_bitwise_output }
+            }
+            clear_temp_array = to_print_array
+            all_of = {
+                array = temp_mantissa_array
+                value = v
+
+                add_to_temp_array = { to_print_array = v }
+            }
+            log="[debug_print_array]"
+            log="[?exp_o]"
+        }
+    }
+}
 ### ieeeSub
+## Subtracts the floating point variables and pushes the result to an output variable
+## The below function has 2 parameters: arg_a and arg_b
+## These parameters will be cleared(by resetting to 0) after the function execution
+## The output will be pushed to the temp variable out_a
+## temp_array_1000, temp_array_1001, and temp_array_1002 are reserved for this function, so outside use of this temp array will be interrupted and malfunction
+## ARGUMENTS
+# arg_a and arg_b will be interpreted as floating-point variables, so the value of 1 is represented by storing 1065353.216 in a variable(see pdxvar_to_float)
+## OUTPUT
+# out_a will contain the floating-point value of float(arg_a) - float(arg_b) after function execution
+# Continuing the example in the arguments, float-subtracting 1065353.216 from 1065353.216 (1-1) will yield 0 (0)
+ieeeSub_trigger = {
+    set_temp_variable = { out_a = 0 }
+}
 ### ieeeMul
 ### ieeeDiv
 ### ieeeSqt

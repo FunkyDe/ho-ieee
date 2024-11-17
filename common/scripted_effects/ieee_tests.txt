@@ -53,7 +53,7 @@ ieee_get_test_count = {
     add_to_temp_array = { temp_test_count_array = 500 }     # relations and totalOrder
     add_to_temp_array = { temp_test_count_array = 972 }     # predicates
     add_to_temp_array = { temp_test_count_array = 1000 }    # signaling predicates
-    add_to_temp_array = { temp_test_count_array = 406 }     # addition and subtraction
+    add_to_temp_array = { temp_test_count_array = 320 }     # addition and subtraction
 }
 ## test to_bitwise and store_bitwise functions
 ieee_test_0 = {

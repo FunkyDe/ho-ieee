@@ -364,9 +364,9 @@ to_float_trigger = {
                         add_to_temp_variable = { actual_exp = 1 }
                     }
                     else = {
-                        set_temp_variable = { temp_index = idx }
-                        subtract_from_temp_variable = { temp_index = 1 }
-                        add_to_temp_variable = { temp_mantissa_array^temp_index = 1 }
+                        set_temp_variable = { prev_bit = idx }
+                        subtract_from_temp_variable = { prev_bit = 1 }
+                        add_to_temp_variable = { temp_mantissa_array^prev_bit = 1 }
                     }
                     set_temp_variable = { temp_mantissa_array^idx = 0 }
                 }

@@ -20,7 +20,7 @@ This Markdown page provides a view of the progress towards the implementation of
 | Operation | Progress | Implemented By | Notes |
 | :--- | :--- | :--- | :--- |
 | addition | Done | ieeeAdd | arg_a + arg_b, uses a quasi-mantissa to perform addition, with extra quirks surrounding negatives and subnormals |
-| subtraction | Not Done | ##### | ##### |
+| subtraction | Done | ieeeSub | arg_a + (-arg_b), uses addition |
 | multiplication | Not Done | ##### | ##### |
 | division | Not Done | ##### | ##### |
 | squareRoot | Not Done | ##### | ##### |

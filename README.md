@@ -4,7 +4,7 @@ The goal of this mod is to provide an implementation floating-point numbers, acc
 
 # Why?
 
-HOI4's base modding script uses signed 32-bit fixed-point variables(referred to later as pdxvars), ranging from -2,147,483.648 to 2,147,483.647, with accuracy to the thousandth-place. This means that variables can overflow or are truncated, losing data. So, I am working on an implementation floating-point variables according to the IEEE 754 standard, which would allow for both a greater range of numbers and a greater precision, while maintaining a modder-friendly interface within Paradox's provided modding script. Currently, this project is a work-in-progress, and likely will be for the near future as there is still much to do.
+HOI4's modding script uses signed 32-bit fixed-point variables(referred to later as pdxvars), ranging from -2,147,483.648 to 2,147,483.647, with accuracy to the thousandth-place. This means that variables can overflow or are truncated, losing data. So, I am working on an implementation floating-point variables according to the IEEE 754 standard, which would allow for both a greater range of numbers and a greater precision, while maintaining a modder-friendly interface within Paradox's provided modding script. Currently, this project is a work-in-progress, and likely will be for the near future as there is still much to do.
 
 # Key Functions
 Below is a chart of the scripts I found most interesting, where to find them, and what they do. I have omitted the "_trigger" ending for some of their names, as that has no impact on their actual function:
@@ -42,12 +42,16 @@ The tentative task map is:
     - [x] Implement localization of FPVs
     - [x] Implement transformation back to pdxvars
 - [x] Comparison
-- [ ] Addition and Subtraction
+- [x] Addition and Subtraction
     - [x] Test cases
     - [x] Positive+Positive base case
     - [x] Addition with negatives / Subtraction
     - [x] Exceptions and special cases (subnormals, infinities, NaNs)
 - [ ] Multiplication
+    - [ ] Test cases
+    - [ ] Decide on algorithm
+    - [ ] Base implementation
+    - [ ] Special cases
 - [ ] Division
 - [ ] Square Root
 - [ ] Additional basic functions
@@ -79,4 +83,4 @@ NaN: It is very difficult to create exceptions in Hearts of Iron IV, as there is
 
 # TODOlist:
 
-- Reformat addition for subtraction
+- Write example script with looping over all powers of two

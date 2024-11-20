@@ -19,6 +19,7 @@ ieeeAdd_trigger = {
     set_temp_variable = { temp_array_id = 1001 }
     to_bitwise_trigger = yes
     
+    # Get exponents of a and b
     set_temp_variable = { exp_a = -127 }
     set_temp_variable = { exp_b = -127 }
     set_temp_variable = { exponent_inc = 128 }
@@ -62,7 +63,7 @@ ieeeAdd_trigger = {
         # Special cases handler
         # +infinity = 2139095.040
         # -infinity = -8388.608
-        # NaN = 2143289.344
+        # NaN = 2143289.344 as a result of +inf + -inf
         if = {
             limit = {
                 check_variable = { arg_a = 2139095.040 }
@@ -116,7 +117,7 @@ ieeeAdd_trigger = {
         }
     }
     else = {
-        # Mantissa arrays are 279 bits long:
+        # Quasi-Mantissa arrays are 279 bits long:
         # 277 bits for the potential values of the mantissa(254 valid exponents + 23 trailing bits)
         # 2 extra bits in the beginning to determine sign and overflow
 
@@ -277,6 +278,8 @@ ieeeAdd_trigger = {
                 set_temp_variable = { carry = 0 }
             }
         }
+        # If the number is negative, we actually don't want to have the extra bit from two's complement, since without it every '0' bit behaves like a '1' bit in positive addition.
+        # In the case we've added an extra one(only one negative number and the resultant sum stays negative) we reverse lowest bit addition with a quick traversal
         if = {
             limit = {
                 check_variable = { temp_mantissa_o^0 = 1 }
@@ -383,7 +386,7 @@ ieeeAdd_trigger = {
                 }
             }
 
-            # If needed, perform rounding, incrementing exponent if overflow
+            # Create final mantissa
             clear_temp_array = temp_mantissa_array
             all_of = {
                 array = temp_mantissa_o
@@ -405,6 +408,7 @@ ieeeAdd_trigger = {
                     }
                 }
             }
+            # If needed, perform rounding, incrementing exponent if overflow
             if = {
                 limit = {
                     check_variable = { exp_o > -126 }
@@ -518,7 +522,22 @@ ieeeAdd_trigger = {
 # out_a will contain the floating-point value of float(arg_a) - float(arg_b) after function execution
 # Continuing the example in the arguments, float-subtracting 1065353.216 from 1065353.216 (1-1) will yield 0 (0)
 ieeeSub_trigger = {
-    set_temp_variable = { out_a = 0 }
+    # Negate b's argument
+    if = {
+        limit = {
+            check_variable = { arg_b < 0 }
+        }
+        add_to_temp_variable = { arg_b = 2147483.648 }
+    }
+    else = {
+        subtract_from_temp_variable = { arg_b = 2147483.648 }
+    }
+
+    # arg_a - arg_b = arg_a + (-arg_b)
+    ieeeAdd_trigger = yes
+
+    set_temp_variable = { arg_a = 0 }
+    set_temp_variable = { arg_b = 0 }
 }
 ### ieeeMul
 ### ieeeDiv

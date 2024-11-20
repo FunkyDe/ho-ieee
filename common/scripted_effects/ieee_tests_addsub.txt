@@ -700,7 +700,7 @@ ieee_test_7027 = {
     log = "Expected: [print_float_full]"
 }
 ieee_test_7028 = {
-    set_temp_variable = { arg_a = -2142941.736 }
+    set_temp_variable = { arg_a = -2142941.735 }
     set_temp_variable = { arg_b = 1260068.374 }
 
     ieeeAdd = yes
@@ -750,7 +750,7 @@ ieee_test_7029 = {
     log = "Expected: [print_float_full]"
 }
 ieee_test_7030 = {
-    set_temp_variable = { arg_a = -2142941.736 }
+    set_temp_variable = { arg_a = -2142941.735 }
     set_temp_variable = { arg_b = -1090519.040 }
 
     ieeeAdd = yes
@@ -900,7 +900,7 @@ ieee_test_7035 = {
     log = "Expected: [print_float_full]"
 }
 ieee_test_7036 = {
-    set_temp_variable = { arg_a = -2142941.736 }
+    set_temp_variable = { arg_a = -2142941.735 }
     set_temp_variable = { arg_b = 1259926.807 }
 
     ieeeAdd = yes
@@ -950,7 +950,7 @@ ieee_test_7037 = {
     log = "Expected: [print_float_full]"
 }
 ieee_test_7038 = {
-    set_temp_variable = { arg_a = -2142941.736 }
+    set_temp_variable = { arg_a = -2142941.735 }
     set_temp_variable = { arg_b = -1083914.359 }
 
     ieeeAdd = yes
@@ -1051,7 +1051,7 @@ ieee_test_7041 = {
 }
 ieee_test_7042 = {
     set_temp_variable = { arg_a = 1056964.608 }
-    set_temp_variable = { arg_b = -2142941.736 }
+    set_temp_variable = { arg_b = -2142941.735 }
 
     ieeeAdd = yes
     set_temp_variable = { actual_output = out_a }
@@ -1100,7 +1100,7 @@ ieee_test_7043 = {
     log = "Expected: [print_float_full]"
 }
 ieee_test_7044 = {
-    set_temp_variable = { arg_a = -2142941.736 }
+    set_temp_variable = { arg_a = -2142941.735 }
     set_temp_variable = { arg_b = 1056964.608 }
 
     ieeeAdd = yes
@@ -1150,13 +1150,13 @@ ieee_test_7045 = {
     log = "Expected: [print_float_full]"
 }
 ieee_test_7046 = {
-    set_temp_variable = { arg_a = -2142941.736 }
-    set_temp_variable = { arg_b = -2142941.736 }
+    set_temp_variable = { arg_a = -2142941.735 }
+    set_temp_variable = { arg_b = -2142941.735 }
 
     ieeeAdd = yes
     set_temp_variable = { actual_output = out_a }
 
-    set_temp_variable = { expected_output = -2138399.824 }
+    set_temp_variable = { expected_output = -2138399.822 }
 
     if = {
         limit = {
@@ -1651,7 +1651,7 @@ ieee_test_7065 = {
 }
 ieee_test_7066 = {
     set_temp_variable = { arg_a = 1063569.289 }
-    set_temp_variable = { arg_b = -2142941.736 }
+    set_temp_variable = { arg_b = -2142941.735 }
 
     ieeeAdd = yes
     set_temp_variable = { actual_output = out_a }
@@ -1751,12 +1751,12 @@ ieee_test_7069 = {
 }
 ieee_test_7070 = {
     set_temp_variable = { arg_a = -2138198.662 }
-    set_temp_variable = { arg_b = -2142941.736 }
+    set_temp_variable = { arg_b = -2142941.735 }
 
     ieeeAdd = yes
     set_temp_variable = { actual_output = out_a }
 
-    set_temp_variable = { expected_output = -2133656.750 }
+    set_temp_variable = { expected_output = -2133656.749 }
 
     if = {
         limit = {
@@ -2001,13 +2001,13 @@ ieee_test_7079 = {
 }
 # LOVAL Cases(subnormals)
 ieee_test_7080 = {
-    set_temp_variable = { arg_a = 4541.912 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_a = 4541.913 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeAdd = yes
     set_temp_variable = { actual_output = out_a }
 
-    set_temp_variable = { expected_output = 9083.824 }
+    set_temp_variable = { expected_output = 9083.826 }
 
     if = {
         limit = {
@@ -2026,8 +2026,8 @@ ieee_test_7080 = {
     log = "Expected: [print_float_full]"
 }
 ieee_test_7081 = {
-    set_temp_variable = { arg_a = 4541.912 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_a = 4541.913 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeSub = yes
     set_temp_variable = { actual_output = out_a }
@@ -2051,13 +2051,13 @@ ieee_test_7081 = {
     log = "Expected: [print_float_full]"
 }
 ieee_test_7082 = {
-    set_temp_variable = { arg_a = 4541.912 }
+    set_temp_variable = { arg_a = 4541.913 }
     set_temp_variable = { arg_b = -2130596.529 }
 
     ieeeAdd = yes
     set_temp_variable = { actual_output = out_a }
 
-    set_temp_variable = { expected_output = -2135028.538 }
+    set_temp_variable = { expected_output = -2135028.539 }
 
     if = {
         limit = {
@@ -2076,8 +2076,8 @@ ieee_test_7082 = {
     log = "Expected: [print_float_full]"
 }
 ieee_test_7083 = {
-    set_temp_variable = { arg_a = 4541.912 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_a = 4541.913 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeSub = yes
     set_temp_variable = { actual_output = out_a }
@@ -2102,12 +2102,12 @@ ieee_test_7083 = {
 }
 ieee_test_7084 = {
     set_temp_variable = { arg_a = -2130596.529 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeAdd = yes
     set_temp_variable = { actual_output = out_a }
 
-    set_temp_variable = { expected_output = -2135028.538 }
+    set_temp_variable = { expected_output = -2135028.539 }
 
     if = {
         limit = {
@@ -2126,8 +2126,8 @@ ieee_test_7084 = {
     log = "Expected: [print_float_full]"
 }
 ieee_test_7085 = {
-    set_temp_variable = { arg_a = 4541.912 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_a = 4541.913 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeSub = yes
     set_temp_variable = { actual_output = out_a }
@@ -2176,8 +2176,8 @@ ieee_test_7086 = {
     log = "Expected: [print_float_full]"
 }
 ieee_test_7087 = {
-    set_temp_variable = { arg_a = 4541.912 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_a = 4541.913 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeSub = yes
     set_temp_variable = { actual_output = out_a }
@@ -2202,12 +2202,12 @@ ieee_test_7087 = {
 }
 ieee_test_7088 = {
     set_temp_variable = { arg_a = 9284.986 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeAdd = yes
     set_temp_variable = { actual_output = out_a }
 
-    set_temp_variable = { expected_output = 13826.898 }
+    set_temp_variable = { expected_output = 13826.899 }
 
     if = {
         limit = {
@@ -2227,12 +2227,12 @@ ieee_test_7088 = {
 }
 ieee_test_7089 = {
     set_temp_variable = { arg_a = 9284.986 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeSub = yes
     set_temp_variable = { actual_output = out_a }
 
-    set_temp_variable = { expected_output = 4743.074 }
+    set_temp_variable = { expected_output = 4743.073 }
 
     if = {
         limit = {
@@ -2277,12 +2277,12 @@ ieee_test_7090 = {
 }
 ieee_test_7091 = {
     set_temp_variable = { arg_a = 9284.986 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeSub = yes
     set_temp_variable = { actual_output = out_a }
 
-    set_temp_variable = { expected_output = 4743.074 }
+    set_temp_variable = { expected_output = 4743.073 }
 
     if = {
         limit = {
@@ -2302,7 +2302,7 @@ ieee_test_7091 = {
 }
 ieee_test_7092 = {
     set_temp_variable = { arg_a = -10228.657 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeAdd = yes
     set_temp_variable = { actual_output = out_a }
@@ -2327,12 +2327,12 @@ ieee_test_7092 = {
 }
 ieee_test_7093 = {
     set_temp_variable = { arg_a = 9284.986 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeSub = yes
     set_temp_variable = { actual_output = out_a }
 
-    set_temp_variable = { expected_output = 4743.074 }
+    set_temp_variable = { expected_output = 4743.073 }
 
     if = {
         limit = {
@@ -2377,12 +2377,12 @@ ieee_test_7094 = {
 }
 ieee_test_7095 = {
     set_temp_variable = { arg_a = 9284.986 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeSub = yes
     set_temp_variable = { actual_output = out_a }
 
-    set_temp_variable = { expected_output = 4743.074 }
+    set_temp_variable = { expected_output = 4743.073 }
 
     if = {
         limit = {
@@ -2602,12 +2602,12 @@ ieee_test_7103 = {
 }
 ieee_test_7104 = {
     set_temp_variable = { arg_a = 16887.119 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeAdd = yes
     set_temp_variable = { actual_output = out_a }
 
-    set_temp_variable = { expected_output = 19158.075 }
+    set_temp_variable = { expected_output = 19158.076 }
 
     if = {
         limit = {
@@ -2627,12 +2627,12 @@ ieee_test_7104 = {
 }
 ieee_test_7105 = {
     set_temp_variable = { arg_a = 16887.119 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeSub = yes
     set_temp_variable = { actual_output = out_a }
 
-    set_temp_variable = { expected_output = 12455.110 }
+    set_temp_variable = { expected_output = 12455.109 }
 
     if = {
         limit = {
@@ -2677,12 +2677,12 @@ ieee_test_7106 = {
 }
 ieee_test_7107 = {
     set_temp_variable = { arg_a = 16887.119 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeSub = yes
     set_temp_variable = { actual_output = out_a }
 
-    set_temp_variable = { expected_output = 12455.110 }
+    set_temp_variable = { expected_output = 12455.109 }
 
     if = {
         limit = {
@@ -2702,7 +2702,7 @@ ieee_test_7107 = {
 }
 ieee_test_7108 = {
     set_temp_variable = { arg_a = -30675.889 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeAdd = yes
     set_temp_variable = { actual_output = out_a }
@@ -2727,12 +2727,12 @@ ieee_test_7108 = {
 }
 ieee_test_7109 = {
     set_temp_variable = { arg_a = 16887.119 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeSub = yes
     set_temp_variable = { actual_output = out_a }
 
-    set_temp_variable = { expected_output = 12455.110 }
+    set_temp_variable = { expected_output = 12455.109 }
 
     if = {
         limit = {
@@ -2777,12 +2777,12 @@ ieee_test_7110 = {
 }
 ieee_test_7111 = {
     set_temp_variable = { arg_a = 16887.119 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeSub = yes
     set_temp_variable = { actual_output = out_a }
 
-    set_temp_variable = { expected_output = 12455.110 }
+    set_temp_variable = { expected_output = 12455.109 }
 
     if = {
         limit = {
@@ -3804,7 +3804,7 @@ ieee_test_7151 = {
 # IGNOR Cases(magnitude disparities)
 ieee_test_7152 = {
     set_temp_variable = { arg_a = 2137254.991 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeAdd = yes
     set_temp_variable = { actual_output = out_a }
@@ -3829,7 +3829,7 @@ ieee_test_7152 = {
 }
 ieee_test_7153 = {
     set_temp_variable = { arg_a = 2137254.991 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeSub = yes
     set_temp_variable = { actual_output = out_a }
@@ -3879,7 +3879,7 @@ ieee_test_7154 = {
 }
 ieee_test_7155 = {
     set_temp_variable = { arg_a = 2137254.991 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeSub = yes
     set_temp_variable = { actual_output = out_a }
@@ -3904,7 +3904,7 @@ ieee_test_7155 = {
 }
 ieee_test_7156 = {
     set_temp_variable = { arg_a = -8388.608 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeAdd = yes
     set_temp_variable = { actual_output = out_a }
@@ -3929,7 +3929,7 @@ ieee_test_7156 = {
 }
 ieee_test_7157 = {
     set_temp_variable = { arg_a = 2137254.991 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeSub = yes
     set_temp_variable = { actual_output = out_a }
@@ -3979,7 +3979,7 @@ ieee_test_7158 = {
 }
 ieee_test_7159 = {
     set_temp_variable = { arg_a = 2137254.991 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeSub = yes
     set_temp_variable = { actual_output = out_a }
@@ -4403,7 +4403,7 @@ ieee_test_7175 = {
     log = "Expected: [print_float_full]"
 }
 ieee_test_7176 = {
-    set_temp_variable = { arg_a = 4541.912 }
+    set_temp_variable = { arg_a = 4541.913 }
     set_temp_variable = { arg_b = 2137254.991 }
 
     ieeeAdd = yes
@@ -4428,7 +4428,7 @@ ieee_test_7176 = {
     log = "Expected: [print_float_full]"
 }
 ieee_test_7177 = {
-    set_temp_variable = { arg_a = 4541.912 }
+    set_temp_variable = { arg_a = 4541.913 }
     set_temp_variable = { arg_b = 2137254.991 }
 
     ieeeSub = yes
@@ -4453,7 +4453,7 @@ ieee_test_7177 = {
     log = "Expected: [print_float_full]"
 }
 ieee_test_7178 = {
-    set_temp_variable = { arg_a = 4541.912 }
+    set_temp_variable = { arg_a = 4541.913 }
     set_temp_variable = { arg_b = -8388.608 }
 
     ieeeAdd = yes
@@ -4478,7 +4478,7 @@ ieee_test_7178 = {
     log = "Expected: [print_float_full]"
 }
 ieee_test_7179 = {
-    set_temp_variable = { arg_a = 4541.912 }
+    set_temp_variable = { arg_a = 4541.913 }
     set_temp_variable = { arg_b = 2137254.991 }
 
     ieeeSub = yes
@@ -4528,7 +4528,7 @@ ieee_test_7180 = {
     log = "Expected: [print_float_full]"
 }
 ieee_test_7181 = {
-    set_temp_variable = { arg_a = 4541.912 }
+    set_temp_variable = { arg_a = 4541.913 }
     set_temp_variable = { arg_b = 2137254.991 }
 
     ieeeSub = yes
@@ -4578,7 +4578,7 @@ ieee_test_7182 = {
     log = "Expected: [print_float_full]"
 }
 ieee_test_7183 = {
-    set_temp_variable = { arg_a = 4541.912 }
+    set_temp_variable = { arg_a = 4541.913 }
     set_temp_variable = { arg_b = 2137254.991 }
 
     ieeeSub = yes
@@ -5205,7 +5205,7 @@ ieee_test_7207 = {
 }
 ieee_test_7208 = {
     set_temp_variable = { arg_a = 2139095.040 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeAdd = yes
     set_temp_variable = { actual_output = out_a }
@@ -5230,7 +5230,7 @@ ieee_test_7208 = {
 }
 ieee_test_7209 = {
     set_temp_variable = { arg_a = 2139095.040 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeSub = yes
     set_temp_variable = { actual_output = out_a }
@@ -5655,7 +5655,7 @@ ieee_test_7225 = {
 }
 ieee_test_7226 = {
     set_temp_variable = { arg_a = -8388.608 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeAdd = yes
     set_temp_variable = { actual_output = out_a }
@@ -5680,7 +5680,7 @@ ieee_test_7226 = {
 }
 ieee_test_7227 = {
     set_temp_variable = { arg_a = -8388.608 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeSub = yes
     set_temp_variable = { actual_output = out_a }
@@ -6169,7 +6169,7 @@ ieee_test_7243 = {
 }
 ieee_test_7244 = {
     set_temp_variable = { arg_a = 2143289.344 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeAdd = yes
     set_temp_variable = { actual_output = out_a }
@@ -6202,7 +6202,7 @@ ieee_test_7244 = {
 }
 ieee_test_7245 = {
     set_temp_variable = { arg_a = 2143289.344 }
-    set_temp_variable = { arg_b = 4541.912 }
+    set_temp_variable = { arg_b = 4541.913 }
 
     ieeeSub = yes
     set_temp_variable = { actual_output = out_a }
@@ -7162,7 +7162,7 @@ ieee_test_7277 = {
     log = "Expected: [print_float_full]"
 }
 ieee_test_7278 = {
-    set_temp_variable = { arg_a = 4541.912 }
+    set_temp_variable = { arg_a = 4541.913 }
     set_temp_variable = { arg_b = 2139095.040 }
 
     ieeeAdd = yes
@@ -7187,7 +7187,7 @@ ieee_test_7278 = {
     log = "Expected: [print_float_full]"
 }
 ieee_test_7279 = {
-    set_temp_variable = { arg_a = 4541.912 }
+    set_temp_variable = { arg_a = 4541.913 }
     set_temp_variable = { arg_b = 2139095.040 }
 
     ieeeSub = yes
@@ -7212,7 +7212,7 @@ ieee_test_7279 = {
     log = "Expected: [print_float_full]"
 }
 ieee_test_7280 = {
-    set_temp_variable = { arg_a = 4541.912 }
+    set_temp_variable = { arg_a = 4541.913 }
     set_temp_variable = { arg_b = -8388.608 }
 
     ieeeAdd = yes
@@ -7237,7 +7237,7 @@ ieee_test_7280 = {
     log = "Expected: [print_float_full]"
 }
 ieee_test_7281 = {
-    set_temp_variable = { arg_a = 4541.912 }
+    set_temp_variable = { arg_a = 4541.913 }
     set_temp_variable = { arg_b = -8388.608 }
 
     ieeeSub = yes
@@ -7262,7 +7262,7 @@ ieee_test_7281 = {
     log = "Expected: [print_float_full]"
 }
 ieee_test_7282 = {
-    set_temp_variable = { arg_a = 4541.912 }
+    set_temp_variable = { arg_a = 4541.913 }
     set_temp_variable = { arg_b = 2143289.344 }
 
     ieeeAdd = yes
@@ -7295,7 +7295,7 @@ ieee_test_7282 = {
     log = "Expected: [print_float_full]"
 }
 ieee_test_7283 = {
-    set_temp_variable = { arg_a = 4541.912 }
+    set_temp_variable = { arg_a = 4541.913 }
     set_temp_variable = { arg_b = 2143289.344 }
 
     ieeeSub = yes
@@ -8356,6 +8356,2621 @@ ieee_test_7319 = {
     }
     else = {
         log = "Test [?test_id] - +POSNAN - +POSNAN - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+# ZEROS Cases
+ieee_test_7320 = {
+    set_temp_variable = { arg_a = 0.000 }
+    set_temp_variable = { arg_b = 1260068.374 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 1260068.374 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +POSZRO + +MDVALA - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSZRO + +MDVALA - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7321 = {
+    set_temp_variable = { arg_a = 0.000 }
+    set_temp_variable = { arg_b = 1260068.374 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = -887415.274 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +POSZRO - +MDVALA - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSZRO - +MDVALA - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7322 = {
+    set_temp_variable = { arg_a = 0.000 }
+    set_temp_variable = { arg_b = 1259926.807 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 1259926.807 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +POSZRO + +MDVALB - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSZRO + +MDVALB - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7323 = {
+    set_temp_variable = { arg_a = 0.000 }
+    set_temp_variable = { arg_b = 1259926.807 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = -887556.841 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +POSZRO - +MDVALB - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSZRO - +MDVALB - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7324 = {
+    set_temp_variable = { arg_a = 0.000 }
+    set_temp_variable = { arg_b = 1056964.608 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 1056964.608 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +POSZRO + +MDVALC - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSZRO + +MDVALC - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7325 = {
+    set_temp_variable = { arg_a = 0.000 }
+    set_temp_variable = { arg_b = 1056964.608 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = -1090519.040 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +POSZRO - +MDVALC - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSZRO - +MDVALC - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7326 = {
+    set_temp_variable = { arg_a = 0.000 }
+    set_temp_variable = { arg_b = 1063569.289 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 1063569.289 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +POSZRO + +MDVALD - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSZRO + +MDVALD - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7327 = {
+    set_temp_variable = { arg_a = 0.000 }
+    set_temp_variable = { arg_b = 1063569.289 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = -1083914.359 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +POSZRO - +MDVALD - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSZRO - +MDVALD - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7328 = {
+    set_temp_variable = { arg_a = 0.000 }
+    set_temp_variable = { arg_b = 4541.913 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 4541.913 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +POSZRO + +LOVALA - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSZRO + +LOVALA - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7329 = {
+    set_temp_variable = { arg_a = 0.000 }
+    set_temp_variable = { arg_b = 4541.913 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = -2142941.735 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +POSZRO - +LOVALA - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSZRO - +LOVALA - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7330 = {
+    set_temp_variable = { arg_a = 0.000 }
+    set_temp_variable = { arg_b = 9284.986 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 9284.986 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +POSZRO + +LOVALB - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSZRO + +LOVALB - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7331 = {
+    set_temp_variable = { arg_a = 0.000 }
+    set_temp_variable = { arg_b = 9284.986 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = -2138198.662 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +POSZRO - +LOVALB - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSZRO - +LOVALB - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7332 = {
+    set_temp_variable = { arg_a = 0.000 }
+    set_temp_variable = { arg_b = 16887.119 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 16887.119 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +POSZRO + +LOVALC - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSZRO + +LOVALC - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7333 = {
+    set_temp_variable = { arg_a = 0.000 }
+    set_temp_variable = { arg_b = 16887.119 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = -2130596.529 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +POSZRO - +LOVALC - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSZRO - +LOVALC - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7334 = {
+    set_temp_variable = { arg_a = 0.000 }
+    set_temp_variable = { arg_b = 2137254.991 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 2137254.991 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +POSZRO + +HIVALA - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSZRO + +HIVALA - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7335 = {
+    set_temp_variable = { arg_a = 0.000 }
+    set_temp_variable = { arg_b = 2137254.991 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = -10228.657 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +POSZRO - +HIVALA - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSZRO - +HIVALA - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7336 = {
+    set_temp_variable = { arg_a = 0.000 }
+    set_temp_variable = { arg_b = 2116807.759 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 2116807.759 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +POSZRO + +HIVALB - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSZRO + +HIVALB - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7337 = {
+    set_temp_variable = { arg_a = 0.000 }
+    set_temp_variable = { arg_b = 2116807.759 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = -30675.889 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +POSZRO - +HIVALB - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSZRO - +HIVALB - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7338 = {
+    set_temp_variable = { arg_a = 0.000 }
+    set_temp_variable = { arg_b = 2139095.040 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 2139095.040 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +POSZRO + +POSINF - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSZRO + +POSINF - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7339 = {
+    set_temp_variable = { arg_a = 0.000 }
+    set_temp_variable = { arg_b = 2139095.040 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = -8388.608 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +POSZRO - +POSINF - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSZRO - +POSINF - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7340 = {
+    set_temp_variable = { arg_a = 0.000 }
+    set_temp_variable = { arg_b = -8388.608 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = -8388.608 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +POSZRO + +NEGINF - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSZRO + +NEGINF - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7341 = {
+    set_temp_variable = { arg_a = 0.000 }
+    set_temp_variable = { arg_b = -8388.608 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 2139095.040 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +POSZRO - +NEGINF - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSZRO - +NEGINF - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7342 = {
+    set_temp_variable = { arg_a = 0.000 }
+    set_temp_variable = { arg_b = 2143289.344 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 2143289.344 }
+
+    if = {
+        limit = {
+            NOT = {
+                OR = {
+                    check_variable = { actual_output > 2139095.040 }
+                    AND = {
+                        check_variable = { actual_output > -8388.608 }
+                        check_variable = { actual_output < 0 }
+                    }
+                }
+            }
+        }
+        log = "Test [?test_id] - +POSZRO + +POSNAN - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSZRO + +POSNAN - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7343 = {
+    set_temp_variable = { arg_a = 0.000 }
+    set_temp_variable = { arg_b = 2143289.344 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 2143289.344 }
+
+    if = {
+        limit = {
+            NOT = {
+                OR = {
+                    check_variable = { actual_output > 2139095.040 }
+                    AND = {
+                        check_variable = { actual_output > -8388.608 }
+                        check_variable = { actual_output < 0 }
+                    }
+                }
+            }
+        }
+        log = "Test [?test_id] - +POSZRO - +POSNAN - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSZRO - +POSNAN - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7344 = {
+    set_temp_variable = { arg_a = -2147483.648 }
+    set_temp_variable = { arg_b = 1260068.374 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 1260068.374 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGZRO + +MDVALA - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGZRO + +MDVALA - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7345 = {
+    set_temp_variable = { arg_a = -2147483.648 }
+    set_temp_variable = { arg_b = 1260068.374 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = -887415.274 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGZRO - +MDVALA - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGZRO - +MDVALA - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7346 = {
+    set_temp_variable = { arg_a = -2147483.648 }
+    set_temp_variable = { arg_b = 1259926.807 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 1259926.807 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGZRO + +MDVALB - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGZRO + +MDVALB - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7347 = {
+    set_temp_variable = { arg_a = -2147483.648 }
+    set_temp_variable = { arg_b = 1259926.807 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = -887556.841 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGZRO - +MDVALB - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGZRO - +MDVALB - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7348 = {
+    set_temp_variable = { arg_a = -2147483.648 }
+    set_temp_variable = { arg_b = 1056964.608 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 1056964.608 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGZRO + +MDVALC - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGZRO + +MDVALC - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7349 = {
+    set_temp_variable = { arg_a = -2147483.648 }
+    set_temp_variable = { arg_b = 1056964.608 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = -1090519.040 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGZRO - +MDVALC - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGZRO - +MDVALC - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7350 = {
+    set_temp_variable = { arg_a = -2147483.648 }
+    set_temp_variable = { arg_b = 1063569.289 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 1063569.289 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGZRO + +MDVALD - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGZRO + +MDVALD - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7351 = {
+    set_temp_variable = { arg_a = -2147483.648 }
+    set_temp_variable = { arg_b = 1063569.289 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = -1083914.359 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGZRO - +MDVALD - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGZRO - +MDVALD - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7352 = {
+    set_temp_variable = { arg_a = -2147483.648 }
+    set_temp_variable = { arg_b = 4541.913 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 4541.913 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGZRO + +LOVALA - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGZRO + +LOVALA - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7353 = {
+    set_temp_variable = { arg_a = -2147483.648 }
+    set_temp_variable = { arg_b = 4541.913 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = -2142941.735 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGZRO - +LOVALA - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGZRO - +LOVALA - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7354 = {
+    set_temp_variable = { arg_a = -2147483.648 }
+    set_temp_variable = { arg_b = 9284.986 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 9284.986 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGZRO + +LOVALB - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGZRO + +LOVALB - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7355 = {
+    set_temp_variable = { arg_a = -2147483.648 }
+    set_temp_variable = { arg_b = 9284.986 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = -2138198.662 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGZRO - +LOVALB - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGZRO - +LOVALB - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7356 = {
+    set_temp_variable = { arg_a = -2147483.648 }
+    set_temp_variable = { arg_b = 16887.119 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 16887.119 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGZRO + +LOVALC - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGZRO + +LOVALC - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7357 = {
+    set_temp_variable = { arg_a = -2147483.648 }
+    set_temp_variable = { arg_b = 16887.119 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = -2130596.529 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGZRO - +LOVALC - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGZRO - +LOVALC - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7358 = {
+    set_temp_variable = { arg_a = -2147483.648 }
+    set_temp_variable = { arg_b = 2137254.991 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 2137254.991 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGZRO + +HIVALA - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGZRO + +HIVALA - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7359 = {
+    set_temp_variable = { arg_a = -2147483.648 }
+    set_temp_variable = { arg_b = 2137254.991 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = -10228.657 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGZRO - +HIVALA - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGZRO - +HIVALA - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7360 = {
+    set_temp_variable = { arg_a = -2147483.648 }
+    set_temp_variable = { arg_b = 2116807.759 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 2116807.759 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGZRO + +HIVALB - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGZRO + +HIVALB - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7361 = {
+    set_temp_variable = { arg_a = -2147483.648 }
+    set_temp_variable = { arg_b = 2116807.759 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = -30675.889 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGZRO - +HIVALB - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGZRO - +HIVALB - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7362 = {
+    set_temp_variable = { arg_a = -2147483.648 }
+    set_temp_variable = { arg_b = 2139095.040 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 2139095.040 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGZRO + +POSINF - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGZRO + +POSINF - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7363 = {
+    set_temp_variable = { arg_a = -2147483.648 }
+    set_temp_variable = { arg_b = 2139095.040 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = -8388.608 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGZRO - +POSINF - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGZRO - +POSINF - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7364 = {
+    set_temp_variable = { arg_a = -2147483.648 }
+    set_temp_variable = { arg_b = -8388.608 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = -8388.608 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGZRO + +NEGINF - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGZRO + +NEGINF - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7365 = {
+    set_temp_variable = { arg_a = -2147483.648 }
+    set_temp_variable = { arg_b = -8388.608 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 2139095.040 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGZRO - +NEGINF - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGZRO - +NEGINF - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7366 = {
+    set_temp_variable = { arg_a = -2147483.648 }
+    set_temp_variable = { arg_b = 2143289.344 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 2143289.344 }
+
+    if = {
+        limit = {
+            NOT = {
+                OR = {
+                    check_variable = { actual_output > 2139095.040 }
+                    AND = {
+                        check_variable = { actual_output > -8388.608 }
+                        check_variable = { actual_output < 0 }
+                    }
+                }
+            }
+        }
+        log = "Test [?test_id] - +NEGZRO + +POSNAN - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGZRO + +POSNAN - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7367 = {
+    set_temp_variable = { arg_a = -2147483.648 }
+    set_temp_variable = { arg_b = 2143289.344 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 2143289.344 }
+
+    if = {
+        limit = {
+            NOT = {
+                OR = {
+                    check_variable = { actual_output > 2139095.040 }
+                    AND = {
+                        check_variable = { actual_output > -8388.608 }
+                        check_variable = { actual_output < 0 }
+                    }
+                }
+            }
+        }
+        log = "Test [?test_id] - +NEGZRO - +POSNAN - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGZRO - +POSNAN - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7368 = {
+    set_temp_variable = { arg_a = 1260068.374 }
+    set_temp_variable = { arg_b = 0.000 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 1260068.374 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +MDVALA + +POSZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +MDVALA + +POSZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7369 = {
+    set_temp_variable = { arg_a = 1260068.374 }
+    set_temp_variable = { arg_b = 0.000 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 1260068.374 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +MDVALA - +POSZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +MDVALA - +POSZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7370 = {
+    set_temp_variable = { arg_a = 1260068.374 }
+    set_temp_variable = { arg_b = -2147483.648 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 1260068.374 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +MDVALA + +NEGZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +MDVALA + +NEGZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7371 = {
+    set_temp_variable = { arg_a = 1260068.374 }
+    set_temp_variable = { arg_b = -2147483.648 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 1260068.374 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +MDVALA - +NEGZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +MDVALA - +NEGZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7372 = {
+    set_temp_variable = { arg_a = 1259926.807 }
+    set_temp_variable = { arg_b = 0.000 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 1259926.807 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +MDVALB + +POSZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +MDVALB + +POSZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7373 = {
+    set_temp_variable = { arg_a = 1259926.807 }
+    set_temp_variable = { arg_b = 0.000 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 1259926.807 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +MDVALB - +POSZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +MDVALB - +POSZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7374 = {
+    set_temp_variable = { arg_a = 1259926.807 }
+    set_temp_variable = { arg_b = -2147483.648 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 1259926.807 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +MDVALB + +NEGZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +MDVALB + +NEGZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7375 = {
+    set_temp_variable = { arg_a = 1259926.807 }
+    set_temp_variable = { arg_b = -2147483.648 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 1259926.807 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +MDVALB - +NEGZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +MDVALB - +NEGZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7376 = {
+    set_temp_variable = { arg_a = 1056964.608 }
+    set_temp_variable = { arg_b = 0.000 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 1056964.608 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +MDVALC + +POSZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +MDVALC + +POSZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7377 = {
+    set_temp_variable = { arg_a = 1056964.608 }
+    set_temp_variable = { arg_b = 0.000 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 1056964.608 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +MDVALC - +POSZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +MDVALC - +POSZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7378 = {
+    set_temp_variable = { arg_a = 1056964.608 }
+    set_temp_variable = { arg_b = -2147483.648 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 1056964.608 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +MDVALC + +NEGZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +MDVALC + +NEGZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7379 = {
+    set_temp_variable = { arg_a = 1056964.608 }
+    set_temp_variable = { arg_b = -2147483.648 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 1056964.608 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +MDVALC - +NEGZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +MDVALC - +NEGZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7380 = {
+    set_temp_variable = { arg_a = 1063569.289 }
+    set_temp_variable = { arg_b = 0.000 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 1063569.289 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +MDVALD + +POSZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +MDVALD + +POSZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7381 = {
+    set_temp_variable = { arg_a = 1063569.289 }
+    set_temp_variable = { arg_b = 0.000 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 1063569.289 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +MDVALD - +POSZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +MDVALD - +POSZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7382 = {
+    set_temp_variable = { arg_a = 1063569.289 }
+    set_temp_variable = { arg_b = -2147483.648 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 1063569.289 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +MDVALD + +NEGZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +MDVALD + +NEGZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7383 = {
+    set_temp_variable = { arg_a = 1063569.289 }
+    set_temp_variable = { arg_b = -2147483.648 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 1063569.289 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +MDVALD - +NEGZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +MDVALD - +NEGZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7384 = {
+    set_temp_variable = { arg_a = 4541.913 }
+    set_temp_variable = { arg_b = 0.000 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 4541.913 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +LOVALA + +POSZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +LOVALA + +POSZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7385 = {
+    set_temp_variable = { arg_a = 4541.913 }
+    set_temp_variable = { arg_b = 0.000 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 4541.913 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +LOVALA - +POSZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +LOVALA - +POSZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7386 = {
+    set_temp_variable = { arg_a = 4541.913 }
+    set_temp_variable = { arg_b = -2147483.648 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 4541.913 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +LOVALA + +NEGZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +LOVALA + +NEGZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7387 = {
+    set_temp_variable = { arg_a = 4541.913 }
+    set_temp_variable = { arg_b = -2147483.648 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 4541.913 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +LOVALA - +NEGZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +LOVALA - +NEGZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7388 = {
+    set_temp_variable = { arg_a = 9284.986 }
+    set_temp_variable = { arg_b = 0.000 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 9284.986 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +LOVALB + +POSZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +LOVALB + +POSZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7389 = {
+    set_temp_variable = { arg_a = 9284.986 }
+    set_temp_variable = { arg_b = 0.000 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 9284.986 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +LOVALB - +POSZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +LOVALB - +POSZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7390 = {
+    set_temp_variable = { arg_a = 9284.986 }
+    set_temp_variable = { arg_b = -2147483.648 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 9284.986 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +LOVALB + +NEGZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +LOVALB + +NEGZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7391 = {
+    set_temp_variable = { arg_a = 9284.986 }
+    set_temp_variable = { arg_b = -2147483.648 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 9284.986 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +LOVALB - +NEGZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +LOVALB - +NEGZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7392 = {
+    set_temp_variable = { arg_a = 16887.119 }
+    set_temp_variable = { arg_b = 0.000 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 16887.119 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +LOVALC + +POSZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +LOVALC + +POSZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7393 = {
+    set_temp_variable = { arg_a = 16887.119 }
+    set_temp_variable = { arg_b = 0.000 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 16887.119 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +LOVALC - +POSZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +LOVALC - +POSZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7394 = {
+    set_temp_variable = { arg_a = 16887.119 }
+    set_temp_variable = { arg_b = -2147483.648 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 16887.119 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +LOVALC + +NEGZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +LOVALC + +NEGZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7395 = {
+    set_temp_variable = { arg_a = 16887.119 }
+    set_temp_variable = { arg_b = -2147483.648 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 16887.119 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +LOVALC - +NEGZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +LOVALC - +NEGZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7396 = {
+    set_temp_variable = { arg_a = 2137254.991 }
+    set_temp_variable = { arg_b = 0.000 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 2137254.991 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +HIVALA + +POSZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +HIVALA + +POSZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7397 = {
+    set_temp_variable = { arg_a = 2137254.991 }
+    set_temp_variable = { arg_b = 0.000 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 2137254.991 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +HIVALA - +POSZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +HIVALA - +POSZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7398 = {
+    set_temp_variable = { arg_a = 2137254.991 }
+    set_temp_variable = { arg_b = -2147483.648 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 2137254.991 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +HIVALA + +NEGZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +HIVALA + +NEGZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7399 = {
+    set_temp_variable = { arg_a = 2137254.991 }
+    set_temp_variable = { arg_b = -2147483.648 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 2137254.991 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +HIVALA - +NEGZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +HIVALA - +NEGZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7400 = {
+    set_temp_variable = { arg_a = 2116807.759 }
+    set_temp_variable = { arg_b = 0.000 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 2116807.759 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +HIVALB + +POSZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +HIVALB + +POSZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7401 = {
+    set_temp_variable = { arg_a = 2116807.759 }
+    set_temp_variable = { arg_b = 0.000 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 2116807.759 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +HIVALB - +POSZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +HIVALB - +POSZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7402 = {
+    set_temp_variable = { arg_a = 2116807.759 }
+    set_temp_variable = { arg_b = -2147483.648 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 2116807.759 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +HIVALB + +NEGZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +HIVALB + +NEGZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7403 = {
+    set_temp_variable = { arg_a = 2116807.759 }
+    set_temp_variable = { arg_b = -2147483.648 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 2116807.759 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +HIVALB - +NEGZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +HIVALB - +NEGZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7404 = {
+    set_temp_variable = { arg_a = 2139095.040 }
+    set_temp_variable = { arg_b = 0.000 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 2139095.040 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +POSINF + +POSZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSINF + +POSZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7405 = {
+    set_temp_variable = { arg_a = 2139095.040 }
+    set_temp_variable = { arg_b = 0.000 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 2139095.040 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +POSINF - +POSZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSINF - +POSZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7406 = {
+    set_temp_variable = { arg_a = 2139095.040 }
+    set_temp_variable = { arg_b = -2147483.648 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 2139095.040 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +POSINF + +NEGZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSINF + +NEGZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7407 = {
+    set_temp_variable = { arg_a = 2139095.040 }
+    set_temp_variable = { arg_b = -2147483.648 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 2139095.040 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +POSINF - +NEGZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSINF - +NEGZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7408 = {
+    set_temp_variable = { arg_a = -8388.608 }
+    set_temp_variable = { arg_b = 0.000 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = -8388.608 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGINF + +POSZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGINF + +POSZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7409 = {
+    set_temp_variable = { arg_a = -8388.608 }
+    set_temp_variable = { arg_b = 0.000 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = -8388.608 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGINF - +POSZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGINF - +POSZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7410 = {
+    set_temp_variable = { arg_a = -8388.608 }
+    set_temp_variable = { arg_b = -2147483.648 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = -8388.608 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGINF + +NEGZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGINF + +NEGZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7411 = {
+    set_temp_variable = { arg_a = -8388.608 }
+    set_temp_variable = { arg_b = -2147483.648 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = -8388.608 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGINF - +NEGZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGINF - +NEGZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7412 = {
+    set_temp_variable = { arg_a = 2143289.344 }
+    set_temp_variable = { arg_b = 0.000 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 2143289.344 }
+
+    if = {
+        limit = {
+            NOT = {
+                OR = {
+                    check_variable = { actual_output > 2139095.040 }
+                    AND = {
+                        check_variable = { actual_output > -8388.608 }
+                        check_variable = { actual_output < 0 }
+                    }
+                }
+            }
+        }
+        log = "Test [?test_id] - +POSNAN + +POSZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSNAN + +POSZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7413 = {
+    set_temp_variable = { arg_a = 2143289.344 }
+    set_temp_variable = { arg_b = 0.000 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 2143289.344 }
+
+    if = {
+        limit = {
+            NOT = {
+                OR = {
+                    check_variable = { actual_output > 2139095.040 }
+                    AND = {
+                        check_variable = { actual_output > -8388.608 }
+                        check_variable = { actual_output < 0 }
+                    }
+                }
+            }
+        }
+        log = "Test [?test_id] - +POSNAN - +POSZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSNAN - +POSZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7414 = {
+    set_temp_variable = { arg_a = 2143289.344 }
+    set_temp_variable = { arg_b = -2147483.648 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 2143289.344 }
+
+    if = {
+        limit = {
+            NOT = {
+                OR = {
+                    check_variable = { actual_output > 2139095.040 }
+                    AND = {
+                        check_variable = { actual_output > -8388.608 }
+                        check_variable = { actual_output < 0 }
+                    }
+                }
+            }
+        }
+        log = "Test [?test_id] - +POSNAN + +NEGZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSNAN + +NEGZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7415 = {
+    set_temp_variable = { arg_a = 2143289.344 }
+    set_temp_variable = { arg_b = -2147483.648 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 2143289.344 }
+
+    if = {
+        limit = {
+            NOT = {
+                OR = {
+                    check_variable = { actual_output > 2139095.040 }
+                    AND = {
+                        check_variable = { actual_output > -8388.608 }
+                        check_variable = { actual_output < 0 }
+                    }
+                }
+            }
+        }
+        log = "Test [?test_id] - +POSNAN - +NEGZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSNAN - +NEGZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7416 = {
+    set_temp_variable = { arg_a = 0.000 }
+    set_temp_variable = { arg_b = 0.000 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 0.000 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +POSZRO + +POSZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSZRO + +POSZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7417 = {
+    set_temp_variable = { arg_a = 0.000 }
+    set_temp_variable = { arg_b = 0.000 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 0.000 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +POSZRO - +POSZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +POSZRO - +POSZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7418 = {
+    set_temp_variable = { arg_a = -2147483.648 }
+    set_temp_variable = { arg_b = 0.000 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 0.000 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGZRO + +POSZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGZRO + +POSZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7419 = {
+    set_temp_variable = { arg_a = -2147483.648 }
+    set_temp_variable = { arg_b = 0.000 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = -2147483.648 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGZRO - +POSZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGZRO - +POSZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7420 = {
+    set_temp_variable = { arg_a = -2147483.648 }
+    set_temp_variable = { arg_b = -2147483.648 }
+
+    ieeeAdd = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = -2147483.648 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGZRO + +NEGZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGZRO + +NEGZRO - PASS"
+    }
+
+    set_temp_variable = { to_print_float = actual_output }
+    log = "Actual: [print_float_full]"
+    set_temp_variable = { to_print_float = expected_output }
+    log = "Expected: [print_float_full]"
+}
+ieee_test_7421 = {
+    set_temp_variable = { arg_a = -2147483.648 }
+    set_temp_variable = { arg_b = -2147483.648 }
+
+    ieeeSub = yes
+    set_temp_variable = { actual_output = out_a }
+
+    set_temp_variable = { expected_output = 0.000 }
+
+    if = {
+        limit = {
+            NOT = { check_variable = { actual_output = expected_output } }
+        }
+        log = "Test [?test_id] - +NEGZRO - +NEGZRO - FAIL"
+        add_to_temp_array = { test_fail_array = test_id }
+    }
+    else = {
+        log = "Test [?test_id] - +NEGZRO - +NEGZRO - PASS"
     }
 
     set_temp_variable = { to_print_float = actual_output }

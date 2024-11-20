@@ -19,7 +19,7 @@ This Markdown page provides a view of the progress towards the implementation of
 ## 5.4 formatOf General-computational Operations
 | Operation | Progress | Implemented By | Notes |
 | :--- | :--- | :--- | :--- |
-| addition | Not Done | ##### | ##### |
+| addition | Done | ieeeAdd | arg_a + arg_b, uses a quasi-mantissa to perform addition, with extra quirks surrounding negatives and subnormals |
 | subtraction | Not Done | ##### | ##### |
 | multiplication | Not Done | ##### | ##### |
 | division | Not Done | ##### | ##### |

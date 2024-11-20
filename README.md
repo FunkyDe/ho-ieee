@@ -10,6 +10,7 @@ HOI4's base modding script uses signed 32-bit fixed-point variables(referred to 
 Below is a chart of the scripts I found most interesting, where to find them, and what they do. I have omitted the "_trigger" ending for some of their names, as that has no impact on their actual function:
 | Script | Located In | Function |
 | :--- | :--- | :--- |
+| ieeeAdd | [common/scripted_triggers/ieee_operations.txt](common/scripted_triggers/ieee_operations.txt#L12) | Performs floating point addition between two given arguments |
 | to_float | [common/scripted_triggers/ieee_io.txt](common/scripted_triggers/ieee_io.txt#L153) | Converts a variable into a corresponding array of 32 bits holding the equivalent single-precision floating-point value |
 | to_digit_array | [common/scripted_triggers/ieee_io.txt](common/scripted_triggers/ieee_io.txt#L442) | Converts a 32-bit array holding a single-precision floating-point value into an array of digits for output and printing |
 | to_pdxvar | [common/scripted_triggers/ieee_io.txt](common/scripted_triggers/ieee_io.txt#L702) | Converts a 32-bit array holding a single-precision floating-point value into a variable with its corresponding value, with extra flags for overflow, infinity, and NaN cases |
@@ -44,8 +45,8 @@ The tentative task map is:
 - [ ] Addition and Subtraction
     - [x] Test cases
     - [x] Positive+Positive base case
-    - [ ] Addition with negatives / Subtraction
-    - [ ] Exceptions and special cases (subnormals, infinities, NaNs)
+    - [x] Addition with negatives / Subtraction
+    - [x] Exceptions and special cases (subnormals, infinities, NaNs)
 - [ ] Multiplication
 - [ ] Division
 - [ ] Square Root
@@ -78,6 +79,4 @@ NaN: It is very difficult to create exceptions in Hearts of Iron IV, as there is
 
 # TODOlist:
 
-- Addition
-    - negative
-    - subnormal
+- Reformat addition for subtraction

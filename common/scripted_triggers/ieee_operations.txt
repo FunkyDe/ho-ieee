@@ -128,7 +128,7 @@ ieeeAdd_trigger = {
             limit = {
                 check_variable = { temp_array_1000^0 = 1 }
             }
-            set_temp_variable = { temp_negative_flag = 1 }
+            add_to_temp_variable = { temp_negative_flag = 1 }
         }
         all_of = {
             array = temp_mantissa_a
@@ -136,14 +136,16 @@ ieeeAdd_trigger = {
 
             set_temp_variable = { temp_mantissa_a^idx = temp_array_1000^0 }
         }
-        
+
+        # Set mantissa start
+        set_temp_variable = { mantissa_index = 129 }
+        subtract_from_temp_variable = { mantissa_index = exp_a }
+
         # Leading bit
         if = {
             limit = {
                 check_variable = { exp_a > -127 }
             }
-            set_temp_variable = { mantissa_index = 129 }
-            subtract_from_temp_variable = { mantissa_index = exp_a }
             
             # Flip bit
             set_temp_variable = { set_val = 1 }
@@ -152,14 +154,12 @@ ieeeAdd_trigger = {
         }
 
         # Fill mantissa out
-        set_temp_variable = { mantissa_index = 129 }
-        subtract_from_temp_variable = { mantissa_index = exp_a }
         if = {
             limit = {
                 check_variable = { exp_a = -127 }
             }
             # shift subnormals back up one bit
-            add_to_temp_variable = { mantissa_index = 1 }
+            subtract_from_temp_variable = { mantissa_index = 1 }
         }
         all_of = {
             array = temp_array_1000
@@ -189,7 +189,7 @@ ieeeAdd_trigger = {
             limit = {
                 check_variable = { temp_array_1001^0 = 1 }
             }
-            set_temp_variable = { temp_negative_flag = 1 }
+            add_to_temp_variable = { temp_negative_flag = 1 }
         }
         all_of = {
             array = temp_mantissa_b
@@ -197,14 +197,16 @@ ieeeAdd_trigger = {
 
             set_temp_variable = { temp_mantissa_b^idx = temp_array_1001^0 }
         }
-        
+
+        # Set mantissa start
+        set_temp_variable = { mantissa_index = 129 }
+        subtract_from_temp_variable = { mantissa_index = exp_b }
+
         # Leading bit
         if = {
             limit = {
                 check_variable = { exp_b > -127 }
             }
-            set_temp_variable = { mantissa_index = 129 }
-            subtract_from_temp_variable = { mantissa_index = exp_b }
             
             # Flip bit
             set_temp_variable = { set_val = 1 }
@@ -213,14 +215,12 @@ ieeeAdd_trigger = {
         }
 
         # Fill mantissa out
-        set_temp_variable = { mantissa_index = 129 }
-        subtract_from_temp_variable = { mantissa_index = exp_b }
         if = {
             limit = {
                 check_variable = { exp_b = -127 }
             }
             # shift subnormals back up one bit
-            add_to_temp_variable = { mantissa_index = 1 }
+            subtract_from_temp_variable = { mantissa_index = 1 }
         }
         all_of = {
             array = temp_array_1001
@@ -247,7 +247,15 @@ ieeeAdd_trigger = {
         # Add mantissas
         clear_temp_array = temp_mantissa_o
         resize_temp_array = { temp_mantissa_o = 279 }
-        set_temp_variable = { carry = temp_negative_flag } # Temp-negative flag used to complete two's complement
+        if = {
+            limit = {
+                check_variable = { temp_negative_flag > 0 }
+            }
+            set_temp_variable = { carry = 1 }
+        }
+        else = {
+            set_temp_variable = { carry = 0 }
+        }
         set_temp_variable = { idx = 279 }
         all_of = {
             array = temp_mantissa_o
@@ -267,6 +275,34 @@ ieeeAdd_trigger = {
             }
             else = {
                 set_temp_variable = { carry = 0 }
+            }
+        }
+        if = {
+            limit = {
+                check_variable = { temp_mantissa_o^0 = 1 }
+                check_variable = { temp_negative_flag = 1 }
+            }
+            set_temp_variable = { hitone = 0 }
+            set_temp_variable = { idx = 279 }
+            all_of = {
+                array = temp_mantissa_o
+                
+                subtract_from_temp_variable = { idx = 1 }
+
+                if = {
+                    limit = {
+                        check_variable = { temp_mantissa_o^idx = 1 }
+                        check_variable = { hitone = 0 }
+                    }
+                    set_temp_variable = { temp_mantissa_o^idx = 0 }
+                    set_temp_variable = { hitone = 1 }
+                }
+                else_if = {
+                    limit = {
+                        check_variable = { hitone = 0 }
+                    }
+                    set_temp_variable = { temp_mantissa_o^idx = 1 }
+                }
             }
         }
 
@@ -307,21 +343,11 @@ ieeeAdd_trigger = {
                             check_variable = { exp_o = -127 }
                         }
 
-                        log="wtf [?temp_mantissa_o^idx] [?temp_mantissa_o^0] [?idx]"
                         set_temp_variable = { exp_o = 129 }
                         subtract_from_temp_variable = { exp_o = idx }
                     }
                 }
             }
-            clear_temp_array = to_print_array
-            all_of = {
-                array = temp_mantissa_o
-                value = v
-
-                add_to_temp_array = { to_print_array = v }
-            }
-            log="[debug_print_array]"
-            log="[?exp_o]"
 
             # Check for rounding
             set_temp_variable = { start_bit = 129 } # leading bit in mantissa
@@ -331,6 +357,14 @@ ieeeAdd_trigger = {
             set_temp_variable = { after_bit = 153 } # first bit after mantissa
             subtract_from_temp_variable = { after_bit = exp_o }
             set_temp_variable = { round_guard = 0 } # Are any bits after the after_bit active? Note that this doesn't exactly mean being one, see two's complement
+
+            if = {
+                limit = {
+                    check_variable = { exp_o = -127 }
+                }
+                subtract_from_temp_variable = { start_bit = 1 }
+                subtract_from_temp_variable = { after_bit = 1 }
+            }
             all_of = {
                 array = temp_mantissa_o
                 index = idx
@@ -373,6 +407,7 @@ ieeeAdd_trigger = {
             }
             if = {
                 limit = {
+                    check_variable = { exp_o > -126 }
                     NOT = { check_variable = { temp_mantissa_o^after_bit = temp_mantissa_o^0 } }
                     OR = {
                         check_variable = { round_guard > 0 }
@@ -465,17 +500,11 @@ ieeeAdd_trigger = {
                 store_bitwise_trigger = yes
                 set_temp_variable = { out_a = store_bitwise_output }
             }
-            clear_temp_array = to_print_array
-            all_of = {
-                array = temp_mantissa_array
-                value = v
-
-                add_to_temp_array = { to_print_array = v }
-            }
-            log="[debug_print_array]"
-            log="[?exp_o]"
         }
     }
+
+    set_temp_variable = { arg_a = 0 }
+    set_temp_variable = { arg_b = 0 }
 }
 ### ieeeSub
 ## Subtracts the floating point variables and pushes the result to an output variable

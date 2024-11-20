@@ -1,7 +1,6 @@
 ### ieeeAdd
 ## Adds the floating point variables and pushes the result to an output variable
 ## The below function has 2 parameters: arg_a and arg_b
-## These parameters will be cleared(by resetting to 0) after the function execution
 ## The output will be pushed to the temp variable out_a
 ## temp_array_1000 and temp_array_1001 are reserved for this function, so outside use of this temp array will be interrupted and malfunction
 ## ARGUMENTS
@@ -506,14 +505,10 @@ ieeeAdd_trigger = {
             }
         }
     }
-
-    set_temp_variable = { arg_a = 0 }
-    set_temp_variable = { arg_b = 0 }
 }
 ### ieeeSub
 ## Subtracts the floating point variables and pushes the result to an output variable
 ## The below function has 2 parameters: arg_a and arg_b
-## These parameters will be cleared(by resetting to 0) after the function execution
 ## The output will be pushed to the temp variable out_a
 ## temp_array_1000, temp_array_1001, and temp_array_1002 are reserved for this function, so outside use of this temp array will be interrupted and malfunction
 ## ARGUMENTS
@@ -535,9 +530,6 @@ ieeeSub_trigger = {
 
     # arg_a - arg_b = arg_a + (-arg_b)
     ieeeAdd_trigger = yes
-
-    set_temp_variable = { arg_a = 0 }
-    set_temp_variable = { arg_b = 0 }
 }
 ### ieeeMul
 ### ieeeDiv

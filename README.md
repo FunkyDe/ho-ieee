@@ -83,4 +83,7 @@ NaN: It is very difficult to create exceptions in Hearts of Iron IV, as there is
 
 # TODOlist:
 
-- Write example script with looping over all powers of two
+- Change ptf and ftp to arg styled names
+- Implement multi-compare system
+- Write mult test cases
+- Plan mult algo

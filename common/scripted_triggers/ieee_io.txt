@@ -967,50 +967,50 @@ to_pdxvar_trigger = {
 }
 ### FLOAT_TO_PDXVAR_TRIGGER
 ## Wrapper function that chains to_bitwise and to_pdxvar for ease of converting floats -> pdxvars
-## The below function has 1 parameter: ftp_in
+## The below function has 1 parameter: arg_a
 ## This parameter will be cleared(by resetting to 0) after the function execution
 ## The temp_array_1000 is reserved for this function, so outside use of this temp array will be interrupted and malfunction
-## FTP_IN
-# ftp_in is the floating-point variable that will be converted to a pdxvar
-# No restrictions exist on the value of ftp_in, apart from the usual bounds on pdxvars
-## FTP_OUT
-# ftp_out is the pdxvar that best approximates the value of the floating point stored in ftp_in
+## ARG_A
+# arg_a is the floating-point variable that will be converted to a pdxvar
+# No restrictions exist on the value of arg_a, apart from the usual bounds on pdxvars
+## OUT_A
+# out_a is the pdxvar that best approximates the value of the floating point stored in arg_a
 # If the value is too high to fit in a pdxvar(greater than 2148483.647 or less than 2147483.648), then a temp var(overflow_flag) will be set to 1 or -1 depending on whether the float was too high or too low respectively, a warning will be logged, and the pdxvar will default to 0 
 # In addition, two temp vars exist to notify the user of an infinity or NaN(inf_flag and nan_flag respectively) and the output will default to 0. Similarly, +1 or -1 will denote a positive or negative special value. These results will *not* log any warning and should be checked before further use
 float_to_pdxvar_trigger = {
-    set_temp_variable = { to_bitwise_input = ftp_in }
+    set_temp_variable = { to_bitwise_input = arg_a }
 
     set_temp_variable = { temp_array_id = 1000 }
     to_bitwise_trigger = yes
     set_temp_variable = { temp_array_id = 1000 }
     to_pdxvar_trigger = yes
 
-    set_temp_variable = { ftp_out = to_pdxvar_output }
+    set_temp_variable = { out_a = to_pdxvar_output }
     set_temp_variable = { overflow_flag = to_pdxvar_overflow_flag }
     set_temp_variable = { inf_flag = to_pdxvar_inf_flag }
     set_temp_variable = { nan_flag = to_pdxvar_nan_flag }
 
-    set_temp_variable = { ftp_in = 0 }
+    set_temp_variable = { arg_a = 0 }
 }
 ### PDXVAR_TO_FLOAT_TRIGGER
 ## Wrapper function that chains to_float and store_bitwise for ease of converting pdxvars -> floats
-## The below function has 1 parameter: ptf_in
+## The below function has 1 parameter: arg_a
 ## This parameter will be cleared(by resetting to 0) after the function execution
 ## The temp_array_1000 is reserved for this function, so outside use of this temp array will be interrupted and malfunction
-## PTF_IN
-# the ptf_in is the pdxvar that will be converted to a float
-# No restrictions exist on the value of ptf_in, apart from the usual bounds on pdxvars
-## PTF_OUT
-# ptf_out is the float that best approximates the value of the pdxvar stored in ptf_in
+## ARG_A
+# the arg_a is the pdxvar that will be converted to a float
+# No restrictions exist on the value of arg_a, apart from the usual bounds on pdxvars
+## OUT_A
+# out_a is the float that best approximates the value of the pdxvar stored in arg_a
 pdxvar_to_float_trigger = {
-    set_temp_variable = { to_float_input = ptf_in }
+    set_temp_variable = { to_float_input = arg_a }
 
     set_temp_variable = { temp_array_id = 1000 }
     to_float_trigger = yes
     set_temp_variable = { temp_array_id = 1000 }
     store_bitwise_trigger = yes
 
-    set_temp_variable = { ptf_out = store_bitwise_output }
+    set_temp_variable = { out_a = store_bitwise_output }
 
-    set_temp_variable = { ptf_in = 0 }
+    set_temp_variable = { arg_a = 0 }
 }

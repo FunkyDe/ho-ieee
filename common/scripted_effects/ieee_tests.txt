@@ -3563,7 +3563,7 @@ ieee_test_2025 = {
 ieee_test_3000 = {
     set_temp_variable = { io_error_flag = 0 }
     
-    set_temp_variable = { ftp_in = 1148846.08 }
+    set_temp_variable = { arg_a = 1148846.08 }
 
     float_to_pdxvar = yes
 
@@ -3582,7 +3582,7 @@ ieee_test_3000 = {
     if = {
         limit = {
             OR = {
-                NOT = { check_variable = { ftp_out = expected_output } }
+                NOT = { check_variable = { out_a = expected_output } }
                 NOT = { check_variable = { overflow_flag = expected_overflow_flag } }
                 NOT = { check_variable = { inf_flag = expected_inf_flag } }
                 NOT = { check_variable = { nan_flag = expected_nan_flag } }
@@ -3601,7 +3601,7 @@ ieee_test_3000 = {
         log = "Test [?test_id] - basic float_to_pdxvar - PASS"
     }
 
-    log = "Actual: [?ftp_out]"
+    log = "Actual: [?out_a]"
     log = "Expect: [?expected_output]"
     
     set_temp_variable = { io_error_flag = 0 }
@@ -3609,7 +3609,7 @@ ieee_test_3000 = {
 ieee_test_3001 = {
     set_temp_variable = { io_error_flag = 0 }
     
-    set_temp_variable = { ftp_in = 1148854.272 }
+    set_temp_variable = { arg_a = 1148854.272 }
 
     float_to_pdxvar = yes
 
@@ -3628,7 +3628,7 @@ ieee_test_3001 = {
     if = {
         limit = {
             OR = {
-                NOT = { check_variable = { ftp_out = expected_output } }
+                NOT = { check_variable = { out_a = expected_output } }
                 NOT = { check_variable = { overflow_flag = expected_overflow_flag } }
                 NOT = { check_variable = { inf_flag = expected_inf_flag } }
                 NOT = { check_variable = { nan_flag = expected_nan_flag } }
@@ -3647,7 +3647,7 @@ ieee_test_3001 = {
         log = "Test [?test_id] - 1 decimal float_to_pdxvar - PASS"
     }
 
-    log = "Actual: [?ftp_out]"
+    log = "Actual: [?out_a]"
     log = "Expect: [?expected_output]"
     
     set_temp_variable = { io_error_flag = 0 }
@@ -3655,7 +3655,7 @@ ieee_test_3001 = {
 ieee_test_3002 = {
     set_temp_variable = { io_error_flag = 0 }
     
-    set_temp_variable = { ftp_in = 1148858.368 }
+    set_temp_variable = { arg_a = 1148858.368 }
 
     float_to_pdxvar = yes
 
@@ -3674,7 +3674,7 @@ ieee_test_3002 = {
     if = {
         limit = {
             OR = {
-                NOT = { check_variable = { ftp_out = expected_output } }
+                NOT = { check_variable = { out_a = expected_output } }
                 NOT = { check_variable = { overflow_flag = expected_overflow_flag } }
                 NOT = { check_variable = { inf_flag = expected_inf_flag } }
                 NOT = { check_variable = { nan_flag = expected_nan_flag } }
@@ -3693,7 +3693,7 @@ ieee_test_3002 = {
         log = "Test [?test_id] - 2 decimal float_to_pdxvar - PASS"
     }
 
-    log = "Actual: [?ftp_out]"
+    log = "Actual: [?out_a]"
     log = "Expect: [?expected_output]"
     
     set_temp_variable = { io_error_flag = 0 }
@@ -3701,7 +3701,7 @@ ieee_test_3002 = {
 ieee_test_3003 = {
     set_temp_variable = { io_error_flag = 0 }
     
-    set_temp_variable = { ftp_in = 1148859.187 }
+    set_temp_variable = { arg_a = 1148859.187 }
 
     float_to_pdxvar = yes
 
@@ -3720,7 +3720,7 @@ ieee_test_3003 = {
     if = {
         limit = {
             OR = {
-                NOT = { check_variable = { ftp_out = expected_output } }
+                NOT = { check_variable = { out_a = expected_output } }
                 NOT = { check_variable = { overflow_flag = expected_overflow_flag } }
                 NOT = { check_variable = { inf_flag = expected_inf_flag } }
                 NOT = { check_variable = { nan_flag = expected_nan_flag } }
@@ -3739,7 +3739,7 @@ ieee_test_3003 = {
         log = "Test [?test_id] - round simple float_to_pdxvar - PASS"
     }
 
-    log = "Actual: [?ftp_out]"
+    log = "Actual: [?out_a]"
     log = "Expect: [?expected_output]"
     
     set_temp_variable = { io_error_flag = 0 }
@@ -3747,7 +3747,7 @@ ieee_test_3003 = {
 ieee_test_3004 = {
     set_temp_variable = { io_error_flag = 0 }
     
-    set_temp_variable = { ftp_in = 1148849.152 }
+    set_temp_variable = { arg_a = 1148849.152 }
 
     float_to_pdxvar = yes
 
@@ -3766,7 +3766,7 @@ ieee_test_3004 = {
     if = {
         limit = {
             OR = {
-                NOT = { check_variable = { ftp_out = expected_output } }
+                NOT = { check_variable = { out_a = expected_output } }
                 NOT = { check_variable = { overflow_flag = expected_overflow_flag } }
                 NOT = { check_variable = { inf_flag = expected_inf_flag } }
                 NOT = { check_variable = { nan_flag = expected_nan_flag } }
@@ -3785,7 +3785,7 @@ ieee_test_3004 = {
         log = "Test [?test_id] - round up float_to_pdxvar - PASS"
     }
 
-    log = "Actual: [?ftp_out]"
+    log = "Actual: [?out_a]"
     log = "Expect: [?expected_output]"
     
     set_temp_variable = { io_error_flag = 0 }
@@ -3793,7 +3793,7 @@ ieee_test_3004 = {
 ieee_test_3005 = {
     set_temp_variable = { io_error_flag = 0 }
     
-    set_temp_variable = { ftp_in = 1031798.784 }
+    set_temp_variable = { arg_a = 1031798.784 }
 
     float_to_pdxvar = yes
 
@@ -3812,7 +3812,7 @@ ieee_test_3005 = {
     if = {
         limit = {
             OR = {
-                NOT = { check_variable = { ftp_out = expected_output } }
+                NOT = { check_variable = { out_a = expected_output } }
                 NOT = { check_variable = { overflow_flag = expected_overflow_flag } }
                 NOT = { check_variable = { inf_flag = expected_inf_flag } }
                 NOT = { check_variable = { nan_flag = expected_nan_flag } }
@@ -3831,7 +3831,7 @@ ieee_test_3005 = {
         log = "Test [?test_id] - round down float_to_pdxvar - PASS"
     }
 
-    log = "Actual: [?ftp_out]"
+    log = "Actual: [?out_a]"
     log = "Expect: [?expected_output]"
     
     set_temp_variable = { io_error_flag = 0 }
@@ -3839,7 +3839,7 @@ ieee_test_3005 = {
 ieee_test_3006 = {
     set_temp_variable = { io_error_flag = 0 }
     
-    set_temp_variable = { ftp_in = -1090451.932 }
+    set_temp_variable = { arg_a = -1090451.932 }
 
     float_to_pdxvar = yes
 
@@ -3858,7 +3858,7 @@ ieee_test_3006 = {
     if = {
         limit = {
             OR = {
-                NOT = { check_variable = { ftp_out = expected_output } }
+                NOT = { check_variable = { out_a = expected_output } }
                 NOT = { check_variable = { overflow_flag = expected_overflow_flag } }
                 NOT = { check_variable = { inf_flag = expected_inf_flag } }
                 NOT = { check_variable = { nan_flag = expected_nan_flag } }
@@ -3877,7 +3877,7 @@ ieee_test_3006 = {
         log = "Test [?test_id] - negative float_to_pdxvar - PASS"
     }
 
-    log = "Actual: [?ftp_out]"
+    log = "Actual: [?out_a]"
     log = "Expect: [?expected_output]"
     
     set_temp_variable = { io_error_flag = 0 }
@@ -3885,7 +3885,7 @@ ieee_test_3006 = {
 ieee_test_3007 = {
     set_temp_variable = { io_error_flag = 0 }
     
-    set_temp_variable = { ftp_in = -998624.461 }
+    set_temp_variable = { arg_a = -998624.461 }
 
     float_to_pdxvar = yes
 
@@ -3904,7 +3904,7 @@ ieee_test_3007 = {
     if = {
         limit = {
             OR = {
-                NOT = { check_variable = { ftp_out = expected_output } }
+                NOT = { check_variable = { out_a = expected_output } }
                 NOT = { check_variable = { overflow_flag = expected_overflow_flag } }
                 NOT = { check_variable = { inf_flag = expected_inf_flag } }
                 NOT = { check_variable = { nan_flag = expected_nan_flag } }
@@ -3923,7 +3923,7 @@ ieee_test_3007 = {
         log = "Test [?test_id] - negative round float_to_pdxvar - PASS"
     }
 
-    log = "Actual: [?ftp_out]"
+    log = "Actual: [?out_a]"
     log = "Expect: [?expected_output]"
     
     set_temp_variable = { io_error_flag = 0 }
@@ -3931,7 +3931,7 @@ ieee_test_3007 = {
 ieee_test_3008 = {
     set_temp_variable = { io_error_flag = 0 }
     
-    set_temp_variable = { ftp_in = 1242014.264 }
+    set_temp_variable = { arg_a = 1242014.264 }
 
     float_to_pdxvar = yes
 
@@ -3950,7 +3950,7 @@ ieee_test_3008 = {
     if = {
         limit = {
             OR = {
-                NOT = { check_variable = { ftp_out = expected_output } }
+                NOT = { check_variable = { out_a = expected_output } }
                 NOT = { check_variable = { overflow_flag = expected_overflow_flag } }
                 NOT = { check_variable = { inf_flag = expected_inf_flag } }
                 NOT = { check_variable = { nan_flag = expected_nan_flag } }
@@ -3969,7 +3969,7 @@ ieee_test_3008 = {
         log = "Test [?test_id] - positive overflow float_to_pdxvar - PASS"
     }
 
-    log = "Actual: [?ftp_out]"
+    log = "Actual: [?out_a]"
     log = "Expect: [?expected_output]"
     
     set_temp_variable = { io_error_flag = 0 }
@@ -3977,7 +3977,7 @@ ieee_test_3008 = {
 ieee_test_3009 = {
     set_temp_variable = { io_error_flag = 0 }
     
-    set_temp_variable = { ftp_in = -905469.384 }
+    set_temp_variable = { arg_a = -905469.384 }
 
     float_to_pdxvar = yes
 
@@ -3996,7 +3996,7 @@ ieee_test_3009 = {
     if = {
         limit = {
             OR = {
-                NOT = { check_variable = { ftp_out = expected_output } }
+                NOT = { check_variable = { out_a = expected_output } }
                 NOT = { check_variable = { overflow_flag = expected_overflow_flag } }
                 NOT = { check_variable = { inf_flag = expected_inf_flag } }
                 NOT = { check_variable = { nan_flag = expected_nan_flag } }
@@ -4015,7 +4015,7 @@ ieee_test_3009 = {
         log = "Test [?test_id] - negative overflow float_to_pdxvar - PASS"
     }
 
-    log = "Actual: [?ftp_out]"
+    log = "Actual: [?out_a]"
     log = "Expect: [?expected_output]"
     
     set_temp_variable = { io_error_flag = 0 }
@@ -4023,7 +4023,7 @@ ieee_test_3009 = {
 ieee_test_3010 = {
     set_temp_variable = { io_error_flag = 0 }
     
-    set_temp_variable = { ftp_in = 2139095.04 }
+    set_temp_variable = { arg_a = 2139095.04 }
 
     float_to_pdxvar = yes
 
@@ -4042,7 +4042,7 @@ ieee_test_3010 = {
     if = {
         limit = {
             OR = {
-                NOT = { check_variable = { ftp_out = expected_output } }
+                NOT = { check_variable = { out_a = expected_output } }
                 NOT = { check_variable = { overflow_flag = expected_overflow_flag } }
                 NOT = { check_variable = { inf_flag = expected_inf_flag } }
                 NOT = { check_variable = { nan_flag = expected_nan_flag } }
@@ -4061,7 +4061,7 @@ ieee_test_3010 = {
         log = "Test [?test_id] - inf float_to_pdxvar - PASS"
     }
 
-    log = "Actual: [?ftp_out]"
+    log = "Actual: [?out_a]"
     log = "Expect: [?expected_output]"
     
     set_temp_variable = { io_error_flag = 0 }
@@ -4069,7 +4069,7 @@ ieee_test_3010 = {
 ieee_test_3011 = {
     set_temp_variable = { io_error_flag = 0 }
     
-    set_temp_variable = { ftp_in = -4194.304 }
+    set_temp_variable = { arg_a = -4194.304 }
 
     float_to_pdxvar = yes
 
@@ -4088,7 +4088,7 @@ ieee_test_3011 = {
     if = {
         limit = {
             OR = {
-                NOT = { check_variable = { ftp_out = expected_output } }
+                NOT = { check_variable = { out_a = expected_output } }
                 NOT = { check_variable = { overflow_flag = expected_overflow_flag } }
                 NOT = { check_variable = { inf_flag = expected_inf_flag } }
                 NOT = { check_variable = { nan_flag = expected_nan_flag } }
@@ -4107,7 +4107,7 @@ ieee_test_3011 = {
         log = "Test [?test_id] - negative nan float_to_pdxvar - PASS"
     }
 
-    log = "Actual: [?ftp_out]"
+    log = "Actual: [?out_a]"
     log = "Expect: [?expected_output]"
     
     set_temp_variable = { io_error_flag = 0 }
@@ -4115,7 +4115,7 @@ ieee_test_3011 = {
 ieee_test_3012 = {
     set_temp_variable = { io_error_flag = 0 }
     
-    set_temp_variable = { ptf_in = 1175 }
+    set_temp_variable = { arg_a = 1175 }
 
     pdxvar_to_float = yes
 
@@ -4131,7 +4131,7 @@ ieee_test_3012 = {
     if = {
         limit = {
             OR = {
-                NOT = { check_variable = { ptf_out = expected_output } }
+                NOT = { check_variable = { out_a = expected_output } }
             }
         }
         set_temp_variable = { invalid = 1 }
@@ -4147,7 +4147,7 @@ ieee_test_3012 = {
         log = "Test [?test_id] - basic float_to_pdxvar - PASS"
     }
 
-    log = "Actual: [?ptf_out]"
+    log = "Actual: [?out_a]"
     log = "Expect: [?expected_output]"
     
     set_temp_variable = { io_error_flag = 0 }
@@ -4155,7 +4155,7 @@ ieee_test_3012 = {
 ieee_test_3013 = {
     set_temp_variable = { io_error_flag = 0 }
     
-    set_temp_variable = { ptf_in = 2097152.874 }
+    set_temp_variable = { arg_a = 2097152.874 }
 
     pdxvar_to_float = yes
 
@@ -4171,7 +4171,7 @@ ieee_test_3013 = {
     if = {
         limit = {
             OR = {
-                NOT = { check_variable = { ptf_out = expected_output } }
+                NOT = { check_variable = { out_a = expected_output } }
             }
         }
         set_temp_variable = { invalid = 1 }
@@ -4187,7 +4187,7 @@ ieee_test_3013 = {
         log = "Test [?test_id] - round down float_to_pdxvar - PASS"
     }
 
-    log = "Actual: [?ptf_out]"
+    log = "Actual: [?out_a]"
     log = "Expect: [?expected_output]"
     
     set_temp_variable = { io_error_flag = 0 }
@@ -4195,7 +4195,7 @@ ieee_test_3013 = {
 ieee_test_3014 = {
     set_temp_variable = { io_error_flag = 0 }
     
-    set_temp_variable = { ptf_in = 2097152.875 }
+    set_temp_variable = { arg_a = 2097152.875 }
 
     pdxvar_to_float = yes
 
@@ -4211,7 +4211,7 @@ ieee_test_3014 = {
     if = {
         limit = {
             OR = {
-                NOT = { check_variable = { ptf_out = expected_output } }
+                NOT = { check_variable = { out_a = expected_output } }
             }
         }
         set_temp_variable = { invalid = 1 }
@@ -4227,7 +4227,7 @@ ieee_test_3014 = {
         log = "Test [?test_id] - round up, edge float_to_pdxvar - PASS"
     }
 
-    log = "Actual: [?ptf_out]"
+    log = "Actual: [?out_a]"
     log = "Expect: [?expected_output]"
     
     set_temp_variable = { io_error_flag = 0 }
@@ -4235,7 +4235,7 @@ ieee_test_3014 = {
 ieee_test_3015 = {
     set_temp_variable = { io_error_flag = 0 }
     
-    set_temp_variable = { ptf_in = 2097152.125 }
+    set_temp_variable = { arg_a = 2097152.125 }
 
     pdxvar_to_float = yes
 
@@ -4251,7 +4251,7 @@ ieee_test_3015 = {
     if = {
         limit = {
             OR = {
-                NOT = { check_variable = { ptf_out = expected_output } }
+                NOT = { check_variable = { out_a = expected_output } }
             }
         }
         set_temp_variable = { invalid = 1 }
@@ -4267,7 +4267,7 @@ ieee_test_3015 = {
         log = "Test [?test_id] - round down, edge float_to_pdxvar - PASS"
     }
 
-    log = "Actual: [?ptf_out]"
+    log = "Actual: [?out_a]"
     log = "Expect: [?expected_output]"
     
     set_temp_variable = { io_error_flag = 0 }
@@ -4275,7 +4275,7 @@ ieee_test_3015 = {
 ieee_test_3016 = {
     set_temp_variable = { io_error_flag = 0 }
     
-    set_temp_variable = { ptf_in = 2097152.876 }
+    set_temp_variable = { arg_a = 2097152.876 }
 
     pdxvar_to_float = yes
 
@@ -4291,7 +4291,7 @@ ieee_test_3016 = {
     if = {
         limit = {
             OR = {
-                NOT = { check_variable = { ptf_out = expected_output } }
+                NOT = { check_variable = { out_a = expected_output } }
             }
         }
         set_temp_variable = { invalid = 1 }
@@ -4307,7 +4307,7 @@ ieee_test_3016 = {
         log = "Test [?test_id] - round up float_to_pdxvar - PASS"
     }
 
-    log = "Actual: [?ptf_out]"
+    log = "Actual: [?out_a]"
     log = "Expect: [?expected_output]"
     
     set_temp_variable = { io_error_flag = 0 }
@@ -4315,7 +4315,7 @@ ieee_test_3016 = {
 ieee_test_3017 = {
     set_temp_variable = { io_error_flag = 0 }
     
-    set_temp_variable = { ptf_in = -2525.125 }
+    set_temp_variable = { arg_a = -2525.125 }
 
     pdxvar_to_float = yes
 
@@ -4331,7 +4331,7 @@ ieee_test_3017 = {
     if = {
         limit = {
             OR = {
-                NOT = { check_variable = { ptf_out = expected_output } }
+                NOT = { check_variable = { out_a = expected_output } }
             }
         }
         set_temp_variable = { invalid = 1 }
@@ -4347,7 +4347,7 @@ ieee_test_3017 = {
         log = "Test [?test_id] - negative float_to_pdxvar - PASS"
     }
 
-    log = "Actual: [?ptf_out]"
+    log = "Actual: [?out_a]"
     log = "Expect: [?expected_output]"
     
     set_temp_variable = { io_error_flag = 0 }
@@ -4355,7 +4355,7 @@ ieee_test_3017 = {
 ieee_test_3018 = {
     set_temp_variable = { io_error_flag = 0 }
     
-    set_temp_variable = { ptf_in = 0 }
+    set_temp_variable = { arg_a = 0 }
 
     pdxvar_to_float = yes
 
@@ -4371,7 +4371,7 @@ ieee_test_3018 = {
     if = {
         limit = {
             OR = {
-                NOT = { check_variable = { ptf_out = expected_output } }
+                NOT = { check_variable = { out_a = expected_output } }
             }
         }
         set_temp_variable = { invalid = 1 }
@@ -4387,7 +4387,7 @@ ieee_test_3018 = {
         log = "Test [?test_id] - zero float_to_pdxvar - PASS"
     }
 
-    log = "Actual: [?ptf_out]"
+    log = "Actual: [?out_a]"
     log = "Expect: [?expected_output]"
     
     set_temp_variable = { io_error_flag = 0 }
@@ -4395,7 +4395,7 @@ ieee_test_3018 = {
 ieee_test_3019 = {
     set_temp_variable = { io_error_flag = 0 }
     
-    set_temp_variable = { ptf_in = -2147483.648 }
+    set_temp_variable = { arg_a = -2147483.648 }
 
     pdxvar_to_float = yes
 
@@ -4411,7 +4411,7 @@ ieee_test_3019 = {
     if = {
         limit = {
             OR = {
-                NOT = { check_variable = { ptf_out = expected_output } }
+                NOT = { check_variable = { out_a = expected_output } }
             }
         }
         set_temp_variable = { invalid = 1 }
@@ -4427,7 +4427,7 @@ ieee_test_3019 = {
         log = "Test [?test_id] - min num float_to_pdxvar - PASS"
     }
 
-    log = "Actual: [?ptf_out]"
+    log = "Actual: [?out_a]"
     log = "Expect: [?expected_output]"
     
     set_temp_variable = { io_error_flag = 0 }
@@ -4435,7 +4435,7 @@ ieee_test_3019 = {
 ieee_test_3020 = {
     set_temp_variable = { io_error_flag = 0 }
     
-    set_temp_variable = { ptf_in = 2097151.938 }
+    set_temp_variable = { arg_a = 2097151.938 }
 
     pdxvar_to_float = yes
 
@@ -4451,7 +4451,7 @@ ieee_test_3020 = {
     if = {
         limit = {
             OR = {
-                NOT = { check_variable = { ptf_out = expected_output } }
+                NOT = { check_variable = { out_a = expected_output } }
             }
         }
         set_temp_variable = { invalid = 1 }
@@ -4467,7 +4467,7 @@ ieee_test_3020 = {
         log = "Test [?test_id] - round add exp float_to_pdxvar - PASS"
     }
 
-    log = "Actual: [?ptf_out]"
+    log = "Actual: [?out_a]"
     log = "Expect: [?expected_output]"
     
     set_temp_variable = { io_error_flag = 0 }

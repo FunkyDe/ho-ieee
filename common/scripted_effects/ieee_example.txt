@@ -7,11 +7,11 @@ ieee_example_loop = {
     for_loop_effect = {
         end = iter
 
-        set_temp_variable = { ptf_in = addend }
+        set_temp_variable = { arg_a = addend }
         pdxvar_to_float = yes
         
         set_temp_variable = { arg_a = sum }
-        set_temp_variable = { arg_b = ptf_out }
+        set_temp_variable = { arg_b = out_a }
         ieeeAdd = yes
         set_temp_variable = { sum = out_a }
     }
@@ -34,9 +34,9 @@ ieee_example_fibonacci = {
     log="Fibonacci [?iter]: [print_multi_float] ~ [print_multi_float]"
 
     set_temp_variable = { iter = 1 }
-    set_temp_variable = { ptf_in = 1 }
+    set_temp_variable = { arg_a = 1 }
     pdxvar_to_float = yes
-    set_temp_variable = { fib_b = ptf_out }
+    set_temp_variable = { fib_b = out_a }
 
     add_to_temp_array = { multi_print_float = fib_b }
     add_to_temp_array = { multi_print_style = 0 }

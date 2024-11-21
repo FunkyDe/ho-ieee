@@ -83,7 +83,6 @@ NaN: It is very difficult to create exceptions in Hearts of Iron IV, as there is
 
 # TODOlist:
 
-- Change ptf and ftp to arg styled names
 - Implement multi-compare system
 - Write mult test cases
 - Plan mult algo

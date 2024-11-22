@@ -1,6 +1,6 @@
 # Simple loop with addition, to display basic syntax
-ieee_example_loop = {
 # Would probably be recommended to denote your floating-point variables differently, since they still can be modified by regular operations like add_to_temp_variable.
+ieee_example_loop = {
     set_temp_variable = { sum = 0 } # float(0) = 0
     set_temp_variable = { addend = 100000 }
     set_temp_variable = { iter = 500 }
@@ -9,7 +9,7 @@ ieee_example_loop = {
 
         set_temp_variable = { arg_a = addend }
         pdxvar_to_float = yes
-        
+
         set_temp_variable = { arg_a = sum }
         set_temp_variable = { arg_b = out_a }
         ieeeAdd = yes
@@ -17,6 +17,10 @@ ieee_example_loop = {
     }
     set_temp_variable = { to_print_float = sum }
     log="[?addend] * [?iter] ~ [print_float_full]"
+
+    add_to_temp_variable = { sum = addend } # Incorrect operation, does not add addend to the floating-point variable `sum`
+    set_temp_variable = { to_print_float = sum }
+    log="sum + 100000 != [print_float_full]"
 }
 # Printing Fibonacci sequence until infinity
 # Note how round-off error occurs by the 37th Fibonacci number, as F(37) = 24157817, not 24157816
@@ -47,11 +51,10 @@ ieee_example_fibonacci = {
     log="Fibonacci [?iter]: [print_multi_float] ~ [print_multi_float]"
 
     set_temp_variable = { posinf = 2139095.040 }
-    set_temp_variable = { arg_a = fib_b }
-    set_temp_variable = { arg_b = posinf }
-
     while_loop_effect = {
         limit = {
+            set_temp_variable = { arg_a = fib_b }
+            set_temp_variable = { arg_b = posinf }
             compareLess = yes
         }
 
@@ -70,8 +73,5 @@ ieee_example_fibonacci = {
 
         set_temp_variable = { fib_a = fib_b }
         set_temp_variable = { fib_b = out_a }
-
-        set_temp_variable = { arg_a = fib_b }
-        set_temp_variable = { arg_b = posinf }
     }
 }

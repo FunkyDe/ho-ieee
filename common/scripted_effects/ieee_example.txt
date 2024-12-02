@@ -53,6 +53,7 @@ ieee_example_fibonacci = {
     set_temp_variable = { posinf = 2139095.040 }
     while_loop_effect = {
         limit = {
+            # fib_b(last calculated fibonacci number) < infinity
             set_temp_variable = { arg_a = fib_b }
             set_temp_variable = { arg_b = posinf }
             compareLess = yes

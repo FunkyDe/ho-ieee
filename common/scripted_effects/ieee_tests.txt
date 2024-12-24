@@ -54,6 +54,7 @@ ieee_get_test_count = {
     add_to_temp_array = { temp_test_count_array = 972 }     # predicates
     add_to_temp_array = { temp_test_count_array = 1000 }    # signaling predicates
     add_to_temp_array = { temp_test_count_array = 422 }     # addition and subtraction
+    add_to_temp_array = { temp_test_count_array = 961 }     # multiplication
 }
 ## test to_bitwise and store_bitwise functions
 ieee_test_0 = {

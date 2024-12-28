@@ -22,7 +22,7 @@ ieee_test_7000 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7001 = {
     set_temp_variable = { arg_a = -887415.274 }
@@ -47,7 +47,7 @@ ieee_test_7001 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7002 = {
     set_temp_variable = { arg_a = 1260068.374 }
@@ -72,7 +72,7 @@ ieee_test_7002 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7003 = {
     set_temp_variable = { arg_a = -887415.274 }
@@ -97,7 +97,7 @@ ieee_test_7003 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7004 = {
     set_temp_variable = { arg_a = 1260068.374 }
@@ -122,7 +122,7 @@ ieee_test_7004 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7005 = {
     set_temp_variable = { arg_a = -887415.274 }
@@ -147,7 +147,7 @@ ieee_test_7005 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7006 = {
     set_temp_variable = { arg_a = 1260068.374 }
@@ -172,7 +172,7 @@ ieee_test_7006 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7007 = {
     set_temp_variable = { arg_a = -887415.274 }
@@ -197,7 +197,7 @@ ieee_test_7007 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7008 = {
     set_temp_variable = { arg_a = 1259926.807 }
@@ -222,7 +222,7 @@ ieee_test_7008 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7009 = {
     set_temp_variable = { arg_a = -887556.841 }
@@ -247,7 +247,7 @@ ieee_test_7009 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7010 = {
     set_temp_variable = { arg_a = 1259926.807 }
@@ -272,7 +272,7 @@ ieee_test_7010 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7011 = {
     set_temp_variable = { arg_a = -887556.841 }
@@ -297,7 +297,7 @@ ieee_test_7011 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7012 = {
     set_temp_variable = { arg_a = 1259926.807 }
@@ -322,7 +322,7 @@ ieee_test_7012 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7013 = {
     set_temp_variable = { arg_a = -887556.841 }
@@ -347,7 +347,7 @@ ieee_test_7013 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7014 = {
     set_temp_variable = { arg_a = 1259926.807 }
@@ -372,7 +372,7 @@ ieee_test_7014 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7015 = {
     set_temp_variable = { arg_a = -887556.841 }
@@ -397,7 +397,7 @@ ieee_test_7015 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7016 = {
     set_temp_variable = { arg_a = 1259926.807 }
@@ -422,7 +422,7 @@ ieee_test_7016 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7017 = {
     set_temp_variable = { arg_a = -887556.841 }
@@ -447,7 +447,7 @@ ieee_test_7017 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7018 = {
     set_temp_variable = { arg_a = 1259926.807 }
@@ -472,7 +472,7 @@ ieee_test_7018 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7019 = {
     set_temp_variable = { arg_a = -887556.841 }
@@ -497,7 +497,7 @@ ieee_test_7019 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7020 = {
     set_temp_variable = { arg_a = 1259926.807 }
@@ -522,7 +522,7 @@ ieee_test_7020 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7021 = {
     set_temp_variable = { arg_a = -887556.841 }
@@ -547,7 +547,7 @@ ieee_test_7021 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7022 = {
     set_temp_variable = { arg_a = 1259926.807 }
@@ -572,7 +572,7 @@ ieee_test_7022 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7023 = {
     set_temp_variable = { arg_a = -887556.841 }
@@ -597,7 +597,7 @@ ieee_test_7023 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7024 = {
     set_temp_variable = { arg_a = 1056964.608 }
@@ -622,7 +622,7 @@ ieee_test_7024 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7025 = {
     set_temp_variable = { arg_a = -1090519.040 }
@@ -647,7 +647,7 @@ ieee_test_7025 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7026 = {
     set_temp_variable = { arg_a = 1056964.608 }
@@ -672,7 +672,7 @@ ieee_test_7026 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7027 = {
     set_temp_variable = { arg_a = -1090519.040 }
@@ -697,7 +697,7 @@ ieee_test_7027 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7028 = {
     set_temp_variable = { arg_a = 1056964.608 }
@@ -722,7 +722,7 @@ ieee_test_7028 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7029 = {
     set_temp_variable = { arg_a = -1090519.040 }
@@ -747,7 +747,7 @@ ieee_test_7029 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7030 = {
     set_temp_variable = { arg_a = 1056964.608 }
@@ -772,7 +772,7 @@ ieee_test_7030 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7031 = {
     set_temp_variable = { arg_a = -1090519.040 }
@@ -797,7 +797,7 @@ ieee_test_7031 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7032 = {
     set_temp_variable = { arg_a = 1056964.608 }
@@ -822,7 +822,7 @@ ieee_test_7032 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7033 = {
     set_temp_variable = { arg_a = -1090519.040 }
@@ -847,7 +847,7 @@ ieee_test_7033 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7034 = {
     set_temp_variable = { arg_a = 1056964.608 }
@@ -872,7 +872,7 @@ ieee_test_7034 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7035 = {
     set_temp_variable = { arg_a = -1090519.040 }
@@ -897,7 +897,7 @@ ieee_test_7035 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7036 = {
     set_temp_variable = { arg_a = 1056964.608 }
@@ -922,7 +922,7 @@ ieee_test_7036 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7037 = {
     set_temp_variable = { arg_a = -1090519.040 }
@@ -947,7 +947,7 @@ ieee_test_7037 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7038 = {
     set_temp_variable = { arg_a = 1056964.608 }
@@ -972,7 +972,7 @@ ieee_test_7038 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7039 = {
     set_temp_variable = { arg_a = -1090519.040 }
@@ -997,7 +997,7 @@ ieee_test_7039 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7040 = {
     set_temp_variable = { arg_a = 1056964.608 }
@@ -1022,7 +1022,7 @@ ieee_test_7040 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7041 = {
     set_temp_variable = { arg_a = -1090519.040 }
@@ -1047,7 +1047,7 @@ ieee_test_7041 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7042 = {
     set_temp_variable = { arg_a = 1056964.608 }
@@ -1072,7 +1072,7 @@ ieee_test_7042 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7043 = {
     set_temp_variable = { arg_a = -1090519.040 }
@@ -1097,7 +1097,7 @@ ieee_test_7043 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7044 = {
     set_temp_variable = { arg_a = 1056964.608 }
@@ -1122,7 +1122,7 @@ ieee_test_7044 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7045 = {
     set_temp_variable = { arg_a = -1090519.040 }
@@ -1147,7 +1147,7 @@ ieee_test_7045 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7046 = {
     set_temp_variable = { arg_a = 1056964.608 }
@@ -1172,7 +1172,7 @@ ieee_test_7046 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7047 = {
     set_temp_variable = { arg_a = -1090519.040 }
@@ -1197,7 +1197,7 @@ ieee_test_7047 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7048 = {
     set_temp_variable = { arg_a = 1063569.289 }
@@ -1222,7 +1222,7 @@ ieee_test_7048 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7049 = {
     set_temp_variable = { arg_a = -1083914.359 }
@@ -1247,7 +1247,7 @@ ieee_test_7049 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7050 = {
     set_temp_variable = { arg_a = 1063569.289 }
@@ -1272,7 +1272,7 @@ ieee_test_7050 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7051 = {
     set_temp_variable = { arg_a = -1083914.359 }
@@ -1297,7 +1297,7 @@ ieee_test_7051 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7052 = {
     set_temp_variable = { arg_a = 1063569.289 }
@@ -1322,7 +1322,7 @@ ieee_test_7052 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7053 = {
     set_temp_variable = { arg_a = -1083914.359 }
@@ -1347,7 +1347,7 @@ ieee_test_7053 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7054 = {
     set_temp_variable = { arg_a = 1063569.289 }
@@ -1372,7 +1372,7 @@ ieee_test_7054 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7055 = {
     set_temp_variable = { arg_a = -1083914.359 }
@@ -1397,7 +1397,7 @@ ieee_test_7055 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7056 = {
     set_temp_variable = { arg_a = 1063569.289 }
@@ -1422,7 +1422,7 @@ ieee_test_7056 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7057 = {
     set_temp_variable = { arg_a = -1083914.359 }
@@ -1447,7 +1447,7 @@ ieee_test_7057 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7058 = {
     set_temp_variable = { arg_a = 1063569.289 }
@@ -1472,7 +1472,7 @@ ieee_test_7058 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7059 = {
     set_temp_variable = { arg_a = -1083914.359 }
@@ -1497,7 +1497,7 @@ ieee_test_7059 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7060 = {
     set_temp_variable = { arg_a = 1063569.289 }
@@ -1522,7 +1522,7 @@ ieee_test_7060 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7061 = {
     set_temp_variable = { arg_a = -1083914.359 }
@@ -1547,7 +1547,7 @@ ieee_test_7061 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7062 = {
     set_temp_variable = { arg_a = 1063569.289 }
@@ -1572,7 +1572,7 @@ ieee_test_7062 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7063 = {
     set_temp_variable = { arg_a = -1083914.359 }
@@ -1597,7 +1597,7 @@ ieee_test_7063 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7064 = {
     set_temp_variable = { arg_a = 1063569.289 }
@@ -1622,7 +1622,7 @@ ieee_test_7064 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7065 = {
     set_temp_variable = { arg_a = -1083914.359 }
@@ -1647,7 +1647,7 @@ ieee_test_7065 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7066 = {
     set_temp_variable = { arg_a = 1063569.289 }
@@ -1672,7 +1672,7 @@ ieee_test_7066 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7067 = {
     set_temp_variable = { arg_a = -1083914.359 }
@@ -1697,7 +1697,7 @@ ieee_test_7067 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7068 = {
     set_temp_variable = { arg_a = 1063569.289 }
@@ -1722,7 +1722,7 @@ ieee_test_7068 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7069 = {
     set_temp_variable = { arg_a = -1083914.359 }
@@ -1747,7 +1747,7 @@ ieee_test_7069 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7070 = {
     set_temp_variable = { arg_a = 1063569.289 }
@@ -1772,7 +1772,7 @@ ieee_test_7070 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7071 = {
     set_temp_variable = { arg_a = -1083914.359 }
@@ -1797,7 +1797,7 @@ ieee_test_7071 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7072 = {
     set_temp_variable = { arg_a = 1063569.289 }
@@ -1822,7 +1822,7 @@ ieee_test_7072 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7073 = {
     set_temp_variable = { arg_a = -1083914.359 }
@@ -1847,7 +1847,7 @@ ieee_test_7073 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7074 = {
     set_temp_variable = { arg_a = 1063569.289 }
@@ -1872,7 +1872,7 @@ ieee_test_7074 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7075 = {
     set_temp_variable = { arg_a = -1083914.359 }
@@ -1897,7 +1897,7 @@ ieee_test_7075 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7076 = {
     set_temp_variable = { arg_a = 1063569.289 }
@@ -1922,7 +1922,7 @@ ieee_test_7076 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7077 = {
     set_temp_variable = { arg_a = -1083914.359 }
@@ -1947,7 +1947,7 @@ ieee_test_7077 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7078 = {
     set_temp_variable = { arg_a = 1063569.289 }
@@ -1972,7 +1972,7 @@ ieee_test_7078 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7079 = {
     set_temp_variable = { arg_a = -1083914.359 }
@@ -1997,7 +1997,7 @@ ieee_test_7079 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 # LOVAL Cases(subnormals)
 ieee_test_7080 = {
@@ -2023,7 +2023,7 @@ ieee_test_7080 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7081 = {
     set_temp_variable = { arg_a = -2142941.735 }
@@ -2048,7 +2048,7 @@ ieee_test_7081 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7082 = {
     set_temp_variable = { arg_a = 4541.913 }
@@ -2073,7 +2073,7 @@ ieee_test_7082 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7083 = {
     set_temp_variable = { arg_a = -2142941.735 }
@@ -2098,7 +2098,7 @@ ieee_test_7083 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7084 = {
     set_temp_variable = { arg_a = 4541.913 }
@@ -2123,7 +2123,7 @@ ieee_test_7084 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7085 = {
     set_temp_variable = { arg_a = -2142941.735 }
@@ -2148,7 +2148,7 @@ ieee_test_7085 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7086 = {
     set_temp_variable = { arg_a = 4541.913 }
@@ -2173,7 +2173,7 @@ ieee_test_7086 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7087 = {
     set_temp_variable = { arg_a = -2142941.735 }
@@ -2198,7 +2198,7 @@ ieee_test_7087 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7088 = {
     set_temp_variable = { arg_a = 9284.986 }
@@ -2223,7 +2223,7 @@ ieee_test_7088 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7089 = {
     set_temp_variable = { arg_a = -2138198.662 }
@@ -2248,7 +2248,7 @@ ieee_test_7089 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7090 = {
     set_temp_variable = { arg_a = 9284.986 }
@@ -2273,7 +2273,7 @@ ieee_test_7090 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7091 = {
     set_temp_variable = { arg_a = -2138198.662 }
@@ -2298,7 +2298,7 @@ ieee_test_7091 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7092 = {
     set_temp_variable = { arg_a = 9284.986 }
@@ -2323,7 +2323,7 @@ ieee_test_7092 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7093 = {
     set_temp_variable = { arg_a = -2138198.662 }
@@ -2348,7 +2348,7 @@ ieee_test_7093 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7094 = {
     set_temp_variable = { arg_a = 9284.986 }
@@ -2373,7 +2373,7 @@ ieee_test_7094 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7095 = {
     set_temp_variable = { arg_a = -2138198.662 }
@@ -2398,7 +2398,7 @@ ieee_test_7095 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7096 = {
     set_temp_variable = { arg_a = 9284.986 }
@@ -2423,7 +2423,7 @@ ieee_test_7096 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7097 = {
     set_temp_variable = { arg_a = -2138198.662 }
@@ -2448,7 +2448,7 @@ ieee_test_7097 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7098 = {
     set_temp_variable = { arg_a = 9284.986 }
@@ -2473,7 +2473,7 @@ ieee_test_7098 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7099 = {
     set_temp_variable = { arg_a = -2138198.662 }
@@ -2498,7 +2498,7 @@ ieee_test_7099 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7100 = {
     set_temp_variable = { arg_a = 9284.986 }
@@ -2523,7 +2523,7 @@ ieee_test_7100 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7101 = {
     set_temp_variable = { arg_a = -2138198.662 }
@@ -2548,7 +2548,7 @@ ieee_test_7101 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7102 = {
     set_temp_variable = { arg_a = 9284.986 }
@@ -2573,7 +2573,7 @@ ieee_test_7102 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7103 = {
     set_temp_variable = { arg_a = -2138198.662 }
@@ -2598,7 +2598,7 @@ ieee_test_7103 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7104 = {
     set_temp_variable = { arg_a = 16887.119 }
@@ -2623,7 +2623,7 @@ ieee_test_7104 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7105 = {
     set_temp_variable = { arg_a = -2130596.529 }
@@ -2648,7 +2648,7 @@ ieee_test_7105 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7106 = {
     set_temp_variable = { arg_a = 16887.119 }
@@ -2673,7 +2673,7 @@ ieee_test_7106 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7107 = {
     set_temp_variable = { arg_a = -2130596.529 }
@@ -2698,7 +2698,7 @@ ieee_test_7107 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7108 = {
     set_temp_variable = { arg_a = 16887.119 }
@@ -2723,7 +2723,7 @@ ieee_test_7108 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7109 = {
     set_temp_variable = { arg_a = -2130596.529 }
@@ -2748,7 +2748,7 @@ ieee_test_7109 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7110 = {
     set_temp_variable = { arg_a = 16887.119 }
@@ -2773,7 +2773,7 @@ ieee_test_7110 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7111 = {
     set_temp_variable = { arg_a = -2130596.529 }
@@ -2798,7 +2798,7 @@ ieee_test_7111 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7112 = {
     set_temp_variable = { arg_a = 16887.119 }
@@ -2823,7 +2823,7 @@ ieee_test_7112 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7113 = {
     set_temp_variable = { arg_a = -2130596.529 }
@@ -2848,7 +2848,7 @@ ieee_test_7113 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7114 = {
     set_temp_variable = { arg_a = 16887.119 }
@@ -2873,7 +2873,7 @@ ieee_test_7114 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7115 = {
     set_temp_variable = { arg_a = -2130596.529 }
@@ -2898,7 +2898,7 @@ ieee_test_7115 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7116 = {
     set_temp_variable = { arg_a = 16887.119 }
@@ -2923,7 +2923,7 @@ ieee_test_7116 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7117 = {
     set_temp_variable = { arg_a = -2130596.529 }
@@ -2948,7 +2948,7 @@ ieee_test_7117 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7118 = {
     set_temp_variable = { arg_a = 16887.119 }
@@ -2973,7 +2973,7 @@ ieee_test_7118 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7119 = {
     set_temp_variable = { arg_a = -2130596.529 }
@@ -2998,7 +2998,7 @@ ieee_test_7119 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7120 = {
     set_temp_variable = { arg_a = 16887.119 }
@@ -3023,7 +3023,7 @@ ieee_test_7120 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7121 = {
     set_temp_variable = { arg_a = -2130596.529 }
@@ -3048,7 +3048,7 @@ ieee_test_7121 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7122 = {
     set_temp_variable = { arg_a = 16887.119 }
@@ -3073,7 +3073,7 @@ ieee_test_7122 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7123 = {
     set_temp_variable = { arg_a = -2130596.529 }
@@ -3098,7 +3098,7 @@ ieee_test_7123 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7124 = {
     set_temp_variable = { arg_a = 16887.119 }
@@ -3123,7 +3123,7 @@ ieee_test_7124 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7125 = {
     set_temp_variable = { arg_a = -2130596.529 }
@@ -3148,7 +3148,7 @@ ieee_test_7125 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7126 = {
     set_temp_variable = { arg_a = 16887.119 }
@@ -3173,7 +3173,7 @@ ieee_test_7126 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7127 = {
     set_temp_variable = { arg_a = -2130596.529 }
@@ -3198,7 +3198,7 @@ ieee_test_7127 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 # HIVAL Cases(infinities)
 ieee_test_7128 = {
@@ -3224,7 +3224,7 @@ ieee_test_7128 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7129 = {
     set_temp_variable = { arg_a = -10228.657 }
@@ -3249,7 +3249,7 @@ ieee_test_7129 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7130 = {
     set_temp_variable = { arg_a = 2137254.991 }
@@ -3274,7 +3274,7 @@ ieee_test_7130 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7131 = {
     set_temp_variable = { arg_a = -10228.657 }
@@ -3299,7 +3299,7 @@ ieee_test_7131 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7132 = {
     set_temp_variable = { arg_a = 2137254.991 }
@@ -3324,7 +3324,7 @@ ieee_test_7132 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7133 = {
     set_temp_variable = { arg_a = -10228.657 }
@@ -3349,7 +3349,7 @@ ieee_test_7133 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7134 = {
     set_temp_variable = { arg_a = 2137254.991 }
@@ -3374,7 +3374,7 @@ ieee_test_7134 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7135 = {
     set_temp_variable = { arg_a = -10228.657 }
@@ -3399,7 +3399,7 @@ ieee_test_7135 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7136 = {
     set_temp_variable = { arg_a = 2116807.759 }
@@ -3424,7 +3424,7 @@ ieee_test_7136 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7137 = {
     set_temp_variable = { arg_a = -30675.889 }
@@ -3449,7 +3449,7 @@ ieee_test_7137 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7138 = {
     set_temp_variable = { arg_a = 2116807.759 }
@@ -3474,7 +3474,7 @@ ieee_test_7138 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7139 = {
     set_temp_variable = { arg_a = -30675.889 }
@@ -3499,7 +3499,7 @@ ieee_test_7139 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7140 = {
     set_temp_variable = { arg_a = 2116807.759 }
@@ -3524,7 +3524,7 @@ ieee_test_7140 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7141 = {
     set_temp_variable = { arg_a = -30675.889 }
@@ -3549,7 +3549,7 @@ ieee_test_7141 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7142 = {
     set_temp_variable = { arg_a = 2116807.759 }
@@ -3574,7 +3574,7 @@ ieee_test_7142 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7143 = {
     set_temp_variable = { arg_a = -30675.889 }
@@ -3599,7 +3599,7 @@ ieee_test_7143 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7144 = {
     set_temp_variable = { arg_a = 2116807.759 }
@@ -3624,7 +3624,7 @@ ieee_test_7144 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7145 = {
     set_temp_variable = { arg_a = -30675.889 }
@@ -3649,7 +3649,7 @@ ieee_test_7145 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7146 = {
     set_temp_variable = { arg_a = 2116807.759 }
@@ -3674,7 +3674,7 @@ ieee_test_7146 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7147 = {
     set_temp_variable = { arg_a = -30675.889 }
@@ -3699,7 +3699,7 @@ ieee_test_7147 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7148 = {
     set_temp_variable = { arg_a = 2116807.759 }
@@ -3724,7 +3724,7 @@ ieee_test_7148 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7149 = {
     set_temp_variable = { arg_a = -30675.889 }
@@ -3749,7 +3749,7 @@ ieee_test_7149 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7150 = {
     set_temp_variable = { arg_a = 2116807.759 }
@@ -3774,7 +3774,7 @@ ieee_test_7150 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7151 = {
     set_temp_variable = { arg_a = -30675.889 }
@@ -3799,7 +3799,7 @@ ieee_test_7151 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 # IGNOR Cases(magnitude disparities)
 ieee_test_7152 = {
@@ -3825,7 +3825,7 @@ ieee_test_7152 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7153 = {
     set_temp_variable = { arg_a = -10228.657 }
@@ -3850,7 +3850,7 @@ ieee_test_7153 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7154 = {
     set_temp_variable = { arg_a = 2137254.991 }
@@ -3875,7 +3875,7 @@ ieee_test_7154 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7155 = {
     set_temp_variable = { arg_a = -10228.657 }
@@ -3900,7 +3900,7 @@ ieee_test_7155 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7156 = {
     set_temp_variable = { arg_a = 2137254.991 }
@@ -3925,7 +3925,7 @@ ieee_test_7156 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7157 = {
     set_temp_variable = { arg_a = -10228.657 }
@@ -3950,7 +3950,7 @@ ieee_test_7157 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7158 = {
     set_temp_variable = { arg_a = 2137254.991 }
@@ -3975,7 +3975,7 @@ ieee_test_7158 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7159 = {
     set_temp_variable = { arg_a = -10228.657 }
@@ -4000,7 +4000,7 @@ ieee_test_7159 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7160 = {
     set_temp_variable = { arg_a = 2137254.991 }
@@ -4025,7 +4025,7 @@ ieee_test_7160 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7161 = {
     set_temp_variable = { arg_a = -10228.657 }
@@ -4050,7 +4050,7 @@ ieee_test_7161 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7162 = {
     set_temp_variable = { arg_a = 2137254.991 }
@@ -4075,7 +4075,7 @@ ieee_test_7162 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7163 = {
     set_temp_variable = { arg_a = -10228.657 }
@@ -4100,7 +4100,7 @@ ieee_test_7163 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7164 = {
     set_temp_variable = { arg_a = 2137254.991 }
@@ -4125,7 +4125,7 @@ ieee_test_7164 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7165 = {
     set_temp_variable = { arg_a = -10228.657 }
@@ -4150,7 +4150,7 @@ ieee_test_7165 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7166 = {
     set_temp_variable = { arg_a = 2137254.991 }
@@ -4175,7 +4175,7 @@ ieee_test_7166 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7167 = {
     set_temp_variable = { arg_a = -10228.657 }
@@ -4200,7 +4200,7 @@ ieee_test_7167 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7168 = {
     set_temp_variable = { arg_a = 2137254.991 }
@@ -4225,7 +4225,7 @@ ieee_test_7168 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7169 = {
     set_temp_variable = { arg_a = -10228.657 }
@@ -4250,7 +4250,7 @@ ieee_test_7169 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7170 = {
     set_temp_variable = { arg_a = 2137254.991 }
@@ -4275,7 +4275,7 @@ ieee_test_7170 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7171 = {
     set_temp_variable = { arg_a = -10228.657 }
@@ -4300,7 +4300,7 @@ ieee_test_7171 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7172 = {
     set_temp_variable = { arg_a = 2137254.991 }
@@ -4325,7 +4325,7 @@ ieee_test_7172 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7173 = {
     set_temp_variable = { arg_a = -10228.657 }
@@ -4350,7 +4350,7 @@ ieee_test_7173 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7174 = {
     set_temp_variable = { arg_a = 2137254.991 }
@@ -4375,7 +4375,7 @@ ieee_test_7174 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7175 = {
     set_temp_variable = { arg_a = -10228.657 }
@@ -4400,7 +4400,7 @@ ieee_test_7175 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7176 = {
     set_temp_variable = { arg_a = 4541.913 }
@@ -4425,7 +4425,7 @@ ieee_test_7176 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7177 = {
     set_temp_variable = { arg_a = -2142941.735 }
@@ -4450,7 +4450,7 @@ ieee_test_7177 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7178 = {
     set_temp_variable = { arg_a = 4541.913 }
@@ -4475,7 +4475,7 @@ ieee_test_7178 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7179 = {
     set_temp_variable = { arg_a = -2142941.735 }
@@ -4500,7 +4500,7 @@ ieee_test_7179 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7180 = {
     set_temp_variable = { arg_a = 4541.913 }
@@ -4525,7 +4525,7 @@ ieee_test_7180 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7181 = {
     set_temp_variable = { arg_a = -2142941.735 }
@@ -4550,7 +4550,7 @@ ieee_test_7181 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7182 = {
     set_temp_variable = { arg_a = 4541.913 }
@@ -4575,7 +4575,7 @@ ieee_test_7182 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7183 = {
     set_temp_variable = { arg_a = -2142941.735 }
@@ -4600,7 +4600,7 @@ ieee_test_7183 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7184 = {
     set_temp_variable = { arg_a = 9284.986 }
@@ -4625,7 +4625,7 @@ ieee_test_7184 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7185 = {
     set_temp_variable = { arg_a = -2138198.662 }
@@ -4650,7 +4650,7 @@ ieee_test_7185 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7186 = {
     set_temp_variable = { arg_a = 9284.986 }
@@ -4675,7 +4675,7 @@ ieee_test_7186 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7187 = {
     set_temp_variable = { arg_a = -2138198.662 }
@@ -4700,7 +4700,7 @@ ieee_test_7187 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7188 = {
     set_temp_variable = { arg_a = 9284.986 }
@@ -4725,7 +4725,7 @@ ieee_test_7188 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7189 = {
     set_temp_variable = { arg_a = -2138198.662 }
@@ -4750,7 +4750,7 @@ ieee_test_7189 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7190 = {
     set_temp_variable = { arg_a = 9284.986 }
@@ -4775,7 +4775,7 @@ ieee_test_7190 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7191 = {
     set_temp_variable = { arg_a = -2138198.662 }
@@ -4800,7 +4800,7 @@ ieee_test_7191 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7192 = {
     set_temp_variable = { arg_a = 16887.119 }
@@ -4825,7 +4825,7 @@ ieee_test_7192 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7193 = {
     set_temp_variable = { arg_a = -2130596.529 }
@@ -4850,7 +4850,7 @@ ieee_test_7193 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7194 = {
     set_temp_variable = { arg_a = 16887.119 }
@@ -4875,7 +4875,7 @@ ieee_test_7194 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7195 = {
     set_temp_variable = { arg_a = -2130596.529 }
@@ -4900,7 +4900,7 @@ ieee_test_7195 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7196 = {
     set_temp_variable = { arg_a = 16887.119 }
@@ -4925,7 +4925,7 @@ ieee_test_7196 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7197 = {
     set_temp_variable = { arg_a = -2130596.529 }
@@ -4950,7 +4950,7 @@ ieee_test_7197 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7198 = {
     set_temp_variable = { arg_a = 16887.119 }
@@ -4975,7 +4975,7 @@ ieee_test_7198 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7199 = {
     set_temp_variable = { arg_a = -2130596.529 }
@@ -5000,7 +5000,7 @@ ieee_test_7199 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 # SPECL Cases(infinities, NaNs)
 ieee_test_7200 = {
@@ -5026,7 +5026,7 @@ ieee_test_7200 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7201 = {
     set_temp_variable = { arg_a = 2139095.040 }
@@ -5051,7 +5051,7 @@ ieee_test_7201 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7202 = {
     set_temp_variable = { arg_a = 2139095.040 }
@@ -5076,7 +5076,7 @@ ieee_test_7202 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7203 = {
     set_temp_variable = { arg_a = 2139095.040 }
@@ -5101,7 +5101,7 @@ ieee_test_7203 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7204 = {
     set_temp_variable = { arg_a = 2139095.040 }
@@ -5126,7 +5126,7 @@ ieee_test_7204 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7205 = {
     set_temp_variable = { arg_a = 2139095.040 }
@@ -5151,7 +5151,7 @@ ieee_test_7205 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7206 = {
     set_temp_variable = { arg_a = 2139095.040 }
@@ -5176,7 +5176,7 @@ ieee_test_7206 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7207 = {
     set_temp_variable = { arg_a = 2139095.040 }
@@ -5201,7 +5201,7 @@ ieee_test_7207 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7208 = {
     set_temp_variable = { arg_a = 2139095.040 }
@@ -5226,7 +5226,7 @@ ieee_test_7208 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7209 = {
     set_temp_variable = { arg_a = 2139095.040 }
@@ -5251,7 +5251,7 @@ ieee_test_7209 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7210 = {
     set_temp_variable = { arg_a = 2139095.040 }
@@ -5276,7 +5276,7 @@ ieee_test_7210 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7211 = {
     set_temp_variable = { arg_a = 2139095.040 }
@@ -5301,7 +5301,7 @@ ieee_test_7211 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7212 = {
     set_temp_variable = { arg_a = 2139095.040 }
@@ -5326,7 +5326,7 @@ ieee_test_7212 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7213 = {
     set_temp_variable = { arg_a = 2139095.040 }
@@ -5351,7 +5351,7 @@ ieee_test_7213 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7214 = {
     set_temp_variable = { arg_a = 2139095.040 }
@@ -5376,7 +5376,7 @@ ieee_test_7214 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7215 = {
     set_temp_variable = { arg_a = 2139095.040 }
@@ -5401,7 +5401,7 @@ ieee_test_7215 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7216 = {
     set_temp_variable = { arg_a = 2139095.040 }
@@ -5426,7 +5426,7 @@ ieee_test_7216 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7217 = {
     set_temp_variable = { arg_a = 2139095.040 }
@@ -5451,7 +5451,7 @@ ieee_test_7217 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7218 = {
     set_temp_variable = { arg_a = -8388.608 }
@@ -5476,7 +5476,7 @@ ieee_test_7218 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7219 = {
     set_temp_variable = { arg_a = -8388.608 }
@@ -5501,7 +5501,7 @@ ieee_test_7219 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7220 = {
     set_temp_variable = { arg_a = -8388.608 }
@@ -5526,7 +5526,7 @@ ieee_test_7220 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7221 = {
     set_temp_variable = { arg_a = -8388.608 }
@@ -5551,7 +5551,7 @@ ieee_test_7221 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7222 = {
     set_temp_variable = { arg_a = -8388.608 }
@@ -5576,7 +5576,7 @@ ieee_test_7222 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7223 = {
     set_temp_variable = { arg_a = -8388.608 }
@@ -5601,7 +5601,7 @@ ieee_test_7223 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7224 = {
     set_temp_variable = { arg_a = -8388.608 }
@@ -5626,7 +5626,7 @@ ieee_test_7224 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7225 = {
     set_temp_variable = { arg_a = -8388.608 }
@@ -5651,7 +5651,7 @@ ieee_test_7225 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7226 = {
     set_temp_variable = { arg_a = -8388.608 }
@@ -5676,7 +5676,7 @@ ieee_test_7226 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7227 = {
     set_temp_variable = { arg_a = -8388.608 }
@@ -5701,7 +5701,7 @@ ieee_test_7227 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7228 = {
     set_temp_variable = { arg_a = -8388.608 }
@@ -5726,7 +5726,7 @@ ieee_test_7228 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7229 = {
     set_temp_variable = { arg_a = -8388.608 }
@@ -5751,7 +5751,7 @@ ieee_test_7229 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7230 = {
     set_temp_variable = { arg_a = -8388.608 }
@@ -5776,7 +5776,7 @@ ieee_test_7230 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7231 = {
     set_temp_variable = { arg_a = -8388.608 }
@@ -5801,7 +5801,7 @@ ieee_test_7231 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7232 = {
     set_temp_variable = { arg_a = -8388.608 }
@@ -5826,7 +5826,7 @@ ieee_test_7232 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7233 = {
     set_temp_variable = { arg_a = -8388.608 }
@@ -5851,7 +5851,7 @@ ieee_test_7233 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7234 = {
     set_temp_variable = { arg_a = -8388.608 }
@@ -5876,7 +5876,7 @@ ieee_test_7234 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7235 = {
     set_temp_variable = { arg_a = -8388.608 }
@@ -5901,7 +5901,7 @@ ieee_test_7235 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7236 = {
     set_temp_variable = { arg_a = 2143289.344 }
@@ -5934,7 +5934,7 @@ ieee_test_7236 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7237 = {
     set_temp_variable = { arg_a = 2143289.344 }
@@ -5967,7 +5967,7 @@ ieee_test_7237 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7238 = {
     set_temp_variable = { arg_a = 2143289.344 }
@@ -6000,7 +6000,7 @@ ieee_test_7238 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7239 = {
     set_temp_variable = { arg_a = 2143289.344 }
@@ -6033,7 +6033,7 @@ ieee_test_7239 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7240 = {
     set_temp_variable = { arg_a = 2143289.344 }
@@ -6066,7 +6066,7 @@ ieee_test_7240 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7241 = {
     set_temp_variable = { arg_a = 2143289.344 }
@@ -6099,7 +6099,7 @@ ieee_test_7241 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7242 = {
     set_temp_variable = { arg_a = 2143289.344 }
@@ -6132,7 +6132,7 @@ ieee_test_7242 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7243 = {
     set_temp_variable = { arg_a = 2143289.344 }
@@ -6165,7 +6165,7 @@ ieee_test_7243 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7244 = {
     set_temp_variable = { arg_a = 2143289.344 }
@@ -6198,7 +6198,7 @@ ieee_test_7244 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7245 = {
     set_temp_variable = { arg_a = 2143289.344 }
@@ -6231,7 +6231,7 @@ ieee_test_7245 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7246 = {
     set_temp_variable = { arg_a = 2143289.344 }
@@ -6264,7 +6264,7 @@ ieee_test_7246 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7247 = {
     set_temp_variable = { arg_a = 2143289.344 }
@@ -6297,7 +6297,7 @@ ieee_test_7247 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7248 = {
     set_temp_variable = { arg_a = 2143289.344 }
@@ -6330,7 +6330,7 @@ ieee_test_7248 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7249 = {
     set_temp_variable = { arg_a = 2143289.344 }
@@ -6363,7 +6363,7 @@ ieee_test_7249 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7250 = {
     set_temp_variable = { arg_a = 2143289.344 }
@@ -6396,7 +6396,7 @@ ieee_test_7250 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7251 = {
     set_temp_variable = { arg_a = 2143289.344 }
@@ -6429,7 +6429,7 @@ ieee_test_7251 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7252 = {
     set_temp_variable = { arg_a = 2143289.344 }
@@ -6462,7 +6462,7 @@ ieee_test_7252 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7253 = {
     set_temp_variable = { arg_a = 2143289.344 }
@@ -6495,7 +6495,7 @@ ieee_test_7253 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7254 = {
     set_temp_variable = { arg_a = 1260068.374 }
@@ -6520,7 +6520,7 @@ ieee_test_7254 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7255 = {
     set_temp_variable = { arg_a = 1260068.374 }
@@ -6545,7 +6545,7 @@ ieee_test_7255 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7256 = {
     set_temp_variable = { arg_a = 1260068.374 }
@@ -6570,7 +6570,7 @@ ieee_test_7256 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7257 = {
     set_temp_variable = { arg_a = 1260068.374 }
@@ -6595,7 +6595,7 @@ ieee_test_7257 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7258 = {
     set_temp_variable = { arg_a = 1260068.374 }
@@ -6628,7 +6628,7 @@ ieee_test_7258 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7259 = {
     set_temp_variable = { arg_a = 1260068.374 }
@@ -6661,7 +6661,7 @@ ieee_test_7259 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7260 = {
     set_temp_variable = { arg_a = 1259926.807 }
@@ -6686,7 +6686,7 @@ ieee_test_7260 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7261 = {
     set_temp_variable = { arg_a = 1259926.807 }
@@ -6711,7 +6711,7 @@ ieee_test_7261 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7262 = {
     set_temp_variable = { arg_a = 1259926.807 }
@@ -6736,7 +6736,7 @@ ieee_test_7262 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7263 = {
     set_temp_variable = { arg_a = 1259926.807 }
@@ -6761,7 +6761,7 @@ ieee_test_7263 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7264 = {
     set_temp_variable = { arg_a = 1259926.807 }
@@ -6794,7 +6794,7 @@ ieee_test_7264 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7265 = {
     set_temp_variable = { arg_a = 1259926.807 }
@@ -6827,7 +6827,7 @@ ieee_test_7265 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7266 = {
     set_temp_variable = { arg_a = 1056964.608 }
@@ -6852,7 +6852,7 @@ ieee_test_7266 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7267 = {
     set_temp_variable = { arg_a = 1056964.608 }
@@ -6877,7 +6877,7 @@ ieee_test_7267 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7268 = {
     set_temp_variable = { arg_a = 1056964.608 }
@@ -6902,7 +6902,7 @@ ieee_test_7268 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7269 = {
     set_temp_variable = { arg_a = 1056964.608 }
@@ -6927,7 +6927,7 @@ ieee_test_7269 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7270 = {
     set_temp_variable = { arg_a = 1056964.608 }
@@ -6960,7 +6960,7 @@ ieee_test_7270 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7271 = {
     set_temp_variable = { arg_a = 1056964.608 }
@@ -6993,7 +6993,7 @@ ieee_test_7271 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7272 = {
     set_temp_variable = { arg_a = 1063569.289 }
@@ -7018,7 +7018,7 @@ ieee_test_7272 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7273 = {
     set_temp_variable = { arg_a = 1063569.289 }
@@ -7043,7 +7043,7 @@ ieee_test_7273 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7274 = {
     set_temp_variable = { arg_a = 1063569.289 }
@@ -7068,7 +7068,7 @@ ieee_test_7274 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7275 = {
     set_temp_variable = { arg_a = 1063569.289 }
@@ -7093,7 +7093,7 @@ ieee_test_7275 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7276 = {
     set_temp_variable = { arg_a = 1063569.289 }
@@ -7126,7 +7126,7 @@ ieee_test_7276 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7277 = {
     set_temp_variable = { arg_a = 1063569.289 }
@@ -7159,7 +7159,7 @@ ieee_test_7277 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7278 = {
     set_temp_variable = { arg_a = 4541.913 }
@@ -7184,7 +7184,7 @@ ieee_test_7278 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7279 = {
     set_temp_variable = { arg_a = 4541.913 }
@@ -7209,7 +7209,7 @@ ieee_test_7279 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7280 = {
     set_temp_variable = { arg_a = 4541.913 }
@@ -7234,7 +7234,7 @@ ieee_test_7280 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7281 = {
     set_temp_variable = { arg_a = 4541.913 }
@@ -7259,7 +7259,7 @@ ieee_test_7281 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7282 = {
     set_temp_variable = { arg_a = 4541.913 }
@@ -7292,7 +7292,7 @@ ieee_test_7282 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7283 = {
     set_temp_variable = { arg_a = 4541.913 }
@@ -7325,7 +7325,7 @@ ieee_test_7283 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7284 = {
     set_temp_variable = { arg_a = 9284.986 }
@@ -7350,7 +7350,7 @@ ieee_test_7284 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7285 = {
     set_temp_variable = { arg_a = 9284.986 }
@@ -7375,7 +7375,7 @@ ieee_test_7285 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7286 = {
     set_temp_variable = { arg_a = 9284.986 }
@@ -7400,7 +7400,7 @@ ieee_test_7286 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7287 = {
     set_temp_variable = { arg_a = 9284.986 }
@@ -7425,7 +7425,7 @@ ieee_test_7287 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7288 = {
     set_temp_variable = { arg_a = 9284.986 }
@@ -7458,7 +7458,7 @@ ieee_test_7288 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7289 = {
     set_temp_variable = { arg_a = 9284.986 }
@@ -7491,7 +7491,7 @@ ieee_test_7289 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7290 = {
     set_temp_variable = { arg_a = 16887.119 }
@@ -7516,7 +7516,7 @@ ieee_test_7290 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7291 = {
     set_temp_variable = { arg_a = 16887.119 }
@@ -7541,7 +7541,7 @@ ieee_test_7291 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7292 = {
     set_temp_variable = { arg_a = 16887.119 }
@@ -7566,7 +7566,7 @@ ieee_test_7292 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7293 = {
     set_temp_variable = { arg_a = 16887.119 }
@@ -7591,7 +7591,7 @@ ieee_test_7293 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7294 = {
     set_temp_variable = { arg_a = 16887.119 }
@@ -7624,7 +7624,7 @@ ieee_test_7294 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7295 = {
     set_temp_variable = { arg_a = 16887.119 }
@@ -7657,7 +7657,7 @@ ieee_test_7295 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7296 = {
     set_temp_variable = { arg_a = 2137254.991 }
@@ -7682,7 +7682,7 @@ ieee_test_7296 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7297 = {
     set_temp_variable = { arg_a = 2137254.991 }
@@ -7707,7 +7707,7 @@ ieee_test_7297 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7298 = {
     set_temp_variable = { arg_a = 2137254.991 }
@@ -7732,7 +7732,7 @@ ieee_test_7298 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7299 = {
     set_temp_variable = { arg_a = 2137254.991 }
@@ -7757,7 +7757,7 @@ ieee_test_7299 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7300 = {
     set_temp_variable = { arg_a = 2137254.991 }
@@ -7790,7 +7790,7 @@ ieee_test_7300 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7301 = {
     set_temp_variable = { arg_a = 2137254.991 }
@@ -7823,7 +7823,7 @@ ieee_test_7301 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7302 = {
     set_temp_variable = { arg_a = 2116807.759 }
@@ -7848,7 +7848,7 @@ ieee_test_7302 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7303 = {
     set_temp_variable = { arg_a = 2116807.759 }
@@ -7873,7 +7873,7 @@ ieee_test_7303 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7304 = {
     set_temp_variable = { arg_a = 2116807.759 }
@@ -7898,7 +7898,7 @@ ieee_test_7304 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7305 = {
     set_temp_variable = { arg_a = 2116807.759 }
@@ -7923,7 +7923,7 @@ ieee_test_7305 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7306 = {
     set_temp_variable = { arg_a = 2116807.759 }
@@ -7956,7 +7956,7 @@ ieee_test_7306 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7307 = {
     set_temp_variable = { arg_a = 2116807.759 }
@@ -7989,7 +7989,7 @@ ieee_test_7307 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7308 = {
     set_temp_variable = { arg_a = 2139095.040 }
@@ -8014,7 +8014,7 @@ ieee_test_7308 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7309 = {
     set_temp_variable = { arg_a = 2139095.040 }
@@ -8047,7 +8047,7 @@ ieee_test_7309 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7310 = {
     set_temp_variable = { arg_a = -8388.608 }
@@ -8080,7 +8080,7 @@ ieee_test_7310 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7311 = {
     set_temp_variable = { arg_a = -8388.608 }
@@ -8105,7 +8105,7 @@ ieee_test_7311 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7312 = {
     set_temp_variable = { arg_a = -8388.608 }
@@ -8130,7 +8130,7 @@ ieee_test_7312 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7313 = {
     set_temp_variable = { arg_a = -8388.608 }
@@ -8163,7 +8163,7 @@ ieee_test_7313 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7314 = {
     set_temp_variable = { arg_a = 2143289.344 }
@@ -8196,7 +8196,7 @@ ieee_test_7314 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7315 = {
     set_temp_variable = { arg_a = 2143289.344 }
@@ -8229,7 +8229,7 @@ ieee_test_7315 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7316 = {
     set_temp_variable = { arg_a = 2143289.344 }
@@ -8262,7 +8262,7 @@ ieee_test_7316 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7317 = {
     set_temp_variable = { arg_a = 2143289.344 }
@@ -8295,7 +8295,7 @@ ieee_test_7317 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7318 = {
     set_temp_variable = { arg_a = 2143289.344 }
@@ -8328,7 +8328,7 @@ ieee_test_7318 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7319 = {
     set_temp_variable = { arg_a = 2143289.344 }
@@ -8361,7 +8361,7 @@ ieee_test_7319 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 # ZEROS Cases
 ieee_test_7320 = {
@@ -8387,7 +8387,7 @@ ieee_test_7320 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7321 = {
     set_temp_variable = { arg_a = 0.000 }
@@ -8412,7 +8412,7 @@ ieee_test_7321 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7322 = {
     set_temp_variable = { arg_a = 0.000 }
@@ -8437,7 +8437,7 @@ ieee_test_7322 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7323 = {
     set_temp_variable = { arg_a = 0.000 }
@@ -8462,7 +8462,7 @@ ieee_test_7323 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7324 = {
     set_temp_variable = { arg_a = 0.000 }
@@ -8487,7 +8487,7 @@ ieee_test_7324 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7325 = {
     set_temp_variable = { arg_a = 0.000 }
@@ -8512,7 +8512,7 @@ ieee_test_7325 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7326 = {
     set_temp_variable = { arg_a = 0.000 }
@@ -8537,7 +8537,7 @@ ieee_test_7326 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7327 = {
     set_temp_variable = { arg_a = 0.000 }
@@ -8562,7 +8562,7 @@ ieee_test_7327 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7328 = {
     set_temp_variable = { arg_a = 0.000 }
@@ -8587,7 +8587,7 @@ ieee_test_7328 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7329 = {
     set_temp_variable = { arg_a = 0.000 }
@@ -8612,7 +8612,7 @@ ieee_test_7329 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7330 = {
     set_temp_variable = { arg_a = 0.000 }
@@ -8637,7 +8637,7 @@ ieee_test_7330 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7331 = {
     set_temp_variable = { arg_a = 0.000 }
@@ -8662,7 +8662,7 @@ ieee_test_7331 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7332 = {
     set_temp_variable = { arg_a = 0.000 }
@@ -8687,7 +8687,7 @@ ieee_test_7332 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7333 = {
     set_temp_variable = { arg_a = 0.000 }
@@ -8712,7 +8712,7 @@ ieee_test_7333 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7334 = {
     set_temp_variable = { arg_a = 0.000 }
@@ -8737,7 +8737,7 @@ ieee_test_7334 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7335 = {
     set_temp_variable = { arg_a = 0.000 }
@@ -8762,7 +8762,7 @@ ieee_test_7335 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7336 = {
     set_temp_variable = { arg_a = 0.000 }
@@ -8787,7 +8787,7 @@ ieee_test_7336 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7337 = {
     set_temp_variable = { arg_a = 0.000 }
@@ -8812,7 +8812,7 @@ ieee_test_7337 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7338 = {
     set_temp_variable = { arg_a = 0.000 }
@@ -8837,7 +8837,7 @@ ieee_test_7338 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7339 = {
     set_temp_variable = { arg_a = 0.000 }
@@ -8862,7 +8862,7 @@ ieee_test_7339 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7340 = {
     set_temp_variable = { arg_a = 0.000 }
@@ -8887,7 +8887,7 @@ ieee_test_7340 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7341 = {
     set_temp_variable = { arg_a = 0.000 }
@@ -8912,7 +8912,7 @@ ieee_test_7341 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7342 = {
     set_temp_variable = { arg_a = 0.000 }
@@ -8945,7 +8945,7 @@ ieee_test_7342 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7343 = {
     set_temp_variable = { arg_a = 0.000 }
@@ -8978,7 +8978,7 @@ ieee_test_7343 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7344 = {
     set_temp_variable = { arg_a = -2147483.648 }
@@ -9003,7 +9003,7 @@ ieee_test_7344 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7345 = {
     set_temp_variable = { arg_a = -2147483.648 }
@@ -9028,7 +9028,7 @@ ieee_test_7345 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7346 = {
     set_temp_variable = { arg_a = -2147483.648 }
@@ -9053,7 +9053,7 @@ ieee_test_7346 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7347 = {
     set_temp_variable = { arg_a = -2147483.648 }
@@ -9078,7 +9078,7 @@ ieee_test_7347 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7348 = {
     set_temp_variable = { arg_a = -2147483.648 }
@@ -9103,7 +9103,7 @@ ieee_test_7348 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7349 = {
     set_temp_variable = { arg_a = -2147483.648 }
@@ -9128,7 +9128,7 @@ ieee_test_7349 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7350 = {
     set_temp_variable = { arg_a = -2147483.648 }
@@ -9153,7 +9153,7 @@ ieee_test_7350 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7351 = {
     set_temp_variable = { arg_a = -2147483.648 }
@@ -9178,7 +9178,7 @@ ieee_test_7351 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7352 = {
     set_temp_variable = { arg_a = -2147483.648 }
@@ -9203,7 +9203,7 @@ ieee_test_7352 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7353 = {
     set_temp_variable = { arg_a = -2147483.648 }
@@ -9228,7 +9228,7 @@ ieee_test_7353 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7354 = {
     set_temp_variable = { arg_a = -2147483.648 }
@@ -9253,7 +9253,7 @@ ieee_test_7354 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7355 = {
     set_temp_variable = { arg_a = -2147483.648 }
@@ -9278,7 +9278,7 @@ ieee_test_7355 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7356 = {
     set_temp_variable = { arg_a = -2147483.648 }
@@ -9303,7 +9303,7 @@ ieee_test_7356 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7357 = {
     set_temp_variable = { arg_a = -2147483.648 }
@@ -9328,7 +9328,7 @@ ieee_test_7357 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7358 = {
     set_temp_variable = { arg_a = -2147483.648 }
@@ -9353,7 +9353,7 @@ ieee_test_7358 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7359 = {
     set_temp_variable = { arg_a = -2147483.648 }
@@ -9378,7 +9378,7 @@ ieee_test_7359 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7360 = {
     set_temp_variable = { arg_a = -2147483.648 }
@@ -9403,7 +9403,7 @@ ieee_test_7360 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7361 = {
     set_temp_variable = { arg_a = -2147483.648 }
@@ -9428,7 +9428,7 @@ ieee_test_7361 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7362 = {
     set_temp_variable = { arg_a = -2147483.648 }
@@ -9453,7 +9453,7 @@ ieee_test_7362 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7363 = {
     set_temp_variable = { arg_a = -2147483.648 }
@@ -9478,7 +9478,7 @@ ieee_test_7363 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7364 = {
     set_temp_variable = { arg_a = -2147483.648 }
@@ -9503,7 +9503,7 @@ ieee_test_7364 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7365 = {
     set_temp_variable = { arg_a = -2147483.648 }
@@ -9528,7 +9528,7 @@ ieee_test_7365 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7366 = {
     set_temp_variable = { arg_a = -2147483.648 }
@@ -9561,7 +9561,7 @@ ieee_test_7366 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7367 = {
     set_temp_variable = { arg_a = -2147483.648 }
@@ -9594,7 +9594,7 @@ ieee_test_7367 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7368 = {
     set_temp_variable = { arg_a = 1260068.374 }
@@ -9619,7 +9619,7 @@ ieee_test_7368 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7369 = {
     set_temp_variable = { arg_a = 1260068.374 }
@@ -9644,7 +9644,7 @@ ieee_test_7369 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7370 = {
     set_temp_variable = { arg_a = 1260068.374 }
@@ -9669,7 +9669,7 @@ ieee_test_7370 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7371 = {
     set_temp_variable = { arg_a = 1260068.374 }
@@ -9694,7 +9694,7 @@ ieee_test_7371 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7372 = {
     set_temp_variable = { arg_a = 1259926.807 }
@@ -9719,7 +9719,7 @@ ieee_test_7372 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7373 = {
     set_temp_variable = { arg_a = 1259926.807 }
@@ -9744,7 +9744,7 @@ ieee_test_7373 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7374 = {
     set_temp_variable = { arg_a = 1259926.807 }
@@ -9769,7 +9769,7 @@ ieee_test_7374 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7375 = {
     set_temp_variable = { arg_a = 1259926.807 }
@@ -9794,7 +9794,7 @@ ieee_test_7375 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7376 = {
     set_temp_variable = { arg_a = 1056964.608 }
@@ -9819,7 +9819,7 @@ ieee_test_7376 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7377 = {
     set_temp_variable = { arg_a = 1056964.608 }
@@ -9844,7 +9844,7 @@ ieee_test_7377 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7378 = {
     set_temp_variable = { arg_a = 1056964.608 }
@@ -9869,7 +9869,7 @@ ieee_test_7378 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7379 = {
     set_temp_variable = { arg_a = 1056964.608 }
@@ -9894,7 +9894,7 @@ ieee_test_7379 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7380 = {
     set_temp_variable = { arg_a = 1063569.289 }
@@ -9919,7 +9919,7 @@ ieee_test_7380 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7381 = {
     set_temp_variable = { arg_a = 1063569.289 }
@@ -9944,7 +9944,7 @@ ieee_test_7381 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7382 = {
     set_temp_variable = { arg_a = 1063569.289 }
@@ -9969,7 +9969,7 @@ ieee_test_7382 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7383 = {
     set_temp_variable = { arg_a = 1063569.289 }
@@ -9994,7 +9994,7 @@ ieee_test_7383 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7384 = {
     set_temp_variable = { arg_a = 4541.913 }
@@ -10019,7 +10019,7 @@ ieee_test_7384 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7385 = {
     set_temp_variable = { arg_a = 4541.913 }
@@ -10044,7 +10044,7 @@ ieee_test_7385 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7386 = {
     set_temp_variable = { arg_a = 4541.913 }
@@ -10069,7 +10069,7 @@ ieee_test_7386 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7387 = {
     set_temp_variable = { arg_a = 4541.913 }
@@ -10094,7 +10094,7 @@ ieee_test_7387 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7388 = {
     set_temp_variable = { arg_a = 9284.986 }
@@ -10119,7 +10119,7 @@ ieee_test_7388 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7389 = {
     set_temp_variable = { arg_a = 9284.986 }
@@ -10144,7 +10144,7 @@ ieee_test_7389 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7390 = {
     set_temp_variable = { arg_a = 9284.986 }
@@ -10169,7 +10169,7 @@ ieee_test_7390 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7391 = {
     set_temp_variable = { arg_a = 9284.986 }
@@ -10194,7 +10194,7 @@ ieee_test_7391 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7392 = {
     set_temp_variable = { arg_a = 16887.119 }
@@ -10219,7 +10219,7 @@ ieee_test_7392 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7393 = {
     set_temp_variable = { arg_a = 16887.119 }
@@ -10244,7 +10244,7 @@ ieee_test_7393 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7394 = {
     set_temp_variable = { arg_a = 16887.119 }
@@ -10269,7 +10269,7 @@ ieee_test_7394 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7395 = {
     set_temp_variable = { arg_a = 16887.119 }
@@ -10294,7 +10294,7 @@ ieee_test_7395 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7396 = {
     set_temp_variable = { arg_a = 2137254.991 }
@@ -10319,7 +10319,7 @@ ieee_test_7396 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7397 = {
     set_temp_variable = { arg_a = 2137254.991 }
@@ -10344,7 +10344,7 @@ ieee_test_7397 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7398 = {
     set_temp_variable = { arg_a = 2137254.991 }
@@ -10369,7 +10369,7 @@ ieee_test_7398 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7399 = {
     set_temp_variable = { arg_a = 2137254.991 }
@@ -10394,7 +10394,7 @@ ieee_test_7399 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7400 = {
     set_temp_variable = { arg_a = 2116807.759 }
@@ -10419,7 +10419,7 @@ ieee_test_7400 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7401 = {
     set_temp_variable = { arg_a = 2116807.759 }
@@ -10444,7 +10444,7 @@ ieee_test_7401 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7402 = {
     set_temp_variable = { arg_a = 2116807.759 }
@@ -10469,7 +10469,7 @@ ieee_test_7402 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7403 = {
     set_temp_variable = { arg_a = 2116807.759 }
@@ -10494,7 +10494,7 @@ ieee_test_7403 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7404 = {
     set_temp_variable = { arg_a = 2139095.040 }
@@ -10519,7 +10519,7 @@ ieee_test_7404 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7405 = {
     set_temp_variable = { arg_a = 2139095.040 }
@@ -10544,7 +10544,7 @@ ieee_test_7405 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7406 = {
     set_temp_variable = { arg_a = 2139095.040 }
@@ -10569,7 +10569,7 @@ ieee_test_7406 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7407 = {
     set_temp_variable = { arg_a = 2139095.040 }
@@ -10594,7 +10594,7 @@ ieee_test_7407 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7408 = {
     set_temp_variable = { arg_a = -8388.608 }
@@ -10619,7 +10619,7 @@ ieee_test_7408 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7409 = {
     set_temp_variable = { arg_a = -8388.608 }
@@ -10644,7 +10644,7 @@ ieee_test_7409 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7410 = {
     set_temp_variable = { arg_a = -8388.608 }
@@ -10669,7 +10669,7 @@ ieee_test_7410 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7411 = {
     set_temp_variable = { arg_a = -8388.608 }
@@ -10694,7 +10694,7 @@ ieee_test_7411 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7412 = {
     set_temp_variable = { arg_a = 2143289.344 }
@@ -10727,7 +10727,7 @@ ieee_test_7412 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7413 = {
     set_temp_variable = { arg_a = 2143289.344 }
@@ -10760,7 +10760,7 @@ ieee_test_7413 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7414 = {
     set_temp_variable = { arg_a = 2143289.344 }
@@ -10793,7 +10793,7 @@ ieee_test_7414 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7415 = {
     set_temp_variable = { arg_a = 2143289.344 }
@@ -10826,7 +10826,7 @@ ieee_test_7415 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7416 = {
     set_temp_variable = { arg_a = 0.000 }
@@ -10851,7 +10851,7 @@ ieee_test_7416 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7417 = {
     set_temp_variable = { arg_a = 0.000 }
@@ -10876,7 +10876,7 @@ ieee_test_7417 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7418 = {
     set_temp_variable = { arg_a = -2147483.648 }
@@ -10901,7 +10901,7 @@ ieee_test_7418 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7419 = {
     set_temp_variable = { arg_a = -2147483.648 }
@@ -10926,7 +10926,7 @@ ieee_test_7419 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7420 = {
     set_temp_variable = { arg_a = -2147483.648 }
@@ -10951,7 +10951,7 @@ ieee_test_7420 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }
 ieee_test_7421 = {
     set_temp_variable = { arg_a = -2147483.648 }
@@ -10976,5 +10976,5 @@ ieee_test_7421 = {
     set_temp_variable = { to_print_float = actual_output }
     log = "Actual: [print_float_full]"
     set_temp_variable = { to_print_float = expected_output }
-    log = "Expected: [print_float_full]"
+    log = "Expect: [print_float_full]"
 }

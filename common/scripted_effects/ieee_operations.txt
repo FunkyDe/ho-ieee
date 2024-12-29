@@ -34,3 +34,26 @@ ieeeSub = {
         }
     }
 }
+### ieeeMul
+## Multiplies the floating point variables and pushes the result to an output variable
+## The below function has 2 parameters: arg_a and arg_b
+## The output will be pushed to the temp variable out_a
+## temp_array_1000 and temp_array_1001 are reserved for this function, so outside use of this temp array will be interrupted and malfunction
+## ARGUMENTS
+# arg_a and arg_b will be interpreted as floating-point variables, so the value of 2 is represented by storing 1073741.824 in a variable(see pdxvar_to_float)
+## OUTPUT
+# out_a will contain the floating-point value of float(arg_a) * float(arg_b) after function execution
+# Continuing the example in the arguments, float-adding 1073741.824 to 1073741.824 (2+2) will yield 1082130.432 (4)
+ieeeMul = {
+    if = {
+        limit = {
+            ieeeMul_trigger = yes
+        }
+    }
+}
+
+multtest = {
+    set_temp_variable = { arg_a = 1082130.431 }
+    set_temp_variable = { arg_b = 1082130.431 }
+    ieeeMul = yes
+}

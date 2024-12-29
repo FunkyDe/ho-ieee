@@ -53,7 +53,9 @@ ieeeMul = {
 }
 
 multtest = {
-    set_temp_variable = { arg_a = 1082130.431 }
-    set_temp_variable = { arg_b = 1082130.431 }
+    set_temp_variable = { arg_a = 1077936.128 }
+    set_temp_variable = { arg_b = 1077936.128 }
     ieeeMul = yes
+    set_temp_variable = { to_print_float = out_a }
+    log = "[print_float_full]"
 }

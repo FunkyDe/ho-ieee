@@ -4481,3 +4481,5 @@ ieee_test_3020 = {
 ## See ieee_tests_signaling_predicates.txt
 # test addition and subtration
 ## See ieee_tests_addsub.txt
+# test multiplication
+## See ieee_tests_mult.txt

@@ -1,0 +1,98 @@
+guiTypes = {
+    containerWindowType = {
+        name = "HNN_gui_open"
+        size = { width = 40 height = 40 }
+        position = { x = 380 y = 215 }
+
+        buttonType = {
+            name = "HNN_gui_open_button"
+            spriteType = "temp_button"
+            position = { x = 40 y = 40 }
+            pdx_tooltip_delayed = HNN_open_tt
+        }
+    }
+
+    containerWindowType = {
+        name = "HNN_gui_container"
+        size = { width = 800 height = 800 }
+        position = { x = 700 y = 100 }
+        moveable = yes
+
+        background = {
+            name = "background"
+            quadTextureSprite = "GFX_tiled_window_thin_border2"
+        }
+        containerWindowType = {
+            name = "HNN_input_gridcontainer"
+            size = { width = 720 height = 720 }
+            position = { x = 40 y = 40 }
+
+            background = {
+                name = "background"
+                quadTextureSprite = "GFX_tiled_window_thin_border2"
+            }
+        }
+        gridBoxType = {
+            name = "HNN_input_grid"
+            position = { x = 50 y = 50 }
+            size = { width = 700 height = 700 }
+            slotsize = { width = 25 height = 25 }
+            format = "UPPER_LEFT"
+            add_horizontal = yes
+            max_slots_horizontal = 28
+        }
+        instantTextBoxType = {
+            name = "HNN_info_header"
+            position = { x = 50 y = 20 }
+            orientation = "UPPER_LEFT"
+            text = HNN_info
+            pdx_tooltip_delayed = HNN_info_tt
+            font = "hoi_18mbs"
+        }
+        buttonType = {
+            name = "HNN_clear"
+            quadTextureSprite = "GFX_small_button_71x26"
+            position = { x = 150 y = 20 }
+            orientation = "UPPER_LEFT"
+            font = "hoi_18mbs"
+            buttonText = "Clear"
+            pdx_tooltip_delayed = HNN_clear_tt
+        }
+        buttonType = {
+            name = "HNN_calculate"
+            quadTextureSprite = "GFX_small_button_71x26"
+            position = { x = 250 y = 20 }
+            orientation = "UPPER_LEFT"
+            font = "hoi_18mbs"
+            buttonText = "Calculate"
+            pdx_tooltip_delayed = HNN_calculate_tt
+        }
+        instantTextBoxType = {
+            name = "HNN_result"
+            position = { x = 450 y = 20 }
+            orientation = "UPPER_LEFT"
+            text = HNN_result
+            pdx_tooltip_delayed = HNN_result_tt
+            font = "hoi_18mbs"
+        }
+        buttonType = {
+            name = "HNN_close"
+            spriteType = "GFX_closebutton"
+            position = { x = -42 y = 10 }
+            orientation = "UPPER_RIGHT"
+        }
+    }
+
+    containerWindowType = {
+        name = "HNN_pixel"
+        size = { width = 25 height = 25 }
+        position = { x = 0 y = 0 }
+
+        buttonType = {
+            name = "HNN_pixel_button"
+            spriteType = "GFX_hnn_pixel15"
+            position = { x = 0 y = 0 }
+            pdx_tooltip_delayed = HNN_pixel_tt
+        }
+    }
+}

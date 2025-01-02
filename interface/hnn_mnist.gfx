@@ -1,0 +1,70 @@
+spriteTypes = {
+    spriteType = {
+        name = temp_button
+        textureFile = "gfx/quick_add_button.dds"
+    }
+    spriteType = {
+        name = GFX_hnn_pixel0
+        textureFile = "gfx/hnn_pixel0.dds"
+    }
+    spriteType = {
+        name = GFX_hnn_pixel1
+        textureFile = "gfx/hnn_pixel1.dds"
+    }
+    spriteType = {
+        name = GFX_hnn_pixel2
+        textureFile = "gfx/hnn_pixel2.dds"
+    }
+    spriteType = {
+        name = GFX_hnn_pixel3
+        textureFile = "gfx/hnn_pixel3.dds"
+    }
+    spriteType = {
+        name = GFX_hnn_pixel4
+        textureFile = "gfx/hnn_pixel4.dds"
+    }
+    spriteType = {
+        name = GFX_hnn_pixel5
+        textureFile = "gfx/hnn_pixel5.dds"
+    }
+    spriteType = {
+        name = GFX_hnn_pixel6
+        textureFile = "gfx/hnn_pixel6.dds"
+    }
+    spriteType = {
+        name = GFX_hnn_pixel7
+        textureFile = "gfx/hnn_pixel7.dds"
+    }
+    spriteType = {
+        name = GFX_hnn_pixel8
+        textureFile = "gfx/hnn_pixel8.dds"
+    }
+    spriteType = {
+        name = GFX_hnn_pixel9
+        textureFile = "gfx/hnn_pixel9.dds"
+    }
+    spriteType = {
+        name = GFX_hnn_pixel10
+        textureFile = "gfx/hnn_pixel10.dds"
+    }
+    spriteType = {
+        name = GFX_hnn_pixel11
+        textureFile = "gfx/hnn_pixel11.dds"
+    }
+    spriteType = {
+        name = GFX_hnn_pixel12
+        textureFile = "gfx/hnn_pixel12.dds"
+    }
+    spriteType = {
+        name = GFX_hnn_pixel13
+        textureFile = "gfx/hnn_pixel13.dds"
+    }
+    spriteType = {
+        name = GFX_hnn_pixel14
+        textureFile = "gfx/hnn_pixel14.dds"
+    }
+    spriteType = {
+        name = GFX_hnn_pixel15
+        textureFile = "gfx/hnn_pixel15.dds"
+    }
+}

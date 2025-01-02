@@ -1,0 +1,1073 @@
+hnn_init = {
+    clear_array = hnn_weights_compressed
+    # values added in common/on_actions/hnn_init.txt
+    clear_array = hnn_input
+    resize_array = { hnn_input = 784 }
+    clear_array = hnn_img
+    resize_array = { hnn_img = 784 }
+
+    clear_array = hnn_activations_0
+    clear_array = hnn_activations_1
+    clear_array = hnn_activations_2
+    clear_array = hnn_activations_3
+    resize_array = { hnn_activations_0 = 784 }
+    resize_array = { hnn_activations_1 = 12 }
+    resize_array = { hnn_activations_2 = 64 }
+    resize_array = { hnn_activations_3 = 10 }
+
+    set_variable = { hnn_winner = -1 } # default for no value chosen
+}
+
+# Sets the hnn_input^grid_idx to max(0, delta) % 256 and also updates hnn_img correspondingly
+hnn_set_grid = {
+    set_variable = { hnn_input^grid_idx = delta }
+    clamp_variable = { var = hnn_input^grid_idx min = 0 }
+    modulo_variable = { hnn_input^grid_idx = 256 }
+
+    set_variable = { hnn_img^grid_idx = hnn_input^grid_idx }
+    set_temp_variable = { temp_floor = hnn_img^grid_idx }
+    modulo_temp_variable = { temp_floor = 16 }
+    subtract_from_variable = { hnn_img^grid_idx = temp_floor }
+    divide_variable = { hnn_img^grid_idx = 16 }
+}
+# Updates the hnn_input^grid_idx by delta and also updates hnn_img correspondingly
+hnn_update_grid = {
+    add_to_variable = { hnn_input^grid_idx = delta }
+    modulo_variable = { hnn_input^grid_idx = 256 }
+
+    set_variable = { hnn_img^grid_idx = hnn_input^grid_idx }
+    set_temp_variable = { temp_floor = hnn_img^grid_idx }
+    modulo_temp_variable = { temp_floor = 16 }
+    subtract_from_variable = { hnn_img^grid_idx = temp_floor }
+    divide_variable = { hnn_img^grid_idx = 16 }
+}
+
+hnn_load_example = {
+    set_variable = { hnn_input^0 = 0 }
+    set_variable = { hnn_input^1 = 0 }
+    set_variable = { hnn_input^2 = 0 }
+    set_variable = { hnn_input^3 = 0 }
+    set_variable = { hnn_input^4 = 0 }
+    set_variable = { hnn_input^5 = 0 }
+    set_variable = { hnn_input^6 = 0 }
+    set_variable = { hnn_input^7 = 0 }
+    set_variable = { hnn_input^8 = 0 }
+    set_variable = { hnn_input^9 = 0 }
+    set_variable = { hnn_input^10 = 0 }
+    set_variable = { hnn_input^11 = 0 }
+    set_variable = { hnn_input^12 = 0 }
+    set_variable = { hnn_input^13 = 0 }
+    set_variable = { hnn_input^14 = 0 }
+    set_variable = { hnn_input^15 = 0 }
+    set_variable = { hnn_input^16 = 0 }
+    set_variable = { hnn_input^17 = 0 }
+    set_variable = { hnn_input^18 = 0 }
+    set_variable = { hnn_input^19 = 0 }
+    set_variable = { hnn_input^20 = 0 }
+    set_variable = { hnn_input^21 = 0 }
+    set_variable = { hnn_input^22 = 0 }
+    set_variable = { hnn_input^23 = 0 }
+    set_variable = { hnn_input^24 = 0 }
+    set_variable = { hnn_input^25 = 0 }
+    set_variable = { hnn_input^26 = 0 }
+    set_variable = { hnn_input^27 = 0 }
+    set_variable = { hnn_input^28 = 0 }
+    set_variable = { hnn_input^29 = 0 }
+    set_variable = { hnn_input^30 = 0 }
+    set_variable = { hnn_input^31 = 0 }
+    set_variable = { hnn_input^32 = 0 }
+    set_variable = { hnn_input^33 = 0 }
+    set_variable = { hnn_input^34 = 0 }
+    set_variable = { hnn_input^35 = 0 }
+    set_variable = { hnn_input^36 = 0 }
+    set_variable = { hnn_input^37 = 0 }
+    set_variable = { hnn_input^38 = 0 }
+    set_variable = { hnn_input^39 = 0 }
+    set_variable = { hnn_input^40 = 0 }
+    set_variable = { hnn_input^41 = 0 }
+    set_variable = { hnn_input^42 = 0 }
+    set_variable = { hnn_input^43 = 0 }
+    set_variable = { hnn_input^44 = 0 }
+    set_variable = { hnn_input^45 = 0 }
+    set_variable = { hnn_input^46 = 0 }
+    set_variable = { hnn_input^47 = 0 }
+    set_variable = { hnn_input^48 = 0 }
+    set_variable = { hnn_input^49 = 0 }
+    set_variable = { hnn_input^50 = 0 }
+    set_variable = { hnn_input^51 = 0 }
+    set_variable = { hnn_input^52 = 0 }
+    set_variable = { hnn_input^53 = 0 }
+    set_variable = { hnn_input^54 = 0 }
+    set_variable = { hnn_input^55 = 0 }
+    set_variable = { hnn_input^56 = 0 }
+    set_variable = { hnn_input^57 = 0 }
+    set_variable = { hnn_input^58 = 0 }
+    set_variable = { hnn_input^59 = 0 }
+    set_variable = { hnn_input^60 = 0 }
+    set_variable = { hnn_input^61 = 0 }
+    set_variable = { hnn_input^62 = 0 }
+    set_variable = { hnn_input^63 = 0 }
+    set_variable = { hnn_input^64 = 0 }
+    set_variable = { hnn_input^65 = 0 }
+    set_variable = { hnn_input^66 = 0 }
+    set_variable = { hnn_input^67 = 0 }
+    set_variable = { hnn_input^68 = 0 }
+    set_variable = { hnn_input^69 = 0 }
+    set_variable = { hnn_input^70 = 0 }
+    set_variable = { hnn_input^71 = 0 }
+    set_variable = { hnn_input^72 = 0 }
+    set_variable = { hnn_input^73 = 0 }
+    set_variable = { hnn_input^74 = 0 }
+    set_variable = { hnn_input^75 = 0 }
+    set_variable = { hnn_input^76 = 0 }
+    set_variable = { hnn_input^77 = 0 }
+    set_variable = { hnn_input^78 = 0 }
+    set_variable = { hnn_input^79 = 0 }
+    set_variable = { hnn_input^80 = 0 }
+    set_variable = { hnn_input^81 = 0 }
+    set_variable = { hnn_input^82 = 0 }
+    set_variable = { hnn_input^83 = 0 }
+    set_variable = { hnn_input^84 = 0 }
+    set_variable = { hnn_input^85 = 0 }
+    set_variable = { hnn_input^86 = 0 }
+    set_variable = { hnn_input^87 = 0 }
+    set_variable = { hnn_input^88 = 0 }
+    set_variable = { hnn_input^89 = 0 }
+    set_variable = { hnn_input^90 = 0 }
+    set_variable = { hnn_input^91 = 0 }
+    set_variable = { hnn_input^92 = 0 }
+    set_variable = { hnn_input^93 = 0 }
+    set_variable = { hnn_input^94 = 0 }
+    set_variable = { hnn_input^95 = 0 }
+    set_variable = { hnn_input^96 = 0 }
+    set_variable = { hnn_input^97 = 0 }
+    set_variable = { hnn_input^98 = 0 }
+    set_variable = { hnn_input^99 = 0 }
+    set_variable = { hnn_input^100 = 0 }
+    set_variable = { hnn_input^101 = 0 }
+    set_variable = { hnn_input^102 = 0 }
+    set_variable = { hnn_input^103 = 0 }
+    set_variable = { hnn_input^104 = 0 }
+    set_variable = { hnn_input^105 = 0 }
+    set_variable = { hnn_input^106 = 0 }
+    set_variable = { hnn_input^107 = 0 }
+    set_variable = { hnn_input^108 = 0 }
+    set_variable = { hnn_input^109 = 0 }
+    set_variable = { hnn_input^110 = 0 }
+    set_variable = { hnn_input^111 = 0 }
+    set_variable = { hnn_input^112 = 0 }
+    set_variable = { hnn_input^113 = 0 }
+    set_variable = { hnn_input^114 = 0 }
+    set_variable = { hnn_input^115 = 0 }
+    set_variable = { hnn_input^116 = 0 }
+    set_variable = { hnn_input^117 = 0 }
+    set_variable = { hnn_input^118 = 0 }
+    set_variable = { hnn_input^119 = 0 }
+    set_variable = { hnn_input^120 = 0 }
+    set_variable = { hnn_input^121 = 0 }
+    set_variable = { hnn_input^122 = 0 }
+    set_variable = { hnn_input^123 = 0 }
+    set_variable = { hnn_input^124 = 0 }
+    set_variable = { hnn_input^125 = 0 }
+    set_variable = { hnn_input^126 = 0 }
+    set_variable = { hnn_input^127 = 0 }
+    set_variable = { hnn_input^128 = 0 }
+    set_variable = { hnn_input^129 = 0 }
+    set_variable = { hnn_input^130 = 0 }
+    set_variable = { hnn_input^131 = 0 }
+    set_variable = { hnn_input^132 = 0 }
+    set_variable = { hnn_input^133 = 0 }
+    set_variable = { hnn_input^134 = 0 }
+    set_variable = { hnn_input^135 = 0 }
+    set_variable = { hnn_input^136 = 0 }
+    set_variable = { hnn_input^137 = 0 }
+    set_variable = { hnn_input^138 = 0 }
+    set_variable = { hnn_input^139 = 0 }
+    set_variable = { hnn_input^140 = 0 }
+    set_variable = { hnn_input^141 = 0 }
+    set_variable = { hnn_input^142 = 0 }
+    set_variable = { hnn_input^143 = 0 }
+    set_variable = { hnn_input^144 = 0 }
+    set_variable = { hnn_input^145 = 0 }
+    set_variable = { hnn_input^146 = 0 }
+    set_variable = { hnn_input^147 = 0 }
+    set_variable = { hnn_input^148 = 0 }
+    set_variable = { hnn_input^149 = 0 }
+    set_variable = { hnn_input^150 = 0 }
+    set_variable = { hnn_input^151 = 0 }
+    set_variable = { hnn_input^152 = 3 }
+    set_variable = { hnn_input^153 = 18 }
+    set_variable = { hnn_input^154 = 18 }
+    set_variable = { hnn_input^155 = 18 }
+    set_variable = { hnn_input^156 = 126 }
+    set_variable = { hnn_input^157 = 136 }
+    set_variable = { hnn_input^158 = 175 }
+    set_variable = { hnn_input^159 = 26 }
+    set_variable = { hnn_input^160 = 166 }
+    set_variable = { hnn_input^161 = 255 }
+    set_variable = { hnn_input^162 = 247 }
+    set_variable = { hnn_input^163 = 127 }
+    set_variable = { hnn_input^164 = 0 }
+    set_variable = { hnn_input^165 = 0 }
+    set_variable = { hnn_input^166 = 0 }
+    set_variable = { hnn_input^167 = 0 }
+    set_variable = { hnn_input^168 = 0 }
+    set_variable = { hnn_input^169 = 0 }
+    set_variable = { hnn_input^170 = 0 }
+    set_variable = { hnn_input^171 = 0 }
+    set_variable = { hnn_input^172 = 0 }
+    set_variable = { hnn_input^173 = 0 }
+    set_variable = { hnn_input^174 = 0 }
+    set_variable = { hnn_input^175 = 0 }
+    set_variable = { hnn_input^176 = 30 }
+    set_variable = { hnn_input^177 = 36 }
+    set_variable = { hnn_input^178 = 94 }
+    set_variable = { hnn_input^179 = 154 }
+    set_variable = { hnn_input^180 = 170 }
+    set_variable = { hnn_input^181 = 253 }
+    set_variable = { hnn_input^182 = 253 }
+    set_variable = { hnn_input^183 = 253 }
+    set_variable = { hnn_input^184 = 253 }
+    set_variable = { hnn_input^185 = 253 }
+    set_variable = { hnn_input^186 = 225 }
+    set_variable = { hnn_input^187 = 172 }
+    set_variable = { hnn_input^188 = 253 }
+    set_variable = { hnn_input^189 = 242 }
+    set_variable = { hnn_input^190 = 195 }
+    set_variable = { hnn_input^191 = 64 }
+    set_variable = { hnn_input^192 = 0 }
+    set_variable = { hnn_input^193 = 0 }
+    set_variable = { hnn_input^194 = 0 }
+    set_variable = { hnn_input^195 = 0 }
+    set_variable = { hnn_input^196 = 0 }
+    set_variable = { hnn_input^197 = 0 }
+    set_variable = { hnn_input^198 = 0 }
+    set_variable = { hnn_input^199 = 0 }
+    set_variable = { hnn_input^200 = 0 }
+    set_variable = { hnn_input^201 = 0 }
+    set_variable = { hnn_input^202 = 0 }
+    set_variable = { hnn_input^203 = 49 }
+    set_variable = { hnn_input^204 = 238 }
+    set_variable = { hnn_input^205 = 253 }
+    set_variable = { hnn_input^206 = 253 }
+    set_variable = { hnn_input^207 = 253 }
+    set_variable = { hnn_input^208 = 253 }
+    set_variable = { hnn_input^209 = 253 }
+    set_variable = { hnn_input^210 = 253 }
+    set_variable = { hnn_input^211 = 253 }
+    set_variable = { hnn_input^212 = 253 }
+    set_variable = { hnn_input^213 = 251 }
+    set_variable = { hnn_input^214 = 93 }
+    set_variable = { hnn_input^215 = 82 }
+    set_variable = { hnn_input^216 = 82 }
+    set_variable = { hnn_input^217 = 56 }
+    set_variable = { hnn_input^218 = 39 }
+    set_variable = { hnn_input^219 = 0 }
+    set_variable = { hnn_input^220 = 0 }
+    set_variable = { hnn_input^221 = 0 }
+    set_variable = { hnn_input^222 = 0 }
+    set_variable = { hnn_input^223 = 0 }
+    set_variable = { hnn_input^224 = 0 }
+    set_variable = { hnn_input^225 = 0 }
+    set_variable = { hnn_input^226 = 0 }
+    set_variable = { hnn_input^227 = 0 }
+    set_variable = { hnn_input^228 = 0 }
+    set_variable = { hnn_input^229 = 0 }
+    set_variable = { hnn_input^230 = 0 }
+    set_variable = { hnn_input^231 = 18 }
+    set_variable = { hnn_input^232 = 219 }
+    set_variable = { hnn_input^233 = 253 }
+    set_variable = { hnn_input^234 = 253 }
+    set_variable = { hnn_input^235 = 253 }
+    set_variable = { hnn_input^236 = 253 }
+    set_variable = { hnn_input^237 = 253 }
+    set_variable = { hnn_input^238 = 198 }
+    set_variable = { hnn_input^239 = 182 }
+    set_variable = { hnn_input^240 = 247 }
+    set_variable = { hnn_input^241 = 241 }
+    set_variable = { hnn_input^242 = 0 }
+    set_variable = { hnn_input^243 = 0 }
+    set_variable = { hnn_input^244 = 0 }
+    set_variable = { hnn_input^245 = 0 }
+    set_variable = { hnn_input^246 = 0 }
+    set_variable = { hnn_input^247 = 0 }
+    set_variable = { hnn_input^248 = 0 }
+    set_variable = { hnn_input^249 = 0 }
+    set_variable = { hnn_input^250 = 0 }
+    set_variable = { hnn_input^251 = 0 }
+    set_variable = { hnn_input^252 = 0 }
+    set_variable = { hnn_input^253 = 0 }
+    set_variable = { hnn_input^254 = 0 }
+    set_variable = { hnn_input^255 = 0 }
+    set_variable = { hnn_input^256 = 0 }
+    set_variable = { hnn_input^257 = 0 }
+    set_variable = { hnn_input^258 = 0 }
+    set_variable = { hnn_input^259 = 0 }
+    set_variable = { hnn_input^260 = 80 }
+    set_variable = { hnn_input^261 = 156 }
+    set_variable = { hnn_input^262 = 107 }
+    set_variable = { hnn_input^263 = 253 }
+    set_variable = { hnn_input^264 = 253 }
+    set_variable = { hnn_input^265 = 205 }
+    set_variable = { hnn_input^266 = 11 }
+    set_variable = { hnn_input^267 = 0 }
+    set_variable = { hnn_input^268 = 43 }
+    set_variable = { hnn_input^269 = 154 }
+    set_variable = { hnn_input^270 = 0 }
+    set_variable = { hnn_input^271 = 0 }
+    set_variable = { hnn_input^272 = 0 }
+    set_variable = { hnn_input^273 = 0 }
+    set_variable = { hnn_input^274 = 0 }
+    set_variable = { hnn_input^275 = 0 }
+    set_variable = { hnn_input^276 = 0 }
+    set_variable = { hnn_input^277 = 0 }
+    set_variable = { hnn_input^278 = 0 }
+    set_variable = { hnn_input^279 = 0 }
+    set_variable = { hnn_input^280 = 0 }
+    set_variable = { hnn_input^281 = 0 }
+    set_variable = { hnn_input^282 = 0 }
+    set_variable = { hnn_input^283 = 0 }
+    set_variable = { hnn_input^284 = 0 }
+    set_variable = { hnn_input^285 = 0 }
+    set_variable = { hnn_input^286 = 0 }
+    set_variable = { hnn_input^287 = 0 }
+    set_variable = { hnn_input^288 = 0 }
+    set_variable = { hnn_input^289 = 14 }
+    set_variable = { hnn_input^290 = 1 }
+    set_variable = { hnn_input^291 = 154 }
+    set_variable = { hnn_input^292 = 253 }
+    set_variable = { hnn_input^293 = 90 }
+    set_variable = { hnn_input^294 = 0 }
+    set_variable = { hnn_input^295 = 0 }
+    set_variable = { hnn_input^296 = 0 }
+    set_variable = { hnn_input^297 = 0 }
+    set_variable = { hnn_input^298 = 0 }
+    set_variable = { hnn_input^299 = 0 }
+    set_variable = { hnn_input^300 = 0 }
+    set_variable = { hnn_input^301 = 0 }
+    set_variable = { hnn_input^302 = 0 }
+    set_variable = { hnn_input^303 = 0 }
+    set_variable = { hnn_input^304 = 0 }
+    set_variable = { hnn_input^305 = 0 }
+    set_variable = { hnn_input^306 = 0 }
+    set_variable = { hnn_input^307 = 0 }
+    set_variable = { hnn_input^308 = 0 }
+    set_variable = { hnn_input^309 = 0 }
+    set_variable = { hnn_input^310 = 0 }
+    set_variable = { hnn_input^311 = 0 }
+    set_variable = { hnn_input^312 = 0 }
+    set_variable = { hnn_input^313 = 0 }
+    set_variable = { hnn_input^314 = 0 }
+    set_variable = { hnn_input^315 = 0 }
+    set_variable = { hnn_input^316 = 0 }
+    set_variable = { hnn_input^317 = 0 }
+    set_variable = { hnn_input^318 = 0 }
+    set_variable = { hnn_input^319 = 139 }
+    set_variable = { hnn_input^320 = 253 }
+    set_variable = { hnn_input^321 = 190 }
+    set_variable = { hnn_input^322 = 2 }
+    set_variable = { hnn_input^323 = 0 }
+    set_variable = { hnn_input^324 = 0 }
+    set_variable = { hnn_input^325 = 0 }
+    set_variable = { hnn_input^326 = 0 }
+    set_variable = { hnn_input^327 = 0 }
+    set_variable = { hnn_input^328 = 0 }
+    set_variable = { hnn_input^329 = 0 }
+    set_variable = { hnn_input^330 = 0 }
+    set_variable = { hnn_input^331 = 0 }
+    set_variable = { hnn_input^332 = 0 }
+    set_variable = { hnn_input^333 = 0 }
+    set_variable = { hnn_input^334 = 0 }
+    set_variable = { hnn_input^335 = 0 }
+    set_variable = { hnn_input^336 = 0 }
+    set_variable = { hnn_input^337 = 0 }
+    set_variable = { hnn_input^338 = 0 }
+    set_variable = { hnn_input^339 = 0 }
+    set_variable = { hnn_input^340 = 0 }
+    set_variable = { hnn_input^341 = 0 }
+    set_variable = { hnn_input^342 = 0 }
+    set_variable = { hnn_input^343 = 0 }
+    set_variable = { hnn_input^344 = 0 }
+    set_variable = { hnn_input^345 = 0 }
+    set_variable = { hnn_input^346 = 0 }
+    set_variable = { hnn_input^347 = 11 }
+    set_variable = { hnn_input^348 = 190 }
+    set_variable = { hnn_input^349 = 253 }
+    set_variable = { hnn_input^350 = 70 }
+    set_variable = { hnn_input^351 = 0 }
+    set_variable = { hnn_input^352 = 0 }
+    set_variable = { hnn_input^353 = 0 }
+    set_variable = { hnn_input^354 = 0 }
+    set_variable = { hnn_input^355 = 0 }
+    set_variable = { hnn_input^356 = 0 }
+    set_variable = { hnn_input^357 = 0 }
+    set_variable = { hnn_input^358 = 0 }
+    set_variable = { hnn_input^359 = 0 }
+    set_variable = { hnn_input^360 = 0 }
+    set_variable = { hnn_input^361 = 0 }
+    set_variable = { hnn_input^362 = 0 }
+    set_variable = { hnn_input^363 = 0 }
+    set_variable = { hnn_input^364 = 0 }
+    set_variable = { hnn_input^365 = 0 }
+    set_variable = { hnn_input^366 = 0 }
+    set_variable = { hnn_input^367 = 0 }
+    set_variable = { hnn_input^368 = 0 }
+    set_variable = { hnn_input^369 = 0 }
+    set_variable = { hnn_input^370 = 0 }
+    set_variable = { hnn_input^371 = 0 }
+    set_variable = { hnn_input^372 = 0 }
+    set_variable = { hnn_input^373 = 0 }
+    set_variable = { hnn_input^374 = 0 }
+    set_variable = { hnn_input^375 = 0 }
+    set_variable = { hnn_input^376 = 35 }
+    set_variable = { hnn_input^377 = 241 }
+    set_variable = { hnn_input^378 = 225 }
+    set_variable = { hnn_input^379 = 160 }
+    set_variable = { hnn_input^380 = 108 }
+    set_variable = { hnn_input^381 = 1 }
+    set_variable = { hnn_input^382 = 0 }
+    set_variable = { hnn_input^383 = 0 }
+    set_variable = { hnn_input^384 = 0 }
+    set_variable = { hnn_input^385 = 0 }
+    set_variable = { hnn_input^386 = 0 }
+    set_variable = { hnn_input^387 = 0 }
+    set_variable = { hnn_input^388 = 0 }
+    set_variable = { hnn_input^389 = 0 }
+    set_variable = { hnn_input^390 = 0 }
+    set_variable = { hnn_input^391 = 0 }
+    set_variable = { hnn_input^392 = 0 }
+    set_variable = { hnn_input^393 = 0 }
+    set_variable = { hnn_input^394 = 0 }
+    set_variable = { hnn_input^395 = 0 }
+    set_variable = { hnn_input^396 = 0 }
+    set_variable = { hnn_input^397 = 0 }
+    set_variable = { hnn_input^398 = 0 }
+    set_variable = { hnn_input^399 = 0 }
+    set_variable = { hnn_input^400 = 0 }
+    set_variable = { hnn_input^401 = 0 }
+    set_variable = { hnn_input^402 = 0 }
+    set_variable = { hnn_input^403 = 0 }
+    set_variable = { hnn_input^404 = 0 }
+    set_variable = { hnn_input^405 = 81 }
+    set_variable = { hnn_input^406 = 240 }
+    set_variable = { hnn_input^407 = 253 }
+    set_variable = { hnn_input^408 = 253 }
+    set_variable = { hnn_input^409 = 119 }
+    set_variable = { hnn_input^410 = 25 }
+    set_variable = { hnn_input^411 = 0 }
+    set_variable = { hnn_input^412 = 0 }
+    set_variable = { hnn_input^413 = 0 }
+    set_variable = { hnn_input^414 = 0 }
+    set_variable = { hnn_input^415 = 0 }
+    set_variable = { hnn_input^416 = 0 }
+    set_variable = { hnn_input^417 = 0 }
+    set_variable = { hnn_input^418 = 0 }
+    set_variable = { hnn_input^419 = 0 }
+    set_variable = { hnn_input^420 = 0 }
+    set_variable = { hnn_input^421 = 0 }
+    set_variable = { hnn_input^422 = 0 }
+    set_variable = { hnn_input^423 = 0 }
+    set_variable = { hnn_input^424 = 0 }
+    set_variable = { hnn_input^425 = 0 }
+    set_variable = { hnn_input^426 = 0 }
+    set_variable = { hnn_input^427 = 0 }
+    set_variable = { hnn_input^428 = 0 }
+    set_variable = { hnn_input^429 = 0 }
+    set_variable = { hnn_input^430 = 0 }
+    set_variable = { hnn_input^431 = 0 }
+    set_variable = { hnn_input^432 = 0 }
+    set_variable = { hnn_input^433 = 0 }
+    set_variable = { hnn_input^434 = 45 }
+    set_variable = { hnn_input^435 = 186 }
+    set_variable = { hnn_input^436 = 253 }
+    set_variable = { hnn_input^437 = 253 }
+    set_variable = { hnn_input^438 = 150 }
+    set_variable = { hnn_input^439 = 27 }
+    set_variable = { hnn_input^440 = 0 }
+    set_variable = { hnn_input^441 = 0 }
+    set_variable = { hnn_input^442 = 0 }
+    set_variable = { hnn_input^443 = 0 }
+    set_variable = { hnn_input^444 = 0 }
+    set_variable = { hnn_input^445 = 0 }
+    set_variable = { hnn_input^446 = 0 }
+    set_variable = { hnn_input^447 = 0 }
+    set_variable = { hnn_input^448 = 0 }
+    set_variable = { hnn_input^449 = 0 }
+    set_variable = { hnn_input^450 = 0 }
+    set_variable = { hnn_input^451 = 0 }
+    set_variable = { hnn_input^452 = 0 }
+    set_variable = { hnn_input^453 = 0 }
+    set_variable = { hnn_input^454 = 0 }
+    set_variable = { hnn_input^455 = 0 }
+    set_variable = { hnn_input^456 = 0 }
+    set_variable = { hnn_input^457 = 0 }
+    set_variable = { hnn_input^458 = 0 }
+    set_variable = { hnn_input^459 = 0 }
+    set_variable = { hnn_input^460 = 0 }
+    set_variable = { hnn_input^461 = 0 }
+    set_variable = { hnn_input^462 = 0 }
+    set_variable = { hnn_input^463 = 16 }
+    set_variable = { hnn_input^464 = 93 }
+    set_variable = { hnn_input^465 = 252 }
+    set_variable = { hnn_input^466 = 253 }
+    set_variable = { hnn_input^467 = 187 }
+    set_variable = { hnn_input^468 = 0 }
+    set_variable = { hnn_input^469 = 0 }
+    set_variable = { hnn_input^470 = 0 }
+    set_variable = { hnn_input^471 = 0 }
+    set_variable = { hnn_input^472 = 0 }
+    set_variable = { hnn_input^473 = 0 }
+    set_variable = { hnn_input^474 = 0 }
+    set_variable = { hnn_input^475 = 0 }
+    set_variable = { hnn_input^476 = 0 }
+    set_variable = { hnn_input^477 = 0 }
+    set_variable = { hnn_input^478 = 0 }
+    set_variable = { hnn_input^479 = 0 }
+    set_variable = { hnn_input^480 = 0 }
+    set_variable = { hnn_input^481 = 0 }
+    set_variable = { hnn_input^482 = 0 }
+    set_variable = { hnn_input^483 = 0 }
+    set_variable = { hnn_input^484 = 0 }
+    set_variable = { hnn_input^485 = 0 }
+    set_variable = { hnn_input^486 = 0 }
+    set_variable = { hnn_input^487 = 0 }
+    set_variable = { hnn_input^488 = 0 }
+    set_variable = { hnn_input^489 = 0 }
+    set_variable = { hnn_input^490 = 0 }
+    set_variable = { hnn_input^491 = 0 }
+    set_variable = { hnn_input^492 = 0 }
+    set_variable = { hnn_input^493 = 249 }
+    set_variable = { hnn_input^494 = 253 }
+    set_variable = { hnn_input^495 = 249 }
+    set_variable = { hnn_input^496 = 64 }
+    set_variable = { hnn_input^497 = 0 }
+    set_variable = { hnn_input^498 = 0 }
+    set_variable = { hnn_input^499 = 0 }
+    set_variable = { hnn_input^500 = 0 }
+    set_variable = { hnn_input^501 = 0 }
+    set_variable = { hnn_input^502 = 0 }
+    set_variable = { hnn_input^503 = 0 }
+    set_variable = { hnn_input^504 = 0 }
+    set_variable = { hnn_input^505 = 0 }
+    set_variable = { hnn_input^506 = 0 }
+    set_variable = { hnn_input^507 = 0 }
+    set_variable = { hnn_input^508 = 0 }
+    set_variable = { hnn_input^509 = 0 }
+    set_variable = { hnn_input^510 = 0 }
+    set_variable = { hnn_input^511 = 0 }
+    set_variable = { hnn_input^512 = 0 }
+    set_variable = { hnn_input^513 = 0 }
+    set_variable = { hnn_input^514 = 0 }
+    set_variable = { hnn_input^515 = 0 }
+    set_variable = { hnn_input^516 = 0 }
+    set_variable = { hnn_input^517 = 0 }
+    set_variable = { hnn_input^518 = 46 }
+    set_variable = { hnn_input^519 = 130 }
+    set_variable = { hnn_input^520 = 183 }
+    set_variable = { hnn_input^521 = 253 }
+    set_variable = { hnn_input^522 = 253 }
+    set_variable = { hnn_input^523 = 207 }
+    set_variable = { hnn_input^524 = 2 }
+    set_variable = { hnn_input^525 = 0 }
+    set_variable = { hnn_input^526 = 0 }
+    set_variable = { hnn_input^527 = 0 }
+    set_variable = { hnn_input^528 = 0 }
+    set_variable = { hnn_input^529 = 0 }
+    set_variable = { hnn_input^530 = 0 }
+    set_variable = { hnn_input^531 = 0 }
+    set_variable = { hnn_input^532 = 0 }
+    set_variable = { hnn_input^533 = 0 }
+    set_variable = { hnn_input^534 = 0 }
+    set_variable = { hnn_input^535 = 0 }
+    set_variable = { hnn_input^536 = 0 }
+    set_variable = { hnn_input^537 = 0 }
+    set_variable = { hnn_input^538 = 0 }
+    set_variable = { hnn_input^539 = 0 }
+    set_variable = { hnn_input^540 = 0 }
+    set_variable = { hnn_input^541 = 0 }
+    set_variable = { hnn_input^542 = 0 }
+    set_variable = { hnn_input^543 = 0 }
+    set_variable = { hnn_input^544 = 39 }
+    set_variable = { hnn_input^545 = 148 }
+    set_variable = { hnn_input^546 = 229 }
+    set_variable = { hnn_input^547 = 253 }
+    set_variable = { hnn_input^548 = 253 }
+    set_variable = { hnn_input^549 = 253 }
+    set_variable = { hnn_input^550 = 250 }
+    set_variable = { hnn_input^551 = 182 }
+    set_variable = { hnn_input^552 = 0 }
+    set_variable = { hnn_input^553 = 0 }
+    set_variable = { hnn_input^554 = 0 }
+    set_variable = { hnn_input^555 = 0 }
+    set_variable = { hnn_input^556 = 0 }
+    set_variable = { hnn_input^557 = 0 }
+    set_variable = { hnn_input^558 = 0 }
+    set_variable = { hnn_input^559 = 0 }
+    set_variable = { hnn_input^560 = 0 }
+    set_variable = { hnn_input^561 = 0 }
+    set_variable = { hnn_input^562 = 0 }
+    set_variable = { hnn_input^563 = 0 }
+    set_variable = { hnn_input^564 = 0 }
+    set_variable = { hnn_input^565 = 0 }
+    set_variable = { hnn_input^566 = 0 }
+    set_variable = { hnn_input^567 = 0 }
+    set_variable = { hnn_input^568 = 0 }
+    set_variable = { hnn_input^569 = 0 }
+    set_variable = { hnn_input^570 = 24 }
+    set_variable = { hnn_input^571 = 114 }
+    set_variable = { hnn_input^572 = 221 }
+    set_variable = { hnn_input^573 = 253 }
+    set_variable = { hnn_input^574 = 253 }
+    set_variable = { hnn_input^575 = 253 }
+    set_variable = { hnn_input^576 = 253 }
+    set_variable = { hnn_input^577 = 201 }
+    set_variable = { hnn_input^578 = 78 }
+    set_variable = { hnn_input^579 = 0 }
+    set_variable = { hnn_input^580 = 0 }
+    set_variable = { hnn_input^581 = 0 }
+    set_variable = { hnn_input^582 = 0 }
+    set_variable = { hnn_input^583 = 0 }
+    set_variable = { hnn_input^584 = 0 }
+    set_variable = { hnn_input^585 = 0 }
+    set_variable = { hnn_input^586 = 0 }
+    set_variable = { hnn_input^587 = 0 }
+    set_variable = { hnn_input^588 = 0 }
+    set_variable = { hnn_input^589 = 0 }
+    set_variable = { hnn_input^590 = 0 }
+    set_variable = { hnn_input^591 = 0 }
+    set_variable = { hnn_input^592 = 0 }
+    set_variable = { hnn_input^593 = 0 }
+    set_variable = { hnn_input^594 = 0 }
+    set_variable = { hnn_input^595 = 0 }
+    set_variable = { hnn_input^596 = 23 }
+    set_variable = { hnn_input^597 = 66 }
+    set_variable = { hnn_input^598 = 213 }
+    set_variable = { hnn_input^599 = 253 }
+    set_variable = { hnn_input^600 = 253 }
+    set_variable = { hnn_input^601 = 253 }
+    set_variable = { hnn_input^602 = 253 }
+    set_variable = { hnn_input^603 = 198 }
+    set_variable = { hnn_input^604 = 81 }
+    set_variable = { hnn_input^605 = 2 }
+    set_variable = { hnn_input^606 = 0 }
+    set_variable = { hnn_input^607 = 0 }
+    set_variable = { hnn_input^608 = 0 }
+    set_variable = { hnn_input^609 = 0 }
+    set_variable = { hnn_input^610 = 0 }
+    set_variable = { hnn_input^611 = 0 }
+    set_variable = { hnn_input^612 = 0 }
+    set_variable = { hnn_input^613 = 0 }
+    set_variable = { hnn_input^614 = 0 }
+    set_variable = { hnn_input^615 = 0 }
+    set_variable = { hnn_input^616 = 0 }
+    set_variable = { hnn_input^617 = 0 }
+    set_variable = { hnn_input^618 = 0 }
+    set_variable = { hnn_input^619 = 0 }
+    set_variable = { hnn_input^620 = 0 }
+    set_variable = { hnn_input^621 = 0 }
+    set_variable = { hnn_input^622 = 18 }
+    set_variable = { hnn_input^623 = 171 }
+    set_variable = { hnn_input^624 = 219 }
+    set_variable = { hnn_input^625 = 253 }
+    set_variable = { hnn_input^626 = 253 }
+    set_variable = { hnn_input^627 = 253 }
+    set_variable = { hnn_input^628 = 253 }
+    set_variable = { hnn_input^629 = 195 }
+    set_variable = { hnn_input^630 = 80 }
+    set_variable = { hnn_input^631 = 9 }
+    set_variable = { hnn_input^632 = 0 }
+    set_variable = { hnn_input^633 = 0 }
+    set_variable = { hnn_input^634 = 0 }
+    set_variable = { hnn_input^635 = 0 }
+    set_variable = { hnn_input^636 = 0 }
+    set_variable = { hnn_input^637 = 0 }
+    set_variable = { hnn_input^638 = 0 }
+    set_variable = { hnn_input^639 = 0 }
+    set_variable = { hnn_input^640 = 0 }
+    set_variable = { hnn_input^641 = 0 }
+    set_variable = { hnn_input^642 = 0 }
+    set_variable = { hnn_input^643 = 0 }
+    set_variable = { hnn_input^644 = 0 }
+    set_variable = { hnn_input^645 = 0 }
+    set_variable = { hnn_input^646 = 0 }
+    set_variable = { hnn_input^647 = 0 }
+    set_variable = { hnn_input^648 = 55 }
+    set_variable = { hnn_input^649 = 172 }
+    set_variable = { hnn_input^650 = 226 }
+    set_variable = { hnn_input^651 = 253 }
+    set_variable = { hnn_input^652 = 253 }
+    set_variable = { hnn_input^653 = 253 }
+    set_variable = { hnn_input^654 = 253 }
+    set_variable = { hnn_input^655 = 244 }
+    set_variable = { hnn_input^656 = 133 }
+    set_variable = { hnn_input^657 = 11 }
+    set_variable = { hnn_input^658 = 0 }
+    set_variable = { hnn_input^659 = 0 }
+    set_variable = { hnn_input^660 = 0 }
+    set_variable = { hnn_input^661 = 0 }
+    set_variable = { hnn_input^662 = 0 }
+    set_variable = { hnn_input^663 = 0 }
+    set_variable = { hnn_input^664 = 0 }
+    set_variable = { hnn_input^665 = 0 }
+    set_variable = { hnn_input^666 = 0 }
+    set_variable = { hnn_input^667 = 0 }
+    set_variable = { hnn_input^668 = 0 }
+    set_variable = { hnn_input^669 = 0 }
+    set_variable = { hnn_input^670 = 0 }
+    set_variable = { hnn_input^671 = 0 }
+    set_variable = { hnn_input^672 = 0 }
+    set_variable = { hnn_input^673 = 0 }
+    set_variable = { hnn_input^674 = 0 }
+    set_variable = { hnn_input^675 = 0 }
+    set_variable = { hnn_input^676 = 136 }
+    set_variable = { hnn_input^677 = 253 }
+    set_variable = { hnn_input^678 = 253 }
+    set_variable = { hnn_input^679 = 253 }
+    set_variable = { hnn_input^680 = 212 }
+    set_variable = { hnn_input^681 = 135 }
+    set_variable = { hnn_input^682 = 132 }
+    set_variable = { hnn_input^683 = 16 }
+    set_variable = { hnn_input^684 = 0 }
+    set_variable = { hnn_input^685 = 0 }
+    set_variable = { hnn_input^686 = 0 }
+    set_variable = { hnn_input^687 = 0 }
+    set_variable = { hnn_input^688 = 0 }
+    set_variable = { hnn_input^689 = 0 }
+    set_variable = { hnn_input^690 = 0 }
+    set_variable = { hnn_input^691 = 0 }
+    set_variable = { hnn_input^692 = 0 }
+    set_variable = { hnn_input^693 = 0 }
+    set_variable = { hnn_input^694 = 0 }
+    set_variable = { hnn_input^695 = 0 }
+    set_variable = { hnn_input^696 = 0 }
+    set_variable = { hnn_input^697 = 0 }
+    set_variable = { hnn_input^698 = 0 }
+    set_variable = { hnn_input^699 = 0 }
+    set_variable = { hnn_input^700 = 0 }
+    set_variable = { hnn_input^701 = 0 }
+    set_variable = { hnn_input^702 = 0 }
+    set_variable = { hnn_input^703 = 0 }
+    set_variable = { hnn_input^704 = 0 }
+    set_variable = { hnn_input^705 = 0 }
+    set_variable = { hnn_input^706 = 0 }
+    set_variable = { hnn_input^707 = 0 }
+    set_variable = { hnn_input^708 = 0 }
+    set_variable = { hnn_input^709 = 0 }
+    set_variable = { hnn_input^710 = 0 }
+    set_variable = { hnn_input^711 = 0 }
+    set_variable = { hnn_input^712 = 0 }
+    set_variable = { hnn_input^713 = 0 }
+    set_variable = { hnn_input^714 = 0 }
+    set_variable = { hnn_input^715 = 0 }
+    set_variable = { hnn_input^716 = 0 }
+    set_variable = { hnn_input^717 = 0 }
+    set_variable = { hnn_input^718 = 0 }
+    set_variable = { hnn_input^719 = 0 }
+    set_variable = { hnn_input^720 = 0 }
+    set_variable = { hnn_input^721 = 0 }
+    set_variable = { hnn_input^722 = 0 }
+    set_variable = { hnn_input^723 = 0 }
+    set_variable = { hnn_input^724 = 0 }
+    set_variable = { hnn_input^725 = 0 }
+    set_variable = { hnn_input^726 = 0 }
+    set_variable = { hnn_input^727 = 0 }
+    set_variable = { hnn_input^728 = 0 }
+    set_variable = { hnn_input^729 = 0 }
+    set_variable = { hnn_input^730 = 0 }
+    set_variable = { hnn_input^731 = 0 }
+    set_variable = { hnn_input^732 = 0 }
+    set_variable = { hnn_input^733 = 0 }
+    set_variable = { hnn_input^734 = 0 }
+    set_variable = { hnn_input^735 = 0 }
+    set_variable = { hnn_input^736 = 0 }
+    set_variable = { hnn_input^737 = 0 }
+    set_variable = { hnn_input^738 = 0 }
+    set_variable = { hnn_input^739 = 0 }
+    set_variable = { hnn_input^740 = 0 }
+    set_variable = { hnn_input^741 = 0 }
+    set_variable = { hnn_input^742 = 0 }
+    set_variable = { hnn_input^743 = 0 }
+    set_variable = { hnn_input^744 = 0 }
+    set_variable = { hnn_input^745 = 0 }
+    set_variable = { hnn_input^746 = 0 }
+    set_variable = { hnn_input^747 = 0 }
+    set_variable = { hnn_input^748 = 0 }
+    set_variable = { hnn_input^749 = 0 }
+    set_variable = { hnn_input^750 = 0 }
+    set_variable = { hnn_input^751 = 0 }
+    set_variable = { hnn_input^752 = 0 }
+    set_variable = { hnn_input^753 = 0 }
+    set_variable = { hnn_input^754 = 0 }
+    set_variable = { hnn_input^755 = 0 }
+    set_variable = { hnn_input^756 = 0 }
+    set_variable = { hnn_input^757 = 0 }
+    set_variable = { hnn_input^758 = 0 }
+    set_variable = { hnn_input^759 = 0 }
+    set_variable = { hnn_input^760 = 0 }
+    set_variable = { hnn_input^761 = 0 }
+    set_variable = { hnn_input^762 = 0 }
+    set_variable = { hnn_input^763 = 0 }
+    set_variable = { hnn_input^764 = 0 }
+    set_variable = { hnn_input^765 = 0 }
+    set_variable = { hnn_input^766 = 0 }
+    set_variable = { hnn_input^767 = 0 }
+    set_variable = { hnn_input^768 = 0 }
+    set_variable = { hnn_input^769 = 0 }
+    set_variable = { hnn_input^770 = 0 }
+    set_variable = { hnn_input^771 = 0 }
+    set_variable = { hnn_input^772 = 0 }
+    set_variable = { hnn_input^773 = 0 }
+    set_variable = { hnn_input^774 = 0 }
+    set_variable = { hnn_input^775 = 0 }
+    set_variable = { hnn_input^776 = 0 }
+    set_variable = { hnn_input^777 = 0 }
+    set_variable = { hnn_input^778 = 0 }
+    set_variable = { hnn_input^779 = 0 }
+    set_variable = { hnn_input^780 = 0 }
+    set_variable = { hnn_input^781 = 0 }
+    set_variable = { hnn_input^782 = 0 }
+    set_variable = { hnn_input^783 = 0 }
+
+    for_loop_effect = {
+        start = 0
+        end = 784
+        value = grid_idx
+
+        set_temp_variable = { delta = hnn_input^grid_idx }
+        hnn_set_grid = yes
+    }
+    add_to_variable = { HNN_gui_dirty = 0.001 }
+}
+# Takes the gui values and puts them into hnn_activations_0, after normalizing them to the range [0, 1]
+hnn_get_and_normalize_input = {
+    log = "Getting input..."
+    set_temp_variable = { scale_factor = 998277.249 } # 1/255 to normalize (before division)
+
+    # Need to clear array because large size gives errors to setting/adding to array
+    clear_array = hnn_activations_0
+    for_loop_effect = {
+        start = 0
+        end = 784
+        value = idx
+
+        set_temp_variable = { arg_a = hnn_input^idx }
+        pdxvar_to_float = yes
+        set_temp_variable = { arg_a = out_a }
+        set_temp_variable = { arg_b = scale_factor }
+        ieeeMul = yes
+        add_to_temp_array = { hnn_activations_0 = out_a }
+    }
+}
+# Normalize inputs in hnn_activations_0 to the range 
+hnn_normalize_input = {
+    log = "Normalizing input..."
+    for_loop_effect = {
+        start = 0
+        end = 784
+        value = idx
+
+        set_variable = { hnn_activations_0^idx = out_a }
+    }
+}
+# Transforms a 784-long array of floats corresponding to activations normalized to the [0-1] range into a result array corresponding to confidences in which of the 10 digits this image represents - higher is more confident
+hnn_run_model = {
+    log = "Running model..."
+    set_temp_variable = { hnn_idx = 0 }
+
+    clear_array = hnn_activations_1
+    clear_temp_array = temp_activations
+    resize_temp_array = { temp_activations = 12 }
+    # First Layer mults
+    for_loop_effect = {
+        start = 0
+        end = 784
+        value = idx_src
+
+        for_loop_effect = {
+            start = 0
+            end = 12
+            value = idx_dst
+
+            set_temp_variable = { arg_a = hnn_activations_0^idx_src }
+            set_temp_variable = { arg_b = hnn_weights_compressed^hnn_idx }
+            ieeeMul = yes
+            set_temp_variable = { arg_a = temp_activations^idx_dst }
+            set_temp_variable = { arg_b = out_a }
+            ieeeAdd = yes
+            set_temp_variable = { temp_activations^idx_dst = out_a }
+            add_to_temp_variable = { hnn_idx = 1 }
+        }
+    }
+    # First Layer biases
+    for_loop_effect = {
+        start = 0
+        end = 12
+        value = idx_dst
+
+        set_temp_variable = { arg_a = temp_activations^idx_dst }
+        set_temp_variable = { arg_b = hnn_weights_compressed^hnn_idx }
+        ieeeAdd = yes
+        set_temp_variable = { temp_activations^idx_dst = out_a }
+        add_to_temp_variable = { hnn_idx = 1 }
+    }
+    # First layer ReLU
+    for_loop_effect = {
+        start = 0
+        end = 12
+        value = idx_dst
+
+        if = {
+            limit = {
+                check_variable = { temp_activations^idx_dst < 0 }
+            }
+            add_to_array = { hnn_activations_1 = 0 }
+        }
+        else = {
+            add_to_array = { hnn_activations_1 = temp_activations^idx_dst }
+        }
+    }
+
+    clear_array = hnn_activations_2
+    clear_temp_array = temp_activations
+    resize_temp_array = { temp_activations = 64 }
+    # Second Layer mults
+    for_loop_effect = {
+        start = 0
+        end = 12
+        value = idx_src
+
+        for_loop_effect = {
+            start = 0
+            end = 64
+            value = idx_dst
+
+            set_temp_variable = { arg_a = hnn_activations_1^idx_src }
+            set_temp_variable = { arg_b = hnn_weights_compressed^hnn_idx }
+            ieeeMul = yes
+            set_temp_variable = { arg_a = temp_activations^idx_dst }
+            set_temp_variable = { arg_b = out_a }
+            ieeeAdd = yes
+            set_temp_variable = { temp_activations^idx_dst = out_a }
+            add_to_temp_variable = { hnn_idx = 1 }
+        }
+    }
+    # Second Layer biases
+    for_loop_effect = {
+        start = 0
+        end = 64
+        value = idx_dst
+
+        set_temp_variable = { arg_a = temp_activations^idx_dst }
+        set_temp_variable = { arg_b = hnn_weights_compressed^hnn_idx }
+        ieeeAdd = yes
+        set_temp_variable = { temp_activations^idx_dst = out_a }
+        add_to_temp_variable = { hnn_idx = 1 }
+    }
+    # Second layer ReLU
+    for_loop_effect = {
+        start = 0
+        end = 64
+        value = idx_dst
+
+        if = {
+            limit = {
+                check_variable = { temp_activations^idx_dst < 0 }
+            }
+            add_to_array = { hnn_activations_2 = 0 }
+        }
+        else = {
+            add_to_array = { hnn_activations_2 = temp_activations^idx_dst }
+        }
+    }
+
+    clear_array = hnn_activations_3
+    clear_temp_array = temp_activations
+    resize_temp_array = { temp_activations = 10 }
+    # Third Layer mults
+    for_loop_effect = {
+        start = 0
+        end = 64
+        value = idx_src
+
+        for_loop_effect = {
+            start = 0
+            end = 10
+            value = idx_dst
+
+            set_temp_variable = { arg_a = hnn_activations_2^idx_src }
+            set_temp_variable = { arg_b = hnn_weights_compressed^hnn_idx }
+            ieeeMul = yes
+            set_temp_variable = { arg_a = temp_activations^idx_dst }
+            set_temp_variable = { arg_b = out_a }
+            ieeeAdd = yes
+            set_temp_variable = { temp_activations^idx_dst = out_a }
+            add_to_temp_variable = { hnn_idx = 1 }
+        }
+    }
+    # Third Layer biases
+    for_loop_effect = {
+        start = 0
+        end = 10
+        value = idx_dst
+
+        set_temp_variable = { arg_a = temp_activations^idx_dst }
+        set_temp_variable = { arg_b = hnn_weights_compressed^hnn_idx }
+        ieeeAdd = yes
+        set_temp_variable = { temp_activations^idx_dst = out_a }
+        add_to_temp_variable = { hnn_idx = 1 }
+
+        add_to_array = { hnn_activations_3 = temp_activations^idx_dst }
+    }
+    # There is no third layer ReLU. The original model used a sigmoid layer to get the final activations, but since I haven't implemented that and since sigmoid is monotonic, I just use the regular activations here.
+}
+# sets the variable in hnn_winner to the digit classified by the model
+hnn_pick_result = {
+    log = "Calculating result..."
+    set_temp_variable = { predicted_digit = 0 }
+    for_loop_effect = {
+        start = 1
+        end = 10
+        value = digit
+
+        set_temp_variable = { arg_a = hnn_activations_3^predicted_digit }
+        set_temp_variable = { arg_b = hnn_activations_3^digit }
+        if = {
+            limit = {
+                compareLess = yes
+            }
+            set_temp_variable = { predicted_digit = digit }
+        }
+    }
+    set_variable = { hnn_winner = predicted_digit }
+    add_to_variable = { HNN_gui_dirty = 0.001 }
+}
+# Prints out the final weights
+hnn_summarize_result = {
+    for_loop_effect = {
+        start = 0
+        end = 10
+        value = idx
+
+        set_temp_variable = { to_print_float = hnn_activations_3^idx }
+        log = "[print_float_full]"
+    }
+}
+# Single function to run all of the prediction in one call
+hnn_classify = {
+    # hnn_load_example = yes
+    hnn_get_and_normalize_input  = yes
+    hnn_run_model = yes
+    hnn_pick_result = yes
+    hnn_summarize_result = yes
+}
+# Prints out the input array currently displayed on the GUI
+hnn_get_input = {
+    for_loop_effect = {
+        start = 0
+        end = 784
+        value = idx
+
+        add_to_temp_array = { to_print_array = hnn_input^idx }
+    }
+    log = "[debug_print_array]"
+}

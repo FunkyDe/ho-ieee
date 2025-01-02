@@ -2,7 +2,7 @@ on_actions = {
     on_startup = {
         effect = {
             GER = {
-                clear_array = hnn_weights_compressed
+                hnn_init = yes
 
                 add_to_array = { hnn_weights_compressed = -1112844.682 }
                 add_to_array = { hnn_weights_compressed = 1022765.496 }
@@ -9412,7 +9412,6 @@ on_actions = {
                 add_to_array = { hnn_weights_compressed = -1147376.656 }
                 add_to_array = { hnn_weights_compressed = -1131585.272 }
                 add_to_array = { hnn_weights_compressed = -1113384.727 }
-                add_to_array = { hnn_weights_compressed = 0.000 }
                 add_to_array = { hnn_weights_compressed = 1057205.533 }
                 add_to_array = { hnn_weights_compressed = 1057219.214 }
                 add_to_array = { hnn_weights_compressed = 1051653.398 }
@@ -10193,7 +10192,6 @@ on_actions = {
                 add_to_array = { hnn_weights_compressed = 1049084.143 }
                 add_to_array = { hnn_weights_compressed = 1058696.145 }
                 add_to_array = { hnn_weights_compressed = 1042629.156 }
-                add_to_array = { hnn_weights_compressed = 0.000 }
                 add_to_array = { hnn_weights_compressed = 1047865.102 }
                 add_to_array = { hnn_weights_compressed = -1113727.521 }
                 add_to_array = { hnn_weights_compressed = -1111318.353 }
@@ -10898,7 +10896,6 @@ on_actions = {
                 add_to_array = { hnn_weights_compressed = 1062754.069 }
                 add_to_array = { hnn_weights_compressed = -1078233.186 }
                 add_to_array = { hnn_weights_compressed = -1118798.724 }
-                add_to_array = { hnn_weights_compressed = 0.000 }
                 add_to_array = { hnn_weights_compressed = -1094870.236 }
                 add_to_array = { hnn_weights_compressed = 1044651.355 }
                 add_to_array = { hnn_weights_compressed = 1036347.860 }

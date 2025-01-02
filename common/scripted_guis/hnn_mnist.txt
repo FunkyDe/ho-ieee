@@ -1,0 +1,126 @@
+scripted_gui = {
+    HNN_gui_open = {
+        context_type = player_context
+        parent_window_name = countrypoliticsview
+        window_name = "HNN_gui_open"
+
+        visible = {
+            tag = GER
+        }
+
+        effects = {
+            HNN_gui_open_button_click = {
+                if = {
+                    limit = {
+                        NOT = { has_country_flag = HNN_gui_open_flag }
+                    }
+                    set_country_flag = HNN_gui_open_flag
+                }
+                else_if = {
+                    limit = {
+                        has_country_flag = HNN_gui_open_flag
+                    }
+                    clr_country_flag = HNN_gui_open_flag
+                }
+            }
+        }
+    }
+    HNN_gui_container = {
+        context_type = player_context
+        window_name = "HNN_gui_container"
+        dirty = HNN_gui_dirty
+
+        visible = {
+            has_country_flag = HNN_gui_open_flag
+        }
+
+        dynamic_lists = {
+            HNN_input_grid = {
+                array = GER.hnn_input
+                index = grid_idx
+
+                change_scope = no
+                entry_container = "HNN_pixel"
+            }
+        }
+        effects = {
+            HNN_close_click = {
+                if = {
+                    limit = {
+                        NOT = { has_country_flag = HNN_gui_open_flag }
+                    }
+                    set_country_flag = HNN_gui_open_flag
+                }
+                else_if = {
+                    limit = {
+                        has_country_flag = HNN_gui_open_flag
+                    }
+                    clr_country_flag = HNN_gui_open_flag
+                }
+            }
+            HNN_pixel_button_click = {
+                set_temp_variable = { delta = 1 }
+                hnn_update_grid = yes
+                add_to_variable = { HNN_gui_dirty = 0.001 }
+            }
+            HNN_pixel_button_control_click = {
+                set_temp_variable = { delta = 16 }
+                hnn_update_grid = yes
+                add_to_variable = { HNN_gui_dirty = 0.001 }
+            }
+            HNN_pixel_button_shift_click = {
+                set_temp_variable = { delta = 128 }
+                hnn_update_grid = yes
+                add_to_variable = { HNN_gui_dirty = 0.001 }
+            }
+            HNN_pixel_button_alt_click = {
+                set_temp_variable = { delta = 255 }
+                hnn_set_grid = yes
+                add_to_variable = { HNN_gui_dirty = 0.001 }
+            }
+            HNN_pixel_button_right_click = {
+                set_temp_variable = { delta = -1 }
+                hnn_update_grid = yes
+                add_to_variable = { HNN_gui_dirty = 0.001 }
+            }
+            HNN_pixel_button_control_right_click = {
+                set_temp_variable = { delta = -16 }
+                hnn_update_grid = yes
+                add_to_variable = { HNN_gui_dirty = 0.001 }
+            }
+            HNN_pixel_button_shift_right_click = {
+                set_temp_variable = { delta = -128 }
+                hnn_update_grid = yes
+                add_to_variable = { HNN_gui_dirty = 0.001 }
+            }
+            HNN_pixel_button_alt_right_click = {
+                set_temp_variable = { delta = 0 }
+                hnn_set_grid = yes
+                add_to_variable = { HNN_gui_dirty = 0.001 }
+            }
+            HNN_clear_click = {
+                for_loop_effect = {
+                    start = 0
+                    end = 784
+                    value = grid_idx
+
+                    set_temp_variable = { delta = 0 }
+                    hnn_set_grid = yes
+                }
+                set_variable = { GER.hnn_winner = -1 }
+                add_to_variable = { HNN_gui_dirty = 0.001 }
+            }
+            HNN_calculate_click = {
+                hnn_classify = yes
+            }
+        }
+        triggers = {
+
+        }
+        properties = {
+            HNN_pixel_button = {
+                image = "GFX_hnn_pixel[?hnn_img^grid_idx]"
+            }
+        }
+    }
+}

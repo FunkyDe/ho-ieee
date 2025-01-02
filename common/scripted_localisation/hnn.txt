@@ -1,0 +1,25 @@
+defined_text = {
+    name = HNN_pixel_tt_script
+    text = {
+        trigger = {
+            set_temp_variable = { x = grid_idx }
+            set_temp_variable = { y = grid_idx }
+            modulo_temp_variable = { x = 28 }
+            subtract_from_temp_variable = { y = x }
+            divide_temp_variable = { y = 28 }
+        }
+        localization_key = HNN_pixel_tt_res
+    }
+}
+defined_text = {
+    name = HNN_result_decider
+    text = {
+        trigger = {
+            check_variable = { GER.hnn_winner = -1 }
+        }
+        localization_key = HNN_result_none
+    }
+    text = {
+        localization_key = HNN_result_actual
+    }
+}

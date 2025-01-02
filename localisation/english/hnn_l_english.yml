@@ -1,0 +1,12 @@
+﻿l_english:
+  HNN_open_tt: "Open the Hematite Neural Network"
+  HNN_pixel_tt: "[HNN_pixel_tt_script]"
+  HNN_pixel_tt_res: "x: [?x] y: [?y] value: [?GER.hnn_input^grid_idx]"
+  HNN_info: "§HHover for info§!"
+  HNN_info_tt: "(Right) Click: §H+-1§!\nCtrl+(Right) Click: §H+-10§!\nShift+(Right) Click: §H+-100§!\nAlt+Click: §HSet to 255§!\nAlt+Right Click: §HSet to 0§!"
+  HNN_result: "[HNN_result_decider]"
+  HNN_result_none: "Result: §HNone§!"
+  HNN_result_actual: "Result: §H[?GER.hnn_winner]§!"
+  HNN_result_tt: ""
+  HNN_clear_tt: "Clear the board, resetting all pixels to zero"
+  HNN_calculate_tt: "Attempt to classify the number drawn on the gui\n§RNOTE: This will probably take a while§!"

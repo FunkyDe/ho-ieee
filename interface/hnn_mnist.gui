@@ -43,29 +43,47 @@ guiTypes = {
         }
         instantTextBoxType = {
             name = "HNN_info_header"
-            position = { x = 50 y = 20 }
+            position = { x = 20 y = 20 }
             orientation = "UPPER_LEFT"
             text = HNN_info
             pdx_tooltip_delayed = HNN_info_tt
             font = "hoi_18mbs"
         }
         buttonType = {
+            name = "HNN_load"
+            quadTextureSprite = "GFX_small_button_71x26"
+            position = { x = 125 y = 15 }
+            orientation = "UPPER_LEFT"
+            font = "hoi_18mbs"
+            buttonText = "Example"
+            pdx_tooltip_delayed = HNN_load_tt
+        }
+        buttonType = {
             name = "HNN_clear"
             quadTextureSprite = "GFX_small_button_71x26"
-            position = { x = 150 y = 20 }
+            position = { x = 205 y = 15 }
             orientation = "UPPER_LEFT"
             font = "hoi_18mbs"
             buttonText = "Clear"
             pdx_tooltip_delayed = HNN_clear_tt
         }
         buttonType = {
-            name = "HNN_calculate"
+            name = "HNN_calculate_mlp"
             quadTextureSprite = "GFX_small_button_71x26"
-            position = { x = 250 y = 20 }
+            position = { x = 285 y = 15 }
             orientation = "UPPER_LEFT"
             font = "hoi_18mbs"
-            buttonText = "Calculate"
-            pdx_tooltip_delayed = HNN_calculate_tt
+            buttonText = "Calc MLP"
+            pdx_tooltip_delayed = HNN_calculate_mlp_tt
+        }
+        buttonType = {
+            name = "HNN_calculate_cnn"
+            quadTextureSprite = "GFX_small_button_71x26"
+            position = { x = 365 y = 15 }
+            orientation = "UPPER_LEFT"
+            font = "hoi_18mbs"
+            buttonText = "Calc CNN"
+            pdx_tooltip_delayed = HNN_calculate_cnn_tt
         }
         instantTextBoxType = {
             name = "HNN_result"

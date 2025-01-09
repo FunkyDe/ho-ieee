@@ -8,5 +8,7 @@
   HNN_result_none: "Result: §HNone§!"
   HNN_result_actual: "Result: §H[?GER.hnn_winner]§!"
   HNN_result_tt: ""
+  HNN_load_tt: "Load example image"
   HNN_clear_tt: "Clear the board, resetting all pixels to zero"
-  HNN_calculate_tt: "Attempt to classify the number drawn on the gui\n§RNOTE: This will probably take a while§!"
+  HNN_calculate_mlp_tt: "Attempt to classify the number drawn on the gui using an MLP(Multi-Layer Perceptron)\n§RNOTE: This will probably take a while§!"
+  HNN_calculate_cnn_tt: "Attempt to classify the number drawn on the gui using a CNN(Convolutional Neural Network)\n§RNOTE: This will probably take a while§!"

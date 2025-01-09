@@ -1,11 +1,15 @@
 hnn_init = {
     clear_array = hnn_weights_compressed
+    clear_array = hnn_weights2_compressed
     # values added in common/on_actions/hnn_init.txt
     clear_array = hnn_input
     resize_array = { hnn_input = 784 }
     clear_array = hnn_img
     resize_array = { hnn_img = 784 }
 
+    set_variable = { hnn_winner = -1 } # default for no value chosen
+}
+hnn_init_mlp = {
     clear_array = hnn_activations_0
     clear_array = hnn_activations_1
     clear_array = hnn_activations_2
@@ -14,8 +18,20 @@ hnn_init = {
     resize_array = { hnn_activations_1 = 12 }
     resize_array = { hnn_activations_2 = 64 }
     resize_array = { hnn_activations_3 = 10 }
-
-    set_variable = { hnn_winner = -1 } # default for no value chosen
+}
+hnn_init_cnn = {
+    clear_array = hnn_activations_0
+    clear_array = hnn_activations_1
+    clear_array = hnn_activations_2
+    clear_array = hnn_activations_3
+    clear_array = hnn_activations_4
+    clear_array = hnn_activations_5
+    resize_array = { hnn_activations_0 = 784 }
+    resize_array = { hnn_activations_1 = 2704 }
+    resize_array = { hnn_activations_2 = 676 }
+    resize_array = { hnn_activations_3 = 576 }
+    resize_array = { hnn_activations_4 = 144 }
+    resize_array = { hnn_activations_5 = 10 }
 }
 
 # Sets the hnn_input^grid_idx to max(0, delta) % 256 and also updates hnn_img correspondingly
@@ -848,9 +864,9 @@ hnn_get_and_normalize_input = {
     for_loop_effect = {
         start = 0
         end = 784
-        value = idx
+        value = hnn_idx
 
-        set_temp_variable = { arg_a = hnn_input^idx }
+        set_temp_variable = { arg_a = hnn_input^hnn_idx }
         pdxvar_to_float = yes
         set_temp_variable = { arg_a = out_a }
         set_temp_variable = { arg_b = scale_factor }
@@ -858,21 +874,10 @@ hnn_get_and_normalize_input = {
         add_to_temp_array = { hnn_activations_0 = out_a }
     }
 }
-# Normalize inputs in hnn_activations_0 to the range 
-hnn_normalize_input = {
-    log = "Normalizing input..."
-    for_loop_effect = {
-        start = 0
-        end = 784
-        value = idx
-
-        set_variable = { hnn_activations_0^idx = out_a }
-    }
-}
 # Transforms a 784-long array of floats corresponding to activations normalized to the [0-1] range into a result array corresponding to confidences in which of the 10 digits this image represents - higher is more confident
-hnn_run_model = {
+hnn_run_mlp = {
     log = "Running model..."
-    set_temp_variable = { hnn_idx = 0 }
+    set_temp_variable = { idx_weights = 0 }
 
     clear_array = hnn_activations_1
     clear_temp_array = temp_activations
@@ -889,13 +894,13 @@ hnn_run_model = {
             value = idx_dst
 
             set_temp_variable = { arg_a = hnn_activations_0^idx_src }
-            set_temp_variable = { arg_b = hnn_weights_compressed^hnn_idx }
+            set_temp_variable = { arg_b = hnn_weights_compressed^idx_weights }
             ieeeMul = yes
             set_temp_variable = { arg_a = temp_activations^idx_dst }
             set_temp_variable = { arg_b = out_a }
             ieeeAdd = yes
             set_temp_variable = { temp_activations^idx_dst = out_a }
-            add_to_temp_variable = { hnn_idx = 1 }
+            add_to_temp_variable = { idx_weights = 1 }
         }
     }
     # First Layer biases
@@ -905,10 +910,10 @@ hnn_run_model = {
         value = idx_dst
 
         set_temp_variable = { arg_a = temp_activations^idx_dst }
-        set_temp_variable = { arg_b = hnn_weights_compressed^hnn_idx }
+        set_temp_variable = { arg_b = hnn_weights_compressed^idx_weights }
         ieeeAdd = yes
         set_temp_variable = { temp_activations^idx_dst = out_a }
-        add_to_temp_variable = { hnn_idx = 1 }
+        add_to_temp_variable = { idx_weights = 1 }
     }
     # First layer ReLU
     for_loop_effect = {
@@ -942,13 +947,13 @@ hnn_run_model = {
             value = idx_dst
 
             set_temp_variable = { arg_a = hnn_activations_1^idx_src }
-            set_temp_variable = { arg_b = hnn_weights_compressed^hnn_idx }
+            set_temp_variable = { arg_b = hnn_weights_compressed^idx_weights }
             ieeeMul = yes
             set_temp_variable = { arg_a = temp_activations^idx_dst }
             set_temp_variable = { arg_b = out_a }
             ieeeAdd = yes
             set_temp_variable = { temp_activations^idx_dst = out_a }
-            add_to_temp_variable = { hnn_idx = 1 }
+            add_to_temp_variable = { idx_weights = 1 }
         }
     }
     # Second Layer biases
@@ -958,10 +963,10 @@ hnn_run_model = {
         value = idx_dst
 
         set_temp_variable = { arg_a = temp_activations^idx_dst }
-        set_temp_variable = { arg_b = hnn_weights_compressed^hnn_idx }
+        set_temp_variable = { arg_b = hnn_weights_compressed^idx_weights }
         ieeeAdd = yes
         set_temp_variable = { temp_activations^idx_dst = out_a }
-        add_to_temp_variable = { hnn_idx = 1 }
+        add_to_temp_variable = { idx_weights = 1 }
     }
     # Second layer ReLU
     for_loop_effect = {
@@ -995,13 +1000,13 @@ hnn_run_model = {
             value = idx_dst
 
             set_temp_variable = { arg_a = hnn_activations_2^idx_src }
-            set_temp_variable = { arg_b = hnn_weights_compressed^hnn_idx }
+            set_temp_variable = { arg_b = hnn_weights_compressed^idx_weights }
             ieeeMul = yes
             set_temp_variable = { arg_a = temp_activations^idx_dst }
             set_temp_variable = { arg_b = out_a }
             ieeeAdd = yes
             set_temp_variable = { temp_activations^idx_dst = out_a }
-            add_to_temp_variable = { hnn_idx = 1 }
+            add_to_temp_variable = { idx_weights = 1 }
         }
     }
     # Third Layer biases
@@ -1011,14 +1016,487 @@ hnn_run_model = {
         value = idx_dst
 
         set_temp_variable = { arg_a = temp_activations^idx_dst }
-        set_temp_variable = { arg_b = hnn_weights_compressed^hnn_idx }
+        set_temp_variable = { arg_b = hnn_weights_compressed^idx_weights }
         ieeeAdd = yes
         set_temp_variable = { temp_activations^idx_dst = out_a }
-        add_to_temp_variable = { hnn_idx = 1 }
+        add_to_temp_variable = { idx_weights = 1 }
 
         add_to_array = { hnn_activations_3 = temp_activations^idx_dst }
     }
     # There is no third layer ReLU. The original model used a sigmoid layer to get the final activations, but since I haven't implemented that and since sigmoid is monotonic, I just use the regular activations here.
+}
+# Calculates various indices for CNN usage in convolution steps
+# INPUT:
+# src_len - Size of the src square
+# src_channel - channel # for input
+# src_channel_num - # of channels for input
+# dst_len - Size of the dst square
+# dst_channel - channel # for output
+# dst_channel_num - # of channels for output
+# kernel_size - Size of the kernel square
+# hnn_offset - Offset into the weight array to start from
+# dst_row - destination row for convolution
+# dst_col - destination column for convolution
+# kernel_row - kernel row index
+# kernel_col - kernel column index
+# OUTPUT:
+# idx_src - index of the previous activations array
+# idx_dst - index of the next activations array
+# idx_weights - index of the weights/biases to use
+hnn_index_cnn_weights = {
+    set_temp_variable = { idx_weights = kernel_row }
+    multiply_temp_variable = { idx_weights = kernel_size }
+    add_to_temp_variable = { idx_weights = kernel_col }
+    multiply_temp_variable = { idx_weights = src_channel_num }
+    add_to_temp_variable = { idx_weights = src_channel }
+    multiply_temp_variable = { idx_weights = dst_channel_num }
+    add_to_temp_variable = { idx_weights = dst_channel }
+    add_to_temp_variable = { idx_weights = hnn_offset }
+
+    set_temp_variable = { idx_src = dst_row }
+    add_to_temp_variable = { idx_src = kernel_row }
+    multiply_temp_variable = { idx_src = src_len }
+    add_to_temp_variable = { idx_src = dst_col }
+    add_to_temp_variable = { idx_src = kernel_col }
+    multiply_temp_variable = { idx_src = src_channel_num }
+    add_to_temp_variable = { idx_src = src_channel }
+
+    set_temp_variable = { idx_dst = dst_row }
+    multiply_temp_variable = { idx_dst = dst_len }
+    add_to_temp_variable = { idx_dst = dst_col }
+    multiply_temp_variable = { idx_dst = dst_channel_num }
+    add_to_temp_variable = { idx_dst = dst_channel }
+}
+# Calculates various indices for CNN usage in biasing steps
+# INPUT:
+# dst_len - Size of the dst square
+# dst_channel - channel # for output
+# dst_channel_num - # of channels for output
+# hnn_offset - Offset into the weight array to start from
+# dst_row - destination row for convolution
+# dst_col - destination column for convolution
+# OUTPUT:
+# idx_dst - index of the activations array
+# idx_weights - index of the weights/biases to use
+hnn_index_cnn_biases = {
+    set_temp_variable = { idx_weights = dst_channel }
+    add_to_temp_variable = { idx_weights = hnn_offset }
+
+    set_temp_variable = { idx_dst = dst_row }
+    multiply_temp_variable = { idx_dst = dst_len }
+    add_to_temp_variable = { idx_dst = dst_col }
+    multiply_temp_variable = { idx_dst = dst_channel_num }
+    add_to_temp_variable = { idx_dst = dst_channel }
+}
+# Calculates various indices for CNN usage in ReLU steps
+# INPUT:
+# dst_len - Size of the dst square
+# dst_channel - channel # for output
+# dst_channel_num - # of channels for output
+# dst_row - destination row for convolution
+# dst_col - destination column for convolution
+# OUTPUT:
+# idx_dst - index of the activations array
+hnn_index_cnn_relu = {
+    set_temp_variable = { idx_dst = dst_row }
+    multiply_temp_variable = { idx_dst = dst_len }
+    add_to_temp_variable = { idx_dst = dst_col }
+    multiply_temp_variable = { idx_dst = dst_channel_num }
+    add_to_temp_variable = { idx_dst = dst_channel }
+}
+# Calculates various indices for CNN usage in ReLU steps
+# INPUT:
+# src_len - Size of the src square
+# dst_len - Size of the dst square
+# channel - channel # for output
+# channel_num - # of channels for output
+# pool_size - Size of the pooling square (and stride length)
+# src_row - source row for pooling
+# src_col - source column for pooling
+# pool_row - block row for pooling
+# pool_col - block column for pooling
+# OUTPUT:
+# idx_src - index of the previous, pre-pooling activations array
+# idx_dst - index of the next activations array
+hnn_index_cnn_pooling = {
+    set_temp_variable = { idx_src = src_row }
+    add_to_temp_variable = { idx_src = pool_row }
+    multiply_temp_variable = { idx_src = src_len }
+    add_to_temp_variable = { idx_src = src_col }
+    add_to_temp_variable = { idx_src = pool_col }
+    multiply_temp_variable = { idx_src = channel_num }
+    add_to_temp_variable = { idx_src = channel }
+
+    set_temp_variable = { idx_dst = src_row }
+    multiply_temp_variable = { idx_dst = dst_len }
+    add_to_temp_variable = { idx_dst = src_col }
+    divide_temp_variable = { idx_dst = pool_size } # Scale according to the pool size
+    multiply_temp_variable = { idx_dst = channel_num }
+    add_to_temp_variable = { idx_dst = channel }
+}
+# Calculates various indices for CNN usgae in max pooling steps
+# Transforms the input according to a CNN
+hnn_run_cnn = {
+    log = "Running model..."
+
+    clear_array = hnn_activations_1
+    clear_temp_array = temp_activations
+    resize_temp_array = { temp_activations = 2704 }
+    # First convolution weights
+    log = "Running first convolution..."
+    set_temp_variable = { src_len = 28 }
+    set_temp_variable = { src_channel = 0 }
+    set_temp_variable = { src_channel_num = 1 }
+    set_temp_variable = { dst_len = 26 }
+    set_temp_variable = { dst_channel_num = 4 }
+    set_temp_variable = { kernel_size = 3 }
+    set_temp_variable = { hnn_offset = 0 }
+    for_loop_effect = {
+        start = 0
+        end = dst_len
+        value = dst_row
+        for_loop_effect = {
+            start = 0
+            end = dst_len
+            value = dst_col
+            for_loop_effect = {
+                start = 0
+                end = kernel_size
+                value = kernel_row
+                for_loop_effect = {
+                    start = 0
+                    end = kernel_size
+                    value = kernel_col
+                    # src channel loop omitted since there's only one input channel
+                    for_loop_effect = {
+                        start = 0
+                        end = dst_channel_num
+                        value = dst_channel
+
+                        hnn_index_cnn_weights = yes
+
+                        set_temp_variable = { arg_a = hnn_activations_0^idx_src }
+                        set_temp_variable = { arg_b = hnn_weights2_compressed^idx_weights }
+                        ieeeMul = yes
+                        set_temp_variable = { arg_a = temp_activations^idx_dst }
+                        set_temp_variable = { arg_b = out_a }
+                        ieeeAdd = yes
+                        set_temp_variable = { temp_activations^idx_dst = out_a }
+                    }
+                }
+            }
+        }
+    }
+    # First convolution biases
+    log = "Biasing first convolution..."
+    set_temp_variable = { hnn_offset = 36 }
+    for_loop_effect = {
+        start = 0
+        end = dst_len
+        value = dst_row
+        for_loop_effect = {
+            start = 0
+            end = dst_len
+            value = dst_col
+            for_loop_effect = {
+                start = 0
+                end = dst_channel_num
+                value = dst_channel
+
+                hnn_index_cnn_biases = yes
+
+                set_temp_variable = { arg_a = temp_activations^idx_dst }
+                set_temp_variable = { arg_b = hnn_weights2_compressed^idx_weights }
+                ieeeAdd = yes
+                set_temp_variable = { temp_activations^idx_dst = out_a }
+            }
+        }
+    }
+    # First convolution ReLU
+    log = "Applying ReLU to results..."
+    for_loop_effect = {
+        start = 0
+        end = dst_len
+        value = dst_row
+        for_loop_effect = {
+            start = 0
+            end = dst_len
+            value = dst_col
+            for_loop_effect = {
+                start = 0
+                end = dst_channel_num
+                value = dst_channel
+
+                hnn_index_cnn_relu = yes
+
+                if = {
+                    limit = {
+                        check_variable = { temp_activations^idx_dst < 0 }
+                    }
+                    add_to_array = { hnn_activations_1 = 0 }
+                }
+                else = {
+                    add_to_array = { hnn_activations_1 = temp_activations^idx_dst }
+                }
+            }
+        }
+    }
+
+    clear_array = hnn_activations_2
+    clear_temp_array = temp_activations
+    resize_temp_array = { temp_activations = 676 }
+    # First max pooling
+    log = "Running first max pool..."
+    set_temp_variable = { src_len = 26 }
+    set_temp_variable = { dst_len = 13 }
+    set_temp_variable = { channel_num = 4 }
+    set_temp_variable = { pool_size = 2 }
+    for_loop_effect = {
+        start = 0
+        end = src_len
+        value = src_row
+        add = pool_size
+        for_loop_effect = {
+            start = 0
+            end = src_len
+            value = src_col
+            add = pool_size
+            for_loop_effect = {
+                start = 0
+                end = pool_size
+                value = pool_row
+                for_loop_effect = {
+                    start = 0
+                    end = pool_size
+                    value = pool_col
+                    for_loop_effect = {
+                        start = 0
+                        end = channel_num
+                        value = channel
+
+                        hnn_index_cnn_pooling = yes
+
+                        if = {
+                            limit = {
+                                # ieee comparison not needed due to activations being guaranteed to be positive by the previous ReLU
+                                check_variable = { hnn_activations_1^idx_src > temp_activations^idx_dst }
+                            }
+                            set_temp_variable = { temp_activations^idx_dst = hnn_activations_1^idx_src }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    for_loop_effect = {
+        start = 0
+        end = temp_activations^num
+        value = idx_dst
+
+        add_to_array = { hnn_activations_2 = temp_activations^idx_dst }
+    }
+
+    clear_array = hnn_activations_3
+    clear_temp_array = temp_activations
+    resize_temp_array = { temp_activations = 576 }
+    # Second convolution weights
+    log = "Running second convolution..."
+    set_temp_variable = { src_len = 13 }
+    set_temp_variable = { src_channel_num = 4 }
+    set_temp_variable = { dst_len = 12 }
+    set_temp_variable = { dst_channel_num = 4 }
+    set_temp_variable = { kernel_size = 2 }
+    set_temp_variable = { hnn_offset = 40 }
+    for_loop_effect = {
+        start = 0
+        end = dst_len
+        value = dst_row
+        for_loop_effect = {
+            start = 0
+            end = dst_len
+            value = dst_col
+            for_loop_effect = {
+                start = 0
+                end = kernel_size
+                value = kernel_row
+                for_loop_effect = {
+                    start = 0
+                    end = kernel_size
+                    value = kernel_col
+                    for_loop_effect = {
+                        start = 0
+                        end = src_channel_num
+                        value = src_channel
+                        for_loop_effect = {
+                            start = 0
+                            end = dst_channel_num
+                            value = dst_channel
+
+                            hnn_index_cnn_weights = yes
+
+                            set_temp_variable = { arg_a = hnn_activations_2^idx_src }
+                            set_temp_variable = { arg_b = hnn_weights2_compressed^idx_weights }
+                            ieeeMul = yes
+                            set_temp_variable = { arg_a = temp_activations^idx_dst }
+                            set_temp_variable = { arg_b = out_a }
+                            ieeeAdd = yes
+                            set_temp_variable = { temp_activations^idx_dst = out_a }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    # Second convolution biases
+    log = "Biasing second convolution..."
+    set_temp_variable = { hnn_offset = 104 }
+    for_loop_effect = {
+        start = 0
+        end = dst_len
+        value = dst_row
+        for_loop_effect = {
+            start = 0
+            end = dst_len
+            value = dst_col
+            for_loop_effect = {
+                start = 0
+                end = dst_channel_num
+                value = dst_channel
+
+                hnn_index_cnn_biases = yes
+
+                set_temp_variable = { arg_a = temp_activations^idx_dst }
+                set_temp_variable = { arg_b = hnn_weights2_compressed^idx_weights }
+                ieeeAdd = yes
+                set_temp_variable = { temp_activations^idx_dst = out_a }
+            }
+        }
+    }
+    # Second convolution ReLU
+    log = "Applying ReLU to results..."
+    for_loop_effect = {
+        start = 0
+        end = dst_len
+        value = dst_row
+        for_loop_effect = {
+            start = 0
+            end = dst_len
+            value = dst_col
+            for_loop_effect = {
+                start = 0
+                end = dst_channel_num
+                value = dst_channel
+
+                hnn_index_cnn_relu = yes
+
+                if = {
+                    limit = {
+                        check_variable = { temp_activations^idx_dst < 0 }
+                    }
+                    add_to_array = { hnn_activations_3 = 0 }
+                }
+                else = {
+                    add_to_array = { hnn_activations_3 = temp_activations^idx_dst }
+                }
+            }
+        }
+    }
+
+    clear_array = hnn_activations_4
+    clear_temp_array = temp_activations
+    resize_temp_array = { temp_activations = 144 }
+    # Second max pooling
+    log = "Running second max pool..."
+    set_temp_variable = { src_len = 12 }
+    set_temp_variable = { dst_len = 6 }
+    set_temp_variable = { channel_num = 4 }
+    set_temp_variable = { pool_size = 2 }
+    for_loop_effect = {
+        start = 0
+        end = src_len
+        value = src_row
+        add = pool_size
+        for_loop_effect = {
+            start = 0
+            end = src_len
+            value = src_col
+            add = pool_size
+            for_loop_effect = {
+                start = 0
+                end = pool_size
+                value = pool_row
+                for_loop_effect = {
+                    start = 0
+                    end = pool_size
+                    value = pool_col
+                    for_loop_effect = {
+                        start = 0
+                        end = channel_num
+                        value = channel
+
+                        hnn_index_cnn_pooling = yes
+
+                        if = {
+                            limit = {
+                                # ieee comparison not needed due to activations being guaranteed to be positive by the previous ReLU
+                                check_variable = { hnn_activations_3^idx_src > temp_activations^idx_dst }
+                            }
+                            set_temp_variable = { temp_activations^idx_dst = hnn_activations_3^idx_src }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    for_loop_effect = {
+        start = 0
+        end = temp_activations^num
+        value = idx_dst
+
+        add_to_array = { hnn_activations_4 = temp_activations^idx_dst }
+    }
+
+    clear_array = hnn_activations_5
+    clear_temp_array = temp_activations
+    resize_temp_array = { temp_activations = 10 }
+    # TODO Final dense layer
+    log = "Running final dense layer..."
+    set_temp_variable = { idx_weights = 108 }
+    for_loop_effect = {
+        start = 0
+        end = 144
+        value = idx_src
+
+        for_loop_effect = {
+            start = 0
+            end = 10
+            value = idx_dst
+
+            set_temp_variable = { arg_a = hnn_activations_4^idx_src }
+            set_temp_variable = { arg_b = hnn_weights2_compressed^idx_weights }
+            ieeeMul = yes
+            set_temp_variable = { arg_a = temp_activations^idx_dst }
+            set_temp_variable = { arg_b = out_a }
+            ieeeAdd = yes
+            set_temp_variable = { temp_activations^idx_dst = out_a }
+            add_to_temp_variable = { idx_weights = 1 }
+        }
+    }
+    # Third Layer biases
+    for_loop_effect = {
+        start = 0
+        end = 10
+        value = idx_dst
+
+        set_temp_variable = { arg_a = temp_activations^idx_dst }
+        set_temp_variable = { arg_b = hnn_weights2_compressed^idx_weights }
+        ieeeAdd = yes
+        set_temp_variable = { temp_activations^idx_dst = out_a }
+        add_to_temp_variable = { idx_weights = 1 }
+
+        add_to_array = { hnn_activations_5 = temp_activations^idx_dst }
+    }
+    # There is no fifth layer ReLU. The original model used a softmax layer to get the final activations, but since I haven't implemented that and since higher activations translate to higher softmaxes anyways, I use regular activations here.
 }
 # sets the variable in hnn_winner to the digit classified by the model
 hnn_pick_result = {
@@ -1029,8 +1507,8 @@ hnn_pick_result = {
         end = 10
         value = digit
 
-        set_temp_variable = { arg_a = hnn_activations_3^predicted_digit }
-        set_temp_variable = { arg_b = hnn_activations_3^digit }
+        set_temp_variable = { arg_a = hnn_activations_@var:final_layer_num^predicted_digit }
+        set_temp_variable = { arg_b = hnn_activations_@var:final_layer_num^digit }
         if = {
             limit = {
                 compareLess = yes
@@ -1046,17 +1524,26 @@ hnn_summarize_result = {
     for_loop_effect = {
         start = 0
         end = 10
-        value = idx
+        value = hnn_idx
 
-        set_temp_variable = { to_print_float = hnn_activations_3^idx }
+        set_temp_variable = { to_print_float = hnn_activations_@var:final_layer_num^hnn_idx }
         log = "[print_float_full]"
     }
 }
 # Single function to run all of the prediction in one call
-hnn_classify = {
-    # hnn_load_example = yes
+hnn_classify_mlp = {
+    set_temp_variable = { final_layer_num = 3 }
+    hnn_init_mlp = yes
     hnn_get_and_normalize_input  = yes
-    hnn_run_model = yes
+    hnn_run_mlp = yes
+    hnn_pick_result = yes
+    hnn_summarize_result = yes
+}
+hnn_classify_cnn = {
+    set_temp_variable = { final_layer_num = 5 }
+    hnn_init_cnn = yes
+    hnn_get_and_normalize_input = yes
+    hnn_run_cnn = yes
     hnn_pick_result = yes
     hnn_summarize_result = yes
 }
@@ -1065,9 +1552,9 @@ hnn_get_input = {
     for_loop_effect = {
         start = 0
         end = 784
-        value = idx
+        value = hnn_idx
 
-        add_to_temp_array = { to_print_array = hnn_input^idx }
+        add_to_temp_array = { to_print_array = hnn_input^hnn_idx }
     }
     log = "[debug_print_array]"
 }

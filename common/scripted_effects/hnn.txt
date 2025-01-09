@@ -34,11 +34,10 @@ hnn_init_cnn = {
     resize_array = { hnn_activations_5 = 10 }
 }
 
-# Sets the hnn_input^grid_idx to max(0, delta) % 256 and also updates hnn_img correspondingly
+# Sets the hnn_input^grid_idx to delta clamped to the range [0, 255] and also updates hnn_img correspondingly
 hnn_set_grid = {
     set_variable = { hnn_input^grid_idx = delta }
-    clamp_variable = { var = hnn_input^grid_idx min = 0 }
-    modulo_variable = { hnn_input^grid_idx = 256 }
+    clamp_variable = { var = hnn_input^grid_idx min = 0 max = 255 }
 
     set_variable = { hnn_img^grid_idx = hnn_input^grid_idx }
     set_temp_variable = { temp_floor = hnn_img^grid_idx }
@@ -49,6 +48,8 @@ hnn_set_grid = {
 # Updates the hnn_input^grid_idx by delta and also updates hnn_img correspondingly
 hnn_update_grid = {
     add_to_variable = { hnn_input^grid_idx = delta }
+    add_to_variable = { hnn_input^grid_idx = 256 }
+    clamp_variable = { var = hnn_input^grid_idx min = 0 }
     modulo_variable = { hnn_input^grid_idx = 256 }
 
     set_variable = { hnn_img^grid_idx = hnn_input^grid_idx }

@@ -10,11 +10,36 @@ HOI4's modding script uses signed 32-bit fixed-point variables(referred to later
 Below is a chart of the scripts I found most interesting, where to find them, and what they do. I have omitted the "_trigger" ending for some of their names, as that has no impact on their actual function:
 | Script | Located In | Function |
 | :--- | :--- | :--- |
+| hnn_run_cnn | [common/scripted_effects/hnn.txt](common/scripted_effects/hnn.txt#L1140) | Runs a convolutional model on the input given in the input GUI |
+| hnn_run_mlp | [common/scripted_effects/hnn.txt](common/scripted_effects/hnn.txt#L879) | Runs a multi-layer perceptron model on the input given in the input GUI - not accurate, this was the first model implemented, but it works on the example |
 | ieeeMul | [common/scripted_triggers/ieee_operations.txt](common/scripted_triggers/ieee_operations.txt#L532) | Performs floating point multiplication between two given arguments |
 | ieeeAdd | [common/scripted_triggers/ieee_operations.txt](common/scripted_triggers/ieee_operations.txt#L11) | Performs floating point addition between two given arguments |
 | to_float | [common/scripted_triggers/ieee_io.txt](common/scripted_triggers/ieee_io.txt#L153) | Converts a variable into a corresponding array of 32 bits holding the equivalent single-precision floating-point value |
-| to_digit_array | [common/scripted_triggers/ieee_io.txt](common/scripted_triggers/ieee_io.txt#L442) | Converts a 32-bit array holding a single-precision floating-point value into an array of digits for output and printing |
-| to_pdxvar | [common/scripted_triggers/ieee_io.txt](common/scripted_triggers/ieee_io.txt#L702) | Converts a 32-bit array holding a single-precision floating-point value into a variable with its corresponding value, with extra flags for overflow, infinity, and NaN cases |
+
+# HNN(Hematite Neural Networks)
+## Why
+This branch exists to provide a more robust demonstration of both the capabilities and limitations of the ho-ieee-754 implementation. This branch gives an example of a mod using ho-ieee floating point numbers by implementing two neural networks, one a multi-layer perceptron(MLP) and the other a convolutional neural network(CNN), in order to classify digits in the [MNIST](https://en.wikipedia.org/wiki/MNIST_database) format. A GUI is provided for the user to input a new digit graphically, which then can be fed into models which are implemented in-game.
+## Usage
+The HNN input GUI can be accessed through the GER tag. Click the wireframe blue button next to the faction disband button. This tab is accessible by clicking the national flag in the top left.
+![Image of the HNN GUI open button](extras/image.png)
+From there a new GUI will pop up. This GUI features 2 main parts - the top bar where actions are performed, and a 28x28 input board where the digit is visualized and drawn. You are able to draw digits by clicking the board, with multiplier keys to change the board more efficiently.
+Along the top bar there are a series of features. From left to right these are:
+- Hoverable that displays information about how to manipulate the input board
+- Button to load an example digit(a five) from the actual MNIST dataset
+- Button to reset the board to a completely blank state
+- Button to predict the digit using an MLP model
+    - Note, this model takes a while to execute
+    - Also note, this model is very inaccurate as an MLP is not a good model architecture for computer vision
+- Button to predict the digit using a CNN model
+    - Note, this model takes a very long time to execute, upwards of a minute on my device
+- Result display, showing the resultant digit from the model's prediction
+- Close button, which closes the GUI(it is reopenable from the button described above)
+
+![Image of the HNN GUI](extras/image2.png)
+## Implementation
+The two models were first trained using [Keras](https://keras.io). From the models, I exported the weights and biases, transformed them into their ho-ieee equivalents, and plugged them into on_actions that load the model on game startup (see the [first](common/on_actions/hnn_init.txt) and [second](common/on_actions/hnn_init2.txt) on_action files for for the MLP and CNN networks constants respectively). From these constants, the model is implemented in a [scripted effect file](common/scripted_effects/hnn.txt#L1140) alongside a GUI that allows the user to draw and execute the models. The models perform similarly to the actual models trained using Keras. However, the greatest drawback is the calculation time. Since tens of thousands of operations need to be executed for the model to perform one classification, the wait times are significant for both the MLP and especially the CNN, the latter of which potentially taking upwards of a minute. If I have more time, I might look to improve the multiplcation operation, perhaps by implementing [Karatsuba's](https://en.wikipedia.org/wiki/Karatsuba_algorithm).
+
+Below this will be the rest of ho-ieee-754's README.
 
 # Background
 

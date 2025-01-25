@@ -59,6 +59,7 @@ hnn_update_grid = {
     divide_variable = { hnn_img^grid_idx = 16 }
 }
 
+# Loads an example digit(a five) from the MNIST dataset
 hnn_load_example = {
     set_variable = { hnn_input^0 = 0 }
     set_variable = { hnn_input^1 = 0 }
@@ -872,10 +873,9 @@ hnn_get_and_normalize_input = {
         set_temp_variable = { arg_a = out_a }
         set_temp_variable = { arg_b = scale_factor }
         ieeeMul = yes
-        add_to_temp_array = { hnn_activations_0 = out_a }
+        add_to_array = { hnn_activations_0 = out_a }
     }
 }
-# Transforms a 784-long array of floats corresponding to activations normalized to the [0-1] range into a result array corresponding to confidences in which of the 10 digits this image represents - higher is more confident
 hnn_run_mlp = {
     log = "Running model..."
     set_temp_variable = { idx_weights = 0 }

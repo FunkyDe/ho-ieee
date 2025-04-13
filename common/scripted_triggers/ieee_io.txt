@@ -163,10 +163,6 @@ to_float_trigger = {
     }
     
     clear_temp_array = temp_array_@var:temp_array_id
-    clear_temp_array = temp_mantissa_array
-    set_temp_variable = { temp_exp = 21 }
-    set_temp_variable = { actual_exp = -127 }
-    set_temp_variable = { negative_flag = 0 }
     if = { # Special hard-coded case for minimum paradox numbers because +2147483.648 is not a valid pdxvar
         limit = {
             check_variable = { to_float_input = -2147483.648 }
@@ -205,6 +201,11 @@ to_float_trigger = {
         add_to_temp_array = { temp_array_@var:temp_array_id = 1 }
     }
     else = {
+        clear_temp_array = temp_mantissa_array
+        set_temp_variable = { temp_exp = 21 }
+        set_temp_variable = { actual_exp = -127 }
+        set_temp_variable = { negative_flag = 0 }
+
         # Set sign bit
         if = {
             limit = {
@@ -266,13 +267,15 @@ to_float_trigger = {
 
         # temp_idx serves two roles depending on whether or not the converted number was greater than 1
         # If no integers were converted above, temp_idx will be 0
+        # Otherwise, temp_idx defines where decimal portion of mantissa starts in the else statement
         set_temp_variable = { temp_idx = temp_mantissa_array^num }
         resize_temp_array = { temp_mantissa_array = 24 }
         if = {
             limit = {
                 check_variable = { temp_idx = 0 }
             }
-            # Define a temp array to calculate the mantissa(with extra padding for lower powers of 2), which is then copied over to temp_mantissa_array
+            # Define a temp array to calculate the mantissa(with extra padding for lower powers of 2)
+            # This subone is then copied over to temp_mantissa_array
             resize_temp_array = { temp_mantissa_subone = 33 }
 
             # temp_idx defines which bit in temp_mantissa_array is being assigned
@@ -280,37 +283,42 @@ to_float_trigger = {
                 array = temp_mantissa_subone
                 index = idx
 
-                multiply_temp_variable = { to_float_input = 2 }
+                # Stop iterating after mantissa fully generated to keep the correct remainder
                 if = {
                     limit = {
-                        NOT = { check_variable = { to_float_input < 1 } }
+                        NOT = { check_variable = { temp_idx > 23 } }
                     }
-
-                    subtract_from_temp_variable = { to_float_input = 1 }
-                    set_temp_variable = { temp_mantissa_array^temp_idx = 1 }
-                    
-                    # set exponent since hasn't been set in integer converter
+                    multiply_temp_variable = { to_float_input = 2 }
                     if = {
                         limit = {
-                            check_variable = { actual_exp = -127 }
+                            NOT = { check_variable = { to_float_input < 1 } }
                         }
-                        set_temp_variable = { actual_exp = temp_exp }
-                    }
-                    add_to_temp_variable = { temp_idx = 1 }
-                }
-                else = {
-                    if = {
-                        limit = {
-                            NOT = { check_variable = { actual_exp = -127 } }
+
+                        subtract_from_temp_variable = { to_float_input = 1 }
+                        set_temp_variable = { temp_mantissa_array^temp_idx = 1 }
+                        
+                        # set exponent since hasn't been set in integer converter
+                        if = {
+                            limit = {
+                                check_variable = { actual_exp = -127 }
+                            }
+                            set_temp_variable = { actual_exp = temp_exp }
                         }
                         add_to_temp_variable = { temp_idx = 1 }
                     }
+                    else = {
+                        if = {
+                            limit = {
+                                NOT = { check_variable = { actual_exp = -127 } }
+                            }
+                            add_to_temp_variable = { temp_idx = 1 }
+                        }
+                    }
+                    subtract_from_temp_variable = { temp_exp = 1 }
                 }
-                subtract_from_temp_variable = { temp_exp = 1 }
             }
         }
         else = {
-            # temp_idx defines where decimal portion of mantissa starts
             all_of = {
                 array = temp_mantissa_array
                 index = idx

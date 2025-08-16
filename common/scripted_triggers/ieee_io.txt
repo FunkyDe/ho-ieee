@@ -691,6 +691,13 @@ to_digit_array_trigger = {
             }
         }
     }
+    if = { # flip pdxvar special flags
+        limit = {
+            check_variable = { ieee_sign_bit = 1 }
+        }
+        multiply_temp_variable = { ieee_inf_flag = -1 }
+        multiply_temp_variable = { ieee_nan_flag = -1 }
+    }
     set_temp_variable = { temp_array_id = 0 }
 }
 ### TO_PDXVAR_TRIGGER
@@ -753,13 +760,6 @@ to_pdxvar_trigger = {
     # Process digits to pdxvar format (borrowed from localization code)
     clear_temp_array = to_print_digit_array
     set_temp_variable = { to_print_digit_power = ieee_out_power }
-    if = { # flip pdxvar special flags
-        limit = {
-            check_variable = { ieee_sign_bit = 1 }
-        }
-        multiply_temp_variable = { ieee_inf_flag = -1 }
-        multiply_temp_variable = { ieee_nan_flag = -1 }
-    }
     all_of = {
         array = ieee_out_array
         value = val

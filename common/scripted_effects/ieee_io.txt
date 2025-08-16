@@ -9,7 +9,7 @@
 # the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
 # If no array_id is assigned, the function will use temp_array_0 in place
 # If the array_id is not an integer, then the function will display an error
-## Errors consist of a temp error var (bitwise_error_flag) and a message in log corresponding to the error
+## Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
 to_bitwise = {
     if = {
         limit = {
@@ -28,7 +28,7 @@ to_bitwise = {
 # If the array_id is not an integer, then the function will display an error
 # If the array is not 32 bits long, the function will display an error
 ## The output will be sent to the temp var store_bitwise_output
-## Errors consist of a temp error var (bitwise_error_flag) and a message in log corresponding to the error
+## Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
 store_bitwise = {
     if = {
         limit = {
@@ -57,7 +57,7 @@ to_float = {
     }
 }
 ### TO_DIGIT_ARRAY
-## Reads a bit array in floating-point format and outputs two things: The array of digits(digit_array_output) and the power of 10(digit_power_output), akin to scientific format
+## Reads a bit array in floating-point format and outputs two things: The array of digits(ieee_out_array) and the power of 10(ieee_out_power), akin to scientific format
 ## The below function has 1 parameter: temp_array_id
 ## This parameter will be cleared(by resetting to 0) after the function execution
 ## ARRAY_ID
@@ -66,17 +66,17 @@ to_float = {
 # If the array_id is not an integer, then the function will display an error
 # If the array is not 32 elements long, then the function will display an error
 # If the array has elements which are not 0 or 1, then the function will display an error
-## DIGIT_ARRAY_OUTPUT
+## IEEE_OUT_ARRAY
 # This array contains the digits of the floating-point number stored one digit per element
 # For example, the decimal number 125 would be stored:
 # [1, 2, 5]
-## DIGIT_POWER_OUTPUT
+## IEEE_OUT_POWER
 # The power gives the power of 10 the floating-point number
 # For example, the decimal number 625 would have a power of 2
 ## Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
 ## SPECIAL CASES
-# Infinity - Some cases cannot be converted to a number as usual. Therefore, a temp var is set to signify the special case: to_pdxvar_inf_flag
-# NaN - Some cases cannot be converted to a number as usual. Therefore, a temp var is set to signify the special case: to_pdxvar_nan_flag
+# Infinity - Some cases cannot be converted to a number as usual. Therefore, a temp var is set to signify the special case: ieee_inf_flag
+# NaN - Some cases cannot be converted to a number as usual. Therefore, a temp var is set to signify the special case: ieee_nan_flag
 # In both cases, no error is returned and both the power and array remain zeroed out and empty respectively
 to_digit_array = {
     if = {
@@ -98,8 +98,8 @@ to_digit_array = {
 ## TO_PDXVAR_OUTPUT
 # The output variable which holds the converted value
 # Do not confuse this with the store_bitwise function, as the two functions will output different values from the same bitarray
-# If the value is too high to fit in a pdxvar(greater than 2148483.647 or less than 2147483.648), then a temp var(to_pdxvar_overflow_flag) will be set to 1 or -1 depending on whether the float was too high or too low respectively, a warning will be logged, and the pdxvar will default to 0 
-# In addition, two temp vars exist to notify the user of an infinity or NaN(to_pdxvar_inf_flag and to_pdxvar_nan_flag respectively) and the output will default to 0. Similarly, +1 or -1 will denote a positive or negative special value 
+# If the value is too high to fit in a pdxvar(greater than 2148483.647 or less than 2147483.648), then a temp var(ieee_overflow_flag) will be set to 1 or -1 depending on whether the float was too high or too low respectively, a warning will be logged, and the pdxvar will default to 0 
+# In addition, two temp vars exist to notify the user of an infinity or NaN(ieee_inf_flag and ieee_nan_flag respectively) and the output will default to 0. Similarly, +1 or -1 will denote a positive or negative special value 
 ## Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
 ## Additionally, any error will not trigger the to_digit_array function, and instead return 0 to the output variable
 to_pdxvar = {

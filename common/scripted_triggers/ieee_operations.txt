@@ -846,21 +846,21 @@ ieeeMul_trigger = {
 
         # Convert back to sign, exp, mantissa
         clear_temp_array = temp_array_1000
-        set_temp_variable = { temp_sign_bit = 0 }
+        set_temp_variable = { ieee_sign_bit = 0 }
         if = {
             limit = {
                 check_variable = { arg_a < 0 }
             }
-            add_to_temp_variable = { temp_sign_bit = 1 }
+            add_to_temp_variable = { ieee_sign_bit = 1 }
         }
         if = {
             limit = {
                 check_variable = { arg_b < 0 }
             }
-            add_to_temp_variable = { temp_sign_bit = 1 }
+            add_to_temp_variable = { ieee_sign_bit = 1 }
         }
-        modulo_temp_variable = { temp_sign_bit = 2 }
-        add_to_temp_array = { temp_array_1000 = temp_sign_bit }
+        modulo_temp_variable = { ieee_sign_bit = 2 }
+        add_to_temp_array = { temp_array_1000 = ieee_sign_bit }
 
         # Zero case
         if = {

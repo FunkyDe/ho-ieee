@@ -1,9 +1,9 @@
-# Prints either a minus or plus sign depending on the value of the temp var temp_sign_bit(0 -> +, 1 -> -) 
+# Prints either a minus or plus sign depending on the value of the temp var ieee_sign_bit(0 -> +, 1 -> -) 
 defined_text = {
     name = ieee_plus_minus_decider
     text = {
         trigger = {
-            check_variable = { temp_sign_bit = 1 }
+            check_variable = { ieee_sign_bit = 1 }
         }
         localization_key = ieee_minus_sign
     }
@@ -16,7 +16,7 @@ defined_text = {
     name = ieee_sci_plus_decider
     text = {
         trigger = {
-            check_variable = { digit_power_output < 0 }
+            check_variable = { ieee_out_power < 0 }
         }
         localization_key = ieee_empty
     }
@@ -24,12 +24,12 @@ defined_text = {
         localization_key = ieee_plus_sign
     }
 }
-# Prints ONLY a minus depending on the value of the temp var temp_sign_bit(0 -> nothing, 1 -> -)
+# Prints ONLY a minus depending on the value of the temp var ieee_sign_bit(0 -> nothing, 1 -> -)
 defined_text = {
     name = ieee_minus_decider
     text = {
         trigger = {
-            check_variable = { temp_sign_bit = 1 }
+            check_variable = { ieee_sign_bit = 1 }
         }
         localization_key = ieee_minus_sign
     }
@@ -200,16 +200,16 @@ defined_text = {
             to_digit_array_trigger = yes
 
             # Finally, print digits out
-            set_temp_variable = { print_sign_bit = temp_sign_bit }
-            set_temp_variable = { print_inf_flag = to_pdxvar_inf_flag }
-            set_temp_variable = { print_nan_flag = to_pdxvar_nan_flag }
+            set_temp_variable = { print_sign_bit = ieee_sign_bit }
+            set_temp_variable = { print_inf_flag = ieee_inf_flag }
+            set_temp_variable = { print_nan_flag = ieee_nan_flag }
             all_of = {
-                array = digit_array_output
+                array = ieee_out_array
                 value = val
 
                 add_to_temp_array = { to_print_digit_array = val }
             }
-            set_temp_variable = { to_print_digit_power = digit_power_output }
+            set_temp_variable = { to_print_digit_power = ieee_out_power }
         }
         localization_key = ieee_print_digit
     }
@@ -230,18 +230,18 @@ defined_text = {
             to_digit_array_trigger = yes
 
             # Finally, print digits out
-            set_temp_variable = { print_sign_bit = temp_sign_bit }
-            set_temp_variable = { print_inf_flag = to_pdxvar_inf_flag }
-            set_temp_variable = { print_nan_flag = to_pdxvar_nan_flag }
-            set_temp_variable = { to_print_digit_power = digit_power_output }
+            set_temp_variable = { print_sign_bit = ieee_sign_bit }
+            set_temp_variable = { print_inf_flag = ieee_inf_flag }
+            set_temp_variable = { print_nan_flag = ieee_nan_flag }
+            set_temp_variable = { to_print_digit_power = ieee_out_power }
             all_of = {
-                array = digit_array_output
+                array = ieee_out_array
                 value = val
                 index = idx
 
                 if = {
                     limit = {
-                        NOT = { check_variable = { idx > digit_power_output } }
+                        NOT = { check_variable = { idx > ieee_out_power } }
                     }
                     add_to_temp_array = { to_print_digit_array = val }
                 }
@@ -274,16 +274,16 @@ defined_text = {
             to_digit_array_trigger = yes
 
             # Finally, print digits out
-            set_temp_variable = { print_sign_bit = temp_sign_bit }
-            set_temp_variable = { print_inf_flag = to_pdxvar_inf_flag }
-            set_temp_variable = { print_nan_flag = to_pdxvar_nan_flag }
-            set_temp_variable = { to_print_digit_power = digit_power_output }
+            set_temp_variable = { print_sign_bit = ieee_sign_bit }
+            set_temp_variable = { print_inf_flag = ieee_inf_flag }
+            set_temp_variable = { print_nan_flag = ieee_nan_flag }
+            set_temp_variable = { to_print_digit_power = ieee_out_power }
             all_of = {
-                array = digit_array_output
+                array = ieee_out_array
                 value = val
                 index = idx
 
-                set_temp_variable = { pdx_digit_cap = digit_power_output }
+                set_temp_variable = { pdx_digit_cap = ieee_out_power }
                 add_to_temp_variable = { pdx_digit_cap = 4 }
                 if = {
                     limit = {
@@ -294,7 +294,7 @@ defined_text = {
                 else = {
                     set_temp_variable = { least_sig_digit_idx = pdx_digit_cap }
                     subtract_from_temp_variable = { least_sig_digit_idx = 1 }
-                    set_temp_variable = { least_sig_digit = digit_array_output^least_sig_digit_idx }
+                    set_temp_variable = { least_sig_digit = ieee_out_array^least_sig_digit_idx }
                     modulo_temp_variable = { least_sig_digit = 2 }
                     set_temp_variable = { round_digit_threshold = pdx_digit_cap }
                     add_to_temp_variable = { round_digit_threshold = 1 }
@@ -307,7 +307,7 @@ defined_text = {
                                 AND = {
                                     check_variable = { val = 5 }
                                     OR = {
-                                        check_variable = { digit_array_output^num > round_digit_threshold }
+                                        check_variable = { ieee_out_array^num > round_digit_threshold }
                                         check_variable = { least_sig_digit = 1 }
                                     }
                                 }
@@ -317,11 +317,11 @@ defined_text = {
                         add_to_temp_variable = { to_print_digit_array^least_sig_digit_idx = 1 }
 
                         all_of = {
-                            array = digit_array_output
+                            array = ieee_out_array
                             index = idx
                             
                             # traverse array backwards
-                            set_temp_variable = { carry_idx = digit_array_output^num }
+                            set_temp_variable = { carry_idx = ieee_out_array^num }
                             subtract_from_temp_variable = { carry_idx = idx }
                             subtract_from_temp_variable = { carry_idx = 1 }
                             
@@ -394,25 +394,25 @@ defined_text = {
                 limit = {
                     check_variable = { to_print_param = 0 }
                 }
-                set_temp_variable = { to_print_param = digit_array_output^num }
+                set_temp_variable = { to_print_param = ieee_out_array^num }
                 add_to_temp_variable = { to_print_param = 1 }
             }
 
             # Finally, print digits out
-            set_temp_variable = { print_sign_bit = temp_sign_bit }
-            set_temp_variable = { print_inf_flag = to_pdxvar_inf_flag }
-            set_temp_variable = { print_nan_flag = to_pdxvar_nan_flag }
-            set_temp_variable = { to_print_digit_power = digit_power_output }
+            set_temp_variable = { print_sign_bit = ieee_sign_bit }
+            set_temp_variable = { print_inf_flag = ieee_inf_flag }
+            set_temp_variable = { print_nan_flag = ieee_nan_flag }
+            set_temp_variable = { to_print_digit_power = ieee_out_power }
             
             # Set a few useful values for rounding later
             set_temp_variable = { least_sig_digit_idx = to_print_param }
             subtract_from_temp_variable = { least_sig_digit_idx = 1 }
-            set_temp_variable = { least_sig_digit = digit_array_output^least_sig_digit_idx }
+            set_temp_variable = { least_sig_digit = ieee_out_array^least_sig_digit_idx }
             modulo_temp_variable = { least_sig_digit = 2 }
             set_temp_variable = { round_digit_threshold = to_print_param }
             add_to_temp_variable = { round_digit_threshold = 1 }
             all_of = {
-                array = digit_array_output
+                array = ieee_out_array
                 value = val
                 index = idx
 
@@ -431,7 +431,7 @@ defined_text = {
                             AND = {
                                 check_variable = { val = 5 }
                                 OR = {
-                                    check_variable = { digit_array_output^num > round_digit_threshold }
+                                    check_variable = { ieee_out_array^num > round_digit_threshold }
                                     check_variable = { least_sig_digit = 1 }
                                 }
                             }
@@ -444,11 +444,11 @@ defined_text = {
                     add_to_temp_variable = { to_print_digit_array^prev_idx = 1 }
 
                     all_of = {
-                        array = digit_array_output
+                        array = ieee_out_array
                         index = idx
                         
                         # traverse array backwards
-                        set_temp_variable = { carry_idx = digit_array_output^num }
+                        set_temp_variable = { carry_idx = ieee_out_array^num }
                         subtract_from_temp_variable = { carry_idx = idx }
                         subtract_from_temp_variable = { carry_idx = 1 }
                         
@@ -525,24 +525,24 @@ defined_text = {
                 limit = {
                     check_variable = { to_print_param = 0 }
                 }
-                set_temp_variable = { to_print_param = digit_array_output^num }
+                set_temp_variable = { to_print_param = ieee_out_array^num }
             }
 
             # Finally, print digits out
-            set_temp_variable = { print_sign_bit = temp_sign_bit }
-            set_temp_variable = { print_inf_flag = to_pdxvar_inf_flag }
-            set_temp_variable = { print_nan_flag = to_pdxvar_nan_flag }
+            set_temp_variable = { print_sign_bit = ieee_sign_bit }
+            set_temp_variable = { print_inf_flag = ieee_inf_flag }
+            set_temp_variable = { print_nan_flag = ieee_nan_flag }
             set_temp_variable = { to_print_digit_power = 0 }
 
             # Set a few useful values for rounding later
             set_temp_variable = { least_sig_digit_idx = to_print_param }
             subtract_from_temp_variable = { least_sig_digit_idx = 1 }
-            set_temp_variable = { least_sig_digit = digit_array_output^least_sig_digit_idx }
+            set_temp_variable = { least_sig_digit = ieee_out_array^least_sig_digit_idx }
             modulo_temp_variable = { least_sig_digit = 2 }
             set_temp_variable = { round_digit_threshold = to_print_param }
             add_to_temp_variable = { round_digit_threshold = 1 }
             all_of = {
-                array = digit_array_output
+                array = ieee_out_array
                 value = val
                 index = idx
 
@@ -561,7 +561,7 @@ defined_text = {
                             AND = {
                                 check_variable = { val = 5 }
                                 OR = {
-                                    check_variable = { digit_array_output^num > round_digit_threshold }
+                                    check_variable = { ieee_out_array^num > round_digit_threshold }
                                     check_variable = { least_sig_digit = 1 }
                                 }
                             }
@@ -572,11 +572,11 @@ defined_text = {
                     add_to_temp_variable = { to_print_digit_array^least_sig_digit_idx = 1 }
 
                     all_of = {
-                        array = digit_array_output
+                        array = ieee_out_array
                         index = idx
                         
                         # traverse array backwards
-                        set_temp_variable = { carry_idx = digit_array_output^num }
+                        set_temp_variable = { carry_idx = ieee_out_array^num }
                         subtract_from_temp_variable = { carry_idx = idx }
                         subtract_from_temp_variable = { carry_idx = 1 }
                         
@@ -598,7 +598,7 @@ defined_text = {
                                     index = 0
                                     value = 1
                                 }
-                                add_to_temp_variable = { digit_power_output = 1 }
+                                add_to_temp_variable = { ieee_out_power = 1 }
                             }
                             else = {
                                 add_to_temp_variable = { to_print_digit_array^prev_idx = 1 }

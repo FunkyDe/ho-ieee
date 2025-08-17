@@ -277,90 +277,10 @@ defined_text = {
             set_temp_variable = { print_sign_bit = ieee_sign_bit }
             set_temp_variable = { print_inf_flag = ieee_inf_flag }
             set_temp_variable = { print_nan_flag = ieee_nan_flag }
-            set_temp_variable = { to_print_digit_power = ieee_out_power }
-            all_of = {
-                array = ieee_out_array
-                value = val
-                index = idx
 
-                set_temp_variable = { pdx_digit_cap = ieee_out_power }
-                add_to_temp_variable = { pdx_digit_cap = 4 }
-                if = {
-                    limit = {
-                        check_variable = { idx < pdx_digit_cap }
-                    }
-                    add_to_temp_array = { to_print_digit_array = val }
-                }
-                else = {
-                    set_temp_variable = { least_sig_digit_idx = pdx_digit_cap }
-                    subtract_from_temp_variable = { least_sig_digit_idx = 1 }
-                    set_temp_variable = { least_sig_digit = ieee_out_array^least_sig_digit_idx }
-                    modulo_temp_variable = { least_sig_digit = 2 }
-                    set_temp_variable = { round_digit_threshold = pdx_digit_cap }
-                    add_to_temp_variable = { round_digit_threshold = 1 }
-                    if = {
-                        limit = {
-                            check_variable = { idx = pdx_digit_cap }
-                            ### Rounds using the recommended TiesToEven, consult 4.3 (pg 27) in ieee_754.pdf
-                            OR = {
-                                check_variable = { val > 5 }
-                                AND = {
-                                    check_variable = { val = 5 }
-                                    OR = {
-                                        check_variable = { ieee_out_array^num > round_digit_threshold }
-                                        check_variable = { least_sig_digit = 1 }
-                                    }
-                                }
-                            }
-                        }
-                        ### add one to previous var and propagate addition
-                        add_to_temp_variable = { to_print_digit_array^least_sig_digit_idx = 1 }
-
-                        all_of = {
-                            array = ieee_out_array
-                            index = idx
-                            
-                            # traverse array backwards
-                            set_temp_variable = { carry_idx = ieee_out_array^num }
-                            subtract_from_temp_variable = { carry_idx = idx }
-                            subtract_from_temp_variable = { carry_idx = 1 }
-                            
-                            if = {
-                                limit = {
-                                    check_variable = { to_print_digit_array^carry_idx > 9 }
-                                }
-                                subtract_from_temp_variable = { to_print_digit_array^carry_idx = 10 }
-
-                                set_temp_variable = { prev_idx = carry_idx }
-                                subtract_from_temp_variable = { prev_idx = 1 }
-                                if = {
-                                    limit = {
-                                        check_variable = { prev_idx = -1 }
-                                    }
-
-                                    add_to_temp_array = {
-                                        array = to_print_digit_array
-                                        index = 0
-                                        value = 1
-                                    }
-                                    add_to_temp_variable = { to_print_digit_power = 1 }
-                                }
-                                else = {
-                                    add_to_temp_variable = { to_print_digit_array^prev_idx = 1 }
-                                }
-
-                                # Trim trailing zeroes if after decimal
-                                if = {
-                                    limit = {
-                                        check_variable = { to_print_digit_array^carry_idx = 0 }
-                                    }
-                                    resize_temp_array = { to_print_digit_array = carry_idx }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            # Process digits to pdxvar format
+            truncate_digit_array_trigger = yes
+            
             # If empty, set to 0 by default
             if = {
                 limit = {
@@ -628,13 +548,13 @@ defined_text = {
     name = debug_print_digit
     text = {
         trigger = {
-            check_variable = { print_inf_flag = 1 }
+            NOT = { check_variable = { print_inf_flag = 0 } }
         }
         localization_key = ieee_infinity
     }
     text = {
         trigger = {
-            check_variable = { print_nan_flag = 1 }
+            NOT = { check_variable = { print_nan_flag = 0 } }
         }
         localization_key = ieee_nan
     }
@@ -771,13 +691,13 @@ defined_text = {
     name = debug_print_digit_sci
     text = {
         trigger = {
-            check_variable = { print_inf_flag = 1 }
+            NOT = { check_variable = { print_inf_flag = 0 } }
         }
         localization_key = ieee_infinity
     }
     text = {
         trigger = {
-            check_variable = { print_nan_flag = 1 }
+            NOT = { check_variable = { print_nan_flag = 0 } }
         }
         localization_key = ieee_nan
     }

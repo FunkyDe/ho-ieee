@@ -1,53 +1,27 @@
 # Run all tests defined below
 ieee_run_tests = {
-    ieee_get_test_count = yes
     clear_temp_array = test_fail_array
-    for_each_loop = {
-        array = temp_test_count_array
-        value = test_count
-        index = test_block
 
-        for_loop_effect = {
-            start = 0
-            end = test_count
-            compare = less_than
-            value = test_offset
+    # Run all tests without meta effects, see ieee_tests_driver.txt
+    ieee_test_driver = yes
 
-            set_temp_variable = { test_id = test_block }
-            multiply_temp_variable = { test_id = 10000 }
-            add_to_temp_variable = { test_id = test_offset }
-
-            meta_effect = {
-                text = {
-                    ieee_test_[TEST_ID] = yes
-                }
-                TEST_ID = "[?test_id]"
-            }
-        }
-    }
     for_each_loop = {
         array = test_fail_array
         value = v
 
         add_to_temp_array = { to_print_array = v }
     }
-    if = {
-        limit = {
-            check_variable = { test_fail_array^num < 100 }
-        }
-        log = "------------------------------------------------------------"
-        log = "<[?test_fail_array^num]> Failed Test(s): [debug_print_array]"
-        log = "------------------------------------------------------------"
-    }
-    else = {
-        set_temp_variable = { last_index = test_fail_array^num }
-        subtract_from_temp_variable = { last_index = 1 }
-        log = "------------------------------------------------------------"
-        log = "<[?test_fail_array^num]> Failed Test(s)"
-        log = "First failure [?test_fail_array^0]"
-        log = "First failure [?test_fail_array^last_index]"
-        log = "------------------------------------------------------------"
-    }
+
+    set_temp_variable = { last_index = test_fail_array^num }
+    subtract_from_temp_variable = { last_index = 1 }
+    set_temp_variable = { last_failure = test_fail_array^last_index }
+    add_to_temp_variable = { last_index = 1 }
+    resize_temp_array = { to_print_array = 100 } # Truncate to 100 errors
+    log = "------------------------------------------------------------"
+    log = "<[?last_index]> Failed Test(s): [debug_print_array]"
+    log = "First failure [?test_fail_array^0]"
+    log = "Last failure [?last_failure]"
+    log = "------------------------------------------------------------"
 }
 
 ######### TESTS #########
@@ -59,14 +33,16 @@ ieee_run_tests = {
 # Error flags (e.g. io_error_flag) are temp variables that mark errors.
 
 # Hard code the number of tests, each test block is separated by 10000, so it goes 0#### block, 1#### block, etc, with tests filling in the 0000-9999 range
+# No longer used, but will remain for clarity's sake
 ieee_get_test_count = {
-    add_to_temp_array = { temp_test_count_array = 792 }     # to_bitwise and store_bitwise
+    clear_temp_array = temp_test_count_array
+    add_to_temp_array = { temp_test_count_array = 788 }     # to_bitwise and store_bitwise
     add_to_temp_array = { temp_test_count_array = 500 }     # relations and totalOrder
     add_to_temp_array = { temp_test_count_array = 972 }     # predicates
     add_to_temp_array = { temp_test_count_array = 1000 }    # signaling predicates
-    add_to_temp_array = { temp_test_count_array = 422 }     # addition and subtraction
-    add_to_temp_array = { temp_test_count_array = 961 }     # multiplication
-    add_to_temp_array = { temp_test_count_array = 961 }     # division
+    add_to_temp_array = { temp_test_count_array = 9150 }     # addition and subtraction
+    add_to_temp_array = { temp_test_count_array = 9150 }     # multiplication
+    add_to_temp_array = { temp_test_count_array = 9150 }     # division
 }
 # test basic io
 ## See ieee_tests_io.txt

@@ -14,7 +14,7 @@ ieee_run_tests = {
             value = test_offset
 
             set_temp_variable = { test_id = test_block }
-            multiply_temp_variable = { test_id = 1000 }
+            multiply_temp_variable = { test_id = 10000 }
             add_to_temp_variable = { test_id = test_offset }
 
             meta_effect = {
@@ -40,8 +40,12 @@ ieee_run_tests = {
         log = "------------------------------------------------------------"
     }
     else = {
+        set_temp_variable = { last_index = test_fail_array^num }
+        subtract_from_temp_variable = { last_index = 1 }
         log = "------------------------------------------------------------"
         log = "<[?test_fail_array^num]> Failed Test(s)"
+        log = "First failure [?test_fail_array^0]"
+        log = "First failure [?test_fail_array^last_index]"
         log = "------------------------------------------------------------"
     }
 }
@@ -54,9 +58,9 @@ ieee_run_tests = {
 # Furthermore, in the fail block add the line `add_to_temp_array = { test_fail_array = test_id }` to add the failure to a list printed at the end
 # Error flags (e.g. io_error_flag) are temp variables that mark errors.
 
-# Hard code the number of tests, each test block is separated by 1000, so it goes 0### block, 1### block, etc, with tests filling in the 000-999 range
+# Hard code the number of tests, each test block is separated by 10000, so it goes 0#### block, 1#### block, etc, with tests filling in the 0000-9999 range
 ieee_get_test_count = {
-    add_to_temp_array = { temp_test_count_array = 792 }      # to_bitwise and store_bitwise
+    add_to_temp_array = { temp_test_count_array = 792 }     # to_bitwise and store_bitwise
     add_to_temp_array = { temp_test_count_array = 500 }     # relations and totalOrder
     add_to_temp_array = { temp_test_count_array = 972 }     # predicates
     add_to_temp_array = { temp_test_count_array = 1000 }    # signaling predicates
@@ -67,7 +71,7 @@ ieee_get_test_count = {
 # test basic io
 ## See ieee_tests_io.txt
 # test base relations and totalOrder
-## See ieee_tests_relations.txt and ieee_tests_totalorder.txt
+## See ieee_tests_relations.txt
 # test quiet predicates and negations
 ## See ieee_tests_predicates.txt
 # test signaling predicates and negations

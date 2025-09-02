@@ -3,7 +3,13 @@ ieee_run_tests = {
     clear_temp_array = test_fail_array
 
     # Run all tests without meta effects, see ieee_tests_driver.txt
-    ieee_test_driver = yes
+    ieee_run_tests_io = yes
+    ieee_run_tests_relations = yes
+    ieee_run_tests_quiet_predicates = yes
+    ieee_run_tests_signaling_predicates = yes
+    ieee_run_tests_addsub = yes
+    ieee_run_tests_multiplication = yes
+    ieee_run_tests_division = yes
 
     for_each_loop = {
         array = test_fail_array
@@ -16,7 +22,12 @@ ieee_run_tests = {
     subtract_from_temp_variable = { last_index = 1 }
     set_temp_variable = { last_failure = test_fail_array^last_index }
     add_to_temp_variable = { last_index = 1 }
-    resize_temp_array = { to_print_array = 100 } # Truncate to 100 errors
+    if = {
+        limit = {
+            check_variable = { to_print_array^num > 100 }
+        }
+        resize_temp_array = { to_print_array = 100 } # Truncate to 100 errors
+    }
     log = "------------------------------------------------------------"
     log = "<[?last_index]> Failed Test(s): [debug_print_array]"
     log = "First failure [?test_fail_array^0]"

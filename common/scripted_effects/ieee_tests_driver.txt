@@ -1,5 +1,5 @@
-# One effect to run all tests instead of using meta effects
-ieee_test_driver = {
+# Effects to run each test block instead of using meta effects
+ieee_run_tests_io = {
     set_temp_variable = { test_id = 0 }
     ieee_test_0 = yes
     set_temp_variable = { test_id = 1 }
@@ -1576,6 +1576,16 @@ ieee_test_driver = {
     ieee_test_786 = yes
     set_temp_variable = { test_id = 787 }
     ieee_test_787 = yes
+    set_temp_variable = { test_id = 788 }
+    ieee_test_788 = yes
+    set_temp_variable = { test_id = 789 }
+    ieee_test_789 = yes
+    set_temp_variable = { test_id = 790 }
+    ieee_test_790 = yes
+    set_temp_variable = { test_id = 791 }
+    ieee_test_791 = yes
+}
+ieee_run_tests_relations = {
     set_temp_variable = { test_id = 10000 }
     ieee_test_10000 = yes
     set_temp_variable = { test_id = 10001 }
@@ -2576,6 +2586,8 @@ ieee_test_driver = {
     ieee_test_10498 = yes
     set_temp_variable = { test_id = 10499 }
     ieee_test_10499 = yes
+}
+ieee_run_tests_quiet_predicates = {
     set_temp_variable = { test_id = 20000 }
     ieee_test_20000 = yes
     set_temp_variable = { test_id = 20001 }
@@ -4520,6 +4532,8 @@ ieee_test_driver = {
     ieee_test_20970 = yes
     set_temp_variable = { test_id = 20971 }
     ieee_test_20971 = yes
+}
+ieee_run_tests_signaling_predicates = {
     set_temp_variable = { test_id = 30000 }
     ieee_test_30000 = yes
     set_temp_variable = { test_id = 30001 }
@@ -6520,6 +6534,8 @@ ieee_test_driver = {
     ieee_test_30998 = yes
     set_temp_variable = { test_id = 30999 }
     ieee_test_30999 = yes
+}
+ieee_run_tests_addsub = {
     set_temp_variable = { test_id = 40000 }
     ieee_test_40000 = yes
     set_temp_variable = { test_id = 40001 }
@@ -24820,6 +24836,8 @@ ieee_test_driver = {
     ieee_test_49148 = yes
     set_temp_variable = { test_id = 49149 }
     ieee_test_49149 = yes
+}
+ieee_run_tests_multiplication = {
     set_temp_variable = { test_id = 50000 }
     ieee_test_50000 = yes
     set_temp_variable = { test_id = 50001 }
@@ -43120,6 +43138,8 @@ ieee_test_driver = {
     ieee_test_59148 = yes
     set_temp_variable = { test_id = 59149 }
     ieee_test_59149 = yes
+}
+ieee_run_tests_division = {
     set_temp_variable = { test_id = 60000 }
     ieee_test_60000 = yes
     set_temp_variable = { test_id = 60001 }

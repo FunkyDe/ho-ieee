@@ -987,5 +987,533 @@ ieeeMul_trigger = {
     }
 }
 ### ieeeDiv
+ieeeDiv_trigger = {
+    set_temp_variable = { out_a = 0 }
+    set_temp_variable = { to_bitwise_input = arg_a }
+    set_temp_variable = { temp_array_id = 1000 }
+    to_bitwise_trigger = yes
+
+    set_temp_variable = { to_bitwise_input = arg_b }
+    set_temp_variable = { temp_array_id = 1001 }
+    to_bitwise_trigger = yes
+    
+    # Get exponents of a and b
+    set_temp_variable = { exp_a = -127 }
+    set_temp_variable = { exp_b = -127 }
+    set_temp_variable = { exponent_inc = 128 }
+    all_of = {
+        array = temp_array_1001
+        index = idx
+
+        if = {
+            limit = {
+                NOT = { check_variable = { idx < 1 } }
+                check_variable = { idx < 9 }
+            }
+            
+            if = {
+                limit = {
+                    check_variable = { temp_array_1001^idx = 1 }
+                }
+                add_to_temp_variable = { exp_b = exponent_inc }
+            }
+            if = {
+                limit = {
+                    check_variable = { temp_array_1000^idx = 1 }
+                }
+                add_to_temp_variable = { exp_a = exponent_inc }
+            }
+            divide_temp_variable = { exponent_inc = 2 }
+        }
+    }
+    if = {
+        limit = {
+            OR = {
+                check_variable = { exp_a = 128 }
+                check_variable = { exp_b = 128 }
+
+                # check for zero divisions
+                check_variable = { arg_a = 0 }
+                check_variable = { arg_a = -2147483.648 }
+                check_variable = { arg_b = 0 }
+                check_variable = { arg_b = -2147483.648 }
+            }
+        }
+
+        # Special cases handler
+        # +infinity = 2139095.040
+        # -infinity = -8388.608
+        # NaN = 2143289.344 as a result of inf / inf, 0 / 0, or NaN input
+        if = {
+            limit = {
+                check_variable = { arg_a < 0 }
+            }
+            add_to_temp_variable = { arg_a = 2147483.648 }
+            add_to_temp_variable = { out_a = 2147483.648 }
+        }
+        if = {
+            limit = {
+                check_variable = { arg_b < 0 }
+            }
+            add_to_temp_variable = { arg_b = 2147483.648 }
+            add_to_temp_variable = { out_a = 2147483.648 }
+        }
+        if = {
+            limit = {
+                OR = {
+                    compareNotOrdered = yes
+                    relationEqual = yes
+                }
+            }
+            add_to_temp_variable = { out_a = 2143289.344 }
+        }
+        else = {
+            # +-infinity if |a| > |b|, else 0
+            if = {
+                limit = {
+                    totalOrder = yes
+                }
+                add_to_temp_variable = { out_a = 0 }
+            }
+            else = {
+                add_to_temp_variable = { out_a = 2139095.040 }
+            }
+        }
+        # Reset args
+        if = {
+            limit = {
+                check_variable = { temp_array_1000^0 = 1 }
+            }
+            add_to_temp_variable = { arg_a = 2147483.648 }
+        }
+        if = {
+            limit = {
+                check_variable = { temp_array_1001^0 = 1 }
+            }
+            add_to_temp_variable = { arg_b = 2147483.648 }
+        }
+    }
+    else = {
+        clear_temp_array = temp_mantissa_a
+        clear_temp_array = temp_mantissa_b
+        clear_temp_array = temp_mantissa_o
+
+        if = {
+            limit = {
+                check_variable = { exp_a > -127 }
+            }
+            resize_temp_array = { temp_mantissa_a = 48 }
+            set_temp_variable = { temp_mantissa_a^0 = 1 }
+            
+            set_temp_variable = { mantissa_index = 0 }
+            all_of = {
+                array = temp_array_1000
+                index = idx
+
+                if = {
+                    limit = {
+                        check_variable = { idx > 8 }
+                    }
+                    add_to_temp_variable = { mantissa_index = 1 }
+                    set_temp_variable = { temp_mantissa_a^mantissa_index = temp_array_1000^idx }
+                }
+            }
+        }
+        else = {
+            set_temp_variable = { exp_a = -126 }
+            set_temp_variable = { mantissa_index = 0 }
+            all_of = {
+                array = temp_array_1000
+                index = idx
+
+                if = {
+                    limit = {
+                        check_variable = { idx > 8 }
+                    }
+                    add_to_temp_variable = { mantissa_index = 1 }
+                    if = {
+                        limit = {
+                            check_variable = { temp_mantissa_a^num > 0 }
+                        }
+                        add_to_temp_array = { temp_mantissa_a = temp_array_1000^idx }
+                    }
+                    else_if = {
+                        limit = {
+                            check_variable = { temp_array_1000^idx = 1 }
+                        }
+                        subtract_from_temp_variable = { exp_a = mantissa_index }
+                        add_to_temp_array = { temp_mantissa_a = temp_array_1000^idx }
+                    }
+                }
+            }
+            resize_temp_array = { temp_mantissa_a = 48 }
+        }
+        if = {
+            limit = {
+                check_variable = { exp_b > -127 }
+            }
+            resize_temp_array = { temp_mantissa_b = 24 }
+            set_temp_variable = { temp_mantissa_b^0 = 1 }
+            
+            set_temp_variable = { mantissa_index = 0 }
+            all_of = {
+                array = temp_array_1000
+                index = idx
+
+                if = {
+                    limit = {
+                        check_variable = { idx > 8 }
+                    }
+                    add_to_temp_variable = { mantissa_index = 1 }
+                    set_temp_variable = { temp_mantissa_b^mantissa_index = temp_array_1001^idx }
+                }
+            }
+        }
+        else = {
+            set_temp_variable = { exp_b = -126 }
+            set_temp_variable = { mantissa_index = 0 }
+            all_of = {
+                array = temp_array_1001
+                index = idx
+
+                if = {
+                    limit = {
+                        check_variable = { idx > 8 }
+                    }
+                    add_to_temp_variable = { mantissa_index = 1 }
+                    if = {
+                        limit = {
+                            check_variable = { temp_mantissa_b^num > 0 }
+                        }
+                        add_to_temp_array = { temp_mantissa_b = temp_array_1001^idx }
+                    }
+                    else_if = {
+                        limit = {
+                            check_variable = { temp_array_1001^idx = 1 }
+                        }
+                        subtract_from_temp_variable = { exp_b = mantissa_index }
+                        add_to_temp_array = { temp_mantissa_b = temp_array_1001^idx }
+                    }
+                }
+            }
+            resize_temp_array = { temp_mantissa_b = 24 }
+        }
+
+        # Set output exponent
+        set_temp_variable = { exp_o = exp_a }
+        subtract_from_temp_variable = { exp_o = exp_b }
+        subtract_from_temp_variable = { exp_o = 1 }
+
+        # Compare the mantissas, if mantissa a >= mantissa b, add 1 to exp_o, else shift mantissa b back one
+        set_temp_variable = { mantissa_compare = 0 }
+        all_of = {
+            array = temp_mantissa_b
+            index = idx
+
+            if = {
+                limit = {
+                    check_variable = { mantissa_compare = 0 }
+                    check_variable = { temp_mantissa_a^idx > temp_mantissa_b^idx }
+                }
+                set_temp_variable = { mantissa_compare = 1 }
+            }
+            if = {
+                limit = {
+                    check_variable = { mantissa_compare = 0 }
+                    check_variable = { temp_mantissa_a^idx < temp_mantissa_b^idx }
+                }
+                set_temp_variable = { mantissa_compare = -1 }
+            }
+        }
+        set_temp_variable = { mantissa_b_offset = 0 }
+        if = {
+            limit = {
+                check_variable = { mantissa_compare < 0 }
+            }
+            set_temp_variable = { mantissa_b_offset = 1 }
+        }
+        else = {
+            add_to_temp_variable = { exp_o = 1 }
+        }
+
+        # Long division
+        all_of = {
+            array = temp_mantissa_a
+            index = idx_a
+
+            if = {
+                limit = {
+                    check_variable = { idx_a < 24 }
+                }
+                # Offset to ensure resultant mantissa is in [1, 2)
+                add_to_temp_variable = { idx_a = mantissa_b_offset }
+
+                set_temp_variable = { mantissa_compare = 0 }
+                set_temp_variable = { idx_a_prev = idx_a }
+                subtract_from_temp_variable = { idx_a_prev = 1 }
+                if = {
+                    limit = {
+                        check_variable = { temp_mantissa_a^idx_a_prev = 1 }
+                    }
+                    set_temp_variable = { mantissa_compare = 1 }
+                }
+                all_of = {
+                    array = temp_mantissa_b
+                    index = idx_b
+
+                    if = {
+                        limit = {
+                            check_variable = { mantissa_compare = 0 }
+                            check_variable = { temp_mantissa_a^idx_a > temp_mantissa_b^idx_b }
+                        }
+                        set_temp_variable = { mantissa_compare = 1 }
+                    }
+                    if = {
+                        limit = {
+                            check_variable = { mantissa_compare = 0 }
+                            check_variable = { temp_mantissa_a^idx_a < temp_mantissa_b^idx_b }
+                        }
+                        set_temp_variable = { mantissa_compare = -1 }
+                    }
+                    add_to_temp_variable = { idx_a = 1 }
+                }
+
+                if = {
+                    limit = {
+                        check_variable = { mantissa_compare > -1 }
+                    }
+
+                    add_to_temp_array = { temp_mantissa_o = 1 }
+                    set_temp_variable = { carry = 0 }
+                    all_of = {
+                        array = temp_mantissa_b
+                        index = idx_b_offset
+
+                        set_temp_variable = { idx_b = temp_mantissa_b^num }
+                        subtract_from_temp_variable = { idx_b = 1 }
+                        subtract_from_temp_variable = { idx_b = idx_b_offset }
+                        subtract_from_temp_variable = { idx_a = 1 }
+
+                        subtract_from_temp_variable = { temp_mantissa_a^idx_a = temp_mantissa_b^idx_b }
+                        subtract_from_temp_variable = { temp_mantissa_a^idx_a = carry }
+                        if = {
+                            limit = {
+                                check_variable = { temp_mantissa_a^idx_a < 0 }
+                            }
+
+                            add_to_temp_variable = { temp_mantissa_a^idx_a = 2 }
+                            set_temp_variable = { carry = 1 }
+                        }
+                        else = {
+                            set_temp_variable = { carry = 0 }
+                        }
+                    }
+                    subtract_from_temp_variable = { idx_a = 1 }
+                    subtract_from_temp_variable = { temp_mantissa_a^idx_a = carry }
+                }
+                else = {
+                    add_to_temp_array = { temp_mantissa_o = 0 }
+                }
+            }
+        }
+
+        # Rounding
+        set_temp_variable = { idx_a = 150 }
+        add_to_temp_variable = { idx_a = exp_o }
+        clamp_temp_variable = {
+            var = idx_a
+            max = 24
+        }
+        add_to_temp_variable = { idx_a = mantissa_b_offset }
+        set_temp_variable = { mantissa_compare = 0 }
+
+        set_temp_variable = { idx_a_prev = idx_a }
+        subtract_from_temp_variable = { idx_a_prev = 1 }
+        if = {
+            limit = {
+                check_variable = { temp_mantissa_a^idx_a_prev = 1 }
+            }
+            set_temp_variable = { mantissa_compare = 1 }
+        }
+        if = {
+            limit = {
+                check_variable = { idx_a < 0 }
+            }
+            set_temp_variable = { mantissa_compare = -1 }
+        }
+        all_of = {
+            array = temp_mantissa_b
+            index = idx_b
+
+            if = {
+                limit = {
+                    check_variable = { mantissa_compare = 0 }
+                    check_variable = { temp_mantissa_a^idx_a > temp_mantissa_b^idx_b }
+                }
+                set_temp_variable = { mantissa_compare = 1 }
+            }
+            if = {
+                limit = {
+                    check_variable = { mantissa_compare = 0 }
+                    check_variable = { temp_mantissa_a^idx_a < temp_mantissa_b^idx_b }
+                }
+                set_temp_variable = { mantissa_compare = -1 }
+            }
+            add_to_temp_variable = { idx_a = 1 }
+        }
+        if = {
+            limit = {
+                OR = {
+                    check_variable = { mantissa_compare = 1 }
+                    AND = {
+                        check_variable = { mantissa_compare = 0 }
+                        check_variable = { temp_mantissa_o^23 = 1 }
+                    }
+                }
+            }
+
+            set_temp_variable = { carry = 1 }
+            all_of = {
+                array = temp_mantissa_o
+                index = idx_offset
+
+                set_temp_variable = { idx = 23 }
+                subtract_from_temp_variable = { idx = idx_offset }
+                add_to_temp_variable = { temp_mantissa_o^idx = carry }
+                if = {
+                    limit = {
+                        check_variable = { temp_mantissa_o^idx = 2 }
+                    }
+                    set_temp_variable = { temp_mantissa_o^idx = 0 }
+                    set_temp_variable = { carry = 1 }
+                }
+                else = {
+                    set_temp_variable = { carry = 0 }
+                }
+            }
+        }
+
+        # Conversion back to float
+        clear_temp_array = temp_array_1000
+        set_temp_variable = { ieee_sign_bit = 0 }
+        if = {
+            limit = {
+                check_variable = { arg_a < 0 }
+            }
+            add_to_temp_variable = { ieee_sign_bit = 1 }
+        }
+        if = {
+            limit = {
+                check_variable = { arg_b < 0 }
+            }
+            add_to_temp_variable = { ieee_sign_bit = 1 }
+        }
+        modulo_temp_variable = { ieee_sign_bit = 2 }
+        add_to_temp_array = { temp_array_1000 = ieee_sign_bit }
+
+        add_to_temp_variable = { exp_o = 127 }
+        clamp_temp_variable = {
+            var = exp_o
+            max = 255
+        }
+        # Infinity case
+        if = {
+            limit = {
+                check_variable = { exp_o = 255 }
+            }
+
+            # Fill exponent with ones, then mantissa with zeroes
+            resize_temp_array = { temp_array_1000 = 32 }
+            all_of = {
+                array = temp_array_1000
+                index = idx
+
+                if = {
+                    limit = {
+                        check_variable = { idx > 0 }
+                        check_variable = { idx < 9 }
+                    }
+                    set_temp_variable = { temp_array_1000^idx = 1 }
+                }
+            }
+        }
+        # Normal case
+        else_if = {
+            limit = {
+                check_variable = { exp_o > 0 }
+            }
+            # Convert exponent to exponent bits
+            set_temp_variable = { exponent_inc = 128 }
+            resize_temp_array = { temp_array_1000 = 9 }
+            all_of = {
+                array = temp_array_1000
+                index = idx
+
+                if = {
+                    limit = {
+                        check_variable = { idx > 0 }
+                    }
+
+                    if = {
+                        limit = {
+                            NOT = { check_variable = { exp_o < exponent_inc } }
+                        }
+                        set_temp_variable = { temp_array_1000^idx = 1 }
+                        subtract_from_temp_variable = { exp_o = exponent_inc }
+                    }
+                    else = {
+                        set_temp_variable = { temp_array_1000^idx = 0 }
+                    }
+                    divide_temp_variable = { exponent_inc = 2 }
+                }
+            }
+
+            # Add mantissa bits to final array, after trimming leading 0
+            remove_from_temp_array = {
+                array = temp_mantissa_o
+                index = 0
+            }
+            all_of = {
+                array = temp_mantissa_o
+                value = v
+
+                add_to_temp_array = { temp_array_1000 = v }
+            }
+        }
+        # Subnormal Case
+        else = {
+            set_temp_variable = { resize_size = 9 }
+            subtract_from_temp_variable = { resize_size = 127 }
+            subtract_from_temp_variable = { resize_size = exp_o }
+            clamp_temp_variable = {
+                var = resize_size
+                min = 9
+                max = 32
+            }
+            resize_temp_array = { temp_array_1000 = resize_size }
+
+            set_temp_variable = { start_index = -126 }
+            subtract_from_temp_variable = { start_index = exp_o }
+            all_of = {
+                array = temp_mantissa_o
+                value = v
+                index = idx
+
+                if = {
+                    limit = {
+                        NOT = { check_variable = { idx < start_index } }
+                        check_variable = { temp_array_1000^num < 32 }
+                    }
+                    add_to_temp_array = { temp_array_1000 = v }
+                }
+            }
+        }
+
+        # run store_bitwise
+        set_temp_variable = { temp_array_id = 1000 }
+        store_bitwise_trigger = yes
+        set_temp_variable = { out_a = store_bitwise_output }
+    }
+}
 ### ieeeSqt
 ### ieeeFMA

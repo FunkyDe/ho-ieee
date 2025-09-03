@@ -4,17 +4,17 @@ The goal of this mod is to provide an implementation floating-point numbers, acc
 
 # Why?
 
-HOI4's modding script uses signed 32-bit fixed-point variables(referred to later as pdxvars), ranging from -2,147,483.648 to 2,147,483.647, with accuracy to the thousandth-place. This means that variables can overflow or are truncated, losing data. So, I am working on an implementation floating-point variables according to the IEEE 754 standard, which would allow for both a greater range of numbers and a greater precision, while maintaining a modder-friendly interface within Paradox's provided modding script. Currently, this project is a work-in-progress, and likely will be for the near future as there is still much to do.
+HOI4's modding script uses signed 32-bit fixed-point variables(referred to later as pdxvars), ranging from -2,147,483.648 to 2,147,483.647, with accuracy to the thousandth-place. This means that variables can overflow, losing the true value, or can be truncated, losing precision. So, I am working on an implementation of floating-point variables according to the IEEE 754 standard, which would allow for both a greater range of numbers and a greater precision, while maintaining a modder-friendly interface within Paradox's provided modding script. Currently, this project is a work-in-progress, and likely will be for the near future as there is still much to do.
 
 # Key Functions
 Below is a chart of the scripts I found most interesting, where to find them, and what they do. I have omitted the "_trigger" ending for some of their names, as that has no impact on their actual function:
 | Script | Located In | Function |
 | :--- | :--- | :--- |
-| ieeeMul | [common/scripted_triggers/ieee_operations.txt](common/scripted_triggers/ieee_operations.txt#L532) | Performs floating point multiplication between two given arguments |
+| ieeeDiv | [common/s989pted_triggers/ieee_operations.txt](common/scripted_triggers/ieee_operations.txt#L532) | Performs floating point division between two given arguments |
 | ieeeAdd | [common/scripted_triggers/ieee_operations.txt](common/scripted_triggers/ieee_operations.txt#L11) | Performs floating point addition between two given arguments |
 | to_float | [common/scripted_triggers/ieee_io.txt](common/scripted_triggers/ieee_io.txt#L153) | Converts a variable into a corresponding array of 32 bits holding the equivalent single-precision floating-point value |
-| to_digit_array | [common/scripted_triggers/ieee_io.txt](common/scripted_triggers/ieee_io.txt#L442) | Converts a 32-bit array holding a single-precision floating-point value into an array of digits for output and printing |
-| to_pdxvar | [common/scripted_triggers/ieee_io.txt](common/scripted_triggers/ieee_io.txt#L702) | Converts a 32-bit array holding a single-precision floating-point value into a variable with its corresponding value, with extra flags for overflow, infinity, and NaN cases |
+| to_digit_array | [common/scripted_triggers/ieee_io.txt](common/scripted_triggers/ieee_io.txt#L453) | Converts a 32-bit array holding a single-precision floating-point value into an array of digits for output and printing |
+| to_pdxvar | [common/scripted_triggers/ieee_io.txt](common/scripted_triggers/ieee_io.txt#L720) | Converts a 32-bit array holding a single-precision floating-point value into a variable with its corresponding value, with extra flags for overflow, infinity, and NaN cases |
 
 # Background
 
@@ -34,26 +34,20 @@ This means that:
 
 # Roadmap
 
-The tentative task map is:
-- [x] Read through IEEE 754/get familiar with standard
-- [x] Experiment with bit-wise operators
+The current roadmap is:
 - [x] Creation and Destruction of floating-point variables (FPVs)
-    - [x] Implement system of input to transform pdxvars to FPVs
 - [x] FPV Output
-    - [x] Implement localization of FPVs
-    - [x] Implement transformation back to pdxvars
 - [x] Comparison
 - [x] Addition and Subtraction
-    - [x] Test cases
-    - [x] Positive+Positive base case
-    - [x] Addition with negatives / Subtraction
-    - [x] Exceptions and special cases (subnormals, infinities, NaNs)
-- [ ] Multiplication
-    - [ ] Test cases
-    - [x] Decide on algorithm
-    - [x] Base implementation
-    - [x] Special cases
-- [ ] Division
+- [x] Multiplication
+- [x] Division
+- [ ] Prepare initial release
+    - [ ] Split off helper functions for conversion to/from mantissas and floats
+    - [ ] Rewrite addition and multiplication functions to use normalized mantissas
+    - [ ] Write simple functions (abs, copySign, logB, etc.)
+    - [ ] Create release branch without tests
+    - [ ] Build more example functions
+    - [ ] Finialize initial documentation
 - [ ] Square Root
 - [ ] Additional basic functions
 - [ ] Recommended operations (consult Clause 9 of IEEE 754)
@@ -76,7 +70,7 @@ Digit Arrays: Localization and conversion from floating point back to pdxvars bo
 
 Errors: This mod is complex, so I have implemented a system of error logging for testing purposes. Generally, an error will do two things, raise a message in `game.log` and increment a temp var called `NAME_error_flag`. These variables are useful as they can accumulate the error number, so reading the counter after a bad function call counts the number of errors. However, due to the nature of scripted effects, these errors cannot affect control flow efficiently. This means that in the case errors do occur, but their impact will propagate to anything else it interacts with.
 
-Tests: I have implemented a series of tests in order to verify the function of functions during development. If you want to examine the tests themselves, you can check out `scripted_effects/ieee_tests.txt` - each test is a scripted effect named `ieee_test_####`, which prints a short result to `game.log`. These tests run on game startup and generate a report in `game.log` for each test and any failures. Additionally, you can execute all tests at once with the scripted effect `ieee_run_tests` (in-game terminal: `e ieee_run_tests`). Error messages may appear in `game.log` after executing tests, but that is to be expected from testing the functions' error handlers.
+Tests: I have implemented a series of tests in order to verify the function of functions during development. If you want to examine the tests themselves, you can check out `scripted_effects/ieee_tests.txt` - each test is a scripted effect named `ieee_test_#####`, which prints a short result to `game.log`. These tests run on game startup and generate a report in `game.log` for each test and any failures. Additionally, you can execute all tests at once with the scripted effect `ieee_run_tests` (in-game terminal: `e ieee_run_tests`). Error messages may appear in `game.log` after executing tests, but that is to be expected from testing the functions' error handlers. Please do note that with the addition of many tests, running all of them will be quite slow.
 
 Assumptions: When modding scripts try to access a variable that has not been set yet, it will read 0. This may raise a bit of confusion, as the script treats both the modder forgetting to set a variable/parameter and them deliberately setting a variable to 0 equivalently. Notes have been taken in the comments to describe the outcome for uninitialized variables, but extra care should be taken with scripted effects that handle numerical input: to_bitwise, to_float, etc. Since their inputs are meant to be numbers, leaving inputs uninitialized as 0 will proceed with no errors, warnings, or notification. These 0-critical inputs will be marked in comments with the line `# If no input is given, the function will use 0 in place **and return no error**` in the comments above each function.
 

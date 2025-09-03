@@ -19,10 +19,10 @@ This Markdown page provides a view of the progress towards the implementation of
 ## 5.4 formatOf General-computational Operations
 | Operation | Progress | Implemented By | Notes |
 | :--- | :--- | :--- | :--- |
-| addition | Done | ieeeAdd | arg_a + arg_b, uses a quasi-mantissa to perform addition, with extra quirks surrounding negatives and subnormals |
-| subtraction | Done | ieeeSub | arg_a + (-arg_b), uses addition |
-| multiplication | Not Done | ##### | ##### |
-| division | Not Done | ##### | ##### |
+| addition | Done | **ieeeAdd** | arg_a + arg_b, uses a quasi-mantissa to perform addition, with extra quirks surrounding negatives and subnormals |
+| subtraction | Done | **ieeeSub** | arg_a + (-arg_b), uses addition |
+| multiplication | Done | **ieeeMul** |  |
+| division | Done | **ieeeDiv** |  |
 | squareRoot | Not Done | ##### | ##### |
 | fusedMultiplyAdd | Not Done | ##### | fMA(x, y, z) = x*y + z, rounded only at end |
 | convertFromInt | Done | **pdxvar_to_float** | modified to convertFromPdx, converts from pdxvar instead of integer |

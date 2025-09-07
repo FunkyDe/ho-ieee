@@ -1040,7 +1040,7 @@ ieeeDiv_trigger = {
                 check_variable = { exp_a = 128 }
                 check_variable = { exp_b = 128 }
 
-                # check for zero divisions
+                # check for zero
                 check_variable = { arg_a = 0 }
                 check_variable = { arg_a = -2147483.648 }
                 check_variable = { arg_b = 0 }
@@ -1103,6 +1103,7 @@ ieeeDiv_trigger = {
     }
     else = {
         populate_mantissas = yes
+        resize_temp_array = { temp_mantissa_a = 49 }
 
         # Set output exponent
         set_temp_variable = { exp_o = exp_a }
@@ -1141,11 +1142,11 @@ ieeeDiv_trigger = {
             add_to_temp_variable = { exp_o = 1 }
         }
 
-        set_temp_variable = { iteration_count = 150 }
+        set_temp_variable = { iteration_count = 151 }
         add_to_temp_variable = { iteration_count = exp_o }
         clamp_temp_variable = {
             var = iteration_count
-            max = 24
+            max = 25
         }
         # Long division
         all_of = {
@@ -1229,48 +1230,22 @@ ieeeDiv_trigger = {
         }
 
         # Set rounding status
-        set_temp_variable = { idx_a = 150 }
-        add_to_temp_variable = { idx_a = exp_o }
-        clamp_temp_variable = {
-            var = idx_a
-            max = 24
-        }
-        add_to_temp_variable = { idx_a = mantissa_b_offset }
-        set_temp_variable = { idx_a_prev = idx_a }
-        subtract_from_temp_variable = { idx_a_prev = 1 }
+        set_temp_variable = { mantissa_compare = temp_mantissa_o^num }
+        subtract_from_temp_variable = { mantissa_compare = 1 }
+        set_temp_variable = { mantissa_compare = temp_mantissa_o^mantissa_compare }
+        subtract_from_temp_variable = { mantissa_compare = 1 }
 
-        set_temp_variable = { mantissa_compare = 0 }
-        if = {
-            limit = {
-                check_variable = { temp_mantissa_a^idx_a_prev = 1 }
-            }
-            set_temp_variable = { mantissa_compare = 1 }
-        }
-        if = {
-            limit = {
-                check_variable = { idx_a < 0 }
-            }
-            set_temp_variable = { mantissa_compare = -1 }
-        }
         all_of = {
-            array = temp_mantissa_b
-            index = idx_b
+            array = temp_mantissa_a
+            value = v
 
             if = {
                 limit = {
+                    check_variable = { v = 1 }
                     check_variable = { mantissa_compare = 0 }
-                    check_variable = { temp_mantissa_a^idx_a > temp_mantissa_b^idx_b }
                 }
                 set_temp_variable = { mantissa_compare = 1 }
             }
-            if = {
-                limit = {
-                    check_variable = { mantissa_compare = 0 }
-                    check_variable = { temp_mantissa_a^idx_a < temp_mantissa_b^idx_b }
-                }
-                set_temp_variable = { mantissa_compare = -1 }
-            }
-            add_to_temp_variable = { idx_a = 1 }
         }
 
         round_and_convert_output = yes
@@ -1289,7 +1264,7 @@ populate_mantissas = {
         limit = {
             check_variable = { exp_a > -127 }
         }
-        resize_temp_array = { temp_mantissa_a = 48 }
+        resize_temp_array = { temp_mantissa_a = 24 }
         set_temp_variable = { temp_mantissa_a^0 = 1 }
         
         set_temp_variable = { mantissa_index = 0 }
@@ -1333,7 +1308,7 @@ populate_mantissas = {
                 }
             }
         }
-        resize_temp_array = { temp_mantissa_a = 48 }
+        resize_temp_array = { temp_mantissa_a = 24 }
     }
     if = {
         limit = {
@@ -1412,6 +1387,7 @@ round_and_convert_output = {
             check_variable = { temp_mantissa_o^num > 0 }
         }
 
+        add_to_temp_variable = { last_bit_index = 1 }
         set_temp_variable = { carry = 1 }
         all_of = {
             array = temp_mantissa_o
@@ -1450,17 +1426,6 @@ round_and_convert_output = {
                 }
             }
         }
-    }
-    # Edge case where empty array cannot be iterated over to add bit from rounding
-    else_if = {
-        limit = {
-            check_variable = { mantissa_compare = 1 }
-            # Both these should always be true
-            check_variable = { exp_o = -150 }
-            check_variable = { temp_mantissa_o^num = 0 }
-        }
-        add_to_temp_array = { temp_mantissa_o = 1 }
-        add_to_temp_variable = { exp_o = 1 }
     }
 
     # Conversion back to float
@@ -1547,7 +1512,12 @@ round_and_convert_output = {
             array = temp_mantissa_o
             value = v
 
-            add_to_temp_array = { temp_array_1000 = v }
+            if = {
+                limit = {
+                    check_variable = { temp_array_1000^num < 32 }
+                }
+                add_to_temp_array = { temp_array_1000 = v }
+            }
         }
     }
     # Subnormal Case
@@ -1564,7 +1534,6 @@ round_and_convert_output = {
         all_of = {
             array = temp_mantissa_o
             value = v
-            index = idx
 
             if = {
                 limit = {

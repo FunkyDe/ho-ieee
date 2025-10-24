@@ -133,13 +133,13 @@ ieee_digits_init = {
         }
 
         # Debug to print array digits and power
-        #log="2^[?exp] ~ 10^[?global.digit_power@var:exp]"
-        #for_each_loop = {
+        # log="2^[?exp] ~ 10^[?global.digit_power@var:exp]"
+        # for_each_loop = {
         #    array = global.digit_array@var:exp
         #    value = v
-        #    
+           
         #    add_to_temp_array = { to_print_array = v }
-        #}
-        #log="[debug_print_array]"
+        # }
+        # log="[debug_print_array]"
     }
 }

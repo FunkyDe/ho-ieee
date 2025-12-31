@@ -573,115 +573,60 @@ ieeeMul_trigger = {
             OR = {
                 check_variable = { exp_a = 128 }
                 check_variable = { exp_b = 128 }
+
+                # check for zero
+                check_variable = { arg_a = 0 }
+                check_variable = { arg_a = -2147483.648 }
+                check_variable = { arg_b = 0 }
+                check_variable = { arg_b = -2147483.648 }
             }
         }
 
-        # Special cases handler
-        # +infinity = 2139095.040
-        # -infinity = -8388.608
-        # NaN = 2143289.344 as a result of inf * 0
+        # Sign handler, flips sign of output if either a is negative or b is negative
         if = {
             limit = {
-                check_variable = { arg_a = 2139095.040 }
-                check_variable = { arg_b = 2139095.040 }
+                check_variable = { arg_a < 0 }
             }
-            set_temp_variable = { out_a = 2139095.040 }
+            add_to_temp_variable = { arg_a = 2147483.648 }
+            add_to_temp_variable = { out_a = 2147483.648 }
         }
-        else_if = {
+        if = {
             limit = {
-                check_variable = { arg_a = 2139095.040 }
-                check_variable = { arg_b = -8388.608 }
+                check_variable = { arg_b < 0 }
             }
-            set_temp_variable = { out_a = -8388.608 }
+            add_to_temp_variable = { arg_b = 2147483.648 }
+            add_to_temp_variable = { out_a = 2147483.648 }
         }
-        else_if = {
-            limit = {
-                check_variable = { arg_a = -8388.608 }
-                check_variable = { arg_b = 2139095.040 }
-            }
-            set_temp_variable = { out_a = -8388.608 }
-        }
-        else_if = {
-            limit = {
-                check_variable = { arg_a = -8388.608 }
-                check_variable = { arg_b = -8388.608 }
-            }
-            set_temp_variable = { out_a = 2139095.040 }
-        }
+
+        # Special cases handler
         # Check for zero * infinity
+        if = {
+            limit = {
+                OR = {
+                    ieee_isnan_binary = yes
+                    AND = {
+                        check_variable = { arg_a = 2139095.040 }
+                        check_variable = { arg_b = 0 }
+                    }
+                    AND = {
+                        check_variable = { arg_a = 0 }
+                        check_variable = { arg_b = 2139095.040 }
+                    }
+                }
+            }
+            add_to_temp_variable = { out_a = 2143289.344 }
+        }
+        # Infinity multiplication
         else_if = {
             limit = {
                 OR = {
                     check_variable = { arg_a = 2139095.040 }
-                    check_variable = { arg_a = -8388.608 }
-                }
-                OR = {
-                    check_variable = { arg_b = 0 }
-                    check_variable = { arg_b = -2147483.648 }
-                }
-            }
-            set_temp_variable = { out_a = 2143289.344 }
-        }
-        else_if = {
-            limit = {
-                OR = {
-                    check_variable = { arg_a = 0 }
-                    check_variable = { arg_a = -2147483.648 }
-                }
-                OR = {
                     check_variable = { arg_b = 2139095.040 }
-                    check_variable = { arg_b = -8388.608 }
                 }
             }
-            set_temp_variable = { out_a = 2143289.344 }
+            add_to_temp_variable = { out_a = 2139095.040 }
         }
-        # If not infinity multiplication, then take the value of arg_a if a is infinity or NaN, then defer to arg_b, unless arg_b is NaN, in which case arg_b is the result
-        else_if = {
-            limit = {
-                OR = {
-                    # arg_a is NaN
-                    check_variable = { arg_a > 2139095.040 }
-                    AND = {
-                        check_variable = { arg_a > -8388.608 }
-                        check_variable = { arg_a < 0 }
-                    }
-                    # arg_b is a normal/subnormal float, is overriden by arg_a
-                    AND = {
-                        NOT = { check_variable = { arg_b < 0 } }
-                        check_variable = { arg_b < 2139095.040 }
-                    }
-                    check_variable = { arg_b < -8388.608 }
-                }
-            }
-            set_temp_variable = { out_a = arg_a }
-
-            # negate resultant infinities if arg_b is a negative normal
-            if = {
-                limit = {
-                    check_variable = { arg_b < -8388.608 }
-                    OR = {
-                        check_variable = { arg_a = 2139095.040 }
-                        check_variable = { arg_a = -8388.608 }
-                    }
-                }
-                add_to_temp_variable = { out_a = 2147483.648 }
-            }
-        }
-        else = {
-            set_temp_variable = { out_a = arg_b }
-
-            # negate resultant infinities if arg_a is a negative normal
-            if = {
-                limit = {
-                    check_variable = { arg_a < -8388.608 }
-                    OR = {
-                        check_variable = { arg_b = 2139095.040 }
-                        check_variable = { arg_b = -8388.608 }
-                    }
-                }
-                add_to_temp_variable = { out_a = 2147483.648 }
-            }
-        }
+        # End case is zero multiplication, sign already handled so result is +- zero
     }
     else = {
         clear_temp_array = temp_mantissa_a
@@ -1048,10 +993,7 @@ ieeeDiv_trigger = {
             }
         }
 
-        # Special cases handler
-        # +infinity = 2139095.040
-        # -infinity = -8388.608
-        # NaN = 2143289.344 as a result of inf / inf, 0 / 0, or NaN input
+        # Sign handler, flips sign of output if either a is negative or b is negative
         if = {
             limit = {
                 check_variable = { arg_a < 0 }
@@ -1066,10 +1008,14 @@ ieeeDiv_trigger = {
             add_to_temp_variable = { arg_b = 2147483.648 }
             add_to_temp_variable = { out_a = 2147483.648 }
         }
+
+        # Special cases handler
+        # +infinity = 2139095.040
+        # NaN = 2143289.344 as a result of inf / inf, 0 / 0, or NaN input
         if = {
             limit = {
                 OR = {
-                    compareNotOrdered = yes
+                    ieee_isnan_binary = yes
                     relationEqual = yes
                 }
             }

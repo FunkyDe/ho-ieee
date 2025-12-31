@@ -1,9 +1,25 @@
+# Returns true if arg_a is NaN
 ieee_isnan = {
     OR = {
-        check_variable = { arg_a > 2139095.040}
+        check_variable = { arg_a > 2139095.040 }
         AND = {
             check_variable = { arg_a > -8388.608 }
             check_variable = { arg_a < 0 }
+        }
+    }
+}
+# Returns true if arg_a or arg_b is NaN
+ieee_isnan_binary = {
+    OR = {
+        check_variable = { arg_a > 2139095.040 }
+        AND = {
+            check_variable = { arg_a > -8388.608 }
+            check_variable = { arg_a < 0 }
+        }
+        check_variable = { arg_b > 2139095.040 }
+        AND = {
+            check_variable = { arg_b > -8388.608 }
+            check_variable = { arg_b < 0 }
         }
     }
 }

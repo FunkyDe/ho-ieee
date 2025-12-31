@@ -220,9 +220,10 @@ relationUnordered = {
         }
         always = no
     }
-
     # NaNs, relation is unordered
-    always = yes
+    else = {
+        always = yes
+    }
 }
 
 ### totalOrder

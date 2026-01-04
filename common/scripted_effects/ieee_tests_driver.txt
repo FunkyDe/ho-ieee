@@ -24836,6 +24836,10 @@ ieee_run_tests_addsub = {
     ieee_test_49148 = yes
     set_temp_variable = { test_id = 49149 }
     ieee_test_49149 = yes
+    set_temp_variable = { test_id = 49150 }
+    ieee_test_49150 = yes
+    set_temp_variable = { test_id = 49151 }
+    ieee_test_49151 = yes
 }
 ieee_run_tests_multiplication = {
     set_temp_variable = { test_id = 50000 }

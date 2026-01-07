@@ -1,4 +1,4 @@
-# Run all tests defined below
+## Run all tests defined below
 ieee_run_tests = {
     clear_temp_array = test_fail_array
 
@@ -35,15 +35,15 @@ ieee_run_tests = {
 }
 
 ######### TESTS #########
-# Test output to game.log should be in the format:
-# Test [?test_id] - WHAT IS BEING TESTED - PASS/FAIL
-# Tests grouped by operation(s) tested, each ieee_tests_*.txt file describes a certain test block that can be run with the ieee_run_tests_* scripted effects
-# Only exception, ieee_tests_driver.txt groups the tests listed and combines them into the aforementioned scripted effects
+## Test output to game.log should be in the format:
+## Test [?test_id] - WHAT IS BEING TESTED - PASS/FAIL
+## Tests grouped by operation(s) tested, each ieee_tests_*.txt file describes a certain test block that can be run with the ieee_run_tests_* scripted effects
+## Only exception, ieee_tests_driver.txt groups the tests listed and combines them into the aforementioned scripted effects
 
-# Furthermore, in the fail block add the line `add_to_temp_array = { test_fail_array = test_id }` to add the failure to a list printed at the end
-# Error flags (e.g. io_error_flag) are temp variables that mark errors.
+## Furthermore, in the fail block add the line `add_to_temp_array = { test_fail_array = test_id }` to add the failure to a list printed at the end
+## Error flags (e.g. io_error_flag) are temp variables that mark errors.
 
-# No longer used, but will remain for clarity's sake
+## No longer used, but will remain for clarity's sake
 ieee_get_test_count = {
     clear_temp_array = temp_test_count_array
     add_to_temp_array = { temp_test_count_array = 788 }     # to_bitwise and store_bitwise

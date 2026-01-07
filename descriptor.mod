@@ -6,4 +6,3 @@ tags={
 	"Utilities"
 }
 picture = "thumbnail.png"
-path = "mod/ho-ieee"

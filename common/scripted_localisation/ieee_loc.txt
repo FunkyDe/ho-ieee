@@ -1,4 +1,4 @@
-# Prints either a minus or plus sign depending on the value of the temp var ieee_sign_bit(0 -> +, 1 -> -) 
+## Prints either a minus or plus sign depending on the value of the temp var ieee_sign_bit(0 -> +, 1 -> -) 
 defined_text = {
     name = ieee_plus_minus_decider
     text = {
@@ -11,7 +11,7 @@ defined_text = {
         localization_key = ieee_plus_sign
     }
 }
-# Prints a plus depending on the decimal power of the number for scientific notation, since the minus is already printed
+## Prints a plus depending on the decimal power of the number for scientific notation, since the minus is already printed
 defined_text = {
     name = ieee_sci_plus_decider
     text = {
@@ -24,7 +24,7 @@ defined_text = {
         localization_key = ieee_plus_sign
     }
 }
-# Prints ONLY a minus depending on the value of the temp var ieee_sign_bit(0 -> nothing, 1 -> -)
+## Prints ONLY a minus depending on the value of the temp var ieee_sign_bit(0 -> nothing, 1 -> -)
 defined_text = {
     name = ieee_minus_decider
     text = {
@@ -37,7 +37,7 @@ defined_text = {
         localization_key = ieee_empty
     }
 }
-# Prints the array temp_array_[?temp_array_id]
+## Prints the array temp_array_[?temp_array_id]
 defined_text = {
     name = debug_print_array_id
     text = {
@@ -52,7 +52,7 @@ defined_text = {
         localization_key = ieee_print_array_id
     }
 }
-# The next three scripted locs print the content of temp array to_print_array using a recursive step, limited to a max length of about 128. You should not execute the _step or the clear_ by themselves
+## The next three scripted locs print the content of temp array to_print_array using a recursive step, limited to a max length of about 128. You should not execute the _step or the clear_ by themselves
 defined_text = {
     name = debug_print_array
     text = {
@@ -109,13 +109,13 @@ defined_text = {
     }
 }
 
-## Multi-print wrapper
-## In order to print multiple floats in one loc block, you need to push values to three arrays
-## multi_print_float: determines the value to be printed(again, please note this is NOT the same as the actual value of the element)
-## multi_print_style: determines the mode of printing(0: full, 1: trunc, 2: pdx, 3: round, 4: sci). Any other number will use the full print mode
-## multi_print_param: determines the number of significant digits for rounded and scientific printing modes(unused for other modes). Any negative or non-whole value will default to zero
-## Every time you call print_multi_float, the first value in each array will be popped and used to print the floating-point variable.
-## If the size of the arrays differ, you will only be able to print as many times as there are values in the multi_print_float array. Further calls to the print_multi_float scripted loc will print "0"
+# Multi-print wrapper
+### In order to print multiple floats in one loc block, you need to push values to three arrays
+### multi_print_float: determines the value to be printed(again, please note this is NOT the same as the actual value of the element)
+### multi_print_style: determines the mode of printing(0: full, 1: trunc, 2: pdx, 3: round, 4: sci). Any other number will use the full print mode
+### multi_print_param: determines the number of significant digits for rounded and scientific printing modes(unused for other modes). Any negative or non-whole value will default to zero
+### Every time you call print_multi_float, the first value in each array will be popped and used to print the floating-point variable.
+### If the size of the arrays differ, you will only be able to print as many times as there are values in the multi_print_float array. Further calls to the print_multi_float scripted loc will print "0"
 defined_text = {
     name = print_multi_float
     text = {
@@ -183,9 +183,9 @@ defined_text = {
     }
 }
 ## Floating-point localization wrappers
-## Generally, these use to_print_float as the input float, which will *not* be the same as the value stored in the pdxvar
-# Prints the given array to_print_digit_array, using to_print_digit_power to determine where to place the decimal point
-# No rounding will be done
+### Generally, these use to_print_float as the input float, which will *not* be the same as the value stored in the pdxvar
+### Prints the given array to_print_digit_array, using to_print_digit_power to determine where to place the decimal point
+### No rounding will be done
 defined_text = {
     name = print_float_full
     text = {
@@ -214,8 +214,8 @@ defined_text = {
         localization_key = ieee_print_digit
     }
 }
-# Prints the given array to_print_digit_array, using to_print_digit_power to determine where to place the decimal point
-# Any decimal component will be truncated, rounding towards 0, meaning if -1 < number < 1 for example, then "0" will be displayed
+### Prints the given array to_print_digit_array, using to_print_digit_power to determine where to place the decimal point
+### Any decimal component will be truncated, rounding towards 0, meaning if -1 < number < 1 for example, then "0" will be displayed
 defined_text = {
     name = print_float_trunc
     text = {
@@ -258,8 +258,8 @@ defined_text = {
         localization_key = ieee_print_digit
     }
 }
-# Prints the given array to_print_digit_array, using to_print_digit_power to determine where to place the decimal point
-# This number will be rounded to the thousandths place, as if it was converted to a pdxvar first
+### Prints the given array to_print_digit_array, using to_print_digit_power to determine where to place the decimal point
+### This number will be rounded to the thousandths place, as if it was converted to a pdxvar first
 defined_text = {
     name = print_float_pdx
     text = {
@@ -294,8 +294,8 @@ defined_text = {
         localization_key = ieee_print_digit
     }
 }
-# Prints the given array to_print_digit_array, using to_print_digit_power to determine where to place the decimal point
-# This scripted loc takes an additional parameter, print_digits_param, which is used to determine how many digits to round to. A value of either *0* or higher than the number of digits in the number will display the entire value
+### Prints the given array to_print_digit_array, using to_print_digit_power to determine where to place the decimal point
+### This scripted loc takes an additional parameter, print_digits_param, which is used to determine how many digits to round to. A value of either *0* or higher than the number of digits in the number will display the entire value
 defined_text = {
     name = print_float_round
     text = {
@@ -425,8 +425,8 @@ defined_text = {
         localization_key = ieee_print_digit
     }
 }
-# Prints the given array to_print_digit_array in a scientific value format, using to_print_digit_power to determine the power of 10
-# This scripted loc takes an additional parameter, to_print_param, which is used to determine how many digits to round to. A value of either *0* or higher than the number of digits in the number will display the entire value
+### Prints the given array to_print_digit_array in a scientific value format, using to_print_digit_power to determine the power of 10
+### This scripted loc takes an additional parameter, to_print_param, which is used to determine how many digits to round to. A value of either *0* or higher than the number of digits in the number will display the entire value
 defined_text = {
     name = print_float_sci
     text = {
@@ -542,8 +542,8 @@ defined_text = {
         localization_key = ieee_print_digit_sci
     }
 }
-# Prints the digits in to_print_digit_array and places the decimal in to_print_digit_power after potentially being processed in the wrappers
-# Do not use the following scripted locs, since those are for use by this script
+### Prints the digits in to_print_digit_array and places the decimal in to_print_digit_power after potentially being processed in the wrappers
+### Do not use the following scripted locs, since those are for use by this script
 defined_text = {
     name = debug_print_digit
     text = {
@@ -572,7 +572,7 @@ defined_text = {
         localization_key = ieee_debug_print_digit
     }
 }
-# If the power is less than 0, fills in the left of the decimal with zeroes
+### If the power is less than 0, fills in the left of the decimal with zeroes
 defined_text = {
     name = zero_padding
     text = {
@@ -613,7 +613,7 @@ defined_text = {
         localization_key = ieee_zero_rec
     }
 }
-# Recursively prints the next 2 digits and places decimal if needed
+### Recursively prints the next 2 digits and places decimal if needed
 defined_text = {
     name = debug_print_digit_step
     text = {
@@ -686,7 +686,7 @@ defined_text = {
         localization_key = ieee_empty
     }
 }
-# Helper to format scientific notation
+### Helper to format scientific notation
 defined_text = {
     name = debug_print_digit_sci
     text = {

@@ -10,7 +10,8 @@ HOI4's modding script uses signed 32-bit fixed-point variables(referred to later
 Below is a chart of the scripts I found most interesting, where to find them, and what they do. I have omitted the "_trigger" ending for some of their names, as that has no impact on their actual function:
 | Script | Located In | Function |
 | :--- | :--- | :--- |
-| ieeeDiv | [common/s989pted_triggers/ieee_operations.txt](common/scripted_triggers/ieee_operations.txt#L532) | Performs floating point division between two given arguments |
+| ieeeDiv | [common/scripted_triggers/ieee_operations.txt](common/scripted_triggers/ieee_operations.txt#L592) | Performs floating point division between two given arguments |
+| ieeeMul | [common/scripted_triggers/ieee_operations.txt](common/scripted_triggers/ieee_operations.txt#L373) | Performs floating point multiplication between two given arguments |
 | ieeeAdd | [common/scripted_triggers/ieee_operations.txt](common/scripted_triggers/ieee_operations.txt#L11) | Performs floating point addition between two given arguments |
 | to_float | [common/scripted_triggers/ieee_io.txt](common/scripted_triggers/ieee_io.txt#L153) | Converts a variable into a corresponding array of 32 bits holding the equivalent single-precision floating-point value |
 | to_digit_array | [common/scripted_triggers/ieee_io.txt](common/scripted_triggers/ieee_io.txt#L453) | Converts a 32-bit array holding a single-precision floating-point value into an array of digits for output and printing |
@@ -32,23 +33,19 @@ This means that:
 1. This mod works within the modding framework that Hearts of Iron IV provides, so scripted effects, scripted triggers, scripted localisation, duct tape, and the like.
 2. The mod provides a method of interfacing with itself with other mods. The ultimate goal will be a set of files, which can be added to any other mod, that provide a system of creating, interacting with, accessing, and outputting floating-point variables.
 
-# Roadmap
+# Next Steps
 
-The current roadmap is:
 - [x] Creation and Destruction of floating-point variables (FPVs)
 - [x] FPV Output
 - [x] Comparison
 - [x] Addition and Subtraction
 - [x] Multiplication
 - [x] Division
-- [ ] Prepare initial release
-    - [ ] Split off helper functions for conversion to/from mantissas and floats
-    - [ ] Rewrite addition and multiplication functions to use normalized mantissas
-    - [ ] Write simple functions (abs, copySign, logB, etc.)
-    - [ ] Create release branch without tests
-    - [ ] Build more example functions
-    - [ ] Finialize initial documentation
+- [ ] Write simple functions (abs, copySign, logB, etc.)
+- [ ] Fused Multiply-Add
 - [ ] Square Root
+
+## Probably out of scope
 - [ ] Additional basic functions
 - [ ] Recommended operations (consult Clause 9 of IEEE 754)
 

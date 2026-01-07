@@ -1,5 +1,5 @@
-# Simple loop with addition, to display basic syntax
-# Would probably be recommended to denote your floating-point variables differently, since they still can be modified by regular operations like add_to_temp_variable.
+## Simple loop with addition, to display basic syntax
+### Would probably be recommended to denote your floating-point variables differently, since they still can be modified by regular operations like add_to_temp_variable.
 ieee_example_loop = {
     set_temp_variable = { sum = 0 } # float(0) = 0
     set_temp_variable = { addend = 100000 }
@@ -22,8 +22,8 @@ ieee_example_loop = {
     set_temp_variable = { to_print_float = sum }
     log="sum + 100000 != [print_float_full]"
 }
-# Printing Fibonacci sequence until infinity
-# Note how round-off error occurs by the 37th Fibonacci number, as F(37) = 24157817, not 24157816
+## Printing Fibonacci sequence until infinity
+### Note how round-off error occurs by the 37th Fibonacci number, as F(37) = 24157817, not 24157816
 ieee_example_fibonacci = {
     set_temp_variable = { iter = 0 }
     set_temp_variable = { fib_a = 0 }

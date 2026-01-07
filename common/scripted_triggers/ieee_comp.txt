@@ -1,11 +1,11 @@
-#### RELATIONS(consult clause 5.11)
+# RELATIONS(consult clause 5.11)
 
-### relationLess
-## Provides the less than relation for use in predicates
-## The below function has 2 parameters: arg_a and arg_b
-## These parameters will NOT be cleared after the function execution
+# relationLess
+### Provides the less than relation for use in predicates
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will NOT be cleared after the function execution
 ## ARGUMENTS
-# Relation returns true when float(a) < float(b) and neither are NaNs
+### Relation returns true when float(a) < float(b) and neither are NaNs
 relationLess = {
     # Check for NaNs
     if = {
@@ -71,12 +71,12 @@ relationLess = {
         check_variable = { arg_a < arg_b }
     }
 }
-### relationEqual
-## Provides the equal to relation for use in predicates
-## The below function has 2 parameters: arg_a and arg_b
-## These parameters will NOT be cleared after the function execution
+# relationEqual
+### Provides the equal to relation for use in predicates
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will NOT be cleared after the function execution
 ## ARGUMENTS
-# Relation returns true when float(a) = float(b) and neither are NaNs
+### Relation returns true when float(a) = float(b) and neither are NaNs
 relationEqual = {
     # Check for NaNs
     if = {
@@ -117,12 +117,12 @@ relationEqual = {
         }
     }
 }
-### relationGreater
-## Provides the greater than relation for use in predicates
-## The below function has 2 parameters: arg_a and arg_b
-## These parameters will NOT be cleared after the function execution
+# relationGreater
+### Provides the greater than relation for use in predicates
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will NOT be cleared after the function execution
 ## ARGUMENTS
-# Relation returns true when float(a) > float(b) and neither are NaNs
+### Relation returns true when float(a) > float(b) and neither are NaNs
 relationGreater = {
     # Check for NaNs
     if = {
@@ -188,12 +188,12 @@ relationGreater = {
         check_variable = { arg_a > arg_b }
     }
 }
-### relationUnordered
-## Provides the less than relation for use in predicates
-## The below function has 2 parameters: arg_a and arg_b
-## These parameters will NOT be cleared after the function execution
+# relationUnordered
+### Provides the less than relation for use in predicates
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will NOT be cleared after the function execution
 ## ARGUMENTS
-# Relation returns true when float(a) < float(b) and neither are NaNs
+### Relation returns true when float(a) < float(b) and neither are NaNs
 relationUnordered = {
     # If no NaNs, relation is not unordered
     if = {
@@ -226,12 +226,12 @@ relationUnordered = {
     }
 }
 
-### totalOrder
-## Provides a total ordering between two floats arg_a and arg_b(consult clause 5.10)
-## The below function has 2 parameters: arg_a and arg_b
-## These parameters will NOT be cleared after the function execution
+# totalOrder
+### Provides a total ordering between two floats arg_a and arg_b(consult clause 5.10)
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will NOT be cleared after the function execution
 ## ARGUMENTS
-# Relation returns true when float(a) is ordered before float(b), including cases where either or both are NaNs
+### Relation returns true when float(a) is ordered before float(b), including cases where either or both are NaNs
 totalOrder = {
     # Both positive case
     if = {
@@ -256,74 +256,74 @@ totalOrder = {
     }
 }
 
-#### PREDICATES(consult clause 5.11)
+# PREDICATES(consult clause 5.11)
 ### Note that floats are not strictly less, equal, or greater than each other since NaNs exist
 ### The Less comparison is not the strict negation of the GreaterEqual comparison, use NotLess
 ### Signaling comparisons differ from their regular counterparts in that if a NaN is entered, it will return false, increment an error counter, and display an error message in game.log
 
-### compareEqual
-## Compares whether two floats according to the quiet comparison
-## The below function has 2 parameters: arg_a and arg_b
-## These parameters will NOT be cleared after the function execution
+# compareEqual
+### Compares whether two floats according to the quiet comparison
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will NOT be cleared after the function execution
 ## ARGUMENTS
-# Comparison returns true when float(a) is equal to float(b)
+### Comparison returns true when float(a) is equal to float(b)
 compareEqual = {
     OR = {
         relationEqual = yes
     }
 }
-### compareGreater
-## Compares whether two floats according to the quiet comparison
-## The below function has 2 parameters: arg_a and arg_b
-## These parameters will NOT be cleared after the function execution
+# compareGreater
+### Compares whether two floats according to the quiet comparison
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will NOT be cleared after the function execution
 ## ARGUMENTS
-# Comparison returns true when float(a) is greater than float(b)
+### Comparison returns true when float(a) is greater than float(b)
 compareGreater = {
     OR = {
         relationGreater = yes
     }
 }
-### compareGreaterEqual
-## Compares whether two floats according to the quiet comparison
-## The below function has 2 parameters: arg_a and arg_b
-## These parameters will NOT be cleared after the function execution
+# compareGreaterEqual
+### Compares whether two floats according to the quiet comparison
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will NOT be cleared after the function execution
 ## ARGUMENTS
-# Comparison returns true when float(a) is greater than or equal to float(b)
+### Comparison returns true when float(a) is greater than or equal to float(b)
 compareGreaterEqual = {
     OR = {
         relationEqual = yes
         relationGreater = yes
     }
 }
-### compareLess
-## Compares whether two floats according to the quiet comparison
-## The below function has 2 parameters: arg_a and arg_b
-## These parameters will NOT be cleared after the function execution
+# compareLess
+### Compares whether two floats according to the quiet comparison
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will NOT be cleared after the function execution
 ## ARGUMENTS
-# Comparison returns true when float(a) is less than float(b)
+### Comparison returns true when float(a) is less than float(b)
 compareLess = {
     OR = {
         relationLess = yes
     }
 }
-### compareLessEqual
-## Compares whether two floats according to the quiet comparison
-## The below function has 2 parameters: arg_a and arg_b
-## These parameters will NOT be cleared after the function execution
+# compareLessEqual
+### Compares whether two floats according to the quiet comparison
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will NOT be cleared after the function execution
 ## ARGUMENTS
-# Comparison returns true when float(a) is less than or equal to float(b)
+### Comparison returns true when float(a) is less than or equal to float(b)
 compareLessEqual = {
     OR = {
         relationLess = yes
         relationEqual = yes
     }
 }
-### compareNotEqual
-## Compares whether two floats according to the quiet comparison
-## The below function has 2 parameters: arg_a and arg_b
-## These parameters will NOT be cleared after the function execution
+# compareNotEqual
+### Compares whether two floats according to the quiet comparison
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will NOT be cleared after the function execution
 ## ARGUMENTS
-# Comparison returns true when float(a) is not equal to float(b)
+### Comparison returns true when float(a) is not equal to float(b)
 compareNotEqual = {
     OR = {
         relationLess = yes
@@ -331,12 +331,12 @@ compareNotEqual = {
         relationUnordered = yes
     }
 }
-### compareNotGreater
-## Compares whether two floats according to the quiet comparison
-## The below function has 2 parameters: arg_a and arg_b
-## These parameters will NOT be cleared after the function execution
+# compareNotGreater
+### Compares whether two floats according to the quiet comparison
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will NOT be cleared after the function execution
 ## ARGUMENTS
-# Comparison returns true when float(a) is not greater than float(b)
+### Comparison returns true when float(a) is not greater than float(b)
 compareNotGreater = {
     OR = {
         relationLess = yes
@@ -344,24 +344,24 @@ compareNotGreater = {
         relationUnordered = yes
     }
 }
-### compareNotGreaterEqual
-## Compares whether two floats according to the quiet comparison
-## The below function has 2 parameters: arg_a and arg_b
-## These parameters will NOT be cleared after the function execution
+# compareNotGreaterEqual
+### Compares whether two floats according to the quiet comparison
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will NOT be cleared after the function execution
 ## ARGUMENTS
-# Comparison returns true when float(a) is not greater than or equal to float(b)
+### Comparison returns true when float(a) is not greater than or equal to float(b)
 compareNotGreaterEqual = {
     OR = {
         relationLess = yes
         relationUnordered = yes
     }
 }
-### compareNotLess
-## Compares whether two floats according to the quiet comparison
-## The below function has 2 parameters: arg_a and arg_b
-## These parameters will NOT be cleared after the function execution
+# compareNotLess
+### Compares whether two floats according to the quiet comparison
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will NOT be cleared after the function execution
 ## ARGUMENTS
-# Comparison returns true when float(a) is not less than float(b)
+### Comparison returns true when float(a) is not less than float(b)
 compareNotLess = {
     OR = {
         relationEqual = yes
@@ -369,24 +369,24 @@ compareNotLess = {
         relationUnordered = yes
     }
 }
-### compareNotLessEqual
-## Compares whether two floats according to the quiet comparison
-## The below function has 2 parameters: arg_a and arg_b
-## These parameters will NOT be cleared after the function execution
+# compareNotLessEqual
+### Compares whether two floats according to the quiet comparison
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will NOT be cleared after the function execution
 ## ARGUMENTS
-# Comparison returns true when float(a) is not less than or equal to float(b)
+### Comparison returns true when float(a) is not less than or equal to float(b)
 compareNotLessEqual = {
     OR = {
         relationGreater = yes
         relationUnordered = yes
     }
 }
-### compareOrdered
-## Compares whether two floats according to the quiet comparison
-## The below function has 2 parameters: arg_a and arg_b
-## These parameters will NOT be cleared after the function execution
+# compareOrdered
+### Compares whether two floats according to the quiet comparison
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will NOT be cleared after the function execution
 ## ARGUMENTS
-# Comparison returns true when neither float(a) nor float(b) are NaNs
+### Comparison returns true when neither float(a) nor float(b) are NaNs
 compareOrdered = {
     OR = {
         relationLess = yes
@@ -394,24 +394,24 @@ compareOrdered = {
         relationGreater = yes
     }
 }
-### compareNotOrdered
-## Compares whether two floats according to the quiet comparison
-## The below function has 2 parameters: arg_a and arg_b
-## These parameters will NOT be cleared after the function execution
+# compareNotOrdered
+### Compares whether two floats according to the quiet comparison
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will NOT be cleared after the function execution
 ## ARGUMENTS
-# Comparison returns true when either float(a) or float(b) is NaN
+### Comparison returns true when either float(a) or float(b) is NaN
 compareNotOrdered = {
     OR = {
         relationUnordered = yes
     }
 }
-### compareSignalingEqual
-## Compares whether two floats according to the signaling comparison 
-## The below function has 2 parameters: arg_a and arg_b
-## These parameters will NOT be cleared after the function execution
+# compareSignalingEqual
+### Compares whether two floats according to the signaling comparison 
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will NOT be cleared after the function execution
 ## ARGUMENTS
-# Comparison returns true when float(a) is equal to float(b)
-# If any of the arguments is a NaN, then the comparison shall return false, increment the error counter comp_error_flag, and print an error message in game.log
+### Comparison returns true when float(a) is equal to float(b)
+### If any of the arguments is a NaN, then the comparison shall return false, increment the error counter comp_error_flag, and print an error message in game.log
 compareSignalingEqual = {
     # Check for NaNs
     if = {
@@ -427,13 +427,13 @@ compareSignalingEqual = {
         relationEqual = yes
     }
 }
-### compareSignalingGreater
-## Compares whether two floats according to the signaling comparison 
-## The below function has 2 parameters: arg_a and arg_b
-## These parameters will NOT be cleared after the function execution
+# compareSignalingGreater
+### Compares whether two floats according to the signaling comparison 
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will NOT be cleared after the function execution
 ## ARGUMENTS
-# Comparison returns true when float(a) is greater than float(b)
-# If any of the arguments is a NaN, then the comparison shall return false, increment the error counter comp_error_flag, and print an error message in game.log
+### Comparison returns true when float(a) is greater than float(b)
+### If any of the arguments is a NaN, then the comparison shall return false, increment the error counter comp_error_flag, and print an error message in game.log
 compareSignalingGreater = {
     # Check for NaNs
     if = {
@@ -449,13 +449,13 @@ compareSignalingGreater = {
         relationGreater = yes
     }
 }
-### compareSignalingGreaterEqual
-## Compares whether two floats according to the signaling comparison 
-## The below function has 2 parameters: arg_a and arg_b
-## These parameters will NOT be cleared after the function execution
+# compareSignalingGreaterEqual
+### Compares whether two floats according to the signaling comparison 
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will NOT be cleared after the function execution
 ## ARGUMENTS
-# Comparison returns true when float(a) is greater than or equal to float(b)
-# If any of the arguments is a NaN, then the comparison shall return false, increment the error counter comp_error_flag, and print an error message in game.log
+### Comparison returns true when float(a) is greater than or equal to float(b)
+### If any of the arguments is a NaN, then the comparison shall return false, increment the error counter comp_error_flag, and print an error message in game.log
 compareSignalingGreaterEqual = {
     # Check for NaNs
     if = {
@@ -472,13 +472,13 @@ compareSignalingGreaterEqual = {
         relationGreater = yes
     }
 }
-### compareSignalingLess
-## Compares whether two floats according to the signaling comparison 
-## The below function has 2 parameters: arg_a and arg_b
-## These parameters will NOT be cleared after the function execution
+# compareSignalingLess
+### Compares whether two floats according to the signaling comparison 
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will NOT be cleared after the function execution
 ## ARGUMENTS
-# Comparison returns true when float(a) is less than float(b)
-# If any of the arguments is a NaN, then the comparison shall return false, increment the error counter comp_error_flag, and print an error message in game.log
+### Comparison returns true when float(a) is less than float(b)
+### If any of the arguments is a NaN, then the comparison shall return false, increment the error counter comp_error_flag, and print an error message in game.log
 compareSignalingLess = {
     # Check for NaNs
     if = {
@@ -494,13 +494,13 @@ compareSignalingLess = {
         relationLess = yes
     }
 }
-### compareSignalingLessEqual
-## Compares whether two floats according to the signaling comparison 
-## The below function has 2 parameters: arg_a and arg_b
-## These parameters will NOT be cleared after the function execution
+# compareSignalingLessEqual
+### Compares whether two floats according to the signaling comparison 
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will NOT be cleared after the function execution
 ## ARGUMENTS
-# Comparison returns true when float(a) is less than or equal to float(b)
-# If any of the arguments is a NaN, then the comparison shall return false, increment the error counter comp_error_flag, and print an error message in game.log
+### Comparison returns true when float(a) is less than or equal to float(b)
+### If any of the arguments is a NaN, then the comparison shall return false, increment the error counter comp_error_flag, and print an error message in game.log
 compareSignalingLessEqual = {
     # Check for NaNs
     if = {
@@ -517,13 +517,13 @@ compareSignalingLessEqual = {
         relationEqual = yes
     }
 }
-### compareSignalingNotEqual
-## Compares whether two floats according to the signaling comparison 
-## The below function has 2 parameters: arg_a and arg_b
-## These parameters will NOT be cleared after the function execution
+# compareSignalingNotEqual
+### Compares whether two floats according to the signaling comparison 
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will NOT be cleared after the function execution
 ## ARGUMENTS
-# Comparison returns true when float(a) is not equal to float(b)
-# If any of the arguments is a NaN, then the comparison shall return false, increment the error counter comp_error_flag, and print an error message in game.log
+### Comparison returns true when float(a) is not equal to float(b)
+### If any of the arguments is a NaN, then the comparison shall return false, increment the error counter comp_error_flag, and print an error message in game.log
 compareSignalingNotEqual = {
     # Check for NaNs
     if = {
@@ -541,13 +541,13 @@ compareSignalingNotEqual = {
         relationUnordered = yes
     }
 }
-### compareSignalingNotGreater
-## Compares whether two floats according to the signaling comparison 
-## The below function has 2 parameters: arg_a and arg_b
-## These parameters will NOT be cleared after the function execution
+# compareSignalingNotGreater
+### Compares whether two floats according to the signaling comparison 
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will NOT be cleared after the function execution
 ## ARGUMENTS
-# Comparison returns true when float(a) is not greater than float(b)
-# If any of the arguments is a NaN, then the comparison shall return false, increment the error counter comp_error_flag, and print an error message in game.log
+### Comparison returns true when float(a) is not greater than float(b)
+### If any of the arguments is a NaN, then the comparison shall return false, increment the error counter comp_error_flag, and print an error message in game.log
 compareSignalingNotGreater = {
     # Check for NaNs
     if = {
@@ -565,13 +565,13 @@ compareSignalingNotGreater = {
         relationUnordered = yes
     }
 }
-### compareSignalingNotGreaterEqual
-## Compares whether two floats according to the signaling comparison 
-## The below function has 2 parameters: arg_a and arg_b
-## These parameters will NOT be cleared after the function execution
+# compareSignalingNotGreaterEqual
+### Compares whether two floats according to the signaling comparison 
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will NOT be cleared after the function execution
 ## ARGUMENTS
-# Comparison returns true when float(a) is not greater than or equal to float(b)
-# If any of the arguments is a NaN, then the comparison shall return false, increment the error counter comp_error_flag, and print an error message in game.log
+### Comparison returns true when float(a) is not greater than or equal to float(b)
+### If any of the arguments is a NaN, then the comparison shall return false, increment the error counter comp_error_flag, and print an error message in game.log
 compareSignalingNotGreaterEqual = {
     # Check for NaNs
     if = {
@@ -588,13 +588,13 @@ compareSignalingNotGreaterEqual = {
         relationUnordered = yes
     }
 }
-### compareSignalingNotLess
-## Compares whether two floats according to the signaling comparison 
-## The below function has 2 parameters: arg_a and arg_b
-## These parameters will NOT be cleared after the function execution
+# compareSignalingNotLess
+### Compares whether two floats according to the signaling comparison 
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will NOT be cleared after the function execution
 ## ARGUMENTS
-# Comparison returns true when float(a) is not less than float(b)
-# If any of the arguments is a NaN, then the comparison shall return false, increment the error counter comp_error_flag, and print an error message in game.log
+### Comparison returns true when float(a) is not less than float(b)
+### If any of the arguments is a NaN, then the comparison shall return false, increment the error counter comp_error_flag, and print an error message in game.log
 compareSignalingNotLess = {
     # Check for NaNs
     if = {
@@ -612,13 +612,13 @@ compareSignalingNotLess = {
         relationUnordered = yes
     }
 }
-### compareSignalingNotLessEqual
-## Compares whether two floats according to the signaling comparison 
-## The below function has 2 parameters: arg_a and arg_b
-## These parameters will NOT be cleared after the function execution
+# compareSignalingNotLessEqual
+### Compares whether two floats according to the signaling comparison 
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will NOT be cleared after the function execution
 ## ARGUMENTS
-# Comparison returns true when float(a) is not less than or equal to float(b)
-# If any of the arguments is a NaN, then the comparison shall return false, increment the error counter comp_error_flag, and print an error message in game.log
+### Comparison returns true when float(a) is not less than or equal to float(b)
+### If any of the arguments is a NaN, then the comparison shall return false, increment the error counter comp_error_flag, and print an error message in game.log
 compareSignalingNotLessEqual = {
     # Check for NaNs
     if = {

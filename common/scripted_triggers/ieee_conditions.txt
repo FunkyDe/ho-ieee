@@ -1,4 +1,4 @@
-# Returns true if arg_a is NaN
+## Returns true if arg_a is NaN
 ieee_isnan = {
     OR = {
         check_variable = { arg_a > 2139095.040 }
@@ -8,7 +8,7 @@ ieee_isnan = {
         }
     }
 }
-# Returns true if arg_a or arg_b is NaN
+## Returns true if arg_a or arg_b is NaN
 ieee_isnan_binary = {
     OR = {
         check_variable = { arg_a > 2139095.040 }

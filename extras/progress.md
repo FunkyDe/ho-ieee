@@ -85,7 +85,7 @@ This Markdown page provides a view of the progress towards the implementation of
 | isSubnormal | Not Done | ##### |  |
 | isFinite | Not Done | ##### |  |
 | isInfinite | Not Done | ##### |  |
-| isNaN | Not Done | ##### |  |
+| isNaN | Done | **ieee_isnan** |  |
 | isSignaling | Not Done | ##### | Always false, see ../README.md as to why signaling NaNs are not implemented |
 | isCanonical | Not Done | ##### |  |
 | radix | Not Done | ##### | Always 2, no decimal formats implemented |
@@ -112,7 +112,7 @@ Some operations mentioned in the requirements are not listed above, as they are 
 | convertFormat | 5.4.2 | unused because only one format used and no signaling NaNs nor exceptions |
 | convertFromDecimalCharacter | 5.4.2 | Impossible to handle string inputs in pdxscript |
 | convertFromHexCharacter | 5.4.3 | Impossible to handle string inputs in pdxscript |
-| convertToHexCharacter | 5.4.3 | Uniquely difficult to create strings in pdxscript. Might consider doing this as a bonus at the end. |
+| convertToHexCharacter | 5.4.3 | Uniquely difficult to create strings in pdxscript. |
 | encodeDecimal | 5.5.2 | Pertains to decimal floating-point formats |
 | decodeDecimal | 5.5.2 | Pertains to decimal floating-point formats |
 | encodeBinary | 5.5.2 | Pertains to decimal floating-point formats |

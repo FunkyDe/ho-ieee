@@ -1,15 +1,15 @@
-### TO_BITWISE
-## Converts the pdxvar "to_bitwise_input" (when multiplied by 1000) a 32-bit signed integer bit array and pushes the result to a specified array
-## The below function has 2 parameters: to_bitwise_input and temp_array_id
-## These parameters will be cleared(by resetting to 0) after the function execution
+# TO_BITWISE
+### Converts the pdxvar "to_bitwise_input" (when multiplied by 1000) a 32-bit signed integer bit array and pushes the result to a specified array
+### The below function has 2 parameters: to_bitwise_input and temp_array_id
+### These parameters will be cleared(by resetting to 0) after the function execution
 ## BITWISE_INPUT
-# The variable to be converted into bitwise format
-# If no input is given, the function will use 0 in place **and return no error**
+### The variable to be converted into bitwise format
+### If no input is given, the function will use 0 in place **and return no error**
 ## ARRAY_ID
-# the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
-# If no array_id is assigned, the function will use temp_array_0 in place
-# If the array_id is not an integer, then the function will display an error
-## Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
+### the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
+### If no array_id is assigned, the function will use temp_array_0 in place
+### If the array_id is not an integer, then the function will display an error
+### Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
 to_bitwise = {
     if = {
         limit = {
@@ -17,18 +17,18 @@ to_bitwise = {
         }
     }
 }
-### STORE_BITWISE
-## Converts the bit array inputted to a 32-bit signed integer, divides it by 1000, and pushes the result to a pdxvar
-## The below function has 1 parameter: temp_array_id
-## This parameter will be cleared(by resetting to 0) after the function execution
-## If any element used is not one or zero, then the function will display an error
+# STORE_BITWISE
+### Converts the bit array inputted to a 32-bit signed integer, divides it by 1000, and pushes the result to a pdxvar
+### The below function has 1 parameter: temp_array_id
+### This parameter will be cleared(by resetting to 0) after the function execution
+### If any element used is not one or zero, then the function will display an error
 ## ARRAY_ID
-# the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
-# If no array_id is assigned, the function will use temp_array_0 in place
-# If the array_id is not an integer, then the function will display an error
-# If the array is not 32 bits long, the function will display an error
-## The output will be sent to the temp var store_bitwise_output
-## Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
+### the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
+### If no array_id is assigned, the function will use temp_array_0 in place
+### If the array_id is not an integer, then the function will display an error
+### If the array is not 32 bits long, the function will display an error
+### The output will be sent to the temp var store_bitwise_output
+### Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
 store_bitwise = {
     if = {
         limit = {
@@ -36,19 +36,19 @@ store_bitwise = {
         }
     }
 }
-### TO_FLOAT
-## Converts the pdxvar "to_float_input" to a bitwise array 
-## The below function has 2 parameters: to_float_input and temp_array_id
-## These parameters will be cleared(by resetting to 0) after the function execution
+# TO_FLOAT
+### Converts the pdxvar "to_float_input" to a bitwise array 
+### The below function has 2 parameters: to_float_input and temp_array_id
+### These parameters will be cleared(by resetting to 0) after the function execution
 ## TO_FLOAT_INPUT
-# The variable to be converted into bitwise format
-# If no input is given, the function will use 0 in place **and return no error**
+### The variable to be converted into bitwise format
+### If no input is given, the function will use 0 in place **and return no error**
 ## ARRAY_ID
-# the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
-# If no array_id is assigned, the function will use temp_array_0 in place
-# If the array_id is not an integer, then the function will display an error
-## Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
-## This function does not implement infinity or NaN cases, since pdxvars do not reach those situations(subnormals however, are included with 0)
+### the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
+### If no array_id is assigned, the function will use temp_array_0 in place
+### If the array_id is not an integer, then the function will display an error
+### Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
+### This function does not implement infinity or NaN cases, since pdxvars do not reach those situations(subnormals however, are included with 0)
 to_float = {
     if = {
         limit = {
@@ -56,28 +56,28 @@ to_float = {
         }
     }
 }
-### TO_DIGIT_ARRAY
-## Reads a bit array in floating-point format and outputs two things: The array of digits(ieee_out_array) and the power of 10(ieee_out_power), akin to scientific format
-## The below function has 1 parameter: temp_array_id
-## This parameter will be cleared(by resetting to 0) after the function execution
+# TO_DIGIT_ARRAY
+### Reads a bit array in floating-point format and outputs two things: The array of digits(ieee_out_array) and the power of 10(ieee_out_power), akin to scientific format
+### The below function has 1 parameter: temp_array_id
+### This parameter will be cleared(by resetting to 0) after the function execution
 ## ARRAY_ID
-# the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
-# If no array_id is assigned, the function will use temp_array_0 in place
-# If the array_id is not an integer, then the function will display an error
-# If the array is not 32 elements long, then the function will display an error
-# If the array has elements which are not 0 or 1, then the function will display an error
+### the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
+### If no array_id is assigned, the function will use temp_array_0 in place
+### If the array_id is not an integer, then the function will display an error
+### If the array is not 32 elements long, then the function will display an error
+### If the array has elements which are not 0 or 1, then the function will display an error
 ## IEEE_OUT_ARRAY
-# This array contains the digits of the floating-point number stored one digit per element
-# For example, the decimal number 125 would be stored:
-# [1, 2, 5]
+### This array contains the digits of the floating-point number stored one digit per element
+### For example, the decimal number 125 would be stored:
+### [1, 2, 5]
 ## IEEE_OUT_POWER
-# The power gives the power of 10 the floating-point number
-# For example, the decimal number 625 would have a power of 2
-## Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
+### The power gives the power of 10 the floating-point number
+### For example, the decimal number 625 would have a power of 2
+### Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
 ## SPECIAL CASES
-# Infinity - Some cases cannot be converted to a number as usual. Therefore, a temp var is set to signify the special case: ieee_inf_flag
-# NaN - Some cases cannot be converted to a number as usual. Therefore, a temp var is set to signify the special case: ieee_nan_flag
-# In both cases, no error is returned and both the power and array remain zeroed out and empty respectively
+### Infinity - Some cases cannot be converted to a number as usual. Therefore, a temp var is set to signify the special case: ieee_inf_flag
+### NaN - Some cases cannot be converted to a number as usual. Therefore, a temp var is set to signify the special case: ieee_nan_flag
+### In both cases, no error is returned and both the power and array remain zeroed out and empty respectively
 to_digit_array = {
     if = {
         limit = {
@@ -85,23 +85,23 @@ to_digit_array = {
         }
     }
 }
-### TO_PDXVAR
-## Reads a bit array in floating-point format and outputs the closest pdxvar to_pdxvar_output
-## The below function has 1 parameter: temp_array_id
-## This parameter will be cleared(by resetting to 0) after the function execution
+# TO_PDXVAR
+### Reads a bit array in floating-point format and outputs the closest pdxvar to_pdxvar_output
+### The below function has 1 parameter: temp_array_id
+### This parameter will be cleared(by resetting to 0) after the function execution
 ## ARRAY_ID
-# the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
-# If no array_id is assigned, the function will use temp_array_0 in place
-# If the array_id is not an integer, then the function will display an error
-# If the array is not 32 elements long, then the function will display an error
-# If the array has elements which are not 0 or 1, then the function will display an error
+### the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
+### If no array_id is assigned, the function will use temp_array_0 in place
+### If the array_id is not an integer, then the function will display an error
+### If the array is not 32 elements long, then the function will display an error
+### If the array has elements which are not 0 or 1, then the function will display an error
 ## TO_PDXVAR_OUTPUT
-# The output variable which holds the converted value
-# Do not confuse this with the store_bitwise function, as the two functions will output different values from the same bitarray
-# If the value is too high to fit in a pdxvar(greater than 2148483.647 or less than 2147483.648), then a temp var(ieee_overflow_flag) will be set to 1 or -1 depending on whether the float was too high or too low respectively, a warning will be logged, and the pdxvar will default to 0 
-# In addition, two temp vars exist to notify the user of an infinity or NaN(ieee_inf_flag and ieee_nan_flag respectively) and the output will default to 0. Similarly, +1 or -1 will denote a positive or negative special value 
-## Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
-## Additionally, any error will not trigger the to_digit_array function, and instead return 0 to the output variable
+### The output variable which holds the converted value
+### Do not confuse this with the store_bitwise function, as the two functions will output different values from the same bitarray
+### If the value is too high to fit in a pdxvar(greater than 2148483.647 or less than 2147483.648), then a temp var(ieee_overflow_flag) will be set to 1 or -1 depending on whether the float was too high or too low respectively, a warning will be logged, and the pdxvar will default to 0 
+### In addition, two temp vars exist to notify the user of an infinity or NaN(ieee_inf_flag and ieee_nan_flag respectively) and the output will default to 0. Similarly, +1 or -1 will denote a positive or negative special value 
+### Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
+### Additionally, any error will not trigger the to_digit_array function, and instead return 0 to the output variable
 to_pdxvar = {
     if = {
         limit = {
@@ -109,18 +109,18 @@ to_pdxvar = {
         }
     }
 }
-### FLOAT_TO_PDXVAR
-## Wrapper function that chains to_bitwise and to_pdxvar for ease of converting floats to pdxvars
-## The below function has 1 parameter: arg_a
-## This parameter will be cleared(by resetting to 0) after the function execution
-## The temp_array_1000 is reserved for this function, so outside use of this temp array will be interrupted and malfunction
+# FLOAT_TO_PDXVAR
+### Wrapper function that chains to_bitwise and to_pdxvar for ease of converting floats to pdxvars
+### The below function has 1 parameter: arg_a
+### This parameter will be cleared(by resetting to 0) after the function execution
+### The temp_array_1000 is reserved for this function, so outside use of this temp array will be interrupted and malfunction
 ## ARG_A
-# arg_a is the floating-point variable that will be converted to a pdxvar
-# No restrictions exist on the value of arg_a, apart from the usual bounds on pdxvars
+### arg_a is the floating-point variable that will be converted to a pdxvar
+### No restrictions exist on the value of arg_a, apart from the usual bounds on pdxvars
 ## OUT_A
-# out_a is the pdxvar that best approximates the value of the floating point stored in arg_a
-# If the value is too high to fit in a pdxvar(greater than 2148483.647 or less than 2147483.648), then a temp var(overflow_flag) will be set to 1 or -1 depending on whether the float was too high or too low respectively, a warning will be logged, and the pdxvar will default to 0 
-# In addition, two temp vars exist to notify the user of an infinity or NaN(inf_flag and nan_flag respectively) and the output will default to 0. Similarly, +1 or -1 will denote a positive or negative special value. These results will *not* log any warning and should be checked before further use
+### out_a is the pdxvar that best approximates the value of the floating point stored in arg_a
+### If the value is too high to fit in a pdxvar(greater than 2148483.647 or less than 2147483.648), then a temp var(overflow_flag) will be set to 1 or -1 depending on whether the float was too high or too low respectively, a warning will be logged, and the pdxvar will default to 0 
+### In addition, two temp vars exist to notify the user of an infinity or NaN(inf_flag and nan_flag respectively) and the output will default to 0. Similarly, +1 or -1 will denote a positive or negative special value. These results will *not* log any warning and should be checked before further use
 float_to_pdxvar = {
     if = {
         limit = {
@@ -128,16 +128,16 @@ float_to_pdxvar = {
         }
     }
 }
-### PDXVAR_TO_FLOAT
-## Wrapper function that chains to_float and store_bitwise for ease of converting pdxvars to floats
-## The below function has 1 parameter: arg_a
-## This parameter will be cleared(by resetting to 0) after the function execution
-## The temp_array_1000 is reserved for this function, so outside use of this temp array will be interrupted and malfunction
+# PDXVAR_TO_FLOAT
+### Wrapper function that chains to_float and store_bitwise for ease of converting pdxvars to floats
+### The below function has 1 parameter: arg_a
+### This parameter will be cleared(by resetting to 0) after the function execution
+### The temp_array_1000 is reserved for this function, so outside use of this temp array will be interrupted and malfunction
 ## ARG_A
-# the arg_a is the pdxvar that will be converted to a float
-# No restrictions exist on the value of arg_a, apart from the usual bounds on pdxvars
+### the arg_a is the pdxvar that will be converted to a float
+### No restrictions exist on the value of arg_a, apart from the usual bounds on pdxvars
 ## OUT_A
-# out_a is the float that best approximates the value of the pdxvar stored in arg_a
+### out_a is the float that best approximates the value of the pdxvar stored in arg_a
 pdxvar_to_float = {
     if = {
         limit = {

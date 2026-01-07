@@ -1,13 +1,13 @@
-### ieeeAdd
-## Adds the floating point variables and pushes the result to an output variable
-## The below function has 2 parameters: arg_a and arg_b
-## The output will be pushed to the temp variable out_a
-## temp_array_1000 and temp_array_1001 are reserved for this function, so outside use of this temp array will be interrupted and malfunction
+# ieeeAdd
+### Adds the floating point variables and pushes the result to an output variable
+### The below function has 2 parameters: arg_a and arg_b
+### The output will be pushed to the temp variable out_a
+### temp_array_1000 and temp_array_1001 are reserved for this function, so outside use of this temp array will be interrupted and malfunction
 ## ARGUMENTS
-# arg_a and arg_b will be interpreted as floating-point variables, so the value of 1 is represented by storing 1065353.216 in a variable(see pdxvar_to_float)
+### arg_a and arg_b will be interpreted as floating-point variables, so the value of 1 is represented by storing 1065353.216 in a variable(see pdxvar_to_float)
 ## OUTPUT
-# out_a will contain the floating-point value of float(arg_a) + float(arg_b) after function execution
-# Continuing the example in the arguments, float-adding 1065353.216 to 1065353.216 (1+1) will yield 1073741.824 (2)
+### out_a will contain the floating-point value of float(arg_a) + float(arg_b) after function execution
+### Continuing the example in the arguments, float-adding 1065353.216 to 1065353.216 (1+1) will yield 1073741.824 (2)
 ieeeAdd_trigger = {
     set_temp_variable = { out_a = 0 }
 
@@ -353,16 +353,16 @@ ieeeAdd_trigger = {
         round_and_convert_output = yes
     }
 }
-### ieeeSub
-## Subtracts the floating point variables and pushes the result to an output variable
-## The below function has 2 parameters: arg_a and arg_b
-## The output will be pushed to the temp variable out_a
-## temp_array_1000, temp_array_1001, and temp_array_1002 are reserved for this function, so outside use of this temp array will be interrupted and malfunction
+# ieeeSub
+### Subtracts the floating point variables and pushes the result to an output variable
+### The below function has 2 parameters: arg_a and arg_b
+### The output will be pushed to the temp variable out_a
+### temp_array_1000, temp_array_1001, and temp_array_1002 are reserved for this function, so outside use of this temp array will be interrupted and malfunction
 ## ARGUMENTS
-# arg_a and arg_b will be interpreted as floating-point variables, so the value of 1 is represented by storing 1065353.216 in a variable(see pdxvar_to_float)
+### arg_a and arg_b will be interpreted as floating-point variables, so the value of 1 is represented by storing 1065353.216 in a variable(see pdxvar_to_float)
 ## OUTPUT
-# out_a will contain the floating-point value of float(arg_a) - float(arg_b) after function execution
-# Continuing the example in the arguments, float-subtracting 1065353.216 from 1065353.216 (1-1) will yield 0 (0)
+### out_a will contain the floating-point value of float(arg_a) - float(arg_b) after function execution
+### Continuing the example in the arguments, float-subtracting 1065353.216 from 1065353.216 (1-1) will yield 0 (0)
 ieeeSub_trigger = {
     # Negate b's argument
     add_to_temp_variable = { arg_b = 2147483.648 }
@@ -370,16 +370,16 @@ ieeeSub_trigger = {
     # arg_a - arg_b = arg_a + (-arg_b)
     ieeeAdd_trigger = yes
 }
-### ieeeMul
-## Multiplies the floating point variables and pushes the result to an output variable
-## The below function has 2 parameters: arg_a and arg_b
-## The output will be pushed to the temp variable out_a
-## temp_array_1000 and temp_array_1001 are reserved for this function, so outside use of this temp array will be interrupted and malfunction
+# ieeeMul
+### Multiplies the floating point variables and pushes the result to an output variable
+### The below function has 2 parameters: arg_a and arg_b
+### The output will be pushed to the temp variable out_a
+### temp_array_1000 and temp_array_1001 are reserved for this function, so outside use of this temp array will be interrupted and malfunction
 ## ARGUMENTS
-# arg_a and arg_b will be interpreted as floating-point variables, so the value of 2 is represented by storing 1073741.824 in a variable(see pdxvar_to_float)
+### arg_a and arg_b will be interpreted as floating-point variables, so the value of 2 is represented by storing 1073741.824 in a variable(see pdxvar_to_float)
 ## OUTPUT
-# out_a will contain the floating-point value of float(arg_a) * float(arg_b) after function execution
-# Continuing the example in the arguments, float-multiplying 1073741.824 to 1073741.824 (2*2) will yield 1082130.432 (4)
+### out_a will contain the floating-point value of float(arg_a) * float(arg_b) after function execution
+### Continuing the example in the arguments, float-multiplying 1073741.824 to 1073741.824 (2*2) will yield 1082130.432 (4)
 ieeeMul_trigger = {
     set_temp_variable = { out_a = 0 }
     set_temp_variable = { to_bitwise_input = arg_a }
@@ -589,15 +589,15 @@ ieeeMul_trigger = {
         round_and_convert_output = yes
     }
 }
-### ieeeDiv
-## Divides the floating point variables and pushes the result to an output variable
-## The below function has 2 parameters: arg_a and arg_b
-## The output will be pushed to the temp variable out_a
-## temp_array_1000 and temp_array_1001 are reserved for this function, so outside use of this temp array will be interrupted and malfunction
-## ARGUMENTS
-# arg_a and arg_b will be interpreted as floating-point variables, so the value of 2 is represented by storing 1073741.824 in a variable(see pdxvar_to_float)
+# ieeeDiv
+### Divides the floating point variables and pushes the result to an output variable
+### The below function has 2 parameters: arg_a and arg_b
+### The output will be pushed to the temp variable out_a
+### temp_array_1000 and temp_array_1001 are reserved for this function, so outside use of this temp array will be interrupted and malfunction
+### ARGUMENTS
+### arg_a and arg_b will be interpreted as floating-point variables, so the value of 2 is represented by storing 1073741.824 in a variable(see pdxvar_to_float)
 ## OUTPUT
-# out_a will contain the floating-point value of float(arg_a) / float(arg_b) after function execution
+### out_a will contain the floating-point value of float(arg_a) / float(arg_b) after function execution
 ieeeDiv_trigger = {
     set_temp_variable = { out_a = 0 }
     set_temp_variable = { to_bitwise_input = arg_a }
@@ -869,10 +869,11 @@ ieeeDiv_trigger = {
         round_and_convert_output = yes
     }
 }
-### ieeeSqt
-### ieeeFMA
-### populate_mantissas
-# Helper function to convert input bit arrays from IEEE-754 format to a normalized mantissa including the leading bit
+# ieeeSqt
+# ieeeFMA
+
+# populate_mantissas
+### Helper function to convert input bit arrays from IEEE-754 format to a normalized mantissa including the leading bit
 populate_mantissas = {
     clear_temp_array = temp_mantissa_a
     clear_temp_array = temp_mantissa_b
@@ -1147,7 +1148,6 @@ round_and_convert_output = {
             }
         }
     }
-
     # run store_bitwise
     set_temp_variable = { temp_array_id = 1000 }
     store_bitwise_trigger = yes

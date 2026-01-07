@@ -1,0 +1,69 @@
+# ieeeAdd
+### Adds the floating point variables and pushes the result to an output variable
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will be cleared(by resetting to 0) after the function execution
+### The output will be pushed to the temp variable out_a
+### temp_array_1000, temp_array_1001, and temp_array_1002 are reserved for this function, so outside use of this temp array will be interrupted and malfunction
+## ARGUMENTS
+### arg_a and arg_b will be interpreted as floating-point variables, so the value of 1 is represented by storing 1065353.216 in a variable(see pdxvar_to_float)
+## OUTPUT
+### out_a will contain the floating-point value of float(arg_a) + float(arg_b) after function execution
+### Continuing the example in the arguments, float-adding 1065353.216 to 1065353.216 (1+1) will yield 1073741.824 (2)
+ieeeAdd = {
+    if = {
+        limit = {
+            ieeeAdd_trigger = yes
+        }
+    }
+}
+# ieeeSub
+### Subtracts the floating point variables and pushes the result to an output variable
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will be cleared(by resetting to 0) after the function execution
+### The output will be pushed to the temp variable out_a
+### temp_array_1000, temp_array_1001, and temp_array_1002 are reserved for this function, so outside use of this temp array will be interrupted and malfunction
+## ARGUMENTS
+### arg_a and arg_b will be interpreted as floating-point variables, so the value of 1 is represented by storing 1065353.216 in a variable(see pdxvar_to_float)
+## OUTPUT
+### out_a will contain the floating-point value of float(arg_a) - float(arg_b) after function execution
+### Continuing the example in the arguments, float-subtracting 1065353.216 from 1065353.216 (1-1) will yield 0 (0)
+ieeeSub = {
+    if = {
+        limit = {
+            ieeeSub_trigger = yes
+        }
+    }
+}
+# ieeeMul
+### Multiplies the floating point variables and pushes the result to an output variable
+### The below function has 2 parameters: arg_a and arg_b
+### The output will be pushed to the temp variable out_a
+### temp_array_1000 and temp_array_1001 are reserved for this function, so outside use of this temp array will be interrupted and malfunction
+## ARGUMENTS
+### arg_a and arg_b will be interpreted as floating-point variables, so the value of 2 is represented by storing 1073741.824 in a variable(see pdxvar_to_float)
+## OUTPUT
+### out_a will contain the floating-point value of float(arg_a) * float(arg_b) after function execution
+### Continuing the example in the arguments, float-adding 1073741.824 to 1073741.824 (2+2) will yield 1082130.432 (4)
+ieeeMul = {
+    if = {
+        limit = {
+            ieeeMul_trigger = yes
+        }
+    }
+}
+# ieeeDiv
+### Divides the floating point variables and pushes the result to an output variable
+### The below function has 2 parameters: arg_a and arg_b
+### The output will be pushed to the temp variable out_a
+### temp_array_1000 and temp_array_1001 are reserved for this function, so outside use of this temp array will be interrupted and malfunction
+### ARGUMENTS
+### arg_a and arg_b will be interpreted as floating-point variables, so the value of 2 is represented by storing 1073741.824 in a variable(see pdxvar_to_float)
+## OUTPUT
+### out_a will contain the floating-point value of float(arg_a) / float(arg_b) after function execution
+ieeeDiv = {
+    if = {
+        limit = {
+            ieeeDiv_trigger = yes
+        }
+    }
+}

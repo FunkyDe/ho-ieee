@@ -1,0 +1,145 @@
+## Initialize digit arrays for use in localization and conversion to pdxvars
+ieee_digits_init = {
+    # Hardcode 2^0 digit array
+    clear_array = global.digit_array0
+    add_to_array = { global.digit_array0 = 1 }
+    set_variable = { global.digit_power0 = 0 }
+
+    # Generate positive exponent digit arrays from 2^0
+    for_loop_effect = {
+        start = 1
+        end = 127
+        compare = less_than_or_equals
+        value = exp
+
+        # copy previous array and double digits
+        set_temp_variable = { prev_idx = exp }
+        subtract_from_temp_variable = { prev_idx = 1 }
+        clear_array = global.digit_array@var:exp
+        resize_array = { global.digit_array@var:exp = global.digit_array@var:prev_idx^num }
+        for_each_loop = {
+            array = global.digit_array@var:prev_idx
+            index = idx
+
+            set_variable = { global.digit_array@var:exp^idx = global.digit_array@var:prev_idx^idx }
+            multiply_variable = { global.digit_array@var:exp^idx = 2 }
+        }
+
+        # Carry digits and set power
+        set_variable = { global.digit_power@var:exp = global.digit_power@var:prev_idx }
+        for_loop_effect = {
+            start = global.digit_array@var:exp^num
+            end = 0
+            add = -1
+            compare = greater_than_or_equals
+            value = idx
+            break = carry_flag
+
+            if = {
+                limit = {
+                    check_variable = { global.digit_array@var:exp^idx > 9 }
+                }
+                subtract_from_variable = { global.digit_array@var:exp^idx = 10 }
+
+                set_temp_variable = { prev_idx = idx }
+                subtract_from_temp_variable = { prev_idx = 1 }
+                if = {
+                    limit = {
+                        check_variable = { prev_idx = -1 }
+                    }
+
+                    add_to_array = {
+                        array = global.digit_array@var:exp
+                        index = 0
+                        value = 1
+                    }
+                    add_to_variable = { global.digit_power@var:exp = 1 }
+                    set_temp_variable = { carry_flag = 1 }
+                }
+                else = {
+                    add_to_variable = { global.digit_array@var:exp^prev_idx = 1 }
+                }
+            }
+        }
+
+        # Debug to print array digits and power
+        #log="2^[?exp] ~ 10^[?global.digit_power@var:exp]"
+        #for_each_loop = {
+        #    array = global.digit_array@var:exp
+        #    value = v
+        #
+        #    add_to_temp_array = { to_print_array = v }
+        #}
+        #log="[debug_print_array]"
+    }
+    for_loop_effect = {
+        start = -1
+        end = -149
+        add = -1
+        compare = greater_than_or_equals
+        value = exp
+
+        # calculating previous array calculated
+        set_temp_variable = { prev_idx = exp }
+        add_to_temp_variable = { prev_idx = 1 }
+        clear_array = global.digit_array@var:exp
+        resize_array = { global.digit_array@var:exp = global.digit_array@var:prev_idx^num }
+        set_variable = { global.digit_power@var:exp = global.digit_power@var:prev_idx }
+
+        # Loop through division by 2
+        set_temp_variable = { temp_start = global.digit_array@var:prev_idx^num }
+        subtract_from_temp_variable = { temp_start = 1 }
+        for_loop_effect = {
+            start = temp_start
+            end = 0
+            add = -1
+            compare = greater_than_or_equals
+            value = idx
+
+            set_variable = { global.digit_array@var:exp^idx = global.digit_array@var:prev_idx^idx }
+            set_temp_variable = { odd_even_check = global.digit_array@var:exp^idx }
+            modulo_temp_variable = { odd_even_check = 2 }
+            if = { # digit is odd, carry 5 to next digit
+                limit = {
+                    check_variable = { odd_even_check = 1 }
+                }
+                subtract_from_variable = { global.digit_array@var:exp^idx = 1 }
+                set_temp_variable = { next_idx = idx }
+                add_to_temp_variable = { next_idx = 1 }
+                if = {
+                    limit = {
+                        check_variable = { next_idx = global.digit_array@var:prev_idx^num }
+                    }
+                    add_to_array = { global.digit_array@var:exp = 5 }
+                }
+                else = {
+                    add_to_variable = { global.digit_array@var:exp^next_idx = 5 }
+                }
+            }
+            if = { # last digit is zero, truncate significant digits and decrement power of 10
+                limit = {
+                    check_variable = { idx = 0 }
+                    check_variable = { global.digit_array@var:exp^idx = 0 }
+                }
+                remove_from_array = {
+                    array = global.digit_array@var:exp
+                    index = 0
+                }
+                subtract_from_variable = { global.digit_power@var:exp = 1 }
+            }
+            else = {
+                divide_variable = { global.digit_array@var:exp^idx = 2 }
+            }
+        }
+
+        # Debug to print array digits and power
+        # log="2^[?exp] ~ 10^[?global.digit_power@var:exp]"
+        # for_each_loop = {
+        #    array = global.digit_array@var:exp
+        #    value = v
+           
+        #    add_to_temp_array = { to_print_array = v }
+        # }
+        # log="[debug_print_array]"
+    }
+}

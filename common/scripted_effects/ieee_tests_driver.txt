@@ -1576,14 +1576,6 @@ ieee_run_tests_io = {
     ieee_test_786 = yes
     set_temp_variable = { test_id = 787 }
     ieee_test_787 = yes
-    set_temp_variable = { test_id = 788 }
-    ieee_test_788 = yes
-    set_temp_variable = { test_id = 789 }
-    ieee_test_789 = yes
-    set_temp_variable = { test_id = 790 }
-    ieee_test_790 = yes
-    set_temp_variable = { test_id = 791 }
-    ieee_test_791 = yes
 }
 ieee_run_tests_relations = {
     set_temp_variable = { test_id = 10000 }

@@ -1,0 +1,12 @@
+fibonacci_category = {
+    fibonacci_show = {
+        complete_effect = {
+            set_global_flag = fib_gui_visible
+        }
+    }
+    fibonacci_hide = {
+        complete_effect = {
+            clr_global_flag = fib_gui_visible
+        }
+    }
+}

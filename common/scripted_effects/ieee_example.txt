@@ -76,3 +76,63 @@ ieee_example_fibonacci = {
         set_temp_variable = { fib_b = out_a }
     }
 }
+## Printing approximations of fibonacci using the phi approximation - https://math.stackexchange.com/questions/1098360/why-does-every-fibonacci-like-series-converge-to-phi
+ieee_example_fibonacci_approx = {
+    # First calculate phi_const using (1 + sqrt(5)) / 2
+    set_temp_variable = { arg_a = 1 }
+    pdxvar_to_float = yes
+    set_temp_variable = { arg_a = out_a }
+ 
+    # No sqrt yet, so manually convert using extras/convert.py
+    set_temp_variable = { sqrt5 = 1074731.965 }
+    set_temp_variable = { arg_b = sqrt5 }
+
+    log = "[?arg_a]"
+    log = "[?arg_b]"
+    ieeeAdd = yes
+    log="out: [?out_a]"
+    set_temp_variable = { phi_const = out_a }
+
+    set_temp_variable = { arg_a = 1 }
+    pdxvar_to_float = yes
+    set_temp_variable = { arg_a = out_a }
+    set_temp_variable = { arg_b = sqrt5 }
+
+    ieeeDiv = yes
+    set_temp_variable = { fib = out_a }
+
+    set_temp_variable = { arg_a = 2 }
+    pdxvar_to_float = yes
+    set_temp_variable = { arg_b = out_a }
+    set_temp_variable = { arg_a = phi_const }
+
+    ieeeDiv = yes
+    log="out: [?out_a]"
+    set_temp_variable = { phi_const = out_a }
+    log="[?phi_const]"
+
+    set_temp_variable = { iter = 0 }
+    set_temp_variable = { posinf = 2139095.040 }
+    while_loop_effect = {
+        limit = {
+            set_temp_variable = { arg_a = fib }
+            set_temp_variable = { arg_b = posinf }
+            compareLess = yes
+        }
+
+        set_temp_variable = { arg_a = fib }
+        set_temp_variable = { arg_b = phi_const }
+        ieeeMul = yes
+
+        set_temp_variable = { fib = out_a }
+
+        add_to_temp_variable = { iter = 1 }
+        add_to_temp_array = { multi_print_float = out_a }
+        add_to_temp_array = { multi_print_style = 0 }
+        add_to_temp_array = { multi_print_param = 0 }
+        add_to_temp_array = { multi_print_float = out_a }
+        add_to_temp_array = { multi_print_style = 4 }
+        add_to_temp_array = { multi_print_param = 5 }
+        log="Fibonacci [?iter]: [print_multi_float] ~ [print_multi_float]"
+    }
+}

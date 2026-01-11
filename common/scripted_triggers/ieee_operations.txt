@@ -364,8 +364,16 @@ ieeeAdd_trigger = {
 ### out_a will contain the floating-point value of float(arg_a) - float(arg_b) after function execution
 ### Continuing the example in the arguments, float-subtracting 1065353.216 from 1065353.216 (1-1) will yield 0 (0)
 ieeeSub_trigger = {
-    # Negate b's argument
-    add_to_temp_variable = { arg_b = 2147483.648 }
+    # Negate b's argument by flipping the sign bit without overflow.
+    if = {
+        limit = {
+            check_variable = { arg_b < 0 }
+        }
+        add_to_temp_variable = { arg_b = 2147483.648 }
+    }
+    else = {
+        subtract_from_temp_variable = { arg_b = 2147483.648 }
+    }
 
     # arg_a - arg_b = arg_a + (-arg_b)
     ieeeAdd_trigger = yes
@@ -433,20 +441,28 @@ ieeeMul_trigger = {
             }
         }
 
-        # Sign handler, flips sign of output if either a is negative or b is negative
+        # Sign handler (special cases). Use parity so negative zero/infinity use the -2147483.648 base.
+        set_temp_variable = { special_sign = 0 }
         if = {
             limit = {
                 check_variable = { arg_a < 0 }
             }
             add_to_temp_variable = { arg_a = 2147483.648 }
-            add_to_temp_variable = { out_a = 2147483.648 }
+            add_to_temp_variable = { special_sign = 1 }
         }
         if = {
             limit = {
                 check_variable = { arg_b < 0 }
             }
             add_to_temp_variable = { arg_b = 2147483.648 }
-            add_to_temp_variable = { out_a = 2147483.648 }
+            add_to_temp_variable = { special_sign = 1 }
+        }
+        modulo_temp_variable = { special_sign = 2 }
+        if = {
+            limit = {
+                check_variable = { special_sign = 1 }
+            }
+            set_temp_variable = { out_a = -2147483.648 }
         }
 
         # Special cases handler
@@ -651,20 +667,28 @@ ieeeDiv_trigger = {
             }
         }
 
-        # Sign handler, flips sign of output if either a is negative or b is negative
+        # Sign handler (special cases). Use parity so negative zero/infinity use the -2147483.648 base.
+        set_temp_variable = { special_sign = 0 }
         if = {
             limit = {
                 check_variable = { arg_a < 0 }
             }
             add_to_temp_variable = { arg_a = 2147483.648 }
-            add_to_temp_variable = { out_a = 2147483.648 }
+            add_to_temp_variable = { special_sign = 1 }
         }
         if = {
             limit = {
                 check_variable = { arg_b < 0 }
             }
             add_to_temp_variable = { arg_b = 2147483.648 }
-            add_to_temp_variable = { out_a = 2147483.648 }
+            add_to_temp_variable = { special_sign = 1 }
+        }
+        modulo_temp_variable = { special_sign = 2 }
+        if = {
+            limit = {
+                check_variable = { special_sign = 1 }
+            }
+            set_temp_variable = { out_a = -2147483.648 }
         }
 
         # Special cases handler

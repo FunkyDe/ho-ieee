@@ -1,5 +1,5 @@
-name="Hearts of IEEE 754"
-version="1.0.0"
+name = "Hearts of IEEE 754"
+version = "1.0.1"
 tags={
 	"Utilities"
 }

@@ -1,0 +1,61 @@
+scripted_gui = {
+    fib_gui_container = {
+        context_type = player_context
+        window_name = "fib_gui_container"
+        dirty = fib_gui_dirty
+
+        visible = {
+            has_global_flag = fib_gui_visible
+        }
+
+        dynamic_lists = {
+            fib_list = {
+                array = global.fibonacci_list
+                index = i
+
+                change_scope = no
+                entry_container = "fib_item"
+            }
+        }
+        effects = {
+            fib_step_click = {
+                # Logic for stepping fibonacci
+                if = {
+                    limit = {
+                        check_variable = { global.fibonacci_list^num = 0 }
+                    }
+                    add_to_array = { global.fibonacci_list = 0 }
+                }
+                else_if = {
+                    limit = {
+                        check_variable = { global.fibonacci_list^num = 1 }
+                    }
+                    set_temp_variable = { arg_a = 1 }
+                    pdxvar_to_float = yes
+                    add_to_array = { global.fibonacci_list = out_a }
+                }
+                else = {
+                    set_temp_variable = { temp_index = global.fibonacci_list^num }
+
+                    subtract_from_temp_variable = { temp_index = 1 }
+                    set_temp_variable = { arg_a = global.fibonacci_list^temp_index}
+                    subtract_from_temp_variable = { temp_index = 1 }
+                    set_temp_variable = { arg_b = global.fibonacci_list^temp_index}
+
+                    ieeeAdd = yes
+                    add_to_array = { global.fibonacci_list = out_a }
+                }
+                add_to_variable = { fib_gui_dirty = 0.001 }
+            }
+            fib_clear_click = {
+                clear_array = global.fibonacci_list
+                add_to_variable = { fib_gui_dirty = 0.001 }
+            }
+            fib_close_click = {
+                clr_global_flag = fib_gui_visible
+            }
+        }
+        triggers = {
+        }
+    }
+}

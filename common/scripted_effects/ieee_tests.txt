@@ -3,13 +3,13 @@ ieee_run_tests = {
     clear_temp_array = test_fail_array
 
     # Run all tests without meta effects, see ieee_tests_driver.txt
-    # ieee_run_tests_io = yes
-    # ieee_run_tests_relations = yes
-    # ieee_run_tests_quiet_predicates = yes
-    # ieee_run_tests_signaling_predicates = yes
-    # ieee_run_tests_addsub = yes
-    # ieee_run_tests_multiplication = yes
-    # ieee_run_tests_division = yes
+    ieee_run_tests_io = yes
+    ieee_run_tests_relations = yes
+    ieee_run_tests_quiet_predicates = yes
+    ieee_run_tests_signaling_predicates = yes
+    ieee_run_tests_addsub = yes
+    ieee_run_tests_multiplication = yes
+    ieee_run_tests_division = yes
 
     for_each_loop = {
         array = test_fail_array
@@ -50,9 +50,9 @@ ieee_get_test_count = {
     add_to_temp_array = { temp_test_count_array = 500 }     # relations and totalOrder
     add_to_temp_array = { temp_test_count_array = 972 }     # predicates
     add_to_temp_array = { temp_test_count_array = 1000 }    # signaling predicates
-    add_to_temp_array = { temp_test_count_array = 9152 }     # addition and subtraction
-    add_to_temp_array = { temp_test_count_array = 9150 }     # multiplication
-    add_to_temp_array = { temp_test_count_array = 9150 }     # division
+    add_to_temp_array = { temp_test_count_array = 9154 }     # addition and subtraction
+    add_to_temp_array = { temp_test_count_array = 9152 }     # multiplication
+    add_to_temp_array = { temp_test_count_array = 9151 }     # division
 }
 # test basic io
 ## See ieee_tests_io.txt

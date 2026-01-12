@@ -2,13 +2,13 @@
 
 The goal of this mod is to provide an implementation floating-point numbers, according to the IEEE 754 standard, to the Hearts of Iron IV modding system, for use by other modders.
 
-This mod has been released with the capability to do all four basic operations (+, -, *, /) and comparisons. I am pretty busy due to school, but if I have extra time I will try to make some of the easier functions. As for 1.17, the update radically changed how the variables in the game works, so until we know more about the data type this mod will remain in 1.16.
+This mod has been released with the capability to do all four basic operations (+, -, *, /) and comparisons. I am pretty busy due to school, but if I have extra time I will try to make some of the easier functions. This mod has been updated to 1.17, and it also works on 1.16.
 
 If you want to use this mod for floating point maths in your own program, I would recommend adding this mod as a dependency, as it makes updates easier. Do note that this implementation is not particularly performant, so preferably don't do thousands of multiplications an in-game day. Printing in GUIs is doable by creating a scripted loc and setting the print temp-variables inside the trigger (see the scripted GUI for an example).
 
 # Why?
 
-HOI4's modding script uses signed 32-bit fixed-point variables(referred to later as pdxvars), ranging from -2,147,483.648 to 2,147,483.647, with accuracy to the thousandth-place. This means that variables can overflow, losing the true value, or can be truncated, losing precision. So, I am working on an implementation of floating-point variables according to the IEEE 754 standard, which would allow for both a greater range of numbers and a greater precision, while maintaining a modder-friendly interface within Paradox's provided modding script. Currently, this project is a work-in-progress, and likely will be for the near future as there is still much to do.
+In 1.16, HOI4's modding script uses signed 32-bit fixed-point variables(referred to later as pdxvars), ranging from -2,147,483.648 to 2,147,483.647, with accuracy to the thousandth-place. This means that variables can overflow, losing the true value, or can be truncated, losing precision. So, I am working on an implementation of floating-point variables according to the IEEE 754 standard, which would allow for both a greater range of numbers and a greater precision, while maintaining a modder-friendly interface within Paradox's provided modding script. Currently, this project is a work-in-progress, and likely will be for the near future as there is still much to do. As of the 1.17 update, the way the script manipulates variables is not wholly known, but it it still limited to a fixed range of magnitudes.
 
 # Key Functions
 Below is a chart of the scripts I found most interesting, where to find them, and what they do. I have omitted the "_trigger" ending for some of their names, as that has no impact on their actual function:

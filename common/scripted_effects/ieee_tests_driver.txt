@@ -24832,6 +24832,10 @@ ieee_run_tests_addsub = {
     ieee_test_49150 = yes
     set_temp_variable = { test_id = 49151 }
     ieee_test_49151 = yes
+    set_temp_variable = { test_id = 49152 }
+    ieee_test_49152 = yes
+    set_temp_variable = { test_id = 49153 }
+    ieee_test_49153 = yes
 }
 ieee_run_tests_multiplication = {
     set_temp_variable = { test_id = 50000 }
@@ -43134,6 +43138,10 @@ ieee_run_tests_multiplication = {
     ieee_test_59148 = yes
     set_temp_variable = { test_id = 59149 }
     ieee_test_59149 = yes
+    set_temp_variable = { test_id = 59150 }
+    ieee_test_59150 = yes
+    set_temp_variable = { test_id = 59151 }
+    ieee_test_59151 = yes
 }
 ieee_run_tests_division = {
     set_temp_variable = { test_id = 60000 }
@@ -61436,4 +61444,6 @@ ieee_run_tests_division = {
     ieee_test_69148 = yes
     set_temp_variable = { test_id = 69149 }
     ieee_test_69149 = yes
+    set_temp_variable = { test_id = 69150 }
+    ieee_test_69150 = yes
 }

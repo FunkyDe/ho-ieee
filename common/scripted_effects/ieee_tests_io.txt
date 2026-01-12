@@ -64994,7 +64994,7 @@ ieee_test_780 = {
     set_temp_variable = { temp_array_id = 0 }
     to_digit_array = yes
 
-    set_temp_variable = { expected_ieee_out_power = -2147483648 }
+    set_temp_variable = { expected_ieee_out_power = 0 }
     clear_temp_array = expected_ieee_out_array
     set_temp_variable = { expected_sign_bit = 0 }
     set_temp_variable = { expected_inf_flag = 0 }
@@ -65406,7 +65406,7 @@ ieee_test_785 = {
     set_temp_variable = { temp_array_id = 0 }
     to_digit_array = yes
 
-    set_temp_variable = { expected_ieee_out_power = -2147483648 }
+    set_temp_variable = { expected_ieee_out_power = 0 }
     clear_temp_array = expected_ieee_out_array
     set_temp_variable = { expected_sign_bit = 1 }
     set_temp_variable = { expected_inf_flag = 0 }

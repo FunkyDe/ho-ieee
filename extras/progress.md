@@ -10,11 +10,11 @@ This Markdown page provides a view of the progress towards the implementation of
 | roundToIntegralTowardPositive | Not Done | ##### | Converts float -> float |
 | roundToIntegralTowardNegative | Not Done | ##### | Converts float -> float |
 | roundToIntegralExact | Not Done | ##### | Converts float -> float, signals if inexact |
-| nextUp | Not Done | ##### | The least float greater than the input |
-| nextDown | Not Done | ##### | Defined as -nextUp(-x) |
+| nextUp | Done | **ieeeNextUp** | The least float greater than the input |
+| nextDown | Done | **ieeeNextDown** | Defined as -nextUp(-x) |
 | remainder | Not Done | ##### | remainder(x, y) = x-y*n, n is an integer |
-| scaleB | Not Done | ##### | x(2)<sup>y</sup>, y is an integer |
-| logB | Not Done | ##### | floor(log<sub>2</sub>(x)) |
+| scaleB | Done | **ieeeScaleB** | x(2)<sup>y</sup>, y is an integer |
+| logB | Done | **ieeeLogB** | floor(log<sub>2</sub>(x)) |
 
 ## 5.4 formatOf General-computational Operations
 | Operation | Progress | Implemented By | Notes |
@@ -42,9 +42,9 @@ This Markdown page provides a view of the progress towards the implementation of
 | Operation | Progress | Implemented By | Notes |
 | :--- | :--- | :--- | :--- |
 | copy | Done | **set_temp_variable** / **set_variable** | Already implemented by pdxscript |
-| negate | Not Done | ##### |  |
-| abs | Not Done | ##### |  |
-| copySign | Not Done | ##### |  |
+| negate | Done | **ieeeNegate** |  |
+| abs | Done | **ieeeAbs** |  |
+| copySign | Done | **ieeeCopySign** |  |
 
 ## 5.6 Signaling-computational Operations
 | Operation | Progress | Implemented By | Notes |
@@ -75,16 +75,16 @@ This Markdown page provides a view of the progress towards the implementation of
 ## 5.7 Non-computational Operations
 | Operation | Progress | Implemented By | Notes |
 | :--- | :--- | :--- | :--- |
-| class | Not Done | ##### | 10 classes: signaling NaN, quiet NaN, negative infinity, negative normal, negative subnormal, negative zero, positive zero, positive subnormal, positive normal, and positive infinity |
-| isSignMinus | Not Done | ##### |  |
-| isZero | Not Done | ##### |  |
-| isNormal | Not Done | ##### |  |
-| isSubnormal | Not Done | ##### |  |
-| isFinite | Not Done | ##### |  |
-| isInfinite | Not Done | ##### |  |
+| class | Done | **ieeeClass** | 10 classes: signaling NaN, quiet NaN, negative infinity, negative normal, negative subnormal, negative zero, positive zero, positive subnormal, positive normal, and positive infinity |
+| isSignMinus | Done | **ieee_isSignMinus** |  |
+| isZero | Done | **ieee_isZero** |  |
+| isNormal | Done | **ieee_isNormal** |  |
+| isSubnormal | Done | **ieee_isSubnormal** |  |
+| isFinite | Done | **ieee_isFinite** |  |
+| isInfinite | Done | **ieee_isInfinite** |  |
 | isNaN | Done | **ieee_isnan** |  |
 | totalOrder | Done | **totalOrder** | Consult clause 5.10 in IEEE 754 |
-| totalOrderMag | Not Done | ##### | totalOrder(abs(x), abs(y)) |
+| totalOrderMag | Done | **totalOrderMag** | totalOrder(abs(x), abs(y)) |
 
 ## Skipped Operations
 Many operations mentioned in the requirements are not listed above, as they are of little use to modders, uniquely difficult to implement, pertain to decimal floating-point formats, or are simply impossible. Please consult the clause(s) listed in each row for more details.

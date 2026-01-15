@@ -226,36 +226,6 @@ relationUnordered = {
     }
 }
 
-# totalOrder
-### Provides a total ordering between two floats arg_a and arg_b(consult clause 5.10)
-### The below function has 2 parameters: arg_a and arg_b
-### These parameters will NOT be cleared after the function execution
-## ARGUMENTS
-### Relation returns true when float(a) is ordered before float(b), including cases where either or both are NaNs
-totalOrder = {
-    # Both positive case
-    if = {
-        limit = {
-            check_variable = { arg_a > 0 }
-            check_variable = { arg_b > 0 }
-        }
-        NOT = { check_variable = { arg_a > arg_b } }
-    }
-    # Both negative case
-    else_if = {
-        limit = {
-            check_variable = { arg_a < 0 }
-            check_variable = { arg_b < 0 }
-        }
-        NOT = { check_variable = { arg_a < arg_b } }
-
-    }
-    # Opposite sign case
-    else = {
-        NOT = { check_variable = { arg_a > arg_b } }
-    }
-}
-
 # PREDICATES(consult clause 5.11)
 ### Note that floats are not strictly less, equal, or greater than each other since NaNs exist
 ### The Less comparison is not the strict negation of the GreaterEqual comparison, use NotLess

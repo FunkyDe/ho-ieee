@@ -1,0 +1,96 @@
+# ieeeNextUp
+### Returns the next highest floating point value to the argument
+### The below function has 1 parameter: arg_a
+## ARGUMENTS
+### arg_a: The float to be incremented
+ieeeNextUp = {
+    if = {
+        limit = {
+            ieeeNextUp_trigger = yes
+        }
+    }
+}
+# ieeeNextDown
+### Returns the next highest floating point value to the argument
+### The below function has 1 parameter: arg_a
+## ARGUMENTS
+### arg_a: The float to be incremented
+ieeeNextDown = {
+    if = {
+        limit = {
+            ieeeNextDown_trigger = yes
+        }
+    }
+}
+# ieeeScaleB
+### Returns the next highest floating point value to the argument
+### The below function has 1 parameter: arg_a
+## ARGUMENTS
+### arg_a: The float to be incremented
+ieeeScaleB = {
+    if = {
+        limit = {
+            ieeeScaleB_trigger = yes
+        }
+    }
+}
+# ieeeLogB
+### Returns the next highest floating point value to the argument
+### The below function has 1 parameter: arg_a
+## ARGUMENTS
+### arg_a: The float to be incremented
+ieeeLogB = {
+    if = {
+        limit = {
+            ieeeLogB_trigger = yes
+        }
+    }
+}
+# ieeeNegate
+### Returns the next highest floating point value to the argument
+### The below function has 1 parameter: arg_a
+## ARGUMENTS
+### arg_a: The float to be incremented
+ieeeNegate = {
+    if = {
+        limit = {
+            ieeeNegate_trigger = yes
+        }
+    }
+}
+# ieeeAbs
+### Returns the next highest floating point value to the argument
+### The below function has 1 parameter: arg_a
+## ARGUMENTS
+### arg_a: The float to be incremented
+ieeeAbs = {
+    if = {
+        limit = {
+            ieeeAbs_trigger = yes
+        }
+    }
+}
+# ieeeCopySign
+### Returns the next highest floating point value to the argument
+### The below function has 1 parameter: arg_a
+## ARGUMENTS
+### arg_a: The float to be incremented
+ieeeCopySign = {
+    if = {
+        limit = {
+            ieeeCopySign_trigger = yes
+        }
+    }
+}
+# ieeeClass
+### Returns the next highest floating point value to the argument
+### The below function has 1 parameter: arg_a
+## ARGUMENTS
+### arg_a: The float to be incremented
+ieeeClass = {
+    if = {
+        limit = {
+            ieeeClass_trigger = yes
+        }
+    }
+}

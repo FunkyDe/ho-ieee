@@ -1,0 +1,255 @@
+# ieeeNextUp_trigger
+### Returns the next highest floating point value to the argument
+### The below function has 1 parameter: arg_a
+## ARGUMENTS
+### arg_a: The float to be incremented
+ieeeNextUp_trigger = {
+    if = {
+        limit = {
+            check_variable = { arg_a = -2147483.648 }
+        }
+        set_temp_variable = { arg_a = 0.001 }
+    }
+    else_if = {
+        limit = {
+            NOT = { check_variable = { arg_a > -8388.608 } }
+        }
+        subtract_from_temp_variable = { arg_a = 0.001 }
+    }
+    else_if = {
+        limit = {
+            NOT = { check_variable = { arg_a < 0 } }
+            check_variable = { arg_a < 2139095.040 }
+        }
+        add_to_temp_variable = { arg_a = 0.001 }
+    }
+}
+ieeeNextDown_trigger = {
+    if = {
+        limit = {
+            check_variable = { arg_a < 0 }
+        }
+        add_to_temp_variable = { arg_a = 2147483.648 }
+    }
+    else = {
+        subtract_from_temp_variable = { arg_a = 2147483.648 }
+    }
+    ieeeNextUp_trigger = yes
+    if = {
+        limit = {
+            check_variable = { out_a < 0 }
+        }
+        add_to_temp_variable = { out_a = 2147483.648 }
+    }
+    else = {
+        subtract_from_temp_variable = { out_a = 2147483.648 }
+    }
+}
+ieeeScaleB_trigger = {
+    set_temp_variable = { out_a = arg_a }
+    set_temp_variable = { round_check = arg_b }
+    if = {
+        limit = {
+            ieee_isZero = no
+            ieee_isFinite = yes
+            check_variable = { round_check = arg_b }
+        }
+
+        set_temp_variable = { out_a = 0 }
+
+        set_temp_variable = { to_bitwise_input = arg_a }
+        set_temp_variable = { temp_array_id = 1000 }
+        to_bitwise_trigger = yes
+
+        set_temp_variable = { exp_a = -127 }
+        set_temp_variable = { exponent_inc = 128 }
+        all_of = {
+            array = temp_array_1000
+            index = idx
+
+            if = {
+                limit = {
+                    NOT = { check_variable = { idx < 1 } }
+                    check_variable = { idx < 9 }
+                }
+                
+                if = {
+                    limit = {
+                        check_variable = { temp_array_1000^idx = 1 }
+                    }
+                    add_to_temp_variable = { exp_a = exponent_inc }
+                }
+                divide_temp_variable = { exponent_inc = 2 }
+            }
+        }
+        populate_mantissas = yes
+        add_to_temp_variable = { exp_a = arg_b }
+        all_of = {
+            array = temp_mantissa_a
+            value = v
+
+            add_to_temp_array = { temp_mantissa_o = v }
+        }
+        round_and_convert_output = yes
+    }
+}
+ieeeLogB_trigger = {
+    if = {
+        limit = {
+            ieee_isZero = yes
+        }
+        set_temp_variable = { out_a = -2147483.648 }
+        add_to_temp_variable = { op_error_flag = 1 }
+        log = "zero argument for ieeeLogB"
+    }
+    else_if = {
+        limit = {
+            ieee_isInfinite = yes
+        }
+        set_temp_variable = { out_a = 2147483.647 }
+    }
+    else_if = {
+        limit = {
+            ieee_isnan = yes
+        }
+        set_temp_variable = { out_a = 200 }
+        add_to_temp_variable = { op_error_flag = 1 }
+        log = "NaN argument [?arg_a] for ieeeLogB"
+    }
+    else_if = {
+        limit = {
+            ieee_isFinite = yes
+        }
+
+        set_temp_variable = { out_a = 0 }
+
+        set_temp_variable = { to_bitwise_input = arg_a }
+        set_temp_variable = { temp_array_id = 1000 }
+        to_bitwise_trigger = yes
+
+        set_temp_variable = { exp_a = -127 }
+        set_temp_variable = { exponent_inc = 128 }
+        all_of = {
+            array = temp_array_1000
+            index = idx
+
+            if = {
+                limit = {
+                    NOT = { check_variable = { idx < 1 } }
+                    check_variable = { idx < 9 }
+                }
+                
+                if = {
+                    limit = {
+                        check_variable = { temp_array_1000^idx = 1 }
+                    }
+                    add_to_temp_variable = { exp_a = exponent_inc }
+                }
+                divide_temp_variable = { exponent_inc = 2 }
+            }
+        }
+        populate_mantissas = yes
+        set_temp_variable = { out_a = exp_a }
+    }
+}
+ieeeNegate_trigger = {
+    set_temp_variable = { out_a = arg_a }
+    if = {
+        limit = {
+            check_variable = { out_a < 0 }
+        }
+        add_to_temp_variable = { out_a = 2147483.648 }
+    }
+    else = {
+        subtract_from_temp_variable = { out_a = 2147483.648 }
+    }
+}
+ieeeAbs_trigger = {
+    if = {
+        limit = {
+            check_variable = { out_a < 0 }
+        }
+        add_to_temp_variable = { out_a = 2147483.648 }
+    }
+}
+ieeeCopySign_trigger = {
+    set_temp_variable = { out_a = arg_a }
+    if = {
+        limit = {
+            check_variable = { arg_b < 0 }
+        }
+        add_to_temp_variable = { out_a = 2147483.648 }
+    }
+    else = {
+        subtract_from_temp_variable = { out_a = 2147483.648 }
+    }
+}
+ieeeClass_trigger = {
+    set_temp_variable = { out_a = 0 }
+    if = {
+        limit = {
+            ieee_isnan = yes
+        }
+        set_temp_variable = { out_a = 1 }
+    }
+    else_if = {
+        limit = {
+            check_variable = { arg_a = -8388.608 }
+        }
+        set_temp_variable = { out_a = 2 }
+    }
+    else_if = {
+        limit = {
+            NOT = { check_variable = { arg_a < -2139095.040 } }
+            check_variable = { arg_a < -8388.608 }
+        }
+        set_temp_variable = { out_a = 3 }
+    }
+    else_if = {
+        limit = {
+            check_variable = { arg_a > -2147483.648 }
+            check_variable = { arg_a < -2139095.040 }
+        }
+        set_temp_variable = { out_a = 4 }
+    }
+    else_if = {
+        limit = {
+            check_variable = { arg_a = -2147483.648 }
+        }
+        set_temp_variable = { out_a = 5 }
+    }
+    else_if = {
+        limit = {
+            set_temp_variable = { arg_a = 0 }
+        }
+        set_temp_variable = { out_a = 6 }
+    }
+    else_if = {
+        limit = {
+            check_variable = { arg_a > 0 }
+            check_variable = { arg_a < 8388.608 }
+        }
+        set_temp_variable = { out_a = 7 }
+    }
+    else_if = {
+        limit = {
+            NOT = { check_variable = { arg_a < 8388.608 } }
+            check_variable = { arg_a < 2139095.040 }
+        }
+        set_temp_variable = { out_a = 8 }
+    }
+    else_if = {
+        limit = {
+            check_variable = { arg_a = 2139095.040 }
+        }
+        set_temp_variable = { out_a = 9 }
+    }
+
+    # Fallback just in case
+    if = {
+        limit = {
+            check_variable = { out_a = 0 }
+        }
+        log = "ieeeClass error: [?arg_a]"
+    }
+}

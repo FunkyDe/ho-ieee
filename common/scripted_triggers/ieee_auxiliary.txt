@@ -1,6 +1,9 @@
 # ieeeNextUp_trigger
 ### Returns the next highest floating point value to the argument
 ### The below function has 1 parameter: arg_a
+### +inf cannot be incremented, nor can NaNs
+### -inf is incremented to the largest magnitude negative float
+### Both zeroes increment to the lowest positive float
 ## ARGUMENTS
 ### arg_a: The float to be incremented
 ieeeNextUp_trigger = {
@@ -24,6 +27,14 @@ ieeeNextUp_trigger = {
         add_to_temp_variable = { arg_a = 0.001 }
     }
 }
+# ieeeNextDown_trigger
+### Returns the next lowest floating point value to the argument
+### The below function has 1 parameter: arg_a
+### -inf cannot be decremented, nor can NaNs
+### +inf is decremented to the largest positive float
+### Both zeroes decrement to the smallest magnitude negative float
+## ARGUMENTS
+### arg_a: The float to be decremented
 ieeeNextDown_trigger = {
     if = {
         limit = {
@@ -45,6 +56,13 @@ ieeeNextDown_trigger = {
         subtract_from_temp_variable = { out_a = 2147483.648 }
     }
 }
+# ieeeScaleB_trigger
+### Returns float arg_a scaled by 2^arg_b, if arg_b is an integer
+### The below function has 2 parameters: arg_a and arg_b
+### Zeroes, infinities, and NaNs cannot be scaled
+## ARGUMENTS
+### arg_a: The float to be incremented
+### arg_b: The integer pdxvar to scale the float by
 ieeeScaleB_trigger = {
     set_temp_variable = { out_a = arg_a }
     set_temp_variable = { round_check = arg_b }
@@ -82,17 +100,55 @@ ieeeScaleB_trigger = {
                 divide_temp_variable = { exponent_inc = 2 }
             }
         }
-        populate_mantissas = yes
-        add_to_temp_variable = { exp_a = arg_b }
-        all_of = {
-            array = temp_mantissa_a
-            value = v
 
-            add_to_temp_array = { temp_mantissa_o = v }
+        populate_mantissas = yes
+        if = {
+            limit = {
+                check_variable = { exp_a < -149 }
+            }
+            set_temp_variable = { out_a = 0 }
         }
-        round_and_convert_output = yes
+        else = {
+            add_to_temp_variable = { exp_a = arg_b }
+
+            # Set rounding in case of subnormal
+            set_temp_variable = { mantissa_compare_index = 150 }
+            add_to_temp_variable = { mantissa_compare_index = exp_o }
+            set_temp_variable = { mantissa_compare = temp_mantissa_o^mantissa_compare_index }
+            subtract_from_temp_variable = { mantissa_compare = 1 }
+
+            all_of = {
+                array = temp_mantissa_o
+                index = idx
+
+                if = {
+                    limit = {
+                        check_variable = { idx > mantissa_compare_index }
+                        check_variable = { temp_mantissa_o^idx = 1 }
+                        check_variable = { mantissa_compare = 0 }
+                    }
+                    set_temp_variable = { mantissa_compare = 1 }
+                }
+            }
+            all_of = {
+                array = temp_mantissa_a
+                value = v
+
+                add_to_temp_array = { temp_mantissa_o = v }
+            }
+
+            round_and_convert_output = yes
+        }
     }
 }
+# ieeeLogB_trigger
+### Returns the exponent of arg_a
+### The below function has 1 parameter: arg_a
+### Zeroes increment the error flag `op_error_flag` and return -2147483.648
+### NaNs increment the error flag `op_error_flag` and return 200
+### Infinities return the maximal 2147483.647
+## ARGUMENTS
+### arg_a: The float to have the exponent taken
 ieeeLogB_trigger = {
     if = {
         limit = {
@@ -152,6 +208,11 @@ ieeeLogB_trigger = {
         set_temp_variable = { out_a = exp_a }
     }
 }
+# ieeeNegate_trigger
+### Negates arg_a
+### The below function has 1 parameter: arg_a
+## ARGUMENTS
+### arg_a: The float to be negated
 ieeeNegate_trigger = {
     set_temp_variable = { out_a = arg_a }
     if = {
@@ -164,6 +225,11 @@ ieeeNegate_trigger = {
         subtract_from_temp_variable = { out_a = 2147483.648 }
     }
 }
+# ieeeAbs_trigger
+### Returns abs(arg_a)
+### The below function has 1 parameter: arg_a
+## ARGUMENTS
+### arg_a: The float to take the absolute value of
 ieeeAbs_trigger = {
     if = {
         limit = {
@@ -172,6 +238,12 @@ ieeeAbs_trigger = {
         add_to_temp_variable = { out_a = 2147483.648 }
     }
 }
+# ieeeCopySign_trigger
+### Takes the sign bit of arg_b and sets arg_a to be the same
+### The below function has 2 parameters: arg_a and arg_b
+## ARGUMENTS
+### arg_a: The float to set the sign bit
+### arg_b: The float to take the sign bit of
 ieeeCopySign_trigger = {
     set_temp_variable = { out_a = arg_a }
     if = {
@@ -184,6 +256,20 @@ ieeeCopySign_trigger = {
         subtract_from_temp_variable = { out_a = 2147483.648 }
     }
 }
+# ieeeClass_trigger
+### Returns a code based on the type of the float
+### 1: quietNaN
+### 2: negativeInfinity
+### 3: negativeNormal
+### 4: negativeSubnormal
+### 5: negativeZero
+### 6: positiveZero
+### 7: positiveSubnormal
+### 8: positiveNormal
+### 9: positiveInfinity
+### The below function has 1 parameter: arg_a
+## ARGUMENTS
+### arg_a: The float to take the class of
 ieeeClass_trigger = {
     set_temp_variable = { out_a = 0 }
     if = {

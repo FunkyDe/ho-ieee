@@ -1,6 +1,9 @@
 # ieeeNextUp
 ### Returns the next highest floating point value to the argument
 ### The below function has 1 parameter: arg_a
+### +inf cannot be incremented, nor can NaNs
+### -inf is incremented to the largest magnitude negative float
+### Both zeroes increment to the lowest positive float
 ## ARGUMENTS
 ### arg_a: The float to be incremented
 ieeeNextUp = {
@@ -11,10 +14,13 @@ ieeeNextUp = {
     }
 }
 # ieeeNextDown
-### Returns the next highest floating point value to the argument
+### Returns the next lowest floating point value to the argument
 ### The below function has 1 parameter: arg_a
+### -inf cannot be decremented, nor can NaNs
+### +inf is decremented to the largest positive float
+### Both zeroes decrement to the smallest magnitude negative float
 ## ARGUMENTS
-### arg_a: The float to be incremented
+### arg_a: The float to be decremented
 ieeeNextDown = {
     if = {
         limit = {
@@ -23,10 +29,12 @@ ieeeNextDown = {
     }
 }
 # ieeeScaleB
-### Returns the next highest floating point value to the argument
-### The below function has 1 parameter: arg_a
+### Returns float arg_a scaled by 2^arg_b, if arg_b is an integer
+### The below function has 2 parameters: arg_a and arg_b
+### Zeroes, infinities, and NaNs cannot be scaled
 ## ARGUMENTS
 ### arg_a: The float to be incremented
+### arg_b: The integer pdxvar to scale the float by
 ieeeScaleB = {
     if = {
         limit = {
@@ -35,10 +43,13 @@ ieeeScaleB = {
     }
 }
 # ieeeLogB
-### Returns the next highest floating point value to the argument
+### Returns the exponent of arg_a
 ### The below function has 1 parameter: arg_a
+### Zeroes increment the error flag `op_error_flag` and return -2147483.648
+### NaNs increment the error flag `op_error_flag` and return 200
+### Infinities return the maximal 2147483.647
 ## ARGUMENTS
-### arg_a: The float to be incremented
+### arg_a: The float to have the exponent taken
 ieeeLogB = {
     if = {
         limit = {
@@ -47,10 +58,10 @@ ieeeLogB = {
     }
 }
 # ieeeNegate
-### Returns the next highest floating point value to the argument
+### Negates arg_a
 ### The below function has 1 parameter: arg_a
 ## ARGUMENTS
-### arg_a: The float to be incremented
+### arg_a: The float to be negated
 ieeeNegate = {
     if = {
         limit = {
@@ -59,10 +70,10 @@ ieeeNegate = {
     }
 }
 # ieeeAbs
-### Returns the next highest floating point value to the argument
+### Returns abs(arg_a)
 ### The below function has 1 parameter: arg_a
 ## ARGUMENTS
-### arg_a: The float to be incremented
+### arg_a: The float to take the absolute value of
 ieeeAbs = {
     if = {
         limit = {
@@ -71,10 +82,11 @@ ieeeAbs = {
     }
 }
 # ieeeCopySign
-### Returns the next highest floating point value to the argument
-### The below function has 1 parameter: arg_a
+### Takes the sign bit of arg_b and sets arg_a to be the same
+### The below function has 2 parameters: arg_a and arg_b
 ## ARGUMENTS
-### arg_a: The float to be incremented
+### arg_a: The float to set the sign bit
+### arg_b: The float to take the sign bit of
 ieeeCopySign = {
     if = {
         limit = {
@@ -83,10 +95,19 @@ ieeeCopySign = {
     }
 }
 # ieeeClass
-### Returns the next highest floating point value to the argument
+### Returns a code based on the type of the float
+### 1: quietNaN
+### 2: negativeInfinity
+### 3: negativeNormal
+### 4: negativeSubnormal
+### 5: negativeZero
+### 6: positiveZero
+### 7: positiveSubnormal
+### 8: positiveNormal
+### 9: positiveInfinity
 ### The below function has 1 parameter: arg_a
 ## ARGUMENTS
-### arg_a: The float to be incremented
+### arg_a: The float to take the class of
 ieeeClass = {
     if = {
         limit = {

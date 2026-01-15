@@ -1,0 +1,132 @@
+## Returns true if arg_a has a negative sign bit (equivalent to being encoded with a negative pdxvar)
+ieee_isSignMinus = {
+    check_variable = { arg_a < 0 }
+}
+## Returns true if arg_a is +- zero
+ieee_isZero = {
+    OR = {
+        check_variable = { arg_a = -2147483.648 }
+        check_variable = { arg_a = 0 }
+    }
+}
+## Returns true if arg_a is a normal float
+ieee_isNormal = {
+    OR = {
+        AND = {
+            NOT = { check_variable = { arg_a < 8388.608 } }
+            check_variable = { arg_a < 2139095.040 }
+        }
+        AND = {
+            NOT = { check_variable = { arg_a < -2139095.040 } }
+            check_variable = { arg_a < -8388.608 }
+        }
+    }
+}
+## Returns true if arg_a is a subnormal float
+ieee_isSubnormal = {
+    OR = {
+        AND = {
+            check_variable = { arg_a > 0 }
+            check_variable = { arg_a < 8388.608 }
+        }
+        AND = {
+            check_variable = { arg_a > -2147483.648 }
+            check_variable = { arg_a < -2139095.040 }
+        }
+    }
+}
+## Returns true if arg_a is finite
+ieee_isFinite = {
+    OR = {
+        AND = {
+            NOT = { check_variable = { arg_a < 0 } }
+            check_variable = { arg_a < 2139095.040 }
+        }
+        check_variable = { arg_a < -8388.608 }
+    }
+}
+## Returns true if arg_a is infinite
+ieee_isInfinite = {
+    OR = {
+        check_variable = { arg_a = 2139095.040 }
+        check_variable = { arg_a = -8388.608 }
+    }
+}
+## Returns true if arg_a is NaN
+ieee_isnan = {
+    OR = {
+        check_variable = { arg_a > 2139095.040 }
+        AND = {
+            check_variable = { arg_a > -8388.608 }
+            check_variable = { arg_a < 0 }
+        }
+    }
+}
+## Returns true if arg_a or arg_b is NaN
+ieee_isnan_binary = {
+    OR = {
+        check_variable = { arg_a > 2139095.040 }
+        AND = {
+            check_variable = { arg_a > -8388.608 }
+            check_variable = { arg_a < 0 }
+        }
+
+        check_variable = { arg_b > 2139095.040 }
+        AND = {
+            check_variable = { arg_b > -8388.608 }
+            check_variable = { arg_b < 0 }
+        }
+    }
+}
+# totalOrder
+### Provides a total ordering between two floats arg_a and arg_b(consult clause 5.10)
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will NOT be cleared after the function execution
+## ARGUMENTS
+### Relation returns true when float(a) is ordered before float(b), including cases where either or both are NaNs
+totalOrder = {
+    # Both positive case
+    if = {
+        limit = {
+            check_variable = { arg_a > 0 }
+            check_variable = { arg_b > 0 }
+        }
+        NOT = { check_variable = { arg_a > arg_b } }
+    }
+    # Both negative case
+    else_if = {
+        limit = {
+            check_variable = { arg_a < 0 }
+            check_variable = { arg_b < 0 }
+        }
+        NOT = { check_variable = { arg_a < arg_b } }
+
+    }
+    # Opposite sign case
+    else = {
+        NOT = { check_variable = { arg_a > arg_b } }
+    }
+}
+
+# totalOrderMag
+### Provides a total ordering between two floats arg_a and arg_b based on their magnitudes(consult clause 5.10)
+### The below function has 2 parameters: arg_a and arg_b
+### These parameters will NOT be cleared after the function execution, but they will be changed
+## ARGUMENTS
+### Relation returns true when float(a) is ordered before float(b), including cases where either or both are NaNs, based on their magnitudes
+totalOrderMag = {
+    if = {
+        limit = {
+            check_variable = { arg_a < 0 }
+        }
+        add_to_temp_variable = { arg_a = 2147483.648 }
+    }
+    if = {
+        limit = {
+            check_variable = { arg_b < 0 }
+        }
+        add_to_temp_variable = { arg_b = 2147483.648 }
+    }
+    NOT = { check_variable = { arg_a > arg_b } }
+}
+

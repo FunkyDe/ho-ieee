@@ -25,4 +25,4 @@
   ieee_print_digit_step_2: "[?to_print_digit_array^temp_index_a][decimal_decider_a][?to_print_digit_array^temp_index_b]"
   ieee_print_digit_step_rec: "[?to_print_digit_array^temp_index_a][decimal_decider_a][?to_print_digit_array^temp_index_b][decimal_decider_b][debug_print_digit_step]"
   ieee_decimal_pt: "."
-  ieee_debug_print_digit_sci: "[ieee_minus_decider][zero_padding][debug_print_digit_step][clear_digit_array]E[ieee_sci_plus_decider][?digit_power_output]"
+  ieee_debug_print_digit_sci: "[ieee_minus_decider][zero_padding][debug_print_digit_step][clear_digit_array]E[ieee_sci_plus_decider][?ieee_out_power]"

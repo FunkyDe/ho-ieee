@@ -1,15 +1,15 @@
-### TO_BITWISE_TRIGGER
-## Converts the pdxvar "to_bitwise_input" (when multiplied by 1000) a 32-bit signed integer bit array and pushes the result to a specified array
-## The below function has 2 parameters: to_bitwise_input and temp_array_id
-## These parameters will be cleared(by resetting to 0) after the function execution
+# TO_BITWISE_TRIGGER
+### Converts the pdxvar "to_bitwise_input" (when multiplied by 1000) a 32-bit signed integer bit array and pushes the result to a specified array
+### The below function has 2 parameters: to_bitwise_input and temp_array_id
+### These parameters will be cleared(by resetting to 0) after the function execution
 ## BITWISE_INPUT
-# The variable to be converted into bitwise format
-# If no input is given, the function will use 0 in place **and return no error**
+### The variable to be converted into bitwise format
+### If no input is given, the function will use 0 in place **and return no error**
 ## ARRAY_ID
-# the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
-# If no array_id is assigned, the function will use temp_array_0 in place
-# If the array_id is not an integer, then the function will display an error
-## Errors consist of a temp error var (bitwise_error_flag) and a message in log corresponding to the error
+### the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
+### If no array_id is assigned, the function will use temp_array_0 in place
+### If the array_id is not an integer, then the function will display an error
+### Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
 to_bitwise_trigger = {
     set_temp_variable = { whole_check = temp_array_id }
     round_temp_variable = whole_check
@@ -18,7 +18,7 @@ to_bitwise_trigger = {
             NOT = { check_variable = { whole_check = temp_array_id } }
         }
 
-        add_to_temp_variable = { bitwise_error_flag = 1 }
+        add_to_temp_variable = { io_error_flag = 1 }
         log="to_bitwise array_id error, temp_array_id = [?temp_array_id]"
     }
     set_temp_variable = { bitwise_to_process = to_bitwise_input }
@@ -64,19 +64,19 @@ to_bitwise_trigger = {
     set_temp_variable = { to_bitwise_input = 0 }
     set_temp_variable = { temp_array_id = 0 }
 }
-### STORE_BITWISE_TRIGGER
-## Converts the bit array inputted to a 32-bit signed integer, divides it by 1000, and pushes the result to a pdxvar
-## The below function has 1 parameter: temp_array_id
-## This parameter will be cleared(by resetting to 0) after the function execution
-## If any element used is not one or zero, then the function will display an error
+# STORE_BITWISE_TRIGGER
+### Converts the bit array inputted to a 32-bit signed integer, divides it by 1000, and pushes the result to a pdxvar
+### The below function has 1 parameter: temp_array_id
+### This parameter will be cleared(by resetting to 0) after the function execution
+### If any element used is not one or zero, then the function will display an error
 ## ARRAY_ID
-# the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
-# If no array_id is assigned, the function will use temp_array_0 in place
-# If the array_id is not an integer, then the function will display an error
-# If the array is not 32 bits long, the function will display an error
+### the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
+### If no array_id is assigned, the function will use temp_array_0 in place
+### If the array_id is not an integer, then the function will display an error
+### If the array is not 32 bits long, the function will display an error
 ## STORE_BITWISE_OUTPUT
-# The output of store_bitwise will be sent to this temp var
-## Errors consist of a temp error var (bitwise_error_flag) and a message in log corresponding to the error
+### The output of store_bitwise will be sent to this temp var
+### Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
 store_bitwise_trigger = {
     set_temp_variable = { whole_check = temp_array_id }
     round_temp_variable = whole_check
@@ -85,7 +85,7 @@ store_bitwise_trigger = {
             NOT = { check_variable = { whole_check = temp_array_id } }
         }
 
-        add_to_temp_variable = { bitwise_error_flag = 1 }
+        add_to_temp_variable = { io_error_flag = 1 }
         log="store_bitwise array_id error, temp_array_id = [?temp_array_id]"
     }
     if = {
@@ -93,7 +93,7 @@ store_bitwise_trigger = {
             NOT = { check_variable = { temp_array_@var:temp_array_id^num = 32 } }
         }
 
-        add_to_temp_variable = { bitwise_error_flag = 1 }
+        add_to_temp_variable = { io_error_flag = 1 }
         log="store_bitwise array length error, temp_array_id = [?temp_array_id], array length = [?temp_array_@var:temp_array_id^num]"
     }
     all_of = {
@@ -105,7 +105,7 @@ store_bitwise_trigger = {
                 NOT = { check_variable = { temp_array_@var:temp_array_id^idx = 0 } }
                 NOT = { check_variable = { temp_array_@var:temp_array_id^idx = 1 } }
             }
-            add_to_temp_variable = { bitwise_error_flag = 1 }
+            add_to_temp_variable = { io_error_flag = 1 }
             log = "store_bitwise value error, temp_array_id = [?temp_array_id], value = [?temp_array_@var:temp_array_id^idx], index = [?idx]"
         }
     }
@@ -137,19 +137,19 @@ store_bitwise_trigger = {
     }
     set_temp_variable = { temp_array_id = 0 }
 }
-### TO_FLOAT_TRIGGER
-## Converts the pdxvar "to_float_input" to a bitwise array 
-## The below function has 2 parameters: to_float_input and temp_array_id
-## These parameters will be cleared(by resetting to 0) after the function execution
+# TO_FLOAT_TRIGGER
+### Converts the pdxvar "to_float_input" to a bitwise array 
+### The below function has 2 parameters: to_float_input and temp_array_id
+### These parameters will be cleared(by resetting to 0) after the function execution
 ## TO_FLOAT_INPUT
-# The variable to be converted into bitwise format
-# If no input is given, the function will use 0 in place **and return no error**
+### The variable to be converted into bitwise format
+### If no input is given, the function will use 0 in place **and return no error**
 ## ARRAY_ID
-# the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
-# If no array_id is assigned, the function will use temp_array_0 in place
-# If the array_id is not an integer, then the function will display an error
-## Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
-## This function does not implement infinity or NaN cases, since pdxvars do not reach those situations(subnormals however, are included with 0)
+### the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
+### If no array_id is assigned, the function will use temp_array_0 in place
+### If the array_id is not an integer, then the function will display an error
+### Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
+### This function does not implement infinity or NaN cases, since pdxvars do not reach those situations(subnormals however, are included with 0)
 to_float_trigger = {
     set_temp_variable = { whole_check = temp_array_id }
     round_temp_variable = whole_check
@@ -163,10 +163,6 @@ to_float_trigger = {
     }
     
     clear_temp_array = temp_array_@var:temp_array_id
-    clear_temp_array = temp_mantissa_array
-    set_temp_variable = { temp_exp = 21 }
-    set_temp_variable = { actual_exp = -127 }
-    set_temp_variable = { negative_flag = 0 }
     if = { # Special hard-coded case for minimum paradox numbers because +2147483.648 is not a valid pdxvar
         limit = {
             check_variable = { to_float_input = -2147483.648 }
@@ -205,6 +201,11 @@ to_float_trigger = {
         add_to_temp_array = { temp_array_@var:temp_array_id = 1 }
     }
     else = {
+        clear_temp_array = temp_mantissa_array
+        set_temp_variable = { temp_exp = 21 }
+        set_temp_variable = { actual_exp = -127 }
+        set_temp_variable = { negative_flag = 0 }
+
         # Set sign bit
         if = {
             limit = {
@@ -266,13 +267,15 @@ to_float_trigger = {
 
         # temp_idx serves two roles depending on whether or not the converted number was greater than 1
         # If no integers were converted above, temp_idx will be 0
+        # Otherwise, temp_idx defines where decimal portion of mantissa starts in the else statement
         set_temp_variable = { temp_idx = temp_mantissa_array^num }
         resize_temp_array = { temp_mantissa_array = 24 }
         if = {
             limit = {
                 check_variable = { temp_idx = 0 }
             }
-            # Define a temp array to calculate the mantissa(with extra padding for lower powers of 2), which is then copied over to temp_mantissa_array
+            # Define a temp array to calculate the mantissa(with extra padding for lower powers of 2)
+            # This subone is then copied over to temp_mantissa_array
             resize_temp_array = { temp_mantissa_subone = 33 }
 
             # temp_idx defines which bit in temp_mantissa_array is being assigned
@@ -280,37 +283,42 @@ to_float_trigger = {
                 array = temp_mantissa_subone
                 index = idx
 
-                multiply_temp_variable = { to_float_input = 2 }
+                # Stop iterating after mantissa fully generated to keep the correct remainder
                 if = {
                     limit = {
-                        NOT = { check_variable = { to_float_input < 1 } }
+                        NOT = { check_variable = { temp_idx > 23 } }
                     }
-
-                    subtract_from_temp_variable = { to_float_input = 1 }
-                    set_temp_variable = { temp_mantissa_array^temp_idx = 1 }
-                    
-                    # set exponent since hasn't been set in integer converter
+                    multiply_temp_variable = { to_float_input = 2 }
                     if = {
                         limit = {
-                            check_variable = { actual_exp = -127 }
+                            NOT = { check_variable = { to_float_input < 1 } }
                         }
-                        set_temp_variable = { actual_exp = temp_exp }
-                    }
-                    add_to_temp_variable = { temp_idx = 1 }
-                }
-                else = {
-                    if = {
-                        limit = {
-                            NOT = { check_variable = { actual_exp = -127 } }
+
+                        subtract_from_temp_variable = { to_float_input = 1 }
+                        set_temp_variable = { temp_mantissa_array^temp_idx = 1 }
+                        
+                        # set exponent since hasn't been set in integer converter
+                        if = {
+                            limit = {
+                                check_variable = { actual_exp = -127 }
+                            }
+                            set_temp_variable = { actual_exp = temp_exp }
                         }
                         add_to_temp_variable = { temp_idx = 1 }
                     }
+                    else = {
+                        if = {
+                            limit = {
+                                NOT = { check_variable = { actual_exp = -127 } }
+                            }
+                            add_to_temp_variable = { temp_idx = 1 }
+                        }
+                    }
+                    subtract_from_temp_variable = { temp_exp = 1 }
                 }
-                subtract_from_temp_variable = { temp_exp = 1 }
             }
         }
         else = {
-            # temp_idx defines where decimal portion of mantissa starts
             all_of = {
                 array = temp_mantissa_array
                 index = idx
@@ -417,32 +425,35 @@ to_float_trigger = {
     set_temp_variable = { to_float_input = 0 }
     set_temp_variable = { temp_array_id = 0 }
 }
-### TO_DIGIT_ARRAY_TRIGGER
-## Reads a bit array in floating-point format and outputs two things: The array of digits(digit_array_output) and the power of 10(digit_power_output), akin to scientific format
-## The below function has 1 parameter: temp_array_id
-## This parameter will be cleared(by resetting to 0) after the function execution
+# TO_DIGIT_ARRAY_TRIGGER
+### Reads a bit array in floating-point format and outputs two things: The array of digits(ieee_out_array) and the power of 10(ieee_out_power), akin to scientific format
+### The below function has 1 parameter: temp_array_id
+### This parameter will be cleared(by resetting to 0) after the function execution
 ## ARRAY_ID
-# the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
-# If no array_id is assigned, the function will use temp_array_0 in place
-# If the array_id is not an integer, then the function will display an error
-# If the array is not 32 elements long, then the function will display an error
-# If the array has elements which are not 0 or 1, then the function will display an error
-## DIGIT_ARRAY_OUTPUT
-# This array contains the digits of the floating-point number stored one digit per element
-# For example, the decimal number 125 would be stored:
-# [1, 2, 5]
-## DIGIT_POWER_OUTPUT
-# The power gives the power of 10 the floating-point number
-# For example, the decimal number 625 would have a power of 2
-## Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
+### the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
+### If no array_id is assigned, the function will use temp_array_0 in place
+### If the array_id is not an integer, then the function will display an error
+### If the array is not 32 elements long, then the function will display an error
+### If the array has elements which are not 0 or 1, then the function will display an error
+## IEEE_OUT_ARRAY
+### This array contains the digits of the floating-point number stored one digit per element
+### For example, the decimal number 125 would be stored:
+### [1, 2, 5]
+## IEEE_OUT_POWER
+### The power gives the power of 10 the floating-point number
+### For example, the decimal number 625 would have a power of 2
+### Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
+## IEEE_SIGN_BIT
+### Outputs the sign bit of the floating point number
+### 0 if positive, 1 if negative
 ## SPECIAL CASES
-# Infinity - Some cases cannot be converted to a number as usual. Therefore, a temp var is set to signify the special case: to_pdxvar_inf_flag
-# NaN - Some cases cannot be converted to a number as usual. Therefore, a temp var is set to signify the special case: to_pdxvar_nan_flag
-# In both cases, no error is returned and both the power and array remain zeroed out and empty respectively
+### Infinity - Some cases cannot be converted to a number as usual. Therefore, a temp var is set to signify the special case: ieee_inf_flag
+### NaN - Some cases cannot be converted to a number as usual. Therefore, a temp var is set to signify the special case: ieee_nan_flag
+### In both cases, no error is returned and both the power and array remain zeroed out and empty respectively
 to_digit_array_trigger = {
     # Reset flags
-    set_temp_variable = { to_pdxvar_inf_flag = 0 }
-    set_temp_variable = { to_pdxvar_nan_flag = 0 }
+    set_temp_variable = { ieee_inf_flag = 0 }
+    set_temp_variable = { ieee_nan_flag = 0 }
 
     set_temp_variable = { whole_check = temp_array_id }
     round_temp_variable = whole_check
@@ -476,17 +487,17 @@ to_digit_array_trigger = {
         }
     }
 
-    clear_temp_array = digit_array_output
-    set_temp_variable = { digit_power_output = 0 }
+    clear_temp_array = ieee_out_array
+    set_temp_variable = { ieee_out_power = 0 }
     # get sign bit
     if = {
         limit = {
             check_variable = { temp_array_@var:temp_array_id^0 = 1 }
         }
-        set_temp_variable = { temp_sign_bit = 1 }
+        set_temp_variable = { ieee_sign_bit = 1 }
     }
     else = {
-        set_temp_variable = { temp_sign_bit = 0 }
+        set_temp_variable = { ieee_sign_bit = 0 }
     }
     # get exponent
     set_temp_variable = { temp_exp = 0 }
@@ -516,8 +527,8 @@ to_digit_array_trigger = {
         limit = {
             check_variable = { temp_exp = 128 }
         }
-        set_temp_variable = { to_pdxvar_inf_flag = 1 }
-        set_temp_variable = { to_pdxvar_nan_flag = 0 }
+        set_temp_variable = { ieee_inf_flag = 1 }
+        set_temp_variable = { ieee_nan_flag = 0 }
 
         all_of = {
             array = temp_array_@var:temp_array_id
@@ -532,8 +543,8 @@ to_digit_array_trigger = {
                     limit = {
                         check_variable = { temp_array_@var:temp_array_id^idx = 1 }
                     }
-                    set_temp_variable = { to_pdxvar_inf_flag = 0 }
-                    set_temp_variable = { to_pdxvar_nan_flag = 1 }
+                    set_temp_variable = { ieee_inf_flag = 0 }
+                    set_temp_variable = { ieee_nan_flag = 1 }
                 }
             }
         }
@@ -550,15 +561,15 @@ to_digit_array_trigger = {
                 }
             }
         }
-        set_temp_variable = { to_pdxvar_inf_flag = 0 }
-        set_temp_variable = { to_pdxvar_nan_flag = 0 }
+        set_temp_variable = { ieee_inf_flag = 0 }
+        set_temp_variable = { ieee_nan_flag = 0 }
 
-        set_temp_variable = { digit_power_output = 0 }
-        add_to_temp_array = { digit_array_output = 0 }
+        set_temp_variable = { ieee_out_power = 0 }
+        add_to_temp_array = { ieee_out_array = 0 }
     }
     else = {
-        set_temp_variable = { to_pdxvar_inf_flag = 0 }
-        set_temp_variable = { to_pdxvar_nan_flag = 0 }
+        set_temp_variable = { ieee_inf_flag = 0 }
+        set_temp_variable = { ieee_nan_flag = 0 }
 
         # Subnormal case
         if = {
@@ -573,9 +584,9 @@ to_digit_array_trigger = {
                 array = global.digit_array@var:temp_exp
                 value = v
 
-                add_to_temp_array = { digit_array_output = v }
+                add_to_temp_array = { ieee_out_array = v }
             }
-            set_temp_variable = { digit_power_output = global.digit_power@var:temp_exp }
+            set_temp_variable = { ieee_out_power = global.digit_power@var:temp_exp }
         }
         
         # Add mantissa powers of two
@@ -603,11 +614,11 @@ to_digit_array_trigger = {
                             check_variable = { set_subnormal_power = 1 }
                         }
 
-                        set_temp_variable = { digit_power_output = global.digit_power@var:temp_mantissa_exp }
+                        set_temp_variable = { ieee_out_power = global.digit_power@var:temp_mantissa_exp }
                         set_temp_variable = { set_subnormal_power = 0 }
                     }
                     # temp digit offset describes the digit in the bit array that the mantissa digits start from (digit power - mantissa power)
-                    set_temp_variable = { temp_digit_offset = digit_power_output }
+                    set_temp_variable = { temp_digit_offset = ieee_out_power }
                     subtract_from_temp_variable = { temp_digit_offset = global.digit_power@var:temp_mantissa_exp }
 
                     all_of = {
@@ -616,9 +627,9 @@ to_digit_array_trigger = {
                         # Decide whether to add to existing array element or append new digit
                         if = {
                             limit = {
-                                check_variable = { temp_digit_offset < digit_array_output^num }
+                                check_variable = { temp_digit_offset < ieee_out_array^num }
                             }
-                            add_to_temp_variable = { digit_array_output^temp_digit_offset = global.digit_array@var:temp_mantissa_exp^idx }
+                            add_to_temp_variable = { ieee_out_array^temp_digit_offset = global.digit_array@var:temp_mantissa_exp^idx }
                         }
                         else = {
                             if = {
@@ -627,11 +638,11 @@ to_digit_array_trigger = {
                                 }
 
                                 # Pad array with zeroes until proper place for new digit
-                                resize_temp_array = { digit_array_output = temp_digit_offset }
+                                resize_temp_array = { ieee_out_array = temp_digit_offset }
                             }
 
                             
-                            add_to_temp_array = { digit_array_output = global.digit_array@var:temp_mantissa_exp^idx }
+                            add_to_temp_array = { ieee_out_array = global.digit_array@var:temp_mantissa_exp^idx }
                         }
 
                         # Append new digit to proper place
@@ -643,21 +654,21 @@ to_digit_array_trigger = {
 
         # Carry digits
         all_of = {
-            array = digit_array_output
+            array = ieee_out_array
             index = reverse_idx
 
             # traverse array backwards
-            set_temp_variable = { idx = digit_array_output^num }
+            set_temp_variable = { idx = ieee_out_array^num }
             subtract_from_temp_variable = { idx = reverse_idx }
             subtract_from_temp_variable = { idx = 1 }
 
             if = {
                 limit = {
-                    check_variable = { digit_array_output^idx > 9 }
+                    check_variable = { ieee_out_array^idx > 9 }
                 }
-                set_temp_variable = { temp_diff = digit_array_output^idx }
-                modulo_temp_variable = { digit_array_output^idx = 10 }
-                subtract_from_temp_variable = { temp_diff = digit_array_output^idx }
+                set_temp_variable = { temp_diff = ieee_out_array^idx }
+                modulo_temp_variable = { ieee_out_array^idx = 10 }
+                subtract_from_temp_variable = { temp_diff = ieee_out_array^idx }
                 divide_temp_variable = { temp_diff = 10 }
 
                 set_temp_variable = { prev_idx = idx }
@@ -668,41 +679,48 @@ to_digit_array_trigger = {
                     }
 
                     add_to_temp_array = {
-                        array = digit_array_output
+                        array = ieee_out_array
                         index = 0
                         value = 1
                     }
-                    add_to_temp_variable = { digit_power_output = 1 }
+                    add_to_temp_variable = { ieee_out_power = 1 }
                 }
                 else = {
-                    add_to_temp_variable = { digit_array_output^prev_idx = temp_diff }
+                    add_to_temp_variable = { ieee_out_array^prev_idx = temp_diff }
                 }
             }
         }
     }
+    if = { # flip pdxvar special flags
+        limit = {
+            check_variable = { ieee_sign_bit = 1 }
+        }
+        multiply_temp_variable = { ieee_inf_flag = -1 }
+        multiply_temp_variable = { ieee_nan_flag = -1 }
+    }
     set_temp_variable = { temp_array_id = 0 }
 }
-### TO_PDXVAR_TRIGGER
-## Reads a bit array in floating-point format and outputs the closest pdxvar to_pdxvar_output
-## The below function has 1 parameter: temp_array_id
-## This parameter will be cleared(by resetting to 0) after the function execution
+# TO_PDXVAR_TRIGGER
+### Reads a bit array in floating-point format and outputs the closest pdxvar to_pdxvar_output
+### The below function has 1 parameter: temp_array_id
+### This parameter will be cleared(by resetting to 0) after the function execution
 ## ARRAY_ID
-# the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
-# If no array_id is assigned, the function will use temp_array_0 in place
-# If the array_id is not an integer, then the function will display an error
-# If the array is not 32 elements long, then the function will display an error
-# If the array has elements which are not 0 or 1, then the function will display an error
+### the array_id identifies which temp array is to be used, in the format "temp_array_[?id]"
+### If no array_id is assigned, the function will use temp_array_0 in place
+### If the array_id is not an integer, then the function will display an error
+### If the array is not 32 elements long, then the function will display an error
+### If the array has elements which are not 0 or 1, then the function will display an error
 ## TO_PDXVAR_OUTPUT
-# The output variable which holds the converted value
-# Do not confuse this with the store_bitwise function, as the two functions will output different values from the same bitarray
-# If the value is too high to fit in a pdxvar(greater than 2148483.647 or less than 2147483.648), then a temp var(to_pdxvar_overflow_flag) will be set to 1 or -1 depending on whether the float was too high or too low respectively, a warning will be logged, and the pdxvar will default to 0 
-# In addition, two temp vars exist to notify the user of an infinity or NaN(to_pdxvar_inf_flag and to_pdxvar_nan_flag respectively) and the output will default to 0. Similarly, +1 or -1 will denote a positive or negative special value. These results will not log any warning and should be checked before further use
-## Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
-## Additionally, any error will not trigger the to_digit_array function, and instead return 0 to the output variable
+### The output variable which holds the converted value
+### Do not confuse this with the store_bitwise function, as the two functions will output different values from the same bitarray
+### If the value is too high to fit in a pdxvar(greater than 2148483.647 or less than -2147483.648), then a temp var(ieee_overflow_flag) will be set to 1 or -1 depending on whether the float was too high or too low respectively, a warning will be logged, and the pdxvar will default to 0 
+### In addition, two temp vars exist to notify the user of an infinity or NaN(ieee_inf_flag and ieee_nan_flag respectively) and the output will default to 0. Similarly, +1 or -1 will denote a positive or negative special value. These results will not log any warning and should be checked before further use
+### Errors consist of a temp error var (io_error_flag) and a message in log corresponding to the error
+### Additionally, any error will not trigger the to_digit_array function, and instead return 0 to the output variable
 to_pdxvar_trigger = {
     # Reset flags
     set_temp_variable = { to_pdxvar_output = 0 }
-    set_temp_variable = { to_pdxvar_overflow_flag = 0 }
+    set_temp_variable = { ieee_overflow_flag = 0 }
     
     set_temp_variable = { whole_check = temp_array_id }
     round_temp_variable = whole_check
@@ -739,22 +757,213 @@ to_pdxvar_trigger = {
     # Convert bits to digits
     to_digit_array_trigger = yes
 
-    # Process digits to pdxvar format (borrowed from localization code)
-    clear_temp_array = to_print_digit_array
-    set_temp_variable = { to_print_digit_power = digit_power_output }
-    if = { # flip pdxvar special flags
+    # Process digits to pdxvar format
+    truncate_digit_array_trigger = yes
+
+    set_temp_variable = { to_pdxvar_output = 0 }
+    # Check if number on order of 10^6(millions) exceeds pdx limit
+
+    clear_temp_array = temp_positive_check
+    add_to_temp_array = { temp_positive_check = 2 }
+    add_to_temp_array = { temp_positive_check = 1 }
+    add_to_temp_array = { temp_positive_check = 4 }
+    add_to_temp_array = { temp_positive_check = 7 }
+    add_to_temp_array = { temp_positive_check = 4 }
+    add_to_temp_array = { temp_positive_check = 8 }
+    add_to_temp_array = { temp_positive_check = 3 }
+    add_to_temp_array = { temp_positive_check = 6 }
+    add_to_temp_array = { temp_positive_check = 4 }
+    add_to_temp_array = { temp_positive_check = 7 }
+
+    clear_temp_array = temp_negative_check
+    add_to_temp_array = { temp_negative_check = 2 }
+    add_to_temp_array = { temp_negative_check = 1 }
+    add_to_temp_array = { temp_negative_check = 4 }
+    add_to_temp_array = { temp_negative_check = 7 }
+    add_to_temp_array = { temp_negative_check = 4 }
+    add_to_temp_array = { temp_negative_check = 8 }
+    add_to_temp_array = { temp_negative_check = 3 }
+    add_to_temp_array = { temp_negative_check = 6 }
+    add_to_temp_array = { temp_negative_check = 4 }
+    add_to_temp_array = { temp_negative_check = 8 }
+    if = {
         limit = {
-            check_variable = { temp_sign_bit = 1 }
+            check_variable = { to_print_digit_power > 6 }
         }
-        multiply_temp_variable = { to_pdxvar_inf_flag = -1 }
-        multiply_temp_variable = { to_pdxvar_nan_flag = -1 }
+        # Bigger than 10^6 case
+        if = {
+            limit = {
+                check_variable = { ieee_sign_bit = 0 }
+            }
+            set_temp_variable = { ieee_overflow_flag = 1 }
+        }
+        else = {
+            set_temp_variable = { ieee_overflow_flag = -1 }
+        }
     }
+    else_if = {
+        limit = {
+            check_variable = { to_print_digit_power = 6 }
+            check_variable = { ieee_sign_bit = 0 }
+        }
+        # Positive case
+        all_of = {
+            array = temp_positive_check
+            index = idx
+
+            if = {
+                limit = {
+                    check_variable = { temp_positive_check^idx < to_print_digit_array^idx }
+                }
+                set_temp_variable = { ieee_overflow_flag = 1 }
+            }
+        }
+    }
+    else_if = {
+        limit = {
+            check_variable = { to_print_digit_power = 6 }
+            check_variable = { ieee_sign_bit = 1 }
+        }
+        # Negative case
+        all_of = {
+            array = temp_negative_check
+            index = idx
+
+            if = {
+                limit = {
+                    check_variable = { temp_negative_check^idx < to_print_digit_array^idx }
+                }
+                set_temp_variable = { ieee_overflow_flag = -1 }
+            }
+        }
+    }
+    if = {
+        limit = {
+            NOT = { check_variable = { ieee_overflow_flag = 0 } }
+        }
+
+        # Too high! Can't do anything, output warning
+        log = "Number exceeds pdxvar cap, value = [debug_print_digit]"
+    }
+    else = {
+        # Output variable
+        set_temp_variable = { index_offset = to_print_digit_array^num }
+        subtract_from_temp_variable = { index_offset = to_print_digit_power }
+        subtract_from_temp_variable = { index_offset = 1 }
+        if = {
+            limit = {
+                check_variable = { index_offset = 3 }
+            }
+            set_temp_variable = { mult_factor = 0.001 }
+        }
+        else_if = {
+            limit = {
+                check_variable = { index_offset = 2 }
+            }
+            set_temp_variable = { mult_factor = 0.01 }
+        }
+        else_if = {
+            limit = {
+                check_variable = { index_offset = 1 }
+            }
+            set_temp_variable = { mult_factor = 0.1 }
+        }
+        else_if = {
+            limit = {
+                check_variable = { index_offset = 0 }
+            }
+            set_temp_variable = { mult_factor = 1 }
+        }
+        if = {
+            limit = {
+                check_variable = { ieee_sign_bit = 1 }
+            }
+            multiply_temp_variable = { mult_factor = -1 }
+        }
+        all_of = {
+            array = to_print_digit_array
+            index = idx
+
+            multiply_temp_variable = { to_pdxvar_output = 10 }
+
+            set_temp_variable = { val = to_print_digit_array^idx }
+            multiply_temp_variable = { val = mult_factor }
+            add_to_temp_variable = { to_pdxvar_output = val }
+        }
+    }
+    set_temp_variable = { temp_array_id = 0 }
+}
+# FLOAT_TO_PDXVAR_TRIGGER
+### Wrapper function that chains to_bitwise and to_pdxvar for ease of converting floats -> pdxvars
+### The below function has 1 parameter: arg_a
+### This parameter will be cleared(by resetting to 0) after the function execution
+### The temp_array_1000 is reserved for this function, so outside use of this temp array will be interrupted and malfunction
+## ARG_A
+### arg_a is the floating-point variable that will be converted to a pdxvar
+### No restrictions exist on the value of arg_a, apart from the usual bounds on pdxvars
+## OUT_A
+### out_a is the pdxvar that best approximates the value of the floating point stored in arg_a
+### If the value is too high to fit in a pdxvar(greater than 2148483.647 or less than 2147483.648), then a temp var(overflow_flag) will be set to 1 or -1 depending on whether the float was too high or too low respectively, a warning will be logged, and the pdxvar will default to 0 
+### In addition, two temp vars exist to notify the user of an infinity or NaN(inf_flag and nan_flag respectively) and the output will default to 0. Similarly, +1 or -1 will denote a positive or negative special value. These results will *not* log any warning and should be checked before further use
+float_to_pdxvar_trigger = {
+    set_temp_variable = { to_bitwise_input = arg_a }
+
+    set_temp_variable = { temp_array_id = 1000 }
+    to_bitwise_trigger = yes
+    set_temp_variable = { temp_array_id = 1000 }
+    to_pdxvar_trigger = yes
+
+    set_temp_variable = { out_a = to_pdxvar_output }
+    set_temp_variable = { overflow_flag = ieee_overflow_flag }
+    set_temp_variable = { inf_flag = ieee_inf_flag }
+    set_temp_variable = { nan_flag = ieee_nan_flag }
+
+    set_temp_variable = { arg_a = 0 }
+}
+# PDXVAR_TO_FLOAT_TRIGGER
+### Wrapper function that chains to_float and store_bitwise for ease of converting pdxvars -> floats
+### The below function has 1 parameter: arg_a
+### This parameter will be cleared(by resetting to 0) after the function execution
+### The temp_array_1000 is reserved for this function, so outside use of this temp array will be interrupted and malfunction
+## ARG_A
+### the arg_a is the pdxvar that will be converted to a float
+### No restrictions exist on the value of arg_a, apart from the usual bounds on pdxvars
+## OUT_A
+### out_a is the float that best approximates the value of the pdxvar stored in arg_a
+pdxvar_to_float_trigger = {
+    set_temp_variable = { to_float_input = arg_a }
+
+    set_temp_variable = { temp_array_id = 1000 }
+    to_float_trigger = yes
+    set_temp_variable = { temp_array_id = 1000 }
+    store_bitwise_trigger = yes
+
+    set_temp_variable = { out_a = store_bitwise_output }
+
+    set_temp_variable = { arg_a = 0 }
+}
+
+# TRUNCATE_DIGIT_ARRAY_TRIGGER
+### Helper function that takes the full digit array outputted by to_digit_array and truncates it at the thousandths place, with rounding
+### The below function has 2 parameters: ieee_out_array and ieee_out_power
+### This function is not meant to be used on its own
+## IEEE_OUT_ARRAY
+### Input digits
+## IEEE_OUT_POWER
+### Input power of 10, as in scientific notation
+## TO_PRINT_DIGIT_ARRAY
+### Outputted digits, truncated and rounded to the thousandth place
+## TO_PRINT_DIGIT_POWER
+### Output power of 10, as in scientific notation
+truncate_digit_array_trigger = {
+    clear_temp_array = to_print_digit_array
+    set_temp_variable = { to_print_digit_power = ieee_out_power }
     all_of = {
-        array = digit_array_output
+        array = ieee_out_array
         value = val
         index = idx
 
-        set_temp_variable = { pdx_digit_cap = digit_power_output }
+        set_temp_variable = { pdx_digit_cap = ieee_out_power }
         add_to_temp_variable = { pdx_digit_cap = 4 }
         if = {
             limit = {
@@ -762,37 +971,37 @@ to_pdxvar_trigger = {
             }
             add_to_temp_array = { to_print_digit_array = val }
         }
+        # Special case of 5.0 * 10^-4 <= x < 1.0 * 10^-3
+        else_if = {
+            limit = {
+                check_variable = { pdx_digit_cap = 0 }
+                check_variable = { idx = 0 }
+                NOT = { check_variable = { ieee_out_array^idx < 5 } }
+            }
+            add_to_temp_array = { to_print_digit_array = 1 }
+            set_temp_variable = { to_print_digit_power = -3 }
+        }
         else = {
             set_temp_variable = { least_sig_digit_idx = pdx_digit_cap }
             subtract_from_temp_variable = { least_sig_digit_idx = 1 }
-            set_temp_variable = { least_sig_digit = digit_array_output^least_sig_digit_idx }
+            set_temp_variable = { least_sig_digit = ieee_out_array^least_sig_digit_idx }
             modulo_temp_variable = { least_sig_digit = 2 }
             set_temp_variable = { round_digit_threshold = pdx_digit_cap }
             add_to_temp_variable = { round_digit_threshold = 1 }
             if = {
                 limit = {
                     check_variable = { idx = pdx_digit_cap }
-                    ### Rounds using the recommended TiesToEven, consult 4.3 (pg 27) in ieee_754.pdf
-                    OR = {
-                        check_variable = { val > 5 }
-                        AND = {
-                            check_variable = { val = 5 }
-                            OR = {
-                                check_variable = { digit_array_output^num > round_digit_threshold }
-                                check_variable = { least_sig_digit = 1 }
-                            }
-                        }
-                    }
+                    NOT = { check_variable = { val < 5 } }
                 }
                 ### add one to previous var and propagate addition
                 add_to_temp_variable = { to_print_digit_array^least_sig_digit_idx = 1 }
 
                 all_of = {
-                    array = digit_array_output
+                    array = ieee_out_array
                     index = idx
                     
                     # traverse array backwards
-                    set_temp_variable = { carry_idx = digit_array_output^num }
+                    set_temp_variable = { carry_idx = ieee_out_array^num }
                     subtract_from_temp_variable = { carry_idx = idx }
                     subtract_from_temp_variable = { carry_idx = 1 }
                     
@@ -832,185 +1041,4 @@ to_pdxvar_trigger = {
             }
         }
     }
-    set_temp_variable = { to_pdxvar_output = 0 }
-    # Check if number on order of 10^6(millions) exceeds pdx limit
-
-    clear_temp_array = temp_positive_check
-    add_to_temp_array = { temp_positive_check = 2 }
-    add_to_temp_array = { temp_positive_check = 1 }
-    add_to_temp_array = { temp_positive_check = 4 }
-    add_to_temp_array = { temp_positive_check = 7 }
-    add_to_temp_array = { temp_positive_check = 4 }
-    add_to_temp_array = { temp_positive_check = 8 }
-    add_to_temp_array = { temp_positive_check = 3 }
-    add_to_temp_array = { temp_positive_check = 6 }
-    add_to_temp_array = { temp_positive_check = 4 }
-    add_to_temp_array = { temp_positive_check = 7 }
-
-    clear_temp_array = temp_negative_check
-    add_to_temp_array = { temp_negative_check = 2 }
-    add_to_temp_array = { temp_negative_check = 1 }
-    add_to_temp_array = { temp_negative_check = 4 }
-    add_to_temp_array = { temp_negative_check = 7 }
-    add_to_temp_array = { temp_negative_check = 4 }
-    add_to_temp_array = { temp_negative_check = 8 }
-    add_to_temp_array = { temp_negative_check = 3 }
-    add_to_temp_array = { temp_negative_check = 6 }
-    add_to_temp_array = { temp_negative_check = 4 }
-    add_to_temp_array = { temp_negative_check = 8 }
-    if = {
-        limit = {
-            check_variable = { to_print_digit_power > 6 }
-        }
-        # Bigger than 10^6 case
-        if = {
-            limit = {
-                check_variable = { temp_sign_bit = 0 }
-            }
-            set_temp_variable = { to_pdxvar_overflow_flag = 1 }
-        }
-        else = {
-            set_temp_variable = { to_pdxvar_overflow_flag = -1 }
-        }
-    }
-    else_if = {
-        limit = {
-            check_variable = { to_print_digit_power = 6 }
-            check_variable = { temp_sign_bit = 0 }
-        }
-        # Positive case
-        all_of = {
-            array = temp_positive_check
-            index = idx
-
-            if = {
-                limit = {
-                    check_variable = { temp_positive_check^idx < to_print_digit_array^idx }
-                }
-                set_temp_variable = { to_pdxvar_overflow_flag = 1 }
-            }
-        }
-    }
-    else_if = {
-        limit = {
-            check_variable = { to_print_digit_power = 6 }
-            check_variable = { temp_sign_bit = 1 }
-        }
-        # Negative case
-        all_of = {
-            array = temp_negative_check
-            index = idx
-
-            if = {
-                limit = {
-                    check_variable = { temp_negative_check^idx < to_print_digit_array^idx }
-                }
-                set_temp_variable = { to_pdxvar_overflow_flag = -1 }
-            }
-        }
-    }
-    if = {
-        limit = {
-            NOT = { check_variable = { to_pdxvar_overflow_flag = 0 } }
-        }
-
-        # Too high! Can't do anything, output warning
-        log = "Number exceeds pdxvar cap, value = [debug_print_digit]"
-    }
-    else = {
-        # Output variable
-        set_temp_variable = { index_offset = to_print_digit_array^num }
-        subtract_from_temp_variable = { index_offset = to_print_digit_power }
-        subtract_from_temp_variable = { index_offset = 1 }
-        if = {
-            limit = {
-                check_variable = { index_offset = 3 }
-            }
-            set_temp_variable = { mult_factor = 0.001 }
-        }
-        else_if = {
-            limit = {
-                check_variable = { index_offset = 2 }
-            }
-            set_temp_variable = { mult_factor = 0.01 }
-        }
-        else_if = {
-            limit = {
-                check_variable = { index_offset = 1 }
-            }
-            set_temp_variable = { mult_factor = 0.1 }
-        }
-        else_if = {
-            limit = {
-                check_variable = { index_offset = 0 }
-            }
-            set_temp_variable = { mult_factor = 1 }
-        }
-        if = {
-            limit = {
-                check_variable = { temp_sign_bit = 1 }
-            }
-            multiply_temp_variable = { mult_factor = -1 }
-        }
-        all_of = {
-            array = to_print_digit_array
-            index = idx
-
-            multiply_temp_variable = { to_pdxvar_output = 10 }
-
-            set_temp_variable = { val = to_print_digit_array^idx }
-            multiply_temp_variable = { val = mult_factor }
-            add_to_temp_variable = { to_pdxvar_output = val }
-        }
-    }
-    set_temp_variable = { temp_array_id = 0 }
-}
-### FLOAT_TO_PDXVAR_TRIGGER
-## Wrapper function that chains to_bitwise and to_pdxvar for ease of converting floats -> pdxvars
-## The below function has 1 parameter: arg_a
-## This parameter will be cleared(by resetting to 0) after the function execution
-## The temp_array_1000 is reserved for this function, so outside use of this temp array will be interrupted and malfunction
-## ARG_A
-# arg_a is the floating-point variable that will be converted to a pdxvar
-# No restrictions exist on the value of arg_a, apart from the usual bounds on pdxvars
-## OUT_A
-# out_a is the pdxvar that best approximates the value of the floating point stored in arg_a
-# If the value is too high to fit in a pdxvar(greater than 2148483.647 or less than 2147483.648), then a temp var(overflow_flag) will be set to 1 or -1 depending on whether the float was too high or too low respectively, a warning will be logged, and the pdxvar will default to 0 
-# In addition, two temp vars exist to notify the user of an infinity or NaN(inf_flag and nan_flag respectively) and the output will default to 0. Similarly, +1 or -1 will denote a positive or negative special value. These results will *not* log any warning and should be checked before further use
-float_to_pdxvar_trigger = {
-    set_temp_variable = { to_bitwise_input = arg_a }
-
-    set_temp_variable = { temp_array_id = 1000 }
-    to_bitwise_trigger = yes
-    set_temp_variable = { temp_array_id = 1000 }
-    to_pdxvar_trigger = yes
-
-    set_temp_variable = { out_a = to_pdxvar_output }
-    set_temp_variable = { overflow_flag = to_pdxvar_overflow_flag }
-    set_temp_variable = { inf_flag = to_pdxvar_inf_flag }
-    set_temp_variable = { nan_flag = to_pdxvar_nan_flag }
-
-    set_temp_variable = { arg_a = 0 }
-}
-### PDXVAR_TO_FLOAT_TRIGGER
-## Wrapper function that chains to_float and store_bitwise for ease of converting pdxvars -> floats
-## The below function has 1 parameter: arg_a
-## This parameter will be cleared(by resetting to 0) after the function execution
-## The temp_array_1000 is reserved for this function, so outside use of this temp array will be interrupted and malfunction
-## ARG_A
-# the arg_a is the pdxvar that will be converted to a float
-# No restrictions exist on the value of arg_a, apart from the usual bounds on pdxvars
-## OUT_A
-# out_a is the float that best approximates the value of the pdxvar stored in arg_a
-pdxvar_to_float_trigger = {
-    set_temp_variable = { to_float_input = arg_a }
-
-    set_temp_variable = { temp_array_id = 1000 }
-    to_float_trigger = yes
-    set_temp_variable = { temp_array_id = 1000 }
-    store_bitwise_trigger = yes
-
-    set_temp_variable = { out_a = store_bitwise_output }
-
-    set_temp_variable = { arg_a = 0 }
 }

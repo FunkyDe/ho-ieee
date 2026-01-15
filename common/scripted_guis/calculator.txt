@@ -1,0 +1,416 @@
+scripted_gui = {
+    calc_gui_container = {
+        context_type = player_context
+        window_name = "calc_gui_container"
+        # dirty = calc_gui_dirty
+
+        visible = {
+            has_global_flag = calc_gui_visible
+        }
+
+        effects = {
+            calc_clear_click = {
+                set_variable = { global.calculator_buffer_a = 0 }
+                set_variable = { global.calculator_buffer_b = 0 }
+                set_variable = { global.calculator_action = 0 }
+                add_to_variable = { calc_gui_dirty = 0.001 }
+            }
+            calc_add_click = {
+                set_variable = { global.calculator_action = 1 }
+                add_to_variable = { calc_gui_dirty = 0.001 }
+            }
+            calc_sub_click = {
+                set_variable = { global.calculator_action = 2 }
+                add_to_variable = { calc_gui_dirty = 0.001 }
+            }
+            calc_mul_click = {
+                set_variable = { global.calculator_action = 3 }
+                add_to_variable = { calc_gui_dirty = 0.001 }
+            }
+            calc_div_click = {
+                set_variable = { global.calculator_action = 4 }
+                add_to_variable = { calc_gui_dirty = 0.001 }
+            }
+            calc_1_click = {
+                set_temp_variable = { arg_a = 10 }
+                pdxvar_to_float = yes
+
+                if = {
+                    limit = {
+                        check_variable = { global.calculator_action = 0 }
+                    }
+                    set_temp_variable = { arg_a = global.calculator_buffer_a }
+                }
+                else = {
+                    set_temp_variable = { arg_a = global.calculator_buffer_b }
+                }
+                set_temp_variable = { arg_b = out_a }
+                ieeeMul = yes
+
+                set_temp_variable = { arg_b = out_a }
+                set_temp_variable = { arg_a = 1 }
+                pdxvar_to_float = yes
+
+                set_temp_variable = { arg_a = out_a }
+                ieeeAdd = yes
+
+                if = {
+                    limit = {
+                        check_variable = { global.calculator_action = 0 }
+                    }
+                    set_variable = { global.calculator_buffer_a = out_a }
+                }
+                else = {
+                    set_variable = { global.calculator_buffer_b = out_a }
+                }
+            }
+            calc_2_click = {
+                set_temp_variable = { arg_a = 10 }
+                pdxvar_to_float = yes
+
+                if = {
+                    limit = {
+                        check_variable = { global.calculator_action = 0 }
+                    }
+                    set_temp_variable = { arg_a = global.calculator_buffer_a }
+                }
+                else = {
+                    set_temp_variable = { arg_a = global.calculator_buffer_b }
+                }
+                set_temp_variable = { arg_b = out_a }
+                ieeeMul = yes
+
+                set_temp_variable = { arg_b = out_a }
+                set_temp_variable = { arg_a = 2 }
+                pdxvar_to_float = yes
+
+                set_temp_variable = { arg_a = out_a }
+                ieeeAdd = yes
+
+                if = {
+                    limit = {
+                        check_variable = { global.calculator_action = 0 }
+                    }
+                    set_variable = { global.calculator_buffer_a = out_a }
+                }
+                else = {
+                    set_variable = { global.calculator_buffer_b = out_a }
+                }
+                add_to_variable = { calc_gui_dirty = 0.001 }
+            }
+            calc_3_click = {
+                set_temp_variable = { arg_a = 10 }
+                pdxvar_to_float = yes
+
+                if = {
+                    limit = {
+                        check_variable = { global.calculator_action = 0 }
+                    }
+                    set_temp_variable = { arg_a = global.calculator_buffer_a }
+                }
+                else = {
+                    set_temp_variable = { arg_a = global.calculator_buffer_b }
+                }
+                set_temp_variable = { arg_b = out_a }
+                ieeeMul = yes
+
+                set_temp_variable = { arg_b = out_a }
+                set_temp_variable = { arg_a = 3 }
+                pdxvar_to_float = yes
+
+                set_temp_variable = { arg_a = out_a }
+                ieeeAdd = yes
+
+                if = {
+                    limit = {
+                        check_variable = { global.calculator_action = 0 }
+                    }
+                    set_variable = { global.calculator_buffer_a = out_a }
+                }
+                else = {
+                    set_variable = { global.calculator_buffer_b = out_a }
+                }
+                add_to_variable = { calc_gui_dirty = 0.001 }
+            }
+            calc_4_click = {
+                set_temp_variable = { arg_a = 10 }
+                pdxvar_to_float = yes
+
+                if = {
+                    limit = {
+                        check_variable = { global.calculator_action = 0 }
+                    }
+                    set_temp_variable = { arg_a = global.calculator_buffer_a }
+                }
+                else = {
+                    set_temp_variable = { arg_a = global.calculator_buffer_b }
+                }
+                set_temp_variable = { arg_b = out_a }
+                ieeeMul = yes
+
+                set_temp_variable = { arg_b = out_a }
+                set_temp_variable = { arg_a = 4 }
+                pdxvar_to_float = yes
+
+                set_temp_variable = { arg_a = out_a }
+                ieeeAdd = yes
+
+                if = {
+                    limit = {
+                        check_variable = { global.calculator_action = 0 }
+                    }
+                    set_variable = { global.calculator_buffer_a = out_a }
+                }
+                else = {
+                    set_variable = { global.calculator_buffer_b = out_a }
+                }
+                add_to_variable = { calc_gui_dirty = 0.001 }
+            }
+            calc_5_click = {
+                set_temp_variable = { arg_a = 10 }
+                pdxvar_to_float = yes
+
+                if = {
+                    limit = {
+                        check_variable = { global.calculator_action = 0 }
+                    }
+                    set_temp_variable = { arg_a = global.calculator_buffer_a }
+                }
+                else = {
+                    set_temp_variable = { arg_a = global.calculator_buffer_b }
+                }
+                set_temp_variable = { arg_b = out_a }
+                ieeeMul = yes
+
+                set_temp_variable = { arg_b = out_a }
+                set_temp_variable = { arg_a = 5 }
+                pdxvar_to_float = yes
+
+                set_temp_variable = { arg_a = out_a }
+                ieeeAdd = yes
+
+                if = {
+                    limit = {
+                        check_variable = { global.calculator_action = 0 }
+                    }
+                    set_variable = { global.calculator_buffer_a = out_a }
+                }
+                else = {
+                    set_variable = { global.calculator_buffer_b = out_a }
+                }
+                add_to_variable = { calc_gui_dirty = 0.001 }
+            }
+            calc_6_click = {
+                set_temp_variable = { arg_a = 10 }
+                pdxvar_to_float = yes
+
+                if = {
+                    limit = {
+                        check_variable = { global.calculator_action = 0 }
+                    }
+                    set_temp_variable = { arg_a = global.calculator_buffer_a }
+                }
+                else = {
+                    set_temp_variable = { arg_a = global.calculator_buffer_b }
+                }
+                set_temp_variable = { arg_b = out_a }
+                ieeeMul = yes
+
+                set_temp_variable = { arg_b = out_a }
+                set_temp_variable = { arg_a = 6 }
+                pdxvar_to_float = yes
+
+                set_temp_variable = { arg_a = out_a }
+                ieeeAdd = yes
+
+                if = {
+                    limit = {
+                        check_variable = { global.calculator_action = 0 }
+                    }
+                    set_variable = { global.calculator_buffer_a = out_a }
+                }
+                else = {
+                    set_variable = { global.calculator_buffer_b = out_a }
+                }
+                add_to_variable = { calc_gui_dirty = 0.001 }
+            }
+            calc_7_click = {
+                set_temp_variable = { arg_a = 10 }
+                pdxvar_to_float = yes
+
+                if = {
+                    limit = {
+                        check_variable = { global.calculator_action = 0 }
+                    }
+                    set_temp_variable = { arg_a = global.calculator_buffer_a }
+                }
+                else = {
+                    set_temp_variable = { arg_a = global.calculator_buffer_b }
+                }
+                set_temp_variable = { arg_b = out_a }
+                ieeeMul = yes
+
+                set_temp_variable = { arg_b = out_a }
+                set_temp_variable = { arg_a = 7 }
+                pdxvar_to_float = yes
+
+                set_temp_variable = { arg_a = out_a }
+                ieeeAdd = yes
+
+                if = {
+                    limit = {
+                        check_variable = { global.calculator_action = 0 }
+                    }
+                    set_variable = { global.calculator_buffer_a = out_a }
+                }
+                else = {
+                    set_variable = { global.calculator_buffer_b = out_a }
+                }
+                add_to_variable = { calc_gui_dirty = 0.001 }
+            }
+            calc_8_click = {
+                set_temp_variable = { arg_a = 10 }
+                pdxvar_to_float = yes
+
+                if = {
+                    limit = {
+                        check_variable = { global.calculator_action = 0 }
+                    }
+                    set_temp_variable = { arg_a = global.calculator_buffer_a }
+                }
+                else = {
+                    set_temp_variable = { arg_a = global.calculator_buffer_b }
+                }
+                set_temp_variable = { arg_b = out_a }
+                ieeeMul = yes
+
+                set_temp_variable = { arg_b = out_a }
+                set_temp_variable = { arg_a = 8 }
+                pdxvar_to_float = yes
+
+                set_temp_variable = { arg_a = out_a }
+                ieeeAdd = yes
+
+                if = {
+                    limit = {
+                        check_variable = { global.calculator_action = 0 }
+                    }
+                    set_variable = { global.calculator_buffer_a = out_a }
+                }
+                else = {
+                    set_variable = { global.calculator_buffer_b = out_a }
+                }
+                add_to_variable = { calc_gui_dirty = 0.001 }
+            }
+            calc_9_click = {
+                set_temp_variable = { arg_a = 10 }
+                pdxvar_to_float = yes
+
+                if = {
+                    limit = {
+                        check_variable = { global.calculator_action = 0 }
+                    }
+                    set_temp_variable = { arg_a = global.calculator_buffer_a }
+                }
+                else = {
+                    set_temp_variable = { arg_a = global.calculator_buffer_b }
+                }
+                set_temp_variable = { arg_b = out_a }
+                ieeeMul = yes
+
+                set_temp_variable = { arg_b = out_a }
+                set_temp_variable = { arg_a = 9 }
+                pdxvar_to_float = yes
+
+                set_temp_variable = { arg_a = out_a }
+                ieeeAdd = yes
+
+                if = {
+                    limit = {
+                        check_variable = { global.calculator_action = 0 }
+                    }
+                    set_variable = { global.calculator_buffer_a = out_a }
+                }
+                else = {
+                    set_variable = { global.calculator_buffer_b = out_a }
+                }
+                add_to_variable = { calc_gui_dirty = 0.001 }
+            }
+            calc_0_click = {
+                set_temp_variable = { arg_a = 10 }
+                pdxvar_to_float = yes
+
+                if = {
+                    limit = {
+                        check_variable = { global.calculator_action = 0 }
+                    }
+                    set_temp_variable = { arg_a = global.calculator_buffer_a }
+                }
+                else = {
+                    set_temp_variable = { arg_a = global.calculator_buffer_b }
+                }
+                set_temp_variable = { arg_b = out_a }
+                ieeeMul = yes
+
+                set_temp_variable = { arg_b = out_a }
+                set_temp_variable = { arg_a = 0 }
+                pdxvar_to_float = yes
+
+                set_temp_variable = { arg_a = out_a }
+                ieeeAdd = yes
+
+                if = {
+                    limit = {
+                        check_variable = { global.calculator_action = 0 }
+                    }
+                    set_variable = { global.calculator_buffer_a = out_a }
+                }
+                else = {
+                    set_variable = { global.calculator_buffer_b = out_a }
+                }
+                add_to_variable = { calc_gui_dirty = 0.001 }
+            }
+            calc_calc_click = {
+                set_temp_variable = { arg_a = global.calculator_buffer_a }
+                set_temp_variable = { arg_b = global.calculator_buffer_b }
+                if = {
+                    limit = {
+                        check_variable = { global.calculator_action = 1 }
+                    }
+                    ieeeAdd = yes
+                }
+                if = {
+                    limit = {
+                        check_variable = { global.calculator_action = 2 }
+                    }
+                    ieeeSub = yes
+                }
+                if = {
+                    limit = {
+                        check_variable = { global.calculator_action = 3 }
+                    }
+                    ieeeMul = yes
+                }
+                if = {
+                    limit = {
+                        check_variable = { global.calculator_action = 4 }
+                    }
+                    ieeeDiv = yes
+                }
+                set_variable = { global.calculator_buffer_a = out_a }
+                set_variable = { global.calculator_buffer_b = 0 }
+                set_variable = { global.calculator_action = 0 }
+                add_to_variable = { calc_gui_dirty = 0.001 }
+
+            }
+            calc_close_click = {
+                clr_global_flag = calc_gui_visible
+            }
+        }
+        triggers = {
+            calc_calc_click_enabled = {
+                NOT = { check_variable = { global.calculator_action = 0 } }
+            }
+        }
+    }
+}

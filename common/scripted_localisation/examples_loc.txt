@@ -1,0 +1,30 @@
+## Displays the fibonacci sign
+defined_text = {
+    name = fib_item_scripted_loc
+    text = {
+        trigger = {
+            set_temp_variable = { to_print_float = global.fibonacci_list^i }
+            always = no
+        }
+    }
+    text = {
+        localization_key = fib_item_template
+    }
+}
+defined_text = {
+    name = calc_display_decider
+    text = {
+        trigger = {
+            set_temp_variable = { to_print_float = global.calculator_buffer_a }
+            set_temp_variable = { to_print_param = 16 }
+            check_variable = { global.calculator_action = 0 }
+        }
+        localization_key = calc_display_final
+    }
+    text = {
+        trigger = {
+            set_temp_variable = { to_print_float = global.calculator_buffer_b }
+        }
+        localization_key = calc_display_final
+    }
+}

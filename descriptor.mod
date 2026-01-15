@@ -1,9 +1,8 @@
 name = "Hearts of IEEE 754"
-supported_version = "1.15.*"
-version = "0.1.0"
+supported_version = "1.17.*"
+version = "1.0.1"
 
 tags={
 	"Utilities"
 }
 picture = "thumbnail.png"
-path = "mod/ho-ieee"

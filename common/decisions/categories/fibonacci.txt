@@ -1,5 +1,0 @@
-fibonacci_category = {
-    allowed = {
-        always = yes
-    }
-}

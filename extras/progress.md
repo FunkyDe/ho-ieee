@@ -10,20 +10,20 @@ This Markdown page provides a view of the progress towards the implementation of
 | roundToIntegralTowardPositive | Not Done | ##### | Converts float -> float |
 | roundToIntegralTowardNegative | Not Done | ##### | Converts float -> float |
 | roundToIntegralExact | Not Done | ##### | Converts float -> float, signals if inexact |
-| nextUp | Not Done | ##### | The least float greater than the input |
-| nextDown | Not Done | ##### | Defined as -nextUp(-x) |
+| nextUp | Done | **ieeeNextUp** | The least float greater than the input |
+| nextDown | Done | **ieeeNextDown** | Defined as -nextUp(-x) |
 | remainder | Not Done | ##### | remainder(x, y) = x-y*n, n is an integer |
-| scaleB | Not Done | ##### | x(2)<sup>y</sup>, y is an integer |
-| logB | Not Done | ##### | floor(log<sub>2</sub>(x)) |
+| scaleB | Done | **ieeeScaleB** | x(2)<sup>y</sup>, y is an integer |
+| logB | Done | **ieeeLogB** | floor(log<sub>2</sub>(x)) |
 
 ## 5.4 formatOf General-computational Operations
 | Operation | Progress | Implemented By | Notes |
 | :--- | :--- | :--- | :--- |
-| addition | Done | **ieeeAdd** | arg_a + arg_b, uses a quasi-mantissa to perform addition, with extra quirks surrounding negatives and subnormals |
+| addition | Done | **ieeeAdd** |  |
 | subtraction | Done | **ieeeSub** | arg_a + (-arg_b), uses addition |
 | multiplication | Done | **ieeeMul** |  |
 | division | Done | **ieeeDiv** |  |
-| squareRoot | Not Done | ##### | ##### |
+| squareRoot | Not Done | ##### |  |
 | fusedMultiplyAdd | Not Done | ##### | fMA(x, y, z) = x*y + z, rounded only at end |
 | convertFromInt | Done | **pdxvar_to_float** | modified to convertFromPdx, converts from pdxvar instead of integer |
 | convertToIntegerTiesToEven | Done | **float_to_pdxvar** | modified to convertToPdx, converts to pdxvar instead of integer |
@@ -42,9 +42,9 @@ This Markdown page provides a view of the progress towards the implementation of
 | Operation | Progress | Implemented By | Notes |
 | :--- | :--- | :--- | :--- |
 | copy | Done | **set_temp_variable** / **set_variable** | Already implemented by pdxscript |
-| negate | Not Done | ##### |  |
-| abs | Not Done | ##### |  |
-| copySign | Not Done | ##### |  |
+| negate | Done | **ieeeNegate** |  |
+| abs | Done | **ieeeAbs** |  |
+| copySign | Done | **ieeeCopySign** |  |
 
 ## 5.6 Signaling-computational Operations
 | Operation | Progress | Implemented By | Notes |
@@ -75,35 +75,19 @@ This Markdown page provides a view of the progress towards the implementation of
 ## 5.7 Non-computational Operations
 | Operation | Progress | Implemented By | Notes |
 | :--- | :--- | :--- | :--- |
-| is754version1985 | Not Done | ##### | Always false |
-| is754version2008 | Not Done | ##### | Always false |
-| is754version2019 | Not Done | ##### | Always true |
-| class | Not Done | ##### | 10 classes: signaling NaN, quiet NaN, negative infinity, negative normal, negative subnormal, negative zero, positive zero, positive subnormal, positive normal, and positive infinity |
-| isSignMinus | Not Done | ##### |  |
-| isZero | Not Done | ##### |  |
-| isNormal | Not Done | ##### |  |
-| isSubnormal | Not Done | ##### |  |
-| isFinite | Not Done | ##### |  |
-| isInfinite | Not Done | ##### |  |
+| class | Done | **ieeeClass** | 10 classes: signaling NaN, quiet NaN, negative infinity, negative normal, negative subnormal, negative zero, positive zero, positive subnormal, positive normal, and positive infinity |
+| isSignMinus | Done | **ieee_isSignMinus** |  |
+| isZero | Done | **ieee_isZero** |  |
+| isNormal | Done | **ieee_isNormal** |  |
+| isSubnormal | Done | **ieee_isSubnormal** |  |
+| isFinite | Done | **ieee_isFinite** |  |
+| isInfinite | Done | **ieee_isInfinite** |  |
 | isNaN | Done | **ieee_isnan** |  |
-| isSignaling | Not Done | ##### | Always false, see ../README.md as to why signaling NaNs are not implemented |
-| isCanonical | Not Done | ##### |  |
-| radix | Not Done | ##### | Always 2, no decimal formats implemented |
 | totalOrder | Done | **totalOrder** | Consult clause 5.10 in IEEE 754 |
-| totalOrderMag | Not Done | ##### | totalOrder(abs(x), abs(y)) |
-
-### 5.7.4 Non-computational Operations, Flags
-| Operation | Progress | Implemented By | Notes |
-| :--- | :--- | :--- | :--- |
-| lowerFlags | Not Done | ##### |  |
-| raiseFlags | Not Done | ##### |  |
-| testFlags | Not Done | ##### |  |
-| testSavedFlags | Not Done | ##### |  |
-| restoreFlags | Not Done | ##### |  |
-| saveAllFlags | Not Done | ##### |  |
+| totalOrderMag | Done | **totalOrderMag** | totalOrder(abs(x), abs(y)) |
 
 ## Skipped Operations
-Some operations mentioned in the requirements are not listed above, as they are uniquely difficult to implement, pertain to decimal floating-point formats, or are simply impossible. Please consult the clause(s) listed in each row for more details.
+Many operations mentioned in the requirements are not listed above, as they are of little use to modders, uniquely difficult to implement, pertain to decimal floating-point formats, or are simply impossible. Please consult the clause(s) listed in each row for more details.
 
 | Operation | Clause | Notes |
 | :--- | :--- | :--- |
@@ -112,9 +96,21 @@ Some operations mentioned in the requirements are not listed above, as they are 
 | convertFormat | 5.4.2 | unused because only one format used and no signaling NaNs nor exceptions |
 | convertFromDecimalCharacter | 5.4.2 | Impossible to handle string inputs in pdxscript |
 | convertFromHexCharacter | 5.4.3 | Impossible to handle string inputs in pdxscript |
-| convertToHexCharacter | 5.4.3 | Uniquely difficult to create strings in pdxscript. |
+| convertToHexCharacter | 5.4.3 | Uniquely difficult to create strings in pdxscript |
 | encodeDecimal | 5.5.2 | Pertains to decimal floating-point formats |
 | decodeDecimal | 5.5.2 | Pertains to decimal floating-point formats |
 | encodeBinary | 5.5.2 | Pertains to decimal floating-point formats |
 | decodeBinary | 5.5.2 | Pertains to decimal floating-point formats |
+| is754version1985 | 5.7.1 | Only informs which IEEE standard is being adhered to, always false |
+| is754version2008 | 5.7.1 | Only informs which IEEE standard is being adhered to, always false |
+| is754version2019 | 5.7.1 | Only informs which IEEE standard is being adhered to, always true |
+| isSignaling | 5.7.2 | Always false, signaling NaNs impossible to effectively code |
+| isCanonical | 5.7.2 | Always true, according to clause 3.4 all decimal encodings are canonical |
+| radix | 5.7.2 | Always 2, no decimal formats implemented |
 | sameQuantum | 5.7.3 | Pertains to decimal floating-point formats |
+| lowerFlags | 5.7.4 | Exceptions difficult to efficiently use, so deemed out of scope |
+| raiseFlags | 5.7.4 | Exceptions difficult to efficiently use, so deemed out of scope |
+| testFlags | 5.7.4 | Exceptions difficult to efficiently use, so deemed out of scope |
+| testSavedFlags | 5.7.4 | Exceptions difficult to efficiently use, so deemed out of scope |
+| restoreFlags | 5.7.4 | Exceptions difficult to efficiently use, so deemed out of scope |
+| saveAllFlags | 5.7.4 | Exceptions difficult to efficiently use, so deemed out of scope |

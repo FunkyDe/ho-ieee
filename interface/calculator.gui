@@ -1,0 +1,174 @@
+guiTypes = {
+    containerWindowType = {
+        name = "calc_gui_container"
+        size = { width = 800 height = 800 }
+        position = { x = 700 y = 100 }
+        moveable = yes
+
+        background = {
+            name = "background"
+            quadTextureSprite = "GFX_tiled_window_thin_border2"
+        }
+        containerWindowType = {
+            name = "calc_input_gridcontainer"
+            size = { width = 720 height = 720 }
+            position = { x = 40 y = 40 }
+
+            background = {
+                name = "background"
+                quadTextureSprite = "GFX_tiled_window_thin_border2"
+            }
+
+            instantTextBoxType = {
+                name = "calc_display"
+                position = { x = 20 y = 20 }
+                orientation = "UPPER_LEFT"
+                text = calc_display
+                font = "hoi_18mbs"
+            }
+            buttonType = {
+                name = "calc_add"
+                quadTextureSprite = "GFX_small_button_71x26"
+                position = { x = 20 y = 40 }
+                orientation = "UPPER_LEFT"
+                font = "hoi_18mbs"
+                buttonText = "+"
+            }
+            buttonType = {
+                name = "calc_sub"
+                quadTextureSprite = "GFX_small_button_71x26"
+                position = { x = 100 y = 40 }
+                orientation = "UPPER_LEFT"
+                font = "hoi_18mbs"
+                buttonText = "-"
+            }
+            buttonType = {
+                name = "calc_mul"
+                quadTextureSprite = "GFX_small_button_71x26"
+                position = { x = 180 y = 40 }
+                orientation = "UPPER_LEFT"
+                font = "hoi_18mbs"
+                buttonText = "*"
+            }
+            buttonType = {
+                name = "calc_div"
+                quadTextureSprite = "GFX_small_button_71x26"
+                position = { x = 260 y = 40 }
+                orientation = "UPPER_LEFT"
+                font = "hoi_18mbs"
+                buttonText = "/"
+            }
+            buttonType = {
+                name = "calc_clear"
+                quadTextureSprite = "GFX_small_button_71x26"
+                position = { x = 260 y = 60 }
+                orientation = "UPPER_LEFT"
+                font = "hoi_18mbs"
+                buttonText = "Clear"
+            }
+            buttonType = {
+                name = "calc_calc"
+                quadTextureSprite = "GFX_small_button_71x26"
+                position = { x = 260 y = 80 }
+                orientation = "UPPER_LEFT"
+                font = "hoi_18mbs"
+                buttonText = "Calculate"
+                pdx_tooltip_delayed = calc_calc_tt
+            }
+            buttonType = {
+                name = "calc_1"
+                quadTextureSprite = "GFX_small_button_71x26"
+                position = { x = 20 y = 60 }
+                orientation = "UPPER_LEFT"
+                font = "hoi_18mbs"
+                buttonText = "1"
+            }
+            buttonType = {
+                name = "calc_2"
+                quadTextureSprite = "GFX_small_button_71x26"
+                position = { x = 100 y = 60 }
+                orientation = "UPPER_LEFT"
+                font = "hoi_18mbs"
+                buttonText = "2"
+            }
+            buttonType = {
+                name = "calc_3"
+                quadTextureSprite = "GFX_small_button_71x26"
+                position = { x = 180 y = 60 }
+                orientation = "UPPER_LEFT"
+                font = "hoi_18mbs"
+                buttonText = "3"
+            }
+            buttonType = {
+                name = "calc_4"
+                quadTextureSprite = "GFX_small_button_71x26"
+                position = { x = 20 y = 80 }
+                orientation = "UPPER_LEFT"
+                font = "hoi_18mbs"
+                buttonText = "4"
+            }
+            buttonType = {
+                name = "calc_5"
+                quadTextureSprite = "GFX_small_button_71x26"
+                position = { x = 100 y = 80 }
+                orientation = "UPPER_LEFT"
+                font = "hoi_18mbs"
+                buttonText = "5"
+            }
+            buttonType = {
+                name = "calc_6"
+                quadTextureSprite = "GFX_small_button_71x26"
+                position = { x = 180 y = 80 }
+                orientation = "UPPER_LEFT"
+                font = "hoi_18mbs"
+                buttonText = "6"
+            }
+            buttonType = {
+                name = "calc_7"
+                quadTextureSprite = "GFX_small_button_71x26"
+                position = { x = 20 y = 100 }
+                orientation = "UPPER_LEFT"
+                font = "hoi_18mbs"
+                buttonText = "7"
+            }
+            buttonType = {
+                name = "calc_8"
+                quadTextureSprite = "GFX_small_button_71x26"
+                position = { x = 100 y = 100 }
+                orientation = "UPPER_LEFT"
+                font = "hoi_18mbs"
+                buttonText = "8"
+            }
+            buttonType = {
+                name = "calc_9"
+                quadTextureSprite = "GFX_small_button_71x26"
+                position = { x = 180 y = 100 }
+                orientation = "UPPER_LEFT"
+                font = "hoi_18mbs"
+                buttonText = "9"
+            }
+            buttonType = {
+                name = "calc_0"
+                quadTextureSprite = "GFX_small_button_71x26"
+                position = { x = 100 y = 120 }
+                orientation = "UPPER_LEFT"
+                font = "hoi_18mbs"
+                buttonText = "0"
+            }
+        }
+        instantTextBoxType = {
+            name = "calc_info_header"
+            position = { x = 20 y = 20 }
+            orientation = "UPPER_LEFT"
+            text = calc_info
+            pdx_tooltip_delayed = calc_info_tt
+            font = "hoi_18mbs"
+        }
+        buttonType = {
+            name = "calc_close"
+            spriteType = "GFX_closebutton"
+            position = { x = -42 y = 10 }
+            orientation = "UPPER_RIGHT"
+        }
+    }
+}

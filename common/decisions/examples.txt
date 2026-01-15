@@ -1,0 +1,25 @@
+fibonacci_category = {
+    fibonacci_show = {
+        complete_effect = {
+            set_global_flag = fib_gui_visible
+        }
+    }
+    fibonacci_hide = {
+        complete_effect = {
+            clr_global_flag = fib_gui_visible
+        }
+    }
+    calculator_show = {
+        complete_effect = {
+            set_variable = { global.calculator_buffer_a = 0 }
+            set_variable = { global.calculator_buffer_b = 0 }
+            set_variable = { global.calculator_action = 0 }
+            set_global_flag = calc_gui_visible
+        }
+    }
+    calculator_hide = {
+        complete_effect = {
+            clr_global_flag = calc_gui_visible
+        }
+    }
+}
